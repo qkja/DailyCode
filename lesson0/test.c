@@ -3,7 +3,8 @@
 int main()
 {
 
-   printf("%d\n",sizeof(void));
+   //printf("%d\n",sizeof(void));
+   printf("(hehehehe??)\n");
 
 
 
