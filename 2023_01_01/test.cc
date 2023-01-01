@@ -44,3 +44,11 @@ Node* retain(Node* head)
 
 
 // 猜数字游戏   笔试整理 第二题
+// 正确数字就是1-n之间
+// 每次猜错 就是钱数
+// 
+int minGold(int n)
+{
+  
+}
+
