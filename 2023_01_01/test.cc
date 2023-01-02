@@ -81,4 +81,3 @@ int zuo(int left, int right)
   }
   return minGold;
 }
-
