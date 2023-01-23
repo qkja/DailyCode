@@ -10,36 +10,130 @@
 #include <iostream>
 #include <string>
 using namespace std;
-void myReverse(string &str, int begin, int end)
-{
-  while (begin < end)
-  {
 
-    swap(str[begin], str[end]);
-    begin++;
-    end--;
-  }
-}
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <iostream>
+#include <string>
+using namespace std;
+/// @brief 排序子序列
+/// @return 
 int main()
 {
-  string str;
-  getline(cin, str);
-  int begin = 0;
-
-  for (int i = 0; i < str.size(); i++)
+  int n = 0;
+  cin >> n;
+  vector<int> v;
+  v.resize(n + 1);
+  v[n] = 0;
+  for (int i = 0; i < n; i++)
   {
-    if (str[i] == ' ')
+    cin >> v[i];
+  }
+  int count = 0;
+
+  int i = 0;
+  while (i < n)
+  {
+    if (i < n && v[i] < v[i + 1])
     {
-      myReverse(str, begin, i - 1);
-      begin = i + 1;
+      while (i < n && v[i] <= v[i + 1])
+      {
+        i++;
+      }
+      count++;
+      i++;
+    }
+    else if (i < n && v[i] == v[i + 1])
+    {
+      i++;
+    }
+    else
+    {
+      while (i < n && v[i] >= v[i + 1])
+      {
+        i++;
+      }
+      count++;
+      i++;
     }
   }
-  myReverse(str, begin, str.size() - 1);
-
-  // cout << "------------" << endl;
-  myReverse(str, 0, str.size() - 1);
-  cout << str << endl;
+  cout << count << endl;
+  return 0;
 }
+
+// int main()
+// {
+//   int n = 0;
+//   cin >> n;
+//   vector<int> v;
+//   v.resize(n);
+//   for (int i = 0; i < n; i++)
+//   {
+//     cin >> v[i];
+//   }
+//   int count = 0;
+
+//   int i = 0;
+//   while (i < n)
+//   {
+//     if ((i + 1) < n && v[i] < v[i + 1])
+//     {
+//       while (i < n && v[i] <= v[i + 1])
+//       {
+//         i++;
+//       }
+//       count++;
+//       i++;
+//     }
+//     else if (i < n && v[i] == v[i + 1])
+//     {
+//       i++;
+//     }
+//     else if ((i + 1) < n)
+//     {
+//       while (i < n && v[i] >= v[i + 1])
+//       {
+//         i++;
+//       }
+//       count++;
+//       i++;
+//     }
+//   }
+//   cout << count << endl;
+//   return 0;
+// }
+
+// void myReverse(string &str, int begin, int end)
+// {
+//   while (begin < end)
+//   {
+
+//     swap(str[begin], str[end]);
+//     begin++;
+//     end--;
+//   }
+// }
+// int main()
+// {
+//   string str;
+//   getline(cin, str);
+//   int begin = 0;
+
+//   for (int i = 0; i < str.size(); i++)
+//   {
+//     if (str[i] == ' ')
+//     {
+//       myReverse(str, begin, i - 1);
+//       begin = i + 1;
+//     }
+//   }
+//   myReverse(str, begin, str.size() - 1);
+
+//   // cout << "------------" << endl;
+//   myReverse(str, 0, str.size() - 1);
+//   cout << str << endl;
+// }
 // 64 位输出请用 printf("%lld")
 
 // int main()
