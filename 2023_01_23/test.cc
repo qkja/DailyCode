@@ -7,7 +7,28 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <iostream>
+#include <string>
+using namespace std;
 
+int main()
+{
+  string s1;
+  string s2;
+  getline(cin, s1);
+  getline(cin, s2);
+  string str;
+  for(auto& ch:s1)
+  {
+    if(s2.find(ch) == string::npos)
+    {
+      str+=ch;
+    }
+  }
+  cout << str<<endl;
+  return 0;
+}
+// 64 位输出请用 printf("%lld")
 using namespace std;
 // long long maxSum(vector<long long> &result)
 // {
