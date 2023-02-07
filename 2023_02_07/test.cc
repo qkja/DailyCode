@@ -4,13 +4,13 @@
  * Date: 2023-02-07
  * Time: 19:54
  */
+
 #include <iostream>
 #include <vector>
 #include <string>
 #include <stack>
 #include <algorithm>
 using namespace std;
-
 class Solution
 {
 public:
@@ -71,6 +71,8 @@ public:
 
   string multiply(string num1, string num2)
   {
+    if (num1[0] == '0' || num2[0] == '0')
+      return "0";
     if (num1.empty())
       return num2;
     if (num2.empty())
@@ -87,19 +89,107 @@ public:
       }
       s += "0";
     }
-
     return result;
   }
 };
+// class Solution
+// {
+// public:
+//   string multiplyChild(const string &str, char ch)
+//   {
+//     int i = str.size() - 1;
+//     int count = 0;
+//     string result;
 
-int main()
-{
-  string s1 = "923";
-  string s2 = "99";
-  Solution().addition(s1, s2);
-  cout << s1 << endl;
-  return 0;
-}
+//     while (i >= 0)
+//     {
+//       int ret = (str[i] - '0') * (ch - '0');
+//       result += std::to_string(((ret + count) % 10));
+//       count = (count + ret) / 10;
+//       i--;
+//     }
+//     if (count != 0)
+//       result += to_string(count % 10);
+//     reverse(result.begin(), result.end());
+//     return result;
+//   }
+//   // 两个字符串相加
+//   void addition(string &s1, const string &s2)
+//   {
+//     int i = s1.size() - 1;
+//     int j = s2.size() - 1;
+//     int count = 0;
+//     string result;
+//     while (i >= 0 && j >= 0)
+//     {
+//       int ret = (s1[i] - '0') + (s2[j] - '0') + count;
+//       result += to_string(ret % 10);
+//       count = ret / 10;
+//       i--;
+//       j--;
+//     }
+//     while (i >= 0)
+//     {
+//       // 此时s1还是存在剩余
+//       int ret = s1[i] - '0' + count;
+//       result += to_string(ret % 10);
+//       count = ret / 10;
+//       i--;
+//     }
+//     while (j >= 0)
+//     {
+//       // 此时s1还是存在剩余
+//       int ret = s2[j] - '0' + count;
+//       result += to_string(ret % 10);
+//       count = ret / 10;
+//       j--;
+//     }
+//     if (count != 0)
+//       result += to_string(count);
+//     reverse(result.begin(), result.end());
+//     s1 = result;
+//   }
+
+//   string multiply(string num1, string num2)
+//   {
+//     if (num1.empty())
+//       return num2;
+//     if (num2.empty())
+//       return num1;
+
+//     string result;
+//     string s;
+//     for (int i = num2.size() - 1; i >= 0; i--)
+//     {
+//       // 这里判断一下字符是不是o
+//       if (num2[i] != '0')
+//       {
+//         addition(result, multiplyChild(num1, num2[i]) + s);
+//       }
+//       s += "0";
+//     }
+
+//     return result;
+//   }
+// };
+
+// int main()
+// {
+//   string s1 = "123";
+//   string s2 = "99";
+//   Solution().addition(s1, s2);
+//   cout << s1 << endl;
+//   return 0;
+// }
+
+// int main()
+// {
+//   string s1 = "923";
+//   string s2 = "99";
+//   Solution().addition(s1, s2);
+//   cout << s1 << endl;
+//   return 0;
+// }
 
 // int main()
 // {
