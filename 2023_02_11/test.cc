@@ -11,74 +11,226 @@
 #include <unordered_map>
 #include <unordered_set>
 #include <queue>
-
+#include <stack>
 #include <algorithm>
 using namespace std;
-
 class Solution
 {
 public:
-  struct myFunc
+  int f(const vector<int> ages, int x, int y)
   {
-    bool operator()(pair<int, int> p1, pair<int, int> p2)
+    int count = 0;
+    if ((ages[y] <= 0.5 * ages[x] + 7) ||
+        (ages[y] > ages[x]) ||
+        (ages[y] > 100 && ages[x] < 100))
     {
-      return (p1.second > p2.second) || (p1.second ==  p2.second && p1.first < p2.first);
     }
-  };
-
-  vector<int> kWeakestRows(vector<vector<int>> &mat, int k)
+    else
+    {
+      count++;
+    }
+    return count;
+  }
+  int numFriendRequests(vector<int> &ages)
   {
-    unordered_map<int, int> m;
-    for (size_t i = 0; i < mat.size(); i++)
+    // 暴力
+    int count = 0;
+    for (int x = 0; x < ages.size(); x++)
     {
-      int ret = 0;
-      for (size_t j = 0; j < mat[i].size(); j++)
+      for (int y = 0; y < ages.size(); y++)
       {
-        ret += mat[i][j];
-      }
-      m.insert(make_pair(i, ret));
-    }
-
-    // topK问题  使用堆 这里
-    priority_queue<pair<int, int>, vector<pair<int, int>>, myFunc> p;
-    auto it = m.begin();
-    while (it != m.end())
-    {
-      if (p.size() < k)
-      {
-        // 这里建堆
-        p.push(*it);
-      }
-      else
-      {
-        // 判断 f 是下标  s 是  武力
-        int f1 = it->first;
-        int s1 = it->second;
-
-        int f2 = p.top().first;
-        int s2 = p.top().second();
-
-        // 注意 我们建立的说大堆
-        if (s1 < s2 || (s1 == s2 && f1 < f2))
+        if (x != y)
         {
-          p.pop();
-          p.push(*it);
+          count += (ages, x, y);
         }
       }
-      it++;
     }
-
-    // 拿到堆顶的元素额
-    vector<int> v;
-    v.resize(k);
-    while (p.empty())
-    {
-      v[--k](p.top().first);
-      p.pop();
-    }
-    return v;
+    return count;
   }
 };
+
+// class Solution
+// {
+// public:
+//   int numFriendRequests(vector<int> &ages)
+//   {
+//     // 暴力
+//     int count = 0;
+//     for (int x = 0; x < ages.size() - 1; x++)
+//     {
+//       for (int y = x + 1; y < ages.size(); y++)
+//       {
+//         if ((ages[y] <= 0.5 * ages[x] + 7) ||
+//             (ages[y] > ages[x]) ||
+//             (ages[y] > 100 && ages[x] < 100))
+//         {
+
+//         }
+//         else
+//         {
+//           count++;
+//         }
+//       }
+//     }
+//     return count;
+//   }
+// };
+
+// class Solution
+// {
+// public:
+//   int balancedStringSplit(string s)
+//   {
+//     int result = 0;
+//     int ret = 0;
+//     for (auto ch : s)
+//     {
+//       if (ch == 'R')
+//       {
+//         ret++;
+//       }
+//       else
+//       {
+//         ret--;
+//       }
+//       if (ret == 0)
+//       {
+//         result++;
+//       }
+//     }
+//     return result;
+//   }
+// };
+
+// class Solution
+// {
+// public:
+//   struct myFunc
+//   {
+//     bool operator()(pair<int, int> p1, pair<int, int> p2)
+//     {
+//       return (p1.second < p2.second) || (p1.second == p2.second && p1.first < p2.first);
+//     }
+//   };
+
+//   vector<int> kWeakestRows(vector<vector<int>> &mat, int k)
+//   {
+//     unordered_map<int, int> m;
+//     for (size_t i = 0; i < mat.size(); i++)
+//     {
+//       int ret = 0;
+//       for (size_t j = 0; j < mat[i].size(); j++)
+//       {
+//         ret += mat[i][j];
+//       }
+//       m.insert(make_pair(i, ret));
+//     }
+
+//     // topK问题  使用堆 这里
+//     priority_queue<pair<int, int>, vector<pair<int, int>>, myFunc> p;
+//     auto it = m.begin();
+//     while (it != m.end())
+//     {
+//       if (p.size() < k)
+//       {
+//         // 这里建堆
+//         p.push(*it);
+//       }
+//       else
+//       {
+//         // 判断 f 是下标  s 是  武力
+//         int f1 = it->first;
+//         int s1 = it->second;
+
+//         int f2 = p.top().first;
+//         int s2 = p.top().second;
+
+//         // 注意 我们建立的说大堆
+//         if (s1 < s2 || (s1 == s2 && f1 < f2))
+//         {
+//           p.pop();
+//           p.push(*it);
+//         }
+//       }
+//       it++;
+//     }
+
+//     // 拿到堆顶的元素额
+//     vector<int> v;
+//     v.resize(k);
+//     while (!p.empty())
+//     {
+//       v[--k] = p.top().first;
+//       p.pop();
+//     }
+//     return v;
+//   }
+// };
+
+// class Solution
+// {
+// public:
+//   struct myFunc
+//   {
+//     bool operator()(pair<int, int> p1, pair<int, int> p2)
+//     {
+//       return (p1.second > p2.second) || (p1.second ==  p2.second && p1.first < p2.first);
+//     }
+//   };
+
+//   vector<int> kWeakestRows(vector<vector<int>> &mat, int k)
+//   {
+//     unordered_map<int, int> m;
+//     for (size_t i = 0; i < mat.size(); i++)
+//     {
+//       int ret = 0;
+//       for (size_t j = 0; j < mat[i].size(); j++)
+//       {
+//         ret += mat[i][j];
+//       }
+//       m.insert(make_pair(i, ret));
+//     }
+
+//     // topK问题  使用堆 这里
+//     priority_queue<pair<int, int>, vector<pair<int, int>>, myFunc> p;
+//     auto it = m.begin();
+//     while (it != m.end())
+//     {
+//       if (p.size() < k)
+//       {
+//         // 这里建堆
+//         p.push(*it);
+//       }
+//       else
+//       {
+//         // 判断 f 是下标  s 是  武力
+//         int f1 = it->first;
+//         int s1 = it->second;
+
+//         int f2 = p.top().first;
+//         int s2 = p.top().second();
+
+//         // 注意 我们建立的说大堆
+//         if (s1 < s2 || (s1 == s2 && f1 < f2))
+//         {
+//           p.pop();
+//           p.push(*it);
+//         }
+//       }
+//       it++;
+//     }
+
+//     // 拿到堆顶的元素额
+//     vector<int> v;
+//     v.resize(k);
+//     while (p.empty())
+//     {
+//       v[--k](p.top().first);
+//       p.pop();
+//     }
+//     return v;
+//   }
+// };
 
 // class Solution
 // {
