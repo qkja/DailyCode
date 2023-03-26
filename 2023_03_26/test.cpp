@@ -686,80 +686,80 @@ using namespace std;
 // 	return count;
 // }
 
-#define _CRT_SECURE_NO_WARNINGS 1
-#include <iostream>
-#include <vector>
+// #define _CRT_SECURE_NO_WARNINGS 1
+// #include <iostream>
+// #include <vector>
 
-class Solution
-{
-public:
-	void converting_binary(std::vector<int> &v, int val)
-	{
-		while (val)
-		{
-			int ret = val % 2;
-			v.push_back(ret);
-			val /= 2;
-		}
-	}
-	int convertInteger(int A, int B)
-	{
-		std::vector<int> va;
-		std::vector<int> vb;
-		bool falgA = false;
-		bool falgB = false;
-		if (A < 0)
-		{
-			falgA = true;
-			A = -A;
-		}
-		if (B < 0)
-		{
-			falgB = true;
-			B = -B;
-		}
+// class Solution
+// {
+// public:
+// 	void converting_binary(std::vector<int> &v, int val)
+// 	{
+// 		while (val)
+// 		{
+// 			int ret = val % 2;
+// 			v.push_back(ret);
+// 			val /= 2;
+// 		}
+// 	}
+// 	int convertInteger(int A, int B)
+// 	{
+// 		std::vector<int> va;
+// 		std::vector<int> vb;
+// 		bool falgA = false;
+// 		bool falgB = false;
+// 		if (A < 0)
+// 		{
+// 			falgA = true;
+// 			A = -A;
+// 		}
+// 		if (B < 0)
+// 		{
+// 			falgB = true;
+// 			B = -B;
+// 		}
 
-		converting_binary(va, A);
-		converting_binary(vb, B);
+// 		converting_binary(va, A);
+// 		converting_binary(vb, B);
 
-		// 找两个数组中 容量比较大的数据
-		va.resize(32, 0);
-		vb.resize(32, 0);
-		if (falgA)
-		{
-			va[31] = 1;
-		}
-		if (falgB)
-		{
-			vb[31] = 1;
-		}
-		for (auto e : va)
-		{
-			std::cout << e << " ";
-		}
-		std ::cout << std::endl;
-		for (auto e : vb)
-		{
-			std::cout << e << " ";
-		}
-		std::cout << std::endl;
-		int count = 0;
-		for (size_t i = 0; i < va.size(); i++)
-		{
-			if (va[i] != vb[i])
-				count++;
-		}
-		return count;
-	}
-};
+// 		// 找两个数组中 容量比较大的数据
+// 		va.resize(32, 0);
+// 		vb.resize(32, 0);
+// 		if (falgA)
+// 		{
+// 			va[31] = 1;
+// 		}
+// 		if (falgB)
+// 		{
+// 			vb[31] = 1;
+// 		}
+// 		for (auto e : va)
+// 		{
+// 			std::cout << e << " ";
+// 		}
+// 		std ::cout << std::endl;
+// 		for (auto e : vb)
+// 		{
+// 			std::cout << e << " ";
+// 		}
+// 		std::cout << std::endl;
+// 		int count = 0;
+// 		for (size_t i = 0; i < va.size(); i++)
+// 		{
+// 			if (va[i] != vb[i])
+// 				count++;
+// 		}
+// 		return count;
+// 	}
+// };
 
-int main()
-{
-	int a = 826966453;
-	int b = -729934991;
-	std::cout << Solution().convertInteger(a, b) << std::endl;
-	return 0;
-}
+// int main()
+// {
+// 	int a = 826966453;
+// 	int b = -729934991;
+// 	std::cout << Solution().convertInteger(a, b) << std::endl;
+// 	return 0;
+// }
 
 // #include<stdio.h>
 // #include <vector>
@@ -1025,26 +1025,108 @@ int main()
 // 		return m[a];
 // 	}
 // };
-#include <unordered_set>
-class Solution
-{
+// #include <unordered_set>
+// class Solution
+// {
+// public:
+// 	vector<int> intersection(vector<int> &nums1, vector<int> &nums2)
+// 	{
+// 		std::vector<int> result;
+// 		if (nums1.empty() || nums2.empty())
+// 			return result;
+// 		std::unordered_set<int> s;
+// 		s.insert(nums1.begin(), nums1.end());
+// 		for (auto &e : nums2)
+// 		{
+// 			auto iter = s.find(e);
+// 			if (iter != s.end())
+// 			{
+// 				s.erase(iter);
+// 				result.push_back(e);
+// 			}
+// 		}
+// 		return result;
+// 	}
+// };
+
+// #include <iostream>
+// #include <string>
+// #include <algorithm>
+// using namespace std;
+
+// int main() {
+// 	std::string str;
+// 	std::getline(std::cin, str);
+// 	std::sort(str.begin(), str.end()); // 随机迭代器
+// 	std::cout << str << std::endl;
+// }
+// // 64 位输出请用 printf("%lld")
+
+// class Solution
+// {
+// public:
+// 	int pivotIndex(vector<int> &nums)
+// 	{
+// 		if (nums.empty())
+// 			return -1;
+// 		int sum = 0;
+// 		for (auto &e : nums)
+// 			sum += e;
+
+// 		int leftSum = 0;
+// 		int rightSum = sum;
+// 		int index = 0;
+// 		for (int i = 0; i < nums.size(); i++)
+// 		{
+// 			// 求 右侧和
+// 			rightSum = rightSum - nums[i];
+// 			// 求左侧和
+// 			if (0 != i)
+// 				leftSum = leftSum + nums[i - 1];
+// 			if (rightSum == leftSum)
+// 				return i;
+// 		}
+// 		return -1;
+// 	}
+// };
+
+// #include <iostream>
+// #include <string>
+// #include <unordered_set>
+// using namespace std;
+
+// int main()
+// {
+// 	std::string str;
+// 	std::getline(std::cin, str);
+// 	std::unordered_set<char> s;
+// 	s.insert(str.begin(), str.end());
+// 	std::cout << s.size() << std::endl;
+// 	return 0;
+// }
+// 64 位输出请用 printf("%lld")
+
+class Solution {
 public:
-	vector<int> intersection(vector<int> &nums1, vector<int> &nums2)
-	{
-		std::vector<int> result;
-		if (nums1.empty() || nums2.empty())
-			return result;
-		std::unordered_set<int> s;
-		s.insert(nums1.begin(), nums1.end());
-		for (auto &e : nums2)
-		{
-			auto iter = s.find(e);
-			if (iter != s.end())
+    int majorityElement(vector<int>& nums) {
+			if(nums.empty())
+			return -1;
+			std::unordered_map<int, int> m;
+			for(auto& e: nums)
 			{
-				s.erase(iter);
-				result.push_back(e);
+				m[e]++;
 			}
-		}
-		return result;
-	}
+			int len = nums.size();
+			// 遍历map
+			auto iter = m.begin();
+			while (iter != m.end())
+			{
+				if( iter->second  * 2 > len)
+				{
+					return iter->first;
+				}
+				++iter;
+			}
+			return -1;
+    }
 };
