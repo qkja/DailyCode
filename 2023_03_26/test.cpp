@@ -12,19 +12,19 @@ using namespace std;
 // }
 
 /**
- * ´úÂëÖĞµÄÀàÃû¡¢·½·¨Ãû¡¢²ÎÊıÃûÒÑ¾­Ö¸¶¨£¬ÇëÎğĞŞ¸Ä£¬Ö±½Ó·µ»Ø·½·¨¹æ¶¨µÄÖµ¼´¿É
+ * ï¿½ï¿½ï¿½ï¿½ï¿½Ğµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ş¸Ä£ï¿½Ö±ï¿½Ó·ï¿½ï¿½Ø·ï¿½ï¿½ï¿½ï¿½æ¶¨ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½
  *
  *
- * @param n intÕûĞÍ ×î´óÎ»Êı
- * @return intÕûĞÍÒ»Î¬Êı×é
- * @return int* returnSize ·µ»ØÊı×éĞĞÊı
+ * @param n intï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Î»ï¿½ï¿½
+ * @return intï¿½ï¿½ï¿½ï¿½Ò»Î¬ï¿½ï¿½ï¿½ï¿½
+ * @return int* returnSize ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
  */
 
 // int* printNumbers(int n, int* returnSize) {
 //	// write code here
 //	if (returnSize == NULL)
 //		return NULL;
-//	// ´òÓ¡ nÎ»Êı
+//	// ï¿½ï¿½Ó¡ nÎ»ï¿½ï¿½
 //
 //	int ret = (int)pow(10.0, 1.0*n);
 //	for (size_t i = 0; i < ret - 1; i++)
@@ -38,7 +38,7 @@ using namespace std;
 //	// write code here
 //	if (n <= 0 || returnSize == NULL)
 //		return NULL;
-//	// ´òÓ¡ nÎ»Êı
+//	// ï¿½ï¿½Ó¡ nÎ»ï¿½ï¿½
 //
 //	int ret = (int)pow(10.0, 1.0*n);
 //	// 1 -> 10
@@ -71,7 +71,7 @@ using namespace std;
 // }
 // int calculate_the_number_of_days(int year, int month, int day)
 //{
-//	// Ä¬ÈÏÊÇÆ½Äê
+//	// Ä¬ï¿½ï¿½ï¿½ï¿½Æ½ï¿½ï¿½
 //	static int months[13] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 //	int days = day;
 //	for (int i = 1; i < month; i++)
@@ -109,9 +109,9 @@ using namespace std;
 //		j += 2;
 //	}
 //
-//	int m = (retPow - sum) / ret; // Çó×îĞ¡Öµ
+//	int m = (retPow - sum) / ret; // ï¿½ï¿½ï¿½ï¿½Ğ¡Öµ
 //
-//	// ÅĞ¶ÏÊÇ²»ÊÇ
+//	// ï¿½Ğ¶ï¿½ï¿½Ç²ï¿½ï¿½ï¿½
 //	vector<int> v;
 //	sum = 0;
 //	j = 1;
@@ -160,7 +160,7 @@ using namespace std;
 // 	cout << sum << endl;
 // 	return 0;
 // }
-// 64 Î»Êä³öÇëÓÃ printf("%lld")
+// 64 Î»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ printf("%lld")
 
 // #include <stdio.h>
 // int i;
@@ -188,8 +188,8 @@ using namespace std;
 // 	std::cin >> n;
 // 	vector<int> v(n, 0);
 
-// 	int negativeNum = 0; // ¸ºÊı¸öÊı
-// 	int positiveNum = 0; // ÕûÊı¸öÊı
+// 	int negativeNum = 0; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+// 	int positiveNum = 0; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 // 	int sum = 0;
 
 // 	for(int i = 0; i < n; i++)
@@ -319,7 +319,7 @@ using namespace std;
 // 		if (nums.empty())
 // 			return result;
 
-// 		int theoreticalSum = ((1 + nums.size()) * (nums.size())) / 2; // ÇóºÍ¹«Ê½
+// 		int theoreticalSum = ((1 + nums.size()) * (nums.size())) / 2; // ï¿½ï¿½Í¹ï¿½Ê½
 // 		int actualSum = 0;
 
 // 		std::unordered_map<int, int> m;
@@ -332,8 +332,8 @@ using namespace std;
 // 			}
 // 			actualSum += e;
 // 		}
-// 		// ËùÎ½µÄÈ±Ê§µÄÊı×ÖÊÇÖ¸ 1-n ÖĞÉÙÁËÒ»¸öÊı
-// 		// Êµ¼ÊÖµ - ÖØ¸´Êı×Ö + x = Êµ¼ÊÖµ
+// 		// ï¿½ï¿½Î½ï¿½ï¿½È±Ê§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ 1-n ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½
+// 		// Êµï¿½ï¿½Öµ - ï¿½Ø¸ï¿½ï¿½ï¿½ï¿½ï¿½ + x = Êµï¿½ï¿½Öµ
 // 		result[1] = theoreticalSum - actualSum + result[0];
 // 		return result;
 // 	}
@@ -348,7 +348,7 @@ using namespace std;
 // 		if (nums.empty())
 // 			return result;
 
-// 		/// ÕâÀïÕÒ ÖØ¸´µÄÊı×Ö
+// 		/// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ø¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 // 		std::unordered_map<int, int> m;
 // 		for (auto &e : nums)
 // 		{
@@ -360,7 +360,7 @@ using namespace std;
 // 			}
 // 		}
 // 		int actualSum  = 0;
-// 				// ËùÎ½µÄÈ±Ê§µÄÊı×ÖÊÇÖ¸ 1-n ÖĞÉÙÁËÒ»¸öÊı
+// 				// ï¿½ï¿½Î½ï¿½ï¿½È±Ê§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ 1-n ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½
 // 				int theoreticalSum = (1 + nums.size()) / 2;
 
 // 		return result;
@@ -376,7 +376,7 @@ using namespace std;
 // 		if (nums.empty())
 // 			return result;
 
-//     /// ÕâÀïÕÒ ÖØ¸´µÄÊı×Ö
+//     /// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ø¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 // 		std::unordered_map<int, int> m;
 // 		for(auto& e:nums)
 // 		{
@@ -387,8 +387,8 @@ using namespace std;
 // 				break;
 // 			}
 // 		}
-// 		/// ÏÂÃæÊÇÕÒÈ±Ê§µÄÊı×Ö
-// 		std::sort(nums.begin(), nums.end(), less<int>()); // Ä¬ÈÏÊÇÉıĞò ,ÕâÀïÖ÷ÒªÓÃÒÔÒ»ÏÂ
+// 		/// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È±Ê§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+// 		std::sort(nums.begin(), nums.end(), less<int>()); // Ä¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½
 
 // 		for (size_t i = 0; i < nums.size(); i++)
 // 		{
@@ -412,14 +412,14 @@ using namespace std;
 // 		if (nums.empty())
 // 			return result;
 
-// 		// ÕâÀïÖ±½ÓÅÅĞò
-// 		std::sort(nums.begin(), nums.end(), less<int>()); // Ä¬ÈÏÊÇÉıĞò ,ÕâÀïÖ÷ÒªÓÃÒÔÒ»ÏÂ
+// 		// ï¿½ï¿½ï¿½ï¿½Ö±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+// 		std::sort(nums.begin(), nums.end(), less<int>()); // Ä¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½
 
 // 		for (size_t i = 0; i < nums.size(); i++)
 // 		{
 // 			if (i != nums[i] - 1)
 // 			{
-// 				// ÕâÀï¾ÍÊÇ´ğ°¸
+// 				// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç´ï¿½
 // 				result[0] = i;
 // 				result[1] = i + 1;
 // 				return result;
@@ -484,72 +484,567 @@ using namespace std;
 // 	}
 // 	return 0;
 // }
-// 64 Î»Êä³öÇëÓÃ printf("%lld")
+// 64 Î»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ printf("%lld")
 
-#include <cstdio>
+// #include <cstdio>
+// #include <vector>
+
+// #include <algorithm>
+// #include <unordered_map>
+
+// #include <iostream>
+// #include <string>
+// using namespace std;
+// bool is_password(const std::string &str)
+// {
+// 	if (str.empty())
+// 		return false;
+// 	if (str[0] >= '0' && str[0] <= '9' || str.size() < 8)
+// 		return false;
+// 	std::vector<int> flags(3, 0);
+// 	for (auto &e : str)
+// 	{
+// 		if (e >= 'a' && e <= 'z')
+// 		{
+// 			flags[0] = 1;
+// 		}
+// 		else if (e >= 'A' && e <= 'Z')
+// 		{
+// 			flags[1] = 1;
+// 		}
+// 		else if (e >= '0' && e <= '9')
+// 		{
+// 			flags[2] = 1;
+// 		}
+// 		else
+// 		{
+// 			return false;
+// 		}
+// 	} // end of for
+// 	int sum = flags[0] + flags[1] + flags[2];
+// 	return sum >= 2;
+// }
+
+// int main()
+// {
+// 	int n = 0;
+
+// 	std::cin >> n;
+// 	getchar();
+// 	while (n != 0)
+// 	{
+// 		n--;
+// 		std::string str;
+// 		char ch = '0';
+
+// 		while ((ch = getchar()) != '\n')
+// 		{
+// 			str.push_back(ch);
+// 		}
+// 		// cout << str << endl;
+// 		if (is_password(str))
+// 		{
+// 			std::cout << "YES" << std::endl;
+// 		}
+// 		else
+// 		{
+// 			std::cout << "NO" << std::endl;
+// 		}
+// 	}
+// 	return 0;
+// }
+
+// class Solution
+// {
+// public:
+// 	int GetNumberOfK(vector<int> data, int k)
+// 	{
+// 		if (data.empty())
+// 			return -1;
+// 		int left = 0;
+// 		int right = data.size() - 1;
+
+// 		while (left < right && data[left] < k)
+// 		{
+// 			++left;
+// 		}
+// 		while (left < right && data[right] > k)
+// 		{
+// 			right--;
+// 		}
+
+// 		return right - left + 1;
+// 	}
+// };
+
+// class Solution
+// {
+// public:
+// 	int GetNumberOfK(vector<int> data, int k)
+// 	{
+// 		if (data.empty())
+// 			return 0;
+// 		int left = 0;
+// 		int right = data.size() - 1;
+
+// 		while (left < right && data[left] < k)
+// 		{
+// 			++left;
+// 		}
+// 		while (left < right && data[right] > k)
+// 		{
+// 			right--;
+// 		}
+// 		if (right == left && data[left] != k)
+// 			return 0;
+// 		return right - left + 1;
+// 	}
+// };
+
+// class Solution
+// {
+// public:
+// 	void converting_binary(std::vector<int> v, int val)
+// 	{
+// 		while (val)
+// 		{
+// 			int ret = val % 2;
+// 			v.push_back(ret);
+// 			val /= 2;
+// 		}
+// 	}
+// 	int convertInteger(int A, int B)
+// 	{
+// 		std::vector<int> va;
+// 		std::vector<int> vb;
+// 		bool falgA = false;
+// 		bool falgB = false;
+// 		if(A < 0)
+// 		{
+// 			falgA = true;
+// 			A = -A;
+// 		}
+// 		if (B < 0)
+// 		{
+// 			falgB = true;
+// 			B = -B;
+// 		}
+
+// 		converting_binary(va, A);
+// 		converting_binary(vb, B);
+
+// 		// æ‰¾ä¸¤ä¸ªæ•°ç»„ä¸­ å®¹é‡æ¯”è¾ƒå¤§çš„æ•°æ®
+// 		va.resize(32, 0);
+// 		vb.resize(32, 0);
+//     if(falgA)
+// 		{
+// 			va[31] = 1;
+// 		}
+// 		if(falgB)
+// 		{
+// 			vb[31] = 1;
+// 		}
+// 		int count = 0;
+// 		for (size_t i = 0; i < va.size(); i++)
+// 		{
+// 			if(va[i] != vb[i])
+// 			count++;
+// 		}
+// 		return count;
+// 	}
+// };
+// class Solution
+// {
+// public:
+// 	int convertInteger(int A, int B)
+// 	{
+// 		int n = A ^ B; // æŒ‰ä½å¼‚æˆ–
+// 		// ç»Ÿè®¡1çš„ä¸ªæ•°
+// 		int count = 0;
+// 		while (n)
+// 		{
+// 			count++;
+// 			n = n & (n - 1); // n & (n-1)  ä¼šæŠŠäºŒè¿›åˆ¶æ•°åˆ—ä¸­æœ€å³è¾¹çš„1å»æ‰
+// 		}
+// 		return count;
+// 	}
+// };
+// int convertInteger(int A, int B)
+// {
+// 	int ret = A ^ B;
+// 	// æŒ‰ä½å¼‚æˆ–  ç›¸åŒä¸º0  ç›¸å¼‚ä¸º1
+// 	// æ±‚ä¸€çš„ä¸ªæ•°
+// 	// 1110
+// 	int count = 0;
+// 	for (int i = 0; i < 32; i++)
+// 	{
+// 		if (((ret >> i) & 1) == 1)
+// 		{
+// 			count++;
+// 		}
+// 	}
+// 	return count;
+// }
+
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <iostream>
 #include <vector>
 
-#include <algorithm>
-#include <unordered_map>
-
-#include <iostream>
-#include <string>
-using namespace std;
-bool is_password(const std::string &str)
+class Solution
 {
-	if (str.empty())
-		return false;
-	if (str[0] >= '0' && str[0] <= '9' || str.size() < 8)
-		return false;
-	std::vector<int> flags(3, 0);
-	for (auto &e : str)
+public:
+	void converting_binary(std::vector<int> &v, int val)
 	{
-		if (e >= 'a' && e <= 'z')
+		while (val)
 		{
-			flags[0] = 1;
+			int ret = val % 2;
+			v.push_back(ret);
+			val /= 2;
 		}
-		else if (e >= 'A' && e <= 'Z')
+	}
+	int convertInteger(int A, int B)
+	{
+		std::vector<int> va;
+		std::vector<int> vb;
+		bool falgA = false;
+		bool falgB = false;
+		if (A < 0)
 		{
-			flags[1] = 1;
+			falgA = true;
+			A = -A;
 		}
-		else if (e >= '0' && e <= '9')
+		if (B < 0)
 		{
-			flags[2] = 1;
+			falgB = true;
+			B = -B;
 		}
-		else
+
+		converting_binary(va, A);
+		converting_binary(vb, B);
+
+		// æ‰¾ä¸¤ä¸ªæ•°ç»„ä¸­ å®¹é‡æ¯”è¾ƒå¤§çš„æ•°æ®
+		va.resize(32, 0);
+		vb.resize(32, 0);
+		if (falgA)
 		{
-			return false;
+			va[31] = 1;
 		}
-	} // end of for
-	int sum = flags[0] + flags[1] + flags[2];
-	return sum >= 2;
-}
+		if (falgB)
+		{
+			vb[31] = 1;
+		}
+		for (auto e : va)
+		{
+			std::cout << e << " ";
+		}
+		std ::cout << std::endl;
+		for (auto e : vb)
+		{
+			std::cout << e << " ";
+		}
+		std::cout << std::endl;
+		int count = 0;
+		for (size_t i = 0; i < va.size(); i++)
+		{
+			if (va[i] != vb[i])
+				count++;
+		}
+		return count;
+	}
+};
 
 int main()
 {
-	int n = 0;
-
-	std::cin >> n;
-	getchar();
-	while (n != 0)
-	{
-		n--;
-		std::string str;
-		char ch = '0';
-
-		while ((ch = getchar()) != '\n')
-		{
-			str.push_back(ch);
-		}
-		// cout << str << endl;
-		if (is_password(str))
-		{
-			std::cout << "YES" << std::endl;
-		}
-		else
-		{
-			std::cout << "NO" << std::endl;
-		}
-	}
+	int a = 826966453;
+	int b = -729934991;
+	std::cout << Solution().convertInteger(a, b) << std::endl;
 	return 0;
 }
+
+// #include<stdio.h>
+// #include <vector>
+//
+// #include <algorithm>
+// #include <unordered_map>
+//
+// #include <iostream>
+// #include <string>
+// using namespace std;
+// bool is_password(const std::string &str)
+//{
+//	if (str.empty())
+//		return false;
+//	if (str[0] >= '0' && str[0] <= '9' || str.size() < 8)
+//		return false;
+//	std::vector<int> flags(3, 0);
+//	for (auto & e : str)
+//	{
+//		if (e >= 'a' && e <= 'z')
+//		{
+//			flags[0] = 1;
+//		}
+//		else if (e >= 'A' && e <= 'Z')
+//		{
+//			flags[1] = 1;
+//		}
+//		else if (e >= '0' &&e <= '9')
+//		{
+//			flags[2] = 1;
+//		}
+//		else
+//		{
+//			return false;
+//		}
+//	} // end of for
+//	int sum = flags[0] + flags[1] + flags[2];
+//	return sum >= 2;
+// }
+//
+// int main()
+//{
+//	int n = 0;
+//
+//	std::cin >> n;
+//
+//	while (n != 0)
+//	{
+//		// è¿™é‡Œæ¸…ç©ºä¸€ä¸‹ç¼“å†²åŒº
+//		fflush(stdin);
+//		n--;
+//		std::string str;
+//		//std::getline(std::cin, str);
+//		char ch = '0';
+//		while ((ch = getchar()) != '\n')
+//		{
+//			str.push_back(ch);
+//		}
+//		if (is_password(str))
+//		{
+//			std::cout << "YES" << std::endl;
+//		}
+//		else
+//		{
+//			std::cout << "NO" << std::endl;
+//		}
+//	}
+//	return 0;
+// }
+
+// int main()
+//{
+//	int arr = 0;
+//	printf("%d\n", arr);
+//	std::unordered_map<int, int> map;
+//	return 0;
+// }
+//
+
+// #include<Windows.h>
+//
+// #include<stdio.h>
+// #include<stdbool.h>
+//
+// #include<stdio.h>
+// #include<windows.h>
+//
+// #include<stdio.h>
+// #include <iostream>
+// #include <vector>
+// #include <cstdio>
+//
+// using namespace std;
+// #include<stdio.h>
+// #include<math.h>
+//
+// #include <stdio.h>
+// #include <math.h> //å› ä¸ºä½¿ç”¨äº†floorå‡½æ•°,éœ€è¦æ·»åŠ è¯¥å¤´æ–‡ä»¶
+//
+// #include <stdio.h>
+// #include <math.h>
+//
+// #include <stdio.h>
+// #include <math.h>
+//
+// #include<windows.h>
+// #include<math.h>
+// #include<float.h>
+//
+// #include<windows.h>
+// #include<math.h>
+// #include<float.h>
+// #pragma pack(4)
+// class CTest
+//{
+// public:
+//	CTest() : m_chData('\0'), m_nData(0)
+//	{
+//	}
+//	virtual void mem_fun() {}
+//
+// private:
+//	char m_chData;
+//	int m_nData;
+//	static char s_chData;
+// };
+// char CTest::s_chData = '\0';
+// int main(void)
+//{
+//	cout << sizeof(CTest) << std::endl;
+//	// CChild *pChild = new CChild();
+//	// CParent *pParent = (CParent *)pChild;
+//	// pParent->Intro();
+//	return (0);
+// }
+// int main()
+//{
+//	double x = 0.0;
+//	if (fabs(x) < DBL_EPSILON)
+//	{
+//		printf("hehe\n");
+//	}
+//	return 0;
+// }
+
+// int main()
+//{
+//	double x = 1.0;
+//	double y = 0.1;
+//
+//	if (fabs((x - 0.9) - 0.1) < DBL_EPSILON)
+//	{
+//		printf("You can see me!!!\n");
+//	}
+//	else
+//	{
+//		printf("oops!!!\n");
+//	}
+//	return 0;
+// }
+
+// int main()
+//{
+//
+//	float num = 9.5f;
+//	return 0;
+// }
+
+// int main()
+//
+//
+//{
+//
+//	float num = 9.5f;
+//
+//	//int a = -10;
+//	//int d = 3;
+//	////printf("%d\n", a/d); //Cè¯­è¨€ä¸­æ˜¯-3,å¾ˆå¥½ç†è§£
+//	//printf("%d\n", a % d);
+//
+//	return 0;
+// }
+
+// int main()
+//{
+//	//æœ¬è´¨æ˜¯å››èˆäº”å…¥
+//	printf("%.1f\n", round(2.1));
+//	printf("%.1f\n", round(2.9));
+//	printf("%.1f\n", round(-2.1));
+//	printf("%.1f\n", round(-2.9));
+//
+//	return 0;
+// }
+
+// int main()
+//{
+//	//æœ¬è´¨æ˜¯å‘-âˆå–æ•´,æ³¨æ„è¾“å‡ºæ ¼å¼è¦ä¸ç„¶çœ‹ä¸åˆ°ç»“æœ
+//	printf("%.1f\n", floor(-2.9)); //-3
+//	printf("%.1f\n", floor(-2.1)); //-3
+//	printf("%.1f\n", floor(2.9)); //2
+//	printf("%.1f\n", floor(2.1)); //2
+//
+//	return 0;
+// }
+
+// int main()
+//{
+//	printf("%d\n", (int)trunc(2.9));
+//	printf("%d\n", (int)trunc(-2.9));
+//	return 0;
+// }
+
+// int main()
+//{
+//	int a = 2.9;
+//	int b = -2.9;
+//
+//	printf("%d\n", a);
+//	printf("%d\n", b);
+//	return 0;
+// }
+
+// int main()
+//{
+//	BOOL x = TRUE;
+//	printf("%d", sizeof(BOOL));
+//	return 0;
+// }
+
+// int main()
+//{
+//	bool f;
+//	_Bool fag = 1;   //å¯ä»¥å°†1èµ‹å€¼ç»™ä»–
+//	fag = true;
+//	if (fag)
+//	{
+//		printf("%d", sizeof(fag));
+//	}
+//	return 0;
+// }
+#include <unordered_map>
+#include <map>
+#include <algorithm>
+// class Solution
+// {
+// public:
+// 	int dominantIndex(vector<int> &nums)
+// 	{
+
+// 		if (nums.size() < 2)
+// 			return -1;
+// 		std::unordered_map<int, int> m;
+// 		for (size_t i = 0; i < nums.size(); i++)
+// 		{
+// 			m[nums[i]] = i;
+// 		}
+// 		std::sort(nums.begin(), nums.end(), greater<int>());
+// 		int a = nums[0];
+// 		int b = nums[1];
+// 		if (a == b || a < 2 * b)
+// 			return -1;
+
+// 		return m[a];
+// 	}
+// };
+#include <unordered_set>
+class Solution
+{
+public:
+	vector<int> intersection(vector<int> &nums1, vector<int> &nums2)
+	{
+		std::vector<int> result;
+		if (nums1.empty() || nums2.empty())
+			return result;
+		std::unordered_set<int> s;
+		s.insert(nums1.begin(), nums1.end());
+		for (auto &e : nums2)
+		{
+			auto iter = s.find(e);
+			if (iter != s.end())
+			{
+				s.erase(iter);
+				result.push_back(e);
+			}
+		}
+		return result;
+	}
+};
