@@ -455,3 +455,307 @@ using namespace std;
 // 		return result;
 // 	}
 // };
+#include <unordered_map>
+// class Solution
+// {
+// public:
+// 	int romanToInt(string s)
+// 	{
+// 		if (s.empty())
+// 			return 0;
+// 		std::unordered_map<std::string, int> m;
+// 		std::vector<std::pair<std::string, int>> v = {
+// 				{"I", 1},
+// 				{"V", 5},
+// 				{"X", 10},
+// 				{"L", 50},
+// 				{"C", 100},
+// 				{"D", 500},
+// 				{"M", 1000},
+
+// 				{"IV", 4},
+// 				{"IX", 9},
+// 				{"XL", 40},
+// 				{"XC", 90},
+// 				{"CD", 400},
+// 				{"CM", 900},
+// 		};
+// 		for (auto &p : v)
+// 		{
+// 			m.insert(p);
+// 		}
+
+// 		int sum = 0;
+// 		for (size_t i = 0; i < s.size(); i++)
+// 		{
+// 			std::string str;
+// 			str += s[i];
+// 			if (s[i] == 'I')
+// 			{
+// 				if(i + 1 < s.size() && s[i+1] == 'V')
+// 				{
+// 					sum += 4;
+// 					i++;
+// 				}
+// 				else if (i + 1 < s.size() && s[i+1] == 'X')
+// 				{
+// 					sum += 9;
+// 					i++;
+// 				}
+// 				else
+// 				{
+// 					sum += m[str];
+// 				}
+// 			}
+// 			else if (s[i] == 'X')
+// 			{
+// 				if (i + 1 < s.size() && s[i + 1] == 'L')
+// 				{
+// 					sum += 40;
+// 					i++;
+// 				}
+// 				else if (i + 1 < s.size() && s[i + 1] == 'C')
+// 				{
+// 					sum += 90;
+// 					i++;
+// 				}
+// 				else
+// 				{
+// 					sum += m[str];
+// 				}
+// 			}
+// 			else if (s[i] == 'C')
+// 			{
+// 				if (i + 1 < s.size() && s[i + 1] == 'D')
+// 				{
+// 					sum += 400;
+// 					i++;
+// 				}
+// 				else if (i + 1 < s.size() && s[i + 1] == 'M')
+// 				{
+// 					sum += 900;
+// 					i++;
+// 				}
+// 				else
+// 				{
+// 					sum += m[str];
+// 				}
+// 			}
+// 			else
+// 			{
+// 				sum += m[str];
+// 			}
+// 		}
+// 		return sum;
+// 	}
+// };
+#include <algorithm>
+// class Solution
+// {
+// public:
+// 	string addBinary(string a, string b)
+// 	{
+// 		if (a.empty())
+// 			return b;
+// 		if (b.empty())
+// 			return a;
+// 		std::string result;
+
+// 		int end1 = a.size() - 1;
+// 		int end2 = b.size() - 1;
+// 		int sum = 0;
+// 		while (end1 >= 0 && end2 >= 0)
+// 		{
+// 			sum = a[end1] - '0' + b[end2] - '0' + sum;
+// 			result += ((sum % 2) + '0');
+// 			sum /= 2;
+// 			end1--;
+// 			end2--;
+// 		}
+// 		while (end1 >= 0)
+// 		{
+// 			sum = sum + a[end1] - '0';
+// 			result += ((sum % 2) + '0');
+// 			sum /= 2;
+// 			end1--;
+// 		}
+// 		while (end2 >= 0)
+// 		{
+// 			sum = sum + b[end2] - '0';
+// 			result += ((sum % 2) + '0');
+// 			sum /= 2;
+// 			end2--;
+// 		}
+// 		// 判断 sum 值
+// 		if(sum != 0)
+// 		{
+// 			result += '1';
+// 		}
+// 		std::reverse(result.begin(), result.end());
+// 		return result;
+// 	}
+// };
+
+// class Solution
+// {
+// public:
+// 	int countSegments(string s)
+// 	{
+// 		if (s.empty())
+// 			return 0;
+// 		// 统计空格的子数
+// 		int count = 0;
+// 		for (auto &e : s)
+// 		{
+// 			if (e == ' ')
+// 				count++;
+// 		}
+// 		return count + 1;
+// 	}
+// };
+
+// class Solution
+// {
+// public:
+// 	int countSegments(string s)
+// 	{
+// 		if (s.empty())
+// 			return 0;
+// 		// 统计空格的子数  -- 不允许
+// 		int count = 0;
+// 		int start = 0;
+// 		while (1)
+// 		{
+// 			while (start < s.size() && s[start] == ' ')
+// 			{
+// 				start++;
+// 			}
+// 			if (start == s.size())
+// 			{
+// 				break;
+// 			}
+// 			// 查找
+// 			std::size_t pos = s.find(' ', start);
+// 			if (pos == std::string::npos)
+// 			{
+// 				count++;
+// 				break;
+// 			}
+// 			start = pos;
+// 			count++;
+// 		}
+// 		return count;
+// 	}
+// };
+
+// class Solution
+// {
+// public:
+// 	bool validPalindrome(string s)
+// 	{
+// 		if(s.empty())
+// 		return true;
+// 		int left = 0;
+// 		int right = s.size()-1;
+// 		while (left <= right) // 注意这里我们特意用到的 = 号
+// 		{
+// 			if(s[left] != s[right])
+// 			break;
+// 			left ++;
+// 			right--;
+// 		}
+// 		if(left <= right)
+// 		{
+// 			return (right - left) == 1;
+// 		}
+// 		return true;
+
+// 	}
+// };
+// class Solution
+// {
+// public:
+// 	bool is_palindrome_string(const std::string &str)
+// 	{
+// 		int left = 0;
+// 		int right = str.size()-1;
+// 		while (left < right)
+// 		{
+// 			if (str[left] != str[right])
+// 				return false;
+// 			left++;
+// 			right--;
+// 		}
+// 		return true;
+// 	}
+
+// 	bool validPalindrome(string s)
+// 	{
+// 		if (s.empty())
+// 			return true;
+// 		// 先判断回文
+// 		if (is_palindrome_string(s))
+// 			return true;
+// 		for (size_t i = 0; i < s.size(); i++)
+// 		{
+// 			std::string str = s;
+// 			str.erase(i, 1);
+// 			if (is_palindrome_string(str))
+// 				return true;
+// 		}
+// 		return false;
+// 	}
+// };
+
+// class Solution
+// {
+// public:
+// 	bool is_palindrome_string(const std::string &str)
+// 	{
+// 		int left = 0;
+// 		int right = str.size() - 1;
+// 		while (left < right)
+// 		{
+// 			if (str[left] != str[right])
+// 				return false;
+// 			left++;
+// 			right--;
+// 		}
+// 		return true;
+// 	}
+
+// 	bool validPalindrome(string s)
+// 	{
+// 		if (s.empty())
+// 			return true;
+// 		// 先判断回文
+// 		if (is_palindrome_string(s))
+// 			return true;
+// 		int left = 0;
+// 		int right = s.size() - 1;
+// 		while (left < right)
+// 		{
+// 			if (s[left] != s[right])
+// 			{
+// 				string str = s;
+// 				str.erase(left, 1);
+// 				if (is_palindrome_string(str))
+// 					return true;
+
+// 				s.erase(right, 1);
+// 				if (is_palindrome_string(s))
+// 					return true;
+// 				break;
+// 			}
+// 			left++;
+// 			right--;
+// 		}
+
+// 		return false;
+// 	}
+// };
+int main()
+{
+
+	return 0;
+}
