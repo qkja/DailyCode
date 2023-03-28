@@ -1,3 +1,74 @@
+#include <unordered_set>
+#include <string>
+#include <vector>
+using namespace std;
+
+class Solution
+{
+public:
+  bool wordBreak(string s, unordered_set<string> &dict)
+  {
+    if (s.empty() || dict.empty())
+      return true;
+    std::vector<bool> dp;
+    dp.resize(s.size() + 1, false);
+    dp[0] = true; // åˆå§‹åŒ–
+    for (size_t i = 1; i <= s.size(); i++)
+    {
+      for (int j = 0; j < i; j++)
+      {
+        // f(1) -> f(0) [1,1]
+        // f2  -> f0  1-2   0  1
+        string str = s.substr(j, i - j);
+        auto iter = dict.find(str);
+        if (dp[j] && iter != dict.end())
+        {
+          dp[i] = true;
+          break;
+        }
+      }
+    }
+
+    return dp[s.size()];
+  }
+};
+
+// class Solution
+// {
+// public:
+//   bool wordBreak(string s, unordered_set<string> &dict)
+//   {
+//     if (s.empty() || dict.empty())
+//       return true;
+//     std::vector<bool> dp;
+//     dp.resize(s.size()+1, false);
+//     dp[0] = true; // åˆå§‹åŒ–
+//     for (size_t i = 0; i < s.size(); i++)
+//     {
+//       // i = 1
+//       bool flag = false;
+//       for(int j = 0; j < i+1; j++)
+//       {
+//         bool ret = dp[j];  // 0
+//         string str = s.substr(j , i+1-j);
+//         auto iter = dict.find(str);
+//         if(iter != dict.end())
+//         {
+//           // æ‰¾åˆ°äº†
+//           ret = ret & true;
+//         }
+//         else
+//         {
+//           ret = false;
+//         }
+//         flag |= ret;
+//       }
+//       dp[i + 1] = flag;
+//     }
+
+//     return dp[s.size()];
+//   }
+// };
 
 // class BinInsert {
 // public:
@@ -29,7 +100,7 @@
 // void pairs_of_prime_numbers(std::vector<int>& result, int val)
 //{
 //	result.resize(2, -1);
-//	std::map<int, int> m; // Ò»¸ö¾ø¶ÔÖµ ,Ò»¸ö ÓĞĞ§Êı¾İ
+//	std::map<int, int> m; // Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ ,Ò»ï¿½ï¿½ ï¿½ï¿½Ğ§ï¿½ï¿½ï¿½ï¿½
 //	for (int i = 2; i < val; i++)
 //	{
 //		/*if (i == 0)
@@ -40,7 +111,7 @@
 //		int ret = val - i;
 //		if (is_prime_numbers(i) && is_prime_numbers(ret))
 //		{
-//			// Çó¾ø¶ÔÖµ
+//			// ï¿½ï¿½ï¿½ï¿½ï¿½Öµ
 //			m[abs(ret - i)] = i;
 //		}
 //	}
@@ -66,7 +137,7 @@
 //
 //	return 0;
 // }
-//  64 Î»Êä³öÇëÓÃ printf("%lld")
+//  64 Î»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ printf("%lld")
 
 // #include <iostream>
 // #include <string>
@@ -76,9 +147,9 @@
 //{
 //	if (str.empty())
 //		return false;
-//	//ÏÈÀ´ÇåÏ´ "" ²»ĞĞ,ÕâÀïÇĞ·ÖºóÓĞË³Ğò
+//	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ "" ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½Ğ·Öºï¿½ï¿½ï¿½Ë³ï¿½ï¿½
 //
-//	// À´¸ö Êı×é
+//	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 //	int index = 0;
 //
 //	while (1)
@@ -86,13 +157,13 @@
 //		std::size_t pos = str.find(' ', index);
 //		if (pos == std::string::npos)
 //			break;
-//		// ÕÒµ½ÁË
-//		// ÅĞ¶Ï ´Ó[start, pos)ÊÇ·ñ´æÔÚ "
+//		// ï¿½Òµï¿½ï¿½ï¿½
+//		// ï¿½Ğ¶ï¿½ ï¿½ï¿½[start, pos)ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ "
 //		//size_type find(const charT* s, size_type pos, size_type n) const;
 //		//if (find('\"', ))
 //	}
 //
-//	// ÕâÀï»¹ÒªÓĞ¸öÇĞ·Ö
+//	// ï¿½ï¿½ï¿½ï»¹Òªï¿½Ğ¸ï¿½ï¿½Ğ·ï¿½
 // }
 // int main() {
 //
@@ -103,7 +174,7 @@
 //	//cout << ch << endl;
 //	return 0;
 // }
-//// 64 Î»Êä³öÇëÓÃ printf("%lld")
+//// 64 Î»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ printf("%lld")
 
 // #include <iostream>
 // #include <string>
@@ -114,7 +185,7 @@
 //	if (str.empty())
 //		return false;
 //
-//	// À´¸ö Êı×é ¼ÇÂ¼ " µÄÏÂ±í
+//	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Â¼ " ï¿½ï¿½ï¿½Â±ï¿½
 //
 //	std::vector<int> v;
 //	for (int i = 0; i < str.size(); i++)
@@ -133,10 +204,10 @@
 //
 //		//aaaa bbb "C:\\program files aaa" "d:\"
 //
-//		// ÕÒÁËÁË
+//		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 //		if (index < v.size()&& pos > v[index])
 //		{
-//			index+=2; // ¸üĞÂÒ»ÏÂ
+//			index+=2; // ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½
 //			std::size_t pos2 = str.find('"', pos);
 //			std::string s = str.substr(start + 1, pos2 - start - 1);
 //			result.push_back(s);
@@ -150,10 +221,10 @@
 //		}
 //	}
 //
-//	// ÕâÀï»¹ÒªÓĞ¸öÇĞ·Ö
+//	// ï¿½ï¿½ï¿½ï»¹Òªï¿½Ğ¸ï¿½ï¿½Ğ·ï¿½
 //	if (index < v.size())
 //	{
-//		// ÕâÀïÓ¦¸ÃÊÇÊÇÒ»¸ö  ÇĞ·Ö
+//		// ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½  ï¿½Ğ·ï¿½
 //		std::string s = str.substr(start + 1, str.size() - 1 - start - 1);
 //		result.push_back(s);
 //	}
@@ -193,7 +264,7 @@
 //	{
 //		if (str[end] == '"')
 //		{
-//			// ´ËÊ±
+//			// ï¿½ï¿½Ê±
 //			if (s.empty())
 //			{
 //				s.push('"');
@@ -212,7 +283,7 @@
 //		{
 //			if (s.empty())
 //			{
-//				//´ËÊ±¿ÉÒÔÇĞ·Ö
+//				//ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½Ğ·ï¿½
 //				result.push_back(str.substr(start, end - start));
 //				end++;
 //				start = end;
@@ -249,62 +320,62 @@
 //	}
 //	return 0;
 //}
-#include <iostream>
-#include <vector>
-#include <limits.h>
-#include <math.h>
-#include <algorithm>
-using namespace std;
-void get_dic_num(int val, std::vector<int> &v)
-{
-  for (size_t i = 2; i <= sqrt(val); i++)
-  {
-    if (val % i == 0)
-    {
-      v.push_back(i);
-      if(val / i != i)
-      {
-        v.push_back(val/i);
-      }
-    }
+// #include <iostream>
+// #include <vector>
+// #include <limits.h>
+// #include <math.h>
+// #include <algorithm>
+// using namespace std;
+// void get_dic_num(int val, std::vector<int> &v)
+// {
+//   for (size_t i = 2; i <= sqrt(val); i++)
+//   {
+//     if (val % i == 0)
+//     {
+//       v.push_back(i);
+//       if(val / i != i)
+//       {
+//         v.push_back(val/i);
+//       }
+//     }
 
-  }
-}
+//   }
+// }
 
-int Jump(int n, int m)
-{
-  std::vector<int> step(m + 1, INT_MAX);
-  step[n] = 0; // ´Ón µ½ n  0 ²½
-  for (size_t i = n; i < step.size(); i++)
-  {
-    if (step[i] == INT_MAX)
-      continue;
-    std::vector<int> v;
-    get_dic_num(i, v); // »ñÈ¡ Ô¼Êı²¢±£´æ
-    for (size_t j = 0; j < v.size(); j++)
-    {
-      if (i + v[j] < step.size())
-      {
-        step[i + v[j]] = min(step[i + v[j]], step[i] + 1);
-      }
-    }
-  }
-  if (step[m] == INT_MAX)
-    return -1;
-  else
-    return step[m];
-}
-int main()
-{
-  int n = 0;
-  int m = 0;
-  int minStep;
-  while (cin >> n >> m)
-  {
-    minStep = Jump(n, m);
-    cout << minStep << endl;
-  }
+// int Jump(int n, int m)
+// {
+//   std::vector<int> step(m + 1, INT_MAX);
+//   step[n] = 0; // ï¿½ï¿½n ï¿½ï¿½ n  0 ï¿½ï¿½
+//   for (size_t i = n; i < step.size(); i++)
+//   {
+//     if (step[i] == INT_MAX)
+//       continue;
+//     std::vector<int> v;
+//     get_dic_num(i, v); // ï¿½ï¿½È¡ Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+//     for (size_t j = 0; j < v.size(); j++)
+//     {
+//       if (i + v[j] < step.size())
+//       {
+//         step[i + v[j]] = min(step[i + v[j]], step[i] + 1);
+//       }
+//     }
+//   }
+//   if (step[m] == INT_MAX)
+//     return -1;
+//   else
+//     return step[m];
+// }
+// int main()
+// {
+//   int n = 0;
+//   int m = 0;
+//   int minStep;
+//   while (cin >> n >> m)
+//   {
+//     minStep = Jump(n, m);
+//     cout << minStep << endl;
+//   }
 
-  return 0;
-}
-// 64 Î»Êä³öÇëÓÃ printf("%lld")
+//   return 0;
+// }
+// 64 Î»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ printf("%lld")
