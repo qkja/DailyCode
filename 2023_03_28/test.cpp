@@ -1,37 +1,143 @@
 #include <unordered_set>
 #include <string>
+#include <algorithm>
 #include <vector>
 using namespace std;
 
 class Solution
 {
 public:
-  bool wordBreak(string s, unordered_set<string> &dict)
+  int minimumTotal(vector<vector<int>> &triangle)
   {
-    if (s.empty() || dict.empty())
-      return true;
-    std::vector<bool> dp;
-    dp.resize(s.size() + 1, false);
-    dp[0] = true; // 初始化
-    for (size_t i = 1; i <= s.size(); i++)
-    {
-      for (int j = 0; j < i; j++)
-      {
-        // f(1) -> f(0) [1,1]
-        // f2  -> f0  1-2   0  1
-        string str = s.substr(j, i - j);
-        auto iter = dict.find(str);
-        if (dp[j] && iter != dict.end())
-        {
-          dp[i] = true;
-          break;
-        }
-      }
-    }
-
-    return dp[s.size()];
+      if (triangle.empty())
+        return -2;
   }
+
+  /// @brief 自上向下  这道题连题目都没有说清楚,线下的时候只能 垂直和右下
+  /// @param triangle
+  /// @return
+  // int minimumTotal(vector<vector<int>> &triangle)
+  // {
+  //   if (triangle.empty())
+  //     return -2;
+  //   vector<vector<int>> dp(triangle.size());
+  //   for (int i = 0; i < triangle.size(); ++i)
+  //   {
+
+  //     vector<int> v(i + 1, -1);
+  //     dp[i] = v;
+  //     ;
+  //   }
+
+  //   dp[0][0] = triangle[0][0];
+
+  //   for (int i = 1; i < triangle.size(); i++)
+  //   {
+  //     for (int j = 0; j < triangle[i].size(); j++)
+  //     {
+  //       if (j != 0 && i == j)
+  //       {
+  //         dp[i][j] = triangle[i][j] + dp[i - 1][j - 1];
+  //         continue;
+  //       }
+
+  //       int minNum = dp[i - 1][j];
+  //       if (j - 1 >= 0)
+  //       {
+  //         minNum = min(minNum, dp[i - 1][j - 1]);
+  //       }
+
+  //       dp[i][j] = minNum + triangle[i][j];
+  //     }
+  //   }
+
+  //   // 找最小值
+  //   int result = dp[triangle.size() - 1][0];
+  //   for (int i = 1; i < dp[triangle.size() - 1].size(); ++i)
+  //   {
+  //     if (result > dp[triangle.size() - 1][i])
+  //       result = dp[triangle.size() - 1][i];
+  //   }
+  //   return result;
+  // }
 };
+
+// class Solution
+// {
+// public:
+//   int minimumTotal(vector<vector<int>> &triangle)
+//   {
+//     if (triangle.empty())
+//       return -1;
+//     vector<vector<int>> dp(triangle.size());
+//     for (int i = 0; i < triangle.size(); ++i)
+//     {
+//       dp.push_back(vector<int>(i + 1, -1));
+//     }
+//     dp[0][0] = triangle[0][0];
+//     for (int i = 1; i < triangle.size(); i++)
+//     {
+//       for (int j = 0; j < triangle[i].size(); j++)
+//       {
+//         if (j != 0 && i == j)
+//         {
+//           dp[i][j] = triangle[i][j] + dp[i - 1][j - 1];
+//           continue;
+//         }
+
+//         int minNum = triangle[i - 1][j];
+//         if (j - 1 >= 0)
+//         {
+//           minNum = min(minNum, triangle[i - 1][j - 1]);
+//         }
+//         if (j + 1 < triangle[i - 1].size())
+//         {
+//           minNum = min(minNum, triangle[i - 1][j + 1]);
+//         }
+//         dp[i][j] = minNum + triangle[i][j];
+//       }
+//     }
+
+//     // 找最小值
+//     int result = dp[triangle.size() - 1][0];
+//     for (int i = 1; i < dp[triangle.size() - 1].size(); ++i)
+//     {
+//       if (result > dp[triangle.size() - 1][i])
+//         result = dp[triangle.size() - 1][i];
+//     }
+//     return result;
+//   }
+// };
+
+// class Solution
+// {
+// public:
+//   bool wordBreak(string s, unordered_set<string> &dict)
+//   {
+//     if (s.empty() || dict.empty())
+//       return true;
+//     std::vector<bool> dp;
+//     dp.resize(s.size() + 1, false);
+//     dp[0] = true; // 初始化
+//     for (size_t i = 1; i <= s.size(); i++)
+//     {
+//       for (int j = 0; j < i; j++)
+//       {
+//         // f(1) -> f(0) [1,1]
+//         // f2  -> f0  1-2   0  1
+//         string str = s.substr(j, i - j);
+//         auto iter = dict.find(str);
+//         if (dp[j] && iter != dict.end())
+//         {
+//           dp[i] = true;
+//           break;
+//         }
+//       }
+//     }
+
+//     return dp[s.size()];
+//   }
+// };
 
 // class Solution
 // {
