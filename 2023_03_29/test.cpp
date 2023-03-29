@@ -22,8 +22,11 @@ public:
 			return -1;
 
 		// 尝试函数 1
+		//return process(w, v, 0, bag);
 		return process(w, v, 0, bag);
 	}
+
+
 
 	/// <summary>
 	/// 来个尝试,就模仿 当前考虑到index号货物, index后面都可以自由选择
@@ -35,35 +38,65 @@ public:
 	/// <param name="index"></param>
 	/// <param name="bag"></param>
 	/// <returns></returns>
-	int process(std::vector<int>& w, std::vector<int>& v, int index, int bag)
+	int process(std::vector<int>& w, std::vector<int>& v, int index, int rest)
 	{
-		if (bag < 0)
+		if (rest < 0)
 			return -1; // 背包容量已经小于0了 这里 为何不能 是 等于 0  这里认为 我们0也是有价值的
 		if (index == w.size())
 			return 0; // 没有货了
 
 		// 现在这里还有货 和 背包还有空间
 		// 1. 不要当前的货
-		int p1 = process(w, v, index + 1, bag);
+		int p1 = process(w, v, index + 1, rest);
 
 		// 2. 要当前的货,不一定可以要成功
 		int p2 = 0;
-		int next = process(w, v, index + 1, bag - w[index]);
+		int next = process(w, v, index + 1, rest - w[index]);
 		if (-1 != next)
 		{
 			p2 = v[index] + next;
 		}
 		return std::max(p1, p2);
 	}
+	int dp(std::vector<int>& w, std::vector<int>& v, int bag)
+	{
+		if (w.empty() || v.empty() || w.size() != v.size())
+			return -1;
+		int row = w.size() + 1; 
+		int col = bag + 1;
+		std::vector<std::vector<int>> result(row, std::vector<int>(col, 0));
+
+		// 开始填充
+		for (int index = row - 1-1; index >= 0; index--)
+		{
+			for (int rest = 0; rest < col; ++rest)
+			{
+				int p1 = result[index+ 1][ rest];
+
+				// 2. 要当前的货,不一定可以要成功
+				int p2 = 0;
+				int next = rest - w[index] < 0 ? -1 : result[index + 1][rest - w[index]];
+				if (-1 != next)
+				{
+					p2 = v[index] + next;
+				}
+				result[index][rest] = std::max(p1, p2);
+			}
+		}
+
+		return result[0][bag];
+	}
+
 };
 
 int main()
 {
-	std::vector<int> w = { 3,2,4,7,3,1,7};
-	std::vector<int> v = { 5,6,3,19,12,4,2 };
+	std::vector<int> w = { 3, 2, 4, 7, 3, 1, 7};
+	std::vector<int> v = { 5, 6, 3, 19, 12, 4, 2 };
 
 	int bag = 15;
 	std::cout << Solution().maxVal(w, v, bag) << std::endl;
+	std::cout << Solution().dp(w, v, bag) << std::endl;
 
 	return 0;
 }
