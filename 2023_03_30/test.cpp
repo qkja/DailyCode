@@ -2,7 +2,237 @@
 #include <string>
 #include <vector>
 #include <algorithm>
+#include <unordered_set>
+#include <unordered_map>
 using namespace std;
+class Solution {
+public:
+    string mostCommonWord(string paragraph, vector<string>& banned) {
+        std::string result;
+        if (paragraph.empty())
+            return result;
+        unordered_set<string> s;
+        for (auto& e : banned)
+        {
+            s.insert(e);
+        }
+
+
+        // 清洗字符串
+
+        string paragraphHelp;
+        for (auto e : paragraph)
+        {
+            if (e >= 'a' && e <= 'z')
+            {
+                paragraphHelp += e;
+            }
+            else if (e >= 'A' && e <= 'Z')
+            {
+                paragraphHelp += (e + 'z' - 'Z');
+
+            }
+            else if (e == ' ')
+            {
+                paragraphHelp += e;
+            }
+            else
+            {
+                paragraphHelp += ' ';
+
+            }
+        }
+
+
+
+        paragraph = paragraphHelp;
+
+        // 1. 切分字符串
+        unordered_map<string, int> m;
+
+        int start = 0;
+        while (start < paragraph.size())
+        {
+            size_t pos = paragraph.find(' ', start);
+            if (pos == std::string::npos)
+            {
+                string str = paragraph.substr(start);
+                if (s.find(str) == s.end())
+                    m[str]++;
+                break;
+            }
+
+            // 找到了
+            string str = paragraph.substr(start, pos - start);
+            if (s.find(str) == s.end())
+                m[str]++;
+
+            // 这里清洗一下连续的 ' '
+            while (pos < paragraph.size() && paragraph[++pos] == ' ');
+
+            start = pos;
+        }
+
+        result = m.begin()->first;
+
+        int maxNum = m.begin()->second;
+
+        auto iter = m.begin();
+        while (iter != m.end())
+        {
+            if (iter->second > maxNum)
+            {
+                result = iter->first;
+                maxNum = iter->second;
+            }
+            ++iter;
+        }
+        return result;
+    }
+};
+
+
+
+//class Solution {
+//public:
+//    string mostCommonWord(string paragraph, vector<string>& banned) {
+//        std::string result;
+//        if (paragraph.empty())
+//            return result;
+//        unordered_set<string> s;
+//        for (auto& e : banned)
+//        {
+//            s.insert(e);
+//        }
+//       
+//
+//        // 清洗字符串
+//        
+//        string paragraphHelp;
+//        for (auto e : paragraph)
+//        {
+//            if (e >= 'a' && e <= 'z')
+//            {
+//                paragraphHelp += e;
+//            }
+//            else if (e >= 'A' && e <= 'Z')
+//            {
+//                paragraphHelp += (e + 'z'-'Z');
+//
+//            }
+//            else if (e == ' ')
+//            {
+//                paragraphHelp += e;
+//            }
+//            else
+//            {
+//                paragraphHelp += ' ';
+//            }
+//        }
+//
+//       
+//
+//        paragraph = paragraphHelp;
+//
+//        // 1. 切分字符串
+//        unordered_map<string, int> m;
+//
+//        int start = 0;
+//        while (true)
+//        {
+//            size_t pos = paragraph.find(' ', start);
+//            if (pos == std::string::npos)
+//            {
+//                string str = paragraph.substr(start);
+//                if (s.find(str) == s.end())
+//                    m[str]++;
+//                break;
+//            }
+//
+//            // 找到了
+//            string str = paragraph.substr(start, pos-start);
+//            if (s.find(str) == s.end())
+//            {
+//                m[str]++;
+//            }
+// 
+//            while (pos < paragraph.size() && paragraph[++pos] == ' ');
+//
+//            start = pos;
+//        }
+//
+//        result = m.begin()->first;
+//
+//        int maxNum = m.begin()->second;
+//
+//        auto iter = m.begin();
+//        while (iter != m.end())
+//        {
+//            if (iter->second > maxNum)
+//            {
+//                result = iter->first;
+//                maxNum = iter->second;
+//            }
+//            ++iter;
+//        }
+//        return result;
+//    }
+//};
+//int main()
+//{
+//    //string str = "Bob hit a ball, the hit BALL flew far after it was hit.";
+//    //vector<string> v;
+//    //v.push_back("hit");
+//
+//    string str = "a.";
+//    vector<string> v;
+//    Solution().mostCommonWord(str, v);
+//    return 0;
+//}
+
+
+
+
+
+
+
+
+
+//class Solution {
+//public:
+//    int repeatedStringMatch(string a, string b) {
+//        // 这里需要参数判断,我们就不判断了
+//        int count = 1;
+//        if (a.size() >= b.size())
+//        {
+//            std::string str = a + a;
+//            if (a.find(b) != std::string::npos)
+//                return 1;
+//            else if (str.find(b) != std::string::npos)
+//                return 2;
+//            else
+//                return -1;
+//        }
+//        else
+//        {
+//            // 这里我们 
+//            std::string str = a;
+//            int  midRepCnt = b.size() / a.size() + 2;
+//            while (count < midRepCnt)
+//            {
+//                if (str.find(b) != std::string::npos)
+//                    return -1;
+//
+//                str += a;
+//                count++;
+//            }
+//        }
+//        return -1;
+//    }
+//};
+
+
+
 //struct ListNode 
 //{
 //    int val;
