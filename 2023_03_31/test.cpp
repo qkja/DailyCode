@@ -26,14 +26,18 @@ public:
     void rotateEdge(vector<vector<int>>& matrix, int a, int b, int c, int d)
     {
         // 这里开始旋转
-        for(int i = 0; i < c-a+1; i++)
+        for(int i = 0; i < c-a; i++)
         {
             // 交换 三个数据
             int x = matrix[a][b+i];  
             int y = matrix[a+i][d];
-            int z = matrix[c][d-i];
-      
+			int m = matrix[c][d - i];
+			int n = matrix[c-i][b];
 
+			matrix[a][b + i] = n;
+			matrix[a + i][d] = x;
+			matrix[c][d - i] = y;
+			matrix[c - i][b] = m;
         }
     }
 
