@@ -3,32 +3,57 @@
 #include <vector>
 #include <algorithm>
 using namespace std;
+
+
 class Solution {
 public:
-    int maxSubArray(vector<int>& nums) {
+    int rob(vector<int>& nums) {
         if (nums.empty())
             return -1;
-        int left = nums[0];
-        int right = 0;
-        int maxSum = left;
-        for (int i = 1; i < nums.size(); i++)
+        if (nums.size() == 1)
+            return nums[0];
+        std::vector<int> dp(nums.size());
+        dp[0] = nums[0];
+        dp[1] = std::max(nums[0], nums[1]);
+        for (int i = 2; i < nums.size(); i++)
         {
-            if (left < 0)
-            {
-                right = nums[i];
-            }
-            else
-            {
-                right = nums[i] + left;
-            }
-            if (right > maxSum)
-                maxSum = right;
-            left = right;
+            dp[i] = std::max(std::max(dp[i - 1], nums[i]), dp[i - 2] + nums[i]);
         }
-
-        return  maxSum;
+        return dp.back();
     }
 };
+
+
+
+
+
+
+//class Solution {
+//public:
+//    int maxSubArray(vector<int>& nums) {
+//        if (nums.empty())
+//            return -1;
+//        int left = nums[0];
+//        int right = 0;
+//        int maxSum = left;
+//        for (int i = 1; i < nums.size(); i++)
+//        {
+//            if (left < 0)
+//            {
+//                right = nums[i];
+//            }
+//            else
+//            {
+//                right = nums[i] + left;
+//            }
+//            if (right > maxSum)
+//                maxSum = right;
+//            left = right;
+//        }
+//
+//        return  maxSum;
+//    }
+//};
 
 //class Solution {
 //public:
