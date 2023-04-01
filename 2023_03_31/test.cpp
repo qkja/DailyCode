@@ -5,51 +5,232 @@
 #include <algorithm>
 #include <unordered_set>
 using namespace std;
-class Solution {
-public:
-    //https ://www.bilibili.com/video/BV1HL411o7xo/?spm_id_from=333.999.0.0&vd_source=f620d34672b4b63d0b8c61e24843d4c0
-    void rotate(vector<vector<int>>& matrix) {
-        if (matrix.empty())
-            return;
-        // ×óÉÏ½Ç
-        int a = 0;
-        int b = 0;
-
-        // ÓÒÏÂ½Ç
-        int c = matrix.size() - 1;
-        int d = matrix.size() - 1;
-        while (a < c)
-        {
-            rotateEdge(matrix, a++, b++, c--, d--);
-        }
-    }
-    void rotateEdge(vector<vector<int>>& matrix, int a, int b, int c, int d)
-    {
-        // ÕâÀï¿ªÊ¼Ğı×ª
-        for(int i = 0; i < c-a+1; i++)
-        {
-            // ½»»» Èı¸öÊı¾İ
-            int x = matrix[a][b+i];  
-            int y = matrix[a+i][d];
-            int z = matrix[c][d-i];
-      
-
-        }
-    }
-
+//class Solution {
+//public:
+//	bool is_nondecreasing(vector<int>& nums) {
+//
+//		for (int i = 0; i < nums.size() - 1; i++)
+//		{
+//			if (nums[i] > nums[i + 1])
+//			{
+//				return false;
+//			}
+//		}
+//		return true;
+//	}
+//	bool checkPossibility(vector<int>& nums) {
+//		if (nums.empty())
+//			return true;
+//
+//		for (int i = 0; i < nums.size() - 1; i++)
+//		{
+//			if (nums[i] > nums[i + 1])
+//			{
+//				// x   y   z -->  9  10  8
+//				if (i == 0)
+//				{
+//					// ä¸å­˜åœ¨ä¸‹é¢çš„æ•°æ®   10  8
+//					nums[0] = nums[1];
+//				}
+//				else
+//				{
+//					// å­˜åœ¨
+//					if (nums[i + 1] < nums[i - 1])
+//					{
+//						//æƒ…å†µ1: 9  10  1
+//						nums[i + 1] = nums[i];
+//
+//					}
+//					else
+//					{
+//						//æƒ…å†µ1 12  15  18
+//						nums[i] = nums[i + 1];
+//					}
+//
+//				}
+//
+//				return is_nondecreasing(nums);
+//			}
+//		}
+//		return true;
+//	}
 };
+
+
+//class Solution {
+//public:
+//	bool checkPossibility(vector<int>& nums) {
+//		if (nums.empty())
+//			return true;
+//		int count = 0;
+//		for (int i = 0; i < nums.size() - 1; i++)
+//		{
+//			if (nums[i] > nums[i + 1])
+//				count++;
+//		}
+//		return count;
+//	}
+//};
+
+
+
+//class Solution {
+//public:
+//	bool checkPossibility(vector<int>& nums) {
+//		if (nums.empty())
+//			return true;
+//		int count = 0;
+//		for (size_t i = 1; i < nums.size(); i++)
+//		{
+//			if (nums[i] < nums[i - 1])
+//			{
+//				nums[i] = nums[i - 1];
+//				count;
+//			}
+//		}
+//		return 1 >= count;
+//	}
+//};
+
+
+
+
+//int main()
+//{
+//	
+//	return 0;
+//}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+//class Solution {
+//public:
+//	double findMaxAverage(vector<int>& nums, int k) {
+//		if (nums.empty() || k <= 0 || nums.size() < k)
+//			return -1;
+//		int start = 0;
+//		int end = k;
+//		int sum = 0;
+//		for (int i = start; i < end; i++)
+//		{
+//			sum += nums[i];
+//		}
+//		int maxSum = sum;
+//		for (int i = end; i < nums.size(); i++)
+//		{
+//			sum -= nums[start++];
+//			sum += nums[i];
+//			maxSum = max(sum, maxSum);
+//		}
+//		return 1.0 * maxSum / k;
+//	}
+//};
+
+
+
+
+
+//class Solution {
+//public:
+//	double findMaxAverage(vector<int>& nums, int k) {
+//		if (nums.empty() || k <= 0 || nums.size() < k)
+//			return -1;
+//		int start = 0;
+//		int end = k;
+//		int sum = 0;
+//		for (int i = start; i < end; i++)
+//		{
+//			sum += nums[i];
+//		}
+//		for (int i = end; i < nums.size(); i++)
+//		{
+//			start++;
+//
+//			int ret = 0;
+//			for (int j = start; j <= i; j++)
+//			{
+//				ret += nums[j];
+//			}
+//			sum = max(ret, sum);
+//		}
+//		return 1.0 * sum / k;
+//	}
+//};
+//int main()
+//{
+//	vector<int> v = { 1, 12, -5, -6, 50, 3 };
+//	int k = 4;
+//	Solution().findMaxAverage(v, k);
+//	return 0;
+//}
+
+
+
+
+
+
+
+//class Solution {
+//public:
+//    //https ://www.bilibili.com/video/BV1HL411o7xo/?spm_id_from=333.999.0.0&vd_source=f620d34672b4b63d0b8c61e24843d4c0
+//    void rotate(vector<vector<int>>& matrix) {
+//        if (matrix.empty())
+//            return;
+//        // ï¿½ï¿½ï¿½Ï½ï¿½
+//        int a = 0;
+//        int b = 0;
+//
+//        // ï¿½ï¿½ï¿½Â½ï¿½
+//        int c = matrix.size() - 1;
+//        int d = matrix.size() - 1;
+//        while (a < c)
+//        {
+//            rotateEdge(matrix, a++, b++, c--, d--);
+//        }
+//    }
+//    void rotateEdge(vector<vector<int>>& matrix, int a, int b, int c, int d)
+//    {
+//        // ï¿½ï¿½ï¿½ï¿ªÊ¼ï¿½ï¿½×ª
+//        for(int i = 0; i < c-a; i++)
+//        {
+//            // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+//            int x = matrix[a][b+i];  
+//            int y = matrix[a+i][d];
+//			int m = matrix[c][d - i];
+//			int n = matrix[c-i][b];
+//
+//			matrix[a][b + i] = n;
+//			matrix[a + i][d] = x;
+//			matrix[c][d - i] = y;
+//			matrix[c - i][b] = m;
+//        }
+//    }
+//
+//};
 
 
 
 //class Solution {
 //public:
 //	/**
-//	* ´úÂëÖĞµÄÀàÃû¡¢·½·¨Ãû¡¢²ÎÊıÃûÒÑ¾­Ö¸¶¨£¬ÇëÎğĞŞ¸Ä£¬Ö±½Ó·µ»Ø·½·¨¹æ¶¨µÄÖµ¼´¿É
+//	* ï¿½ï¿½ï¿½ï¿½ï¿½Ğµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ş¸Ä£ï¿½Ö±ï¿½Ó·ï¿½ï¿½Ø·ï¿½ï¿½ï¿½ï¿½æ¶¨ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½
 //	*
 //	*
-//	* @param str string×Ö·û´®
-//	* @param k intÕûĞÍ
-//	* @return intÕûĞÍ
+//	* @param str stringï¿½Ö·ï¿½ï¿½ï¿½
+//	* @param k intï¿½ï¿½ï¿½ï¿½
+//	* @return intï¿½ï¿½ï¿½ï¿½
 //	*/
 //	int character_type_num(string& str, int index, int right)
 //	{
@@ -64,7 +245,7 @@ public:
 //		// write code here
 //		return process(str, 0, 0, k);
 //	}
-//	// ÎÒÃÇ ¹ØĞÄ [0,inde] 
+//	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ [0,inde] 
 //	// (index, size)
 //
 //	int process(string& str, int begin, int end, int k)
@@ -105,12 +286,12 @@ public:
 //class Solution {
 //public:
 //	/**
-//	* ´úÂëÖĞµÄÀàÃû¡¢·½·¨Ãû¡¢²ÎÊıÃûÒÑ¾­Ö¸¶¨£¬ÇëÎğĞŞ¸Ä£¬Ö±½Ó·µ»Ø·½·¨¹æ¶¨µÄÖµ¼´¿É
+//	* ï¿½ï¿½ï¿½ï¿½ï¿½Ğµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ş¸Ä£ï¿½Ö±ï¿½Ó·ï¿½ï¿½Ø·ï¿½ï¿½ï¿½ï¿½æ¶¨ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½
 //	*
 //	*
-//	* @param str string×Ö·û´®
-//	* @param k intÕûĞÍ
-//	* @return intÕûĞÍ
+//	* @param str stringï¿½Ö·ï¿½ï¿½ï¿½
+//	* @param k intï¿½ï¿½ï¿½ï¿½
+//	* @return intï¿½ï¿½ï¿½ï¿½
 //	*/
 //	int character_type_num(string& str, int index)
 //	{
@@ -126,9 +307,9 @@ public:
 //		// write code here
 //		return process(str, 0, k);
 //	}
-//	// ÎÒÃÇ²»¹Ø×¢ [0, index) Ö®Ç°µÄ
-//	// Ö»¹Ø×¢ [index, size)
-//	// k ÊÇÎÒÃÇÇĞ·ÖµÄ´ÎÊı
+//	// ï¿½ï¿½ï¿½Ç²ï¿½ï¿½ï¿½×¢ [0, index) Ö®Ç°ï¿½ï¿½
+//	// Ö»ï¿½ï¿½×¢ [index, size)
+//	// k ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ğ·ÖµÄ´ï¿½ï¿½ï¿½
 //	int process(string& str, int index , int k)
 //	{
 //		if (k <= 0)
@@ -136,9 +317,9 @@ public:
 //			return 0;
 //		}
 //		if (index == str.size())
-//			return 0; // ÔİÊ±ÊÇÕâ
+//			return 0; // ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½
 //
-//		// ÎÒÃÇÕâ²»ÇĞ·Ö  
+//		// ï¿½ï¿½ï¿½ï¿½ï¿½â²»ï¿½Ğ·ï¿½  
 //		int num = character_type_num(str, index);
 //		int len = str.size() - index;
 //		int v1 = len * num + ;
@@ -151,19 +332,19 @@ public:
 //class Solution {
 //public:
 //	/**
-//	* ´úÂëÖĞµÄÀàÃû¡¢·½·¨Ãû¡¢²ÎÊıÃûÒÑ¾­Ö¸¶¨£¬ÇëÎğĞŞ¸Ä£¬Ö±½Ó·µ»Ø·½·¨¹æ¶¨µÄÖµ¼´¿É
+//	* ï¿½ï¿½ï¿½ï¿½ï¿½Ğµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ş¸Ä£ï¿½Ö±ï¿½Ó·ï¿½ï¿½Ø·ï¿½ï¿½ï¿½ï¿½æ¶¨ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½
 //	*
 //	*
-//	* @param str string×Ö·û´®
-//	* @param k intÕûĞÍ
-//	* @return intÕûĞÍ
+//	* @param str stringï¿½Ö·ï¿½ï¿½ï¿½
+//	* @param k intï¿½ï¿½ï¿½ï¿½
+//	* @return intï¿½ï¿½ï¿½ï¿½
 //	*/
 //	int getMaxValue(string str, int k) {
 //		// write code here
 //		return process(str, 0);
 //	}
-//	// ÎÒÃÇ²»¹Ø×¢ [0, index) Ö®Ç°µÄ
-//	// Ö»¹Ø×¢ [index, size)
+//	// ï¿½ï¿½ï¿½Ç²ï¿½ï¿½ï¿½×¢ [0, index) Ö®Ç°ï¿½ï¿½
+//	// Ö»ï¿½ï¿½×¢ [index, size)
 //	int character_type_num(string& str, int index)
 //	{
 //		unordered_set<char> s;
@@ -176,9 +357,9 @@ public:
 //	int process(string& str, int index)
 //	{
 //		if (index == str.size())
-//			return 0; // ÔİÊ±ÊÇÕâ
+//			return 0; // ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½
 //
-//		// ÎÒÃÇÕâ²»ÇĞ·Ö
+//		// ï¿½ï¿½ï¿½ï¿½ï¿½â²»ï¿½Ğ·ï¿½
 //		int num = character_type_num(str, index);
 //		int len = str.size() - index;
 //		int v1 = len * num;
