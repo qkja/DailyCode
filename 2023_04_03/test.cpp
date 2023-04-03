@@ -261,6 +261,7 @@ public:
         return node.end - node.start + 1;
     }
 };
+
 int main()
 {
     std::vector<int> v = { 1,2,2,3,1 };
