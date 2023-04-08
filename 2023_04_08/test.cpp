@@ -59,10 +59,10 @@ public:
 		// 这里不判断参数了,使用的时候判断了
 		std::string str = std::to_string(x) + "_" + str = std::to_string(y);
 		
-		if (ans.find(str) == ans.end() && distance(x, y, c) == r)
+		if (visited.find(str) == visited.end() && distance(x, y, c) == r)
 		{
 			q.push({ x,y });
-			ans.insert(std::move(str));
+			visited.insert(std::move(str));
 		}
 	}
 	
