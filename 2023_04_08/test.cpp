@@ -8,6 +8,15 @@
 
 using namespace std;
 
+class Solution {
+public:
+    int maxDistToClosest(vector<int>& seats) {
+        if (seats.empty())
+            return 0;
+
+    }
+};
+
 //class Solution {
 //public:
 //
@@ -72,89 +81,89 @@ using namespace std;
 //        return count;
 //    }
 //};
-class Solution {
-public:
-
-    bool is_magic_square(const vector<vector<int>>& grid, int r1, int c1, int r2, int c2)
-    {
-        // 0 - 9
-        int arr[10] = { 0 ,-1, -1, -1, -1, -1,-1, -1, -1, -1 };
-        for (int i = r1; i <= r2; i++)
-        {
-            for (int j = c1; j <= c2; j++)
-            {
-                if (grid[i][j] > 0 && grid[i][j] < 10)
-                {
-                    arr[grid[i][j]] = 0;
-                }
-                else
-                {
-                    return false;
-                }
-                /*if (helper.find(grid[i][j]) == helper.end())
-                    return false;*/
-            }
-        }
-        int ret = 0;
-        for (int i = 0; i < 10; i++)
-        {
-            ret += arr[i];
-        }
-        if (ret != 0)
-            return false;
-        std::unordered_set<int> sum;
-        sum.insert(grid[r1][c1] + grid[r1][c1 + 1] + grid[r1][c1 + 2]);
-        sum.insert(grid[r1 + 1][c1] + grid[r1 + 1][c1 + 1] + grid[r1 + 1][c1 + 2]);
-        sum.insert(grid[r1 + 2][c1] + grid[r1 + 2][c1 + 1] + grid[r1 + 2][c1 + 2]);
-
-        sum.insert(grid[r1][c1] + grid[r1 + 1][c1] + grid[r1 + 2][c1]);
-        sum.insert(grid[r1][c1 + 1] + grid[r1 + 1][c1 + 1] + grid[r1 + 2][c1 + 1]);
-        sum.insert(grid[r1][c1 + 2] + grid[r1 + 1][c1 + 2] + grid[r1 + 2][c1 + 2]);
-
-        sum.insert(grid[r1][c1] + grid[r1 + 1][c1 + 1] + grid[r1 + 2][c1 + 2]);
-        sum.insert(grid[r1][c2] + grid[r1 + 1][c2 - 1] + grid[r1 + 2][c2 - 2]);
-
-        return sum.size() == 1;
-    }
-
-
-    int numMagicSquaresInside(vector<vector<int>>& grid) {
-        if (grid.empty())
-            return 0;
- 
-        int count = 0;
-        int r1 = 0;
-        int r2 = r1 + 2;
-
-        int c1 = 0;
-        int c2 = c1 + 2;
-
-        while (r2 < grid.size())
-        {
-            int begin = c1;
-            int end = c2;
-            while (end < grid[r1].size())
-            {
-                if (is_magic_square(grid, r1, begin, r2, end))
-                    count++;
-                begin++;
-                end++;
-            }
-            r1++;
-            r2++;
-        }
-        return count;
-    }
-};
-//[9, 5, 1, 9] , [2, 7, 6, 2]
-int main()
-{
-    //[[5,5,5],[5,5,5],[5,5,5]]
-    vector<vector<int>> v{ {5,5,5} , {5,5,5}, {5,5,5}};
-    int n = Solution().numMagicSquaresInside(v);
-    cout << n << endl;
-    return 0;
-}
+//class Solution {
+//public:
+//
+//    bool is_magic_square(const vector<vector<int>>& grid, int r1, int c1, int r2, int c2)
+//    {
+//        // 0 - 9
+//        int arr[10] = { 0 ,-1, -1, -1, -1, -1,-1, -1, -1, -1 };
+//        for (int i = r1; i <= r2; i++)
+//        {
+//            for (int j = c1; j <= c2; j++)
+//            {
+//                if (grid[i][j] > 0 && grid[i][j] < 10)
+//                {
+//                    arr[grid[i][j]] = 0;
+//                }
+//                else
+//                {
+//                    return false;
+//                }
+//                /*if (helper.find(grid[i][j]) == helper.end())
+//                    return false;*/
+//            }
+//        }
+//        int ret = 0;
+//        for (int i = 0; i < 10; i++)
+//        {
+//            ret += arr[i];
+//        }
+//        if (ret != 0)
+//            return false;
+//        std::unordered_set<int> sum;
+//        sum.insert(grid[r1][c1] + grid[r1][c1 + 1] + grid[r1][c1 + 2]);
+//        sum.insert(grid[r1 + 1][c1] + grid[r1 + 1][c1 + 1] + grid[r1 + 1][c1 + 2]);
+//        sum.insert(grid[r1 + 2][c1] + grid[r1 + 2][c1 + 1] + grid[r1 + 2][c1 + 2]);
+//
+//        sum.insert(grid[r1][c1] + grid[r1 + 1][c1] + grid[r1 + 2][c1]);
+//        sum.insert(grid[r1][c1 + 1] + grid[r1 + 1][c1 + 1] + grid[r1 + 2][c1 + 1]);
+//        sum.insert(grid[r1][c1 + 2] + grid[r1 + 1][c1 + 2] + grid[r1 + 2][c1 + 2]);
+//
+//        sum.insert(grid[r1][c1] + grid[r1 + 1][c1 + 1] + grid[r1 + 2][c1 + 2]);
+//        sum.insert(grid[r1][c2] + grid[r1 + 1][c2 - 1] + grid[r1 + 2][c2 - 2]);
+//
+//        return sum.size() == 1;
+//    }
+//
+//
+//    int numMagicSquaresInside(vector<vector<int>>& grid) {
+//        if (grid.empty())
+//            return 0;
+// 
+//        int count = 0;
+//        int r1 = 0;
+//        int r2 = r1 + 2;
+//
+//        int c1 = 0;
+//        int c2 = c1 + 2;
+//
+//        while (r2 < grid.size())
+//        {
+//            int begin = c1;
+//            int end = c2;
+//            while (end < grid[r1].size())
+//            {
+//                if (is_magic_square(grid, r1, begin, r2, end))
+//                    count++;
+//                begin++;
+//                end++;
+//            }
+//            r1++;
+//            r2++;
+//        }
+//        return count;
+//    }
+//};
+////[9, 5, 1, 9] , [2, 7, 6, 2]
+//int main()
+//{
+//    //[[5,5,5],[5,5,5],[5,5,5]]
+//    vector<vector<int>> v{ {5,5,5} , {5,5,5}, {5,5,5}};
+//    int n = Solution().numMagicSquaresInside(v);
+//    cout << n << endl;
+//    return 0;
+//}
 
 
 
