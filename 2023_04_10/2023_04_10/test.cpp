@@ -6,12 +6,59 @@
 
 using namespace std;
 
+class Solution {
+public:
+	bool hasGroupsSizeX(vector<int>& deck) {
+		if (deck.empty())
+			return false;
+		std::unordered_map<int, int> result;
+		for (auto e : deck)
+		{
+			result[e]++;
+		}
+
+		int count = 0;
+		for (std::pair<const int, int>& p : result) 
+		{
+			count = gcd(count, p.second);
+			if (count == 1) {
+					return false;
+			}
+		}
+		return count >= 2;
+	}
+
+	// Õ·×ªÏà³ý·¨
+	int gcd(int a, int b) {
+		return b == 0 ? a : gcd(b, a % b);
+	}
+};
 
 
 
 
-
-
+//class Solution {
+//public:
+//	bool hasGroupsSizeX(vector<int>& deck) {
+//		if (deck.size())
+//			return false;
+//		std::unordered_map<int, int> result;
+//		for (auto e : deck)
+//		{
+//			result[e]++;
+//		}
+//
+//		std::unordered_map<int, int>::iterator iter = result.begin();
+//		int count = iter->second;
+//		while (iter != result.end())
+//		{
+//			if (iter->second != count)
+//				return false;
+//			++iter;
+//		}
+//		return count > 1;
+//	}
+//};
 
 
 
