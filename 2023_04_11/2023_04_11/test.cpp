@@ -105,6 +105,7 @@ public:
 };
 void main(void)
 {
+
 	B b;
 	A *pa;
 	pa = &b;
