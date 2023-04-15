@@ -215,21 +215,55 @@ void adjustDown(HPDataTytpe* elem, int size, size_t root)
 	}
 }
 
-int main()
+//int main()
+//{
+//	Heap heap;
+//	HeapInit(&heap);
+//	HeapPush(&heap, 3);
+//	HeapPush(&heap, 5);
+//	HeapPush(&heap, 6);
+//	HeapPush(&heap, 10);
+//	HeapPush(&heap, 0);
+//	//出堆
+//	HeapPop(&heap);
+//	for (int i = 0; i < (int)heap.size; i++)
+//	{
+//		printf("%d ", heap.elem[i]);
+//	}
+//	HeapDestroy(&heap);
+//	return 0;
+//}
+
+
+////////////////////////////////////////////////////////////
+// 堆排序  -- 所谓的堆排序就是我们根据 给的数组进行建立堆
+// 此时我们这里在原数组上面经行操作
+
+void HeapSort(int* arr, int len)
 {
-	Heap heap;
-	HeapInit(&heap);
-	HeapPush(&heap, 3);
-	HeapPush(&heap, 5);
-	HeapPush(&heap, 6);
-	HeapPush(&heap, 10);
-	HeapPush(&heap, 0);
-	//出堆
-	HeapPop(&heap);
-	for (int i = 0; i < (int)heap.size; i++)
+	assert(arr);
+	for (int i = 1; i < len; i++)
 	{
-		printf("%d ", heap.elem[i]);
+		adjustUp(arr, i + 1);
 	}
-	HeapDestroy(&heap);
-	return 0;
+	
+}
+
+void HeapSort(int *arr, int len)
+{
+	// 建堆 -- 必须确保我们下面也是一个堆
+	for (int parent = (len - 1 - 1) / 2; parent >= 0; parent--)
+	{
+		adjustDown(arr, len, parent);
+	}
+
+	// 建好了堆  这里开始去数字
+	// 见了小堆 -->堆顶元素最小 我们把元素放在最后一个元素   这里算是降序
+	for (size_t i = len - 1; i > 0; i--)
+	{
+		//123 -- 3
+		std::swap(arr[0], arr[i]);
+		// 这里的i是指元素的个数   例如123去掉3后还剩下2个元素
+		adjustDown(arr, i, 0);
+	}
 }
