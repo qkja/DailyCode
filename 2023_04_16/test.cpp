@@ -2,8 +2,10 @@
 #include <vector>
 #include <algorithm>
 #include <iostream>
+#include <string>
 
 using std::vector;
+using std::string;
 using std::cout;
 using std::cin;
 using std::endl;
@@ -173,3 +175,90 @@ using std::endl;
 //
 //    }
 //};
+#include <unordered_map>
+#include <map>
+#include <stack>
+#include <queue>
+
+//https://leetcode.cn/problems/largest-palindromic-number/
+class Solution {
+public:
+	string largestPalindromic(string num) {
+		if (num.empty())
+			return "";
+		std::map<char, int> m;
+		for (auto& e : num)
+		{
+			m[e]++;
+		}
+		//444947137
+
+		/*9-> 2
+		8-> 2;*/
+		std::priority_queue<char> one_queue;      // 建立大堆
+		std::priority_queue<char> other_queue;
+		for (auto& p : m)
+		{
+			if (p.second > 1)
+				other_queue.push(p.first);
+			else
+				one_queue.push(p.first);
+		}
+
+		int index = 0;
+		std::string result;
+		bool falg = true; // 这个是第一次
+
+		while (!other_queue.empty())
+		{
+			char ret = other_queue.top(); // 拿到大队顶
+			if (falg && ret == '0')
+			{
+				break;
+			}
+			else
+			{
+				falg = false;
+				result.insert(index, 2, ret);
+				index++;
+				// 2  3
+				m[ret] -= 2;
+				if (m[ret] == 0)
+				{
+					other_queue.pop();
+				}
+				if (m[ret] == 1)
+				{
+					other_queue.pop();
+					one_queue.push(ret);
+				}
+			}
+		}
+		if (!one_queue.empty())
+			result.insert(index, 1, one_queue.top());
+		if (result.empty())
+			result.insert(index, 1, '0');
+		return result;
+	}
+};
+
+int main()
+{
+	string str = "00009";
+	cout << Solution().largestPalindromic(str) << endl;
+	return 0;
+}
+
+//int main()
+//{
+//	int myints[] = { 10,60,50,20 };
+//
+//	
+//	std::priority_queue<int> second(myints, myints + 4);
+//	while (!second.empty())
+//	{
+//		std::cout << second.top() << std::endl;
+//		second.pop();
+//	}
+//	return 0;
+//}
