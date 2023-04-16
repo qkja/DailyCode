@@ -106,3 +106,70 @@ using std::endl;
 //	cout << greedStrategy(works, machines) << endl;
 ////	return 0;
 //}
+
+//7 活动选择
+//有n个需要在同一天使用同一个教室的活动a1, a2, …, an，教室同一时刻只能由一个活动使用。每个活动a[i]都有一个
+//开始时间s[i]和结束时间f[i]。一旦被选择后，活动a[i]就占据半开时间区间[s[i], f[i])。如果[s[i], f[i])和[s[j], f[j])互不重
+//叠，a[i]和a[j]两个活动就可以被安排在这一天。求使得尽量多的活动能不冲突的举行的最大数量
+//struct cmp
+//{
+//	bool operator()(const std::vector<int>& v1, const std::vector<int>& v2)
+//	{
+//		return v1[1] < v2[1];
+//	}
+//};
+//int greedyActivitySelector(vector<vector<int>>& act)
+//{
+//	//v[0] --> 开始  v[1] --> 结束
+//	std::sort(act.begin(), act.end(), cmp());
+	//int count = 1;
+	//int endTime = act[0][1];
+	//for (auto& e : act)
+	//{
+	//	if (e[0] >= endTime)
+	//	{
+	//		count++;
+	//		endTime = e[1];
+	//	}
+	//}
+	//return count;
+//}
+//
+//int main()
+//{
+//	int number;
+//	cin >> number;
+//	vector<vector<int>> act(number);
+//
+//	int ret = greedyActivitySelector(act);
+//	cout << ret << endl;
+//}
+
+//class Solution {
+//	struct cmp
+//	{
+//		bool operator()(const vector<int>& v1, const vector<int>& v2)
+//		{
+//			return v1[1] < v2[1];
+//		}
+//	};
+//public:
+//    int eraseOverlapIntervals(vector<vector<int>>& intervals) {
+//
+//		if (intervals.empty())
+//			return 0;
+//		std::sort(intervals.begin(), intervals.end(), cmp());
+//		int count = 1;
+//		int endTime = intervals[0][1];
+//		for (auto& e : intervals)
+//		{
+//			if (e[0] >= endTime)
+//			{
+//				count++;
+//				endTime = e[1];
+//			}
+//		}
+//		return intervals.size()-count;
+//
+//    }
+//};
