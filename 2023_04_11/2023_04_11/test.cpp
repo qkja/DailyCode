@@ -78,41 +78,73 @@ using namespace std;
 //	b.print();
 //}
 
-class A
-{
-public:
-	void FuncA()
-	{
-		printf("FuncA called\n");
-	}
-	virtual void FuncB()
-	{
-		printf("FuncB called\n");
-	}
-};
-class B : public A
-{
-public:
-	void FuncA()
-	{
-		A::FuncA();
-		printf("FuncAB called\n");
-	}
-	virtual void FuncB()
-	{
-		printf("FuncBB called\n");
-	}
-};
-void main(void)
-{
+//class A
+//{
+//public:
+//	void FuncA()
+//	{
+//		printf("FuncA called\n");
+//	}
+//	virtual void FuncB()
+//	{
+//		printf("FuncB called\n");
+//	}
+//};
+//class B : public A
+//{
+//public:
+//	void FuncA()
+//	{
+//		A::FuncA();
+//		printf("FuncAB called\n");
+//	}
+//	virtual void FuncB()
+//	{
+//		printf("FuncBB called\n");
+//	}
+//};
+//void main(void)
+//{
+//
+//	B b;
+//	A *pa;
+//	pa = &b;
+//	A *pa2 = new A;
+//	pa->FuncA();
+//	pa->FuncB();
+//	pa2->FuncA();
+//	pa2->FuncB();
+//	delete pa2;
+//}
 
-	B b;
-	A *pa;
-	pa = &b;
-	A *pa2 = new A;
-	pa->FuncA();
-	pa->FuncB();
-	pa2->FuncA();
-	pa2->FuncB();
-	delete pa2;
-}
+//class A
+//{
+//public:
+//	inline virtual void FuncB()
+//	{
+//		printf("FuncB called\n");
+//	}
+//	inline void FuncB(int c)
+//	{
+//		printf("Func111 called\n");
+//	}
+//};
+//class B : public A
+//{
+//public:
+//	virtual void FuncB()
+//	{
+//		printf("FuncBB called\n");
+//	}
+//};
+//int main(void)
+//{
+//
+//	B b;
+//	A *pa;
+//	pa = &b;
+//	pa->FuncB();
+//	pa->FuncB(1);
+//	//delete pa;
+//	return 0;
+//}
