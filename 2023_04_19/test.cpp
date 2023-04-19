@@ -524,3 +524,234 @@ using std::pair;
 //	return 0;
 //}
 // 64 位输出请用 printf("%lld")
+
+
+#include <iostream>
+using namespace std;
+
+#include <iostream>
+#include <string>
+#include <vector>
+//using namespace std;
+//int stringToInt(string s) {
+//	int count = 0;
+//	for (int i = 0; i < s.size(); i++) {
+//		count = count * 10 + (s[i] - '0');
+//	}
+//	return count;
+//}
+//int main() {
+//	string s;
+//	while (cin >> s) {
+//		//用一个数组保存一年中当当前月累加的天数
+//		static int days[13] = { 0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334, 365
+//		};
+//		vector<string> vec;
+//		string s1;
+//		//按照"-"分割年月日
+//		for (int i = 0; i < s.size(); i++) {
+//			if (s[i] == '-')
+//			{
+//				vec.push_back(s1);
+//				//清空，保存下一部分
+//				s1 = "";
+//			}
+//			else {
+//				s1 += s[i];
+//			}
+//		}
+//		//保存天
+//		vec.push_back(s1);
+//		//转整形
+//		int year = stringToInt(vec[0]);
+//		int month = stringToInt(vec[1]);
+//		int day = stringToInt(vec[2]);
+//		int ret = days[month - 1] + day;
+//		//如果是闰年，并且包含2月，需要补一天
+//		if (((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) && month > 2)
+//			ret++;
+//		cout << ret << endl;
+//	}
+//	return 0;
+//}
+
+//#include <iostream>
+//#include <algorithm>
+//#include <vector>
+//#include <string>
+//using namespace std;
+//void rollover(vector<string>& v, int k)
+//{
+//	int begin = 0;
+//	int end = k;
+//	while (end <= v.size())
+//	{
+//		std::reverse(v.begin() + begin, v.begin() + end);
+//		begin = end;
+//		end = begin + k;
+//	}
+//}
+//
+//int main()
+//{
+//	vector<string> v;
+//	string str;
+//	while (std::cin >> str)
+//	{
+//		if (str == "#")
+//			break;
+//		v.push_back(str);
+//	}
+//
+//	int k = 0;
+//	std::cin >> k;
+//
+//	rollover(v, k);
+//
+//	for (size_t i = 0; i < v.size(); i++)
+//	{
+//		if (i == v.size() - 1)
+//			std::cout << v[i] << std::endl;
+//		else
+//			std::cout << v[i] << "->";
+//	}
+//
+//	return 0;
+//}
+//#include <iostream>
+//#include <vector>
+//#include <limits.h>
+//using namespace std;
+//
+//int main() {
+//	int n = 0;
+//	std::cin >> n;
+//	std::vector<int> v(n);
+//
+//	for (size_t i = 0; i < n; i++)
+//	{
+//		std::cin >> v[i];
+//	}
+//
+//	int first = v[0];
+//	int second = INT_MAX;
+//	int i = 0;
+//	for (i = 1; i < n; i++)
+//	{
+//		if (v[i] < first)
+//		{
+//			first = v[i];
+//			second = INT_MAX;
+//		}
+//		else if (v[i] > first && v[i] < second)
+//		{
+//			second = v[i];
+//		}
+//		else if (v[i] > first && v[i] > second)
+//		{
+//			break;
+//		}
+//	}
+//	if (i == n)
+//		std::cout << "false" << std::endl;
+//	else
+//		std::cout << "true" << std::endl;
+//	return 0;
+//}
+// 64 位输出请用 printf("%lld")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//void rollover(vector<int>& v, int k)
+//{
+//	int begin = 0;
+//	int end = k;
+//	while (end <= v.size())
+//	{
+//		std::reverse(v.begin()+begin, v.begin() + end);
+//		begin = end;
+//		end = begin + k;
+//	}
+//}
+//
+//int main()
+//{
+//	vector<int> v;
+//	int ch = 0;
+//	while (std::cin >> ch)
+//	{
+//		if (ch == '#')
+//			break;
+//		v.push_back(ch);
+//	}
+//
+//	int k = 0;
+//	//getchar();
+//	std::cin >> k;
+//
+//	rollover(v, k);
+//
+//	for (size_t i = 0; i < v.size(); i++)
+//	{
+//		if (i == v.size() - 1)
+//			std::cout << v[i] << std::endl;
+//		else
+//			std::cout << v[i] << "->";
+//	}
+//
+//	return 0;
+//}
+
+
+
+
+
+
+
+
+
+
+
+
+
+//int main() 
+//{
+//	vector<char> v = { '1','2' };
+//	char ch = 0;
+//	while (std::cin>>ch)
+//	{
+//		if (ch == '#')
+//			break;
+//		v.push_back(ch);
+//	}
+//	int k = 0;
+//	std::cin >> k;
+//
+//	rollover(v, 1);
+//	//std::reverse(v.begin(), v.end());
+//
+//	for (size_t i = 0; i < v.size(); i++)
+//	{
+//		if (i == v.size() - 1)
+//			std::cout << v[i] << std::endl;
+//		else
+//			std::cout << v[i] << "->";
+//	}
+//
+//	/*for (auto e : v)
+//	{
+//		std::cout << e << std::endl;
+//	}*/
+//}
+// 64 位输出请用 printf("%lld")
