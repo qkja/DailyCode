@@ -26,18 +26,18 @@ using std::pair;
 //		q.pop();
 //		if (p.first == endx && p.second == endy)
 //			return true;
-//		for (int i = 0; i < 4; i++)
-//		{
-//			int nx = p.first + v[i][0];
-//			int ny = p.second + v[i][1];
-//			if (nx < 0 || nx >= row || ny < 0 || ny >= col)
-//				continue;
-//			if (mat[nx][ny] == 0 && book[nx][ny] == false)
-//			{
-//				q.push(std::make_pair(nx, ny));
-//				mat[nx][ny] = 1;
-//				book[nx][ny] = true;
-//			}
+		//for (int i = 0; i < 4; i++)
+		//{
+		//	int nx = p.first + v[i][0];
+		//	int ny = p.second + v[i][1];
+		//	if (nx < 0 || nx >= row || ny < 0 || ny >= col)
+		//		continue;
+		//	if (mat[nx][ny] == 0 && book[nx][ny] == false)
+		//	{
+		//		q.push(std::make_pair(nx, ny));
+		//		mat[nx][ny] = 1;
+		//		book[nx][ny] = true;
+		//	}
 //		}
 //	}
 //	return false;
@@ -251,3 +251,76 @@ using std::pair;
 //	Solution().levelOrder(&node);
 //	return 0;
 //}
+//https://leetcode.cn/problems/rotting-oranges/submissions/
+//class Solution {
+//public:
+//	void Bfs(vector<vector<int>>& grid, int & step)
+//	{
+//		vector<vector<int>> v = { { -1, 0 }, { 1, 0 }, { 0, -1 }, { 0, 1 } };
+//
+//		// 找到所有的 坏橘子
+//		int row = grid.size();
+//		int col = grid[0].size();
+//		queue<pair<int, int>> q;
+//		for (int i = 0; i < row; i++)
+//		{
+//			for (int j = 0; j < col; j++)
+//			{
+//				if (grid[i][j] == 2)
+//					q.push(std::make_pair(i, j));
+//			}
+//		}
+//
+//		// 开始走搜索
+//		while (!q.empty())
+//		{
+//			int size = q.size();
+//			bool flag = false;
+//
+//			while (size--)
+//			{
+//				// 拿到元素
+//				auto p = q.front();
+//				q.pop();
+//				for (int i = 0; i < 4; i++)
+//				{
+//					int nx = p.first + v[i][0];
+//					int ny = p.second + v[i][1];
+//					if (nx < 0 || nx >= row || ny < 0 || ny >= col)
+//						continue;
+//					if (grid[nx][ny] == 1)
+//					{
+//						q.push(std::make_pair(nx, ny));
+//						grid[nx][ny] = 2;
+//						flag = true;
+//					}
+//				}
+//			}
+//			if (flag)
+//				step++;
+//		}
+//	}
+//
+//	bool is_ture(vector<vector<int>>& grid)
+//	{
+//		for (auto& e : grid)
+//		{
+//			for (auto& p : e)
+//			{
+//				if (p == 1)
+//					return false;
+//			}
+//		}
+//		return true;
+//	}
+//	int orangesRotting(vector<vector<int>>& grid) {
+//		if (grid.empty())
+//			return 0;
+//		// 判断是否全部变坏
+//		int step = 0;
+//		Bfs(grid, step);
+//		if (!is_ture(grid))
+//			return -1;
+//		return step;
+//	}
+//};
