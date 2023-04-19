@@ -44,11 +44,11 @@ using std::pair;
 //}
 
 
-int main()
-{
-
-	return 0;
-}
+//int main()
+//{
+//
+//	return 0;
+//}
 
 
 //https://leetcode.cn/problems/n-queens/submissions/
@@ -187,3 +187,67 @@ int main()
 //        return result.size();
 //    }
 //};
+
+
+// Definition for a Node.
+//class Node {
+//public:
+//	int val;
+//	vector<Node*> children;
+//
+//	Node() {}
+//
+//	Node(int _val) {
+//		val = _val;
+//	}
+//
+//	Node(int _val, vector<Node*> _children) {
+//		val = _val;
+//		children = _children;
+//	}
+//};
+//
+//class Solution {
+//public:
+//	void BFS(vector<vector<int>>& result, Node* root)
+//	{
+//		queue<Node*> q;
+//		q.push(root);
+//		while (!q.empty())
+//		{
+//			int size = q.size();
+//			vector<int> v;
+//			while (size--)
+//			{
+//				// 拿到第一个元素
+//				Node* ret = q.front();
+//				q.pop();
+//				v.push_back(ret->val);
+//
+//				// 入子孩子
+//				for (int i = 0; i < ret->children.size(); i++)
+//				{
+//					if ((ret->children)[i]) // 还是避免一下吧
+//						q.push((ret->children)[i]);
+//				}
+//			}
+//			result.push_back(v);
+//		}
+//	}
+//
+//	vector<vector<int>> levelOrder(Node* root) {
+//		vector<vector<int>> result;
+//		if (root == nullptr)
+//			return result;
+//
+//		BFS(result, root);
+//		return result;
+//	}
+//};
+//
+//int main()
+//{
+//	Node node(1);
+//	Solution().levelOrder(&node);
+//	return 0;
+//}
