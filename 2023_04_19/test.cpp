@@ -324,3 +324,49 @@ using std::pair;
 //		return step;
 //	}
 //};
+#include <unordered_map>
+#include <unordered_set>
+//https://leetcode.cn/problems/word-ladder/
+//class Solution {
+//public:
+//	int ladderLength(string beginWord, string endWord, vector<string>& wordList) {
+//
+//		int step = 1;
+//		std::queue<std::string> q;
+//
+//		// ×ÖµäÐò
+//		std::unordered_set<std::string> dict(wordList.begin(), wordList.end());
+//		// ÅÐ¶ÏÊÇ·ñ±»ËÑË÷¹ý
+//		std::unordered_set<std::string> book;
+//		q.push(beginWord);
+//		book.insert(beginWord);
+//		while (!q.empty())
+//		{
+//			int size = q.size();
+//			while (size--)
+//			{
+//				string str = q.front();
+//				if (str == endWord)
+//					return step;
+//				q.pop();
+//				for (size_t i = 0; i < str.size(); i++)
+//				{
+//					std::string cutStr = str;
+//					for (size_t j = 0; j < 26; j++)
+//					{
+//						cutStr[i] = 'a' + j;
+//						if (dict.find(cutStr) != dict.end()
+//							&& book.find(cutStr) == book.end())
+//						{
+//							q.push(cutStr);
+//							book.insert(cutStr);
+//						}
+//					}
+//				}
+//			}
+//			step++;
+//		}
+//
+//		return 0;
+//	}
+//};
