@@ -370,3 +370,66 @@ using std::pair;
 //		return 0;
 //	}
 //};
+//https://leetcode.cn/problems/open-the-lock/submissions/
+class Solution {
+public:
+	int openLock(vector<string>& deadends, string target) {
+		std::unordered_set<std::string> dict(deadends.begin(), deadends.end());
+		if (dict.find(target) != dict.end() || dict.find("0000") != dict.end())
+			return -1;
+		std::string str = "0000";
+		std::queue<std::string> q;
+		q.push(str);
+		std::unordered_set<std::string> book;
+		book.insert(str);
+		int step = 0;
+		while (!q.empty())
+		{
+			int size = q.size();
+			while (size--)
+			{
+				std::string curStr = q.front();
+
+				if (curStr == target)
+					return step;
+				q.pop();
+				for (size_t i = 0; i < curStr.size(); i++)
+				{
+					char ch1 = curStr[i];
+					char ch2 = curStr[i];
+					// 正转
+					if (ch1 == '9')
+						ch1 = '0';
+					else
+						ch1++;
+					//逆转
+					if (ch2 == '0')
+						ch2 = '9';
+					else
+						ch2--;
+
+					// 来开始修改
+					std::string str1 = curStr;
+					std::string str2 = curStr;
+
+					str1[i] = ch1;
+					str2[i] = ch2;
+
+					if (dict.find(str1) == dict.end() && book.find(str1) == book.end())
+					{
+						q.push(str1);
+						book.insert(str1);
+					}
+					if (dict.find(str2) == dict.end() && book.find(str2) == book.end())
+					{
+						q.push(str2);
+						book.insert(str2);
+					}
+
+				}
+			}
+			step++;
+		}
+		return -1;
+	}
+};
