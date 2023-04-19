@@ -1,9 +1,54 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include <vector>
 #include <string>
+#include <queue>
 
 using std::string;
 using std::vector;
+using std::queue;
+using std::pair;
+//bool Bfs(vector<vector<int>>& mat, int startx, int starty,
+//	int endx, int endy)
+//{
+//	vector<vector<int>> v = { { -1, 0 }, { 1, 0 }, { 0, -1 }, { 0, 1 } };
+//	queue<pair<int, int>> q;
+//	int row = mat.size();
+//	int col = mat[0].size(); // 这里我们就不判断了
+//	vector<vector<bool>> book(row, vector<bool>(col, false));
+//
+//	// 入队列
+//	q.push(std::make_pair(startx, starty));
+//	book[startx][starty] = true;
+//
+//	while (!q.empty())
+//	{
+//		auto p = q.front();
+//		q.pop();
+//		if (p.first == endx && p.second == endy)
+//			return true;
+//		for (int i = 0; i < 4; i++)
+//		{
+//			int nx = p.first + v[i][0];
+//			int ny = p.second + v[i][1];
+//			if (nx < 0 || nx >= row || ny < 0 || ny >= col)
+//				continue;
+//			if (mat[nx][ny] == 0 && book[nx][ny] == false)
+//			{
+//				q.push(std::make_pair(nx, ny));
+//				mat[nx][ny] = 1;
+//				book[nx][ny] = true;
+//			}
+//		}
+//	}
+//	return false;
+//}
+
+
+int main()
+{
+
+	return 0;
+}
 
 
 //https://leetcode.cn/problems/n-queens/submissions/
