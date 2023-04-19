@@ -371,65 +371,156 @@ using std::pair;
 //	}
 //};
 //https://leetcode.cn/problems/open-the-lock/submissions/
-class Solution {
-public:
-	int openLock(vector<string>& deadends, string target) {
-		std::unordered_set<std::string> dict(deadends.begin(), deadends.end());
-		if (dict.find(target) != dict.end() || dict.find("0000") != dict.end())
-			return -1;
-		std::string str = "0000";
-		std::queue<std::string> q;
-		q.push(str);
-		std::unordered_set<std::string> book;
-		book.insert(str);
-		int step = 0;
-		while (!q.empty())
-		{
-			int size = q.size();
-			while (size--)
-			{
-				std::string curStr = q.front();
+//class Solution {
+//public:
+//	int openLock(vector<string>& deadends, string target) {
+//		std::unordered_set<std::string> dict(deadends.begin(), deadends.end());
+//		if (dict.find(target) != dict.end() || dict.find("0000") != dict.end())
+//			return -1;
+//		std::string str = "0000";
+//		std::queue<std::string> q;
+//		q.push(str);
+//		std::unordered_set<std::string> book;
+//		book.insert(str);
+//		int step = 0;
+//		while (!q.empty())
+//		{
+//			int size = q.size();
+//			while (size--)
+//			{
+//				std::string curStr = q.front();
+//
+//				if (curStr == target)
+//					return step;
+//				q.pop();
+//				for (size_t i = 0; i < curStr.size(); i++)
+//				{
+//					char ch1 = curStr[i];
+//					char ch2 = curStr[i];
+//					// 正转
+//					if (ch1 == '9')
+//						ch1 = '0';
+//					else
+//						ch1++;
+//					//逆转
+//					if (ch2 == '0')
+//						ch2 = '9';
+//					else
+//						ch2--;
+//
+//					// 来开始修改
+//					std::string str1 = curStr;
+//					std::string str2 = curStr;
+//
+//					str1[i] = ch1;
+//					str2[i] = ch2;
+//
+//					if (dict.find(str1) == dict.end() && book.find(str1) == book.end())
+//					{
+//						q.push(str1);
+//						book.insert(str1);
+//					}
+//					if (dict.find(str2) == dict.end() && book.find(str2) == book.end())
+//					{
+//						q.push(str2);
+//						book.insert(str2);
+//					}
+//
+//				}
+//			}
+//			step++;
+//		}
+//		return -1;
+//	}
+//};
 
-				if (curStr == target)
-					return step;
-				q.pop();
-				for (size_t i = 0; i < curStr.size(); i++)
-				{
-					char ch1 = curStr[i];
-					char ch2 = curStr[i];
-					// 正转
-					if (ch1 == '9')
-						ch1 = '0';
-					else
-						ch1++;
-					//逆转
-					if (ch2 == '0')
-						ch2 = '9';
-					else
-						ch2--;
 
-					// 来开始修改
-					std::string str1 = curStr;
-					std::string str2 = curStr;
+//#include <iostream>
+//#include <string>
+//using namespace std;
+//
+//int strToInt(const string& str)
+//{
+//	if (str.size() == 1 && str[0] == 'i')
+//		return 1;
+//	int num = 0;
+//	int flag = false;
+//	for (auto& e: str)
+//	{
+//		if (e == '-')
+//			flag = true;
+//		else if (e == 'i')
+//			continue;
+//		else
+//			num = 10 * num + e - '0';
+//	}
+//	if (flag)
+//		num = -num;
+//	return num;
+//}
+//
+//int main()
+//{
+//	std::string one;
+//	std::string two;
+//	std::getline(std::cin, one);
+//	std::getline(std::cin, two);
+//
+//	// a + bi
+//	int str1 = strToInt(one.substr(0, one.find('+')));
+//	int str2 = strToInt(one.substr(one.find('+') + 1));
+//
+//	// c +di
+//	int str3 = strToInt(two.substr(0, two.find('+')));
+//	int str4 = strToInt(two.substr(two.find('+') + 1));
+//
+//	int x = str1*str3 - str2*str4;
+//	int y = str1*str4 + str2*str3;
+//
+//	string result = std::to_string(x);
+//	//if (y >= 0) // 看题意我们这里不需要
+//		result += '+';
+//	result += std::to_string(y);
+//	result += "i";
+//	std::cout << result << std::endl;
+//	//std::cout << one << std::endl;
+//	//std::cout << two << std::endl;
+//	// 开始拆分
+//	return 0;
+//}
 
-					str1[i] = ch1;
-					str2[i] = ch2;
 
-					if (dict.find(str1) == dict.end() && book.find(str1) == book.end())
-					{
-						q.push(str1);
-						book.insert(str1);
-					}
-					if (dict.find(str2) == dict.end() && book.find(str2) == book.end())
-					{
-						q.push(str2);
-						book.insert(str2);
-					}
 
-				}
-			}
-			step++;
-		}
-		return -1;
-	}
-};
+//int main() 
+//{
+//	std::string one;
+//	std::string two;
+//	std::getline(std::cin, one);
+//	std::getline(std::cin, two);
+//	
+//	// a + bi
+//	int str1 = strToInt(one.substr(0, one.find('+')));
+//	int str2 = strToInt(one.substr(one.find('+') + 1));
+//
+//	// c +di
+//	int str3 = strToInt(two.substr(0, two.find('+')));
+//	int str4 = strToInt(two.substr(two.find('+') + 1));
+//	std::cout << str1 << " " << str2 << std::endl;
+//	std::cout << str3 << " " << str4 << std::endl;
+//
+//	int x = str1*str3 - str2*str4;
+//	int y = str1*str4 + str2*str3;
+//	std::cout << x << " " << y << std::endl;
+//
+//	string result = std::to_string(x);
+//	if (y >= 0)
+//		result += '+';
+//	result += std::to_string(y);
+//	result += "i";
+//	std::cout << result << std::endl;
+//	//std::cout << one << std::endl;
+//	//std::cout << two << std::endl;
+//	// 开始拆分
+//	return 0;
+//}
+// 64 位输出请用 printf("%lld")
