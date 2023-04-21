@@ -2,8 +2,17 @@
 #include <iostream>
 #include <cstdio>
 #include <arpa/inet.h>
-int main()
-{
+
+//int main()
+//{
+//int *k[10][30];
+//printf("%d\n", sizeof(k));
+//return 0;
+//}
+
+
+//int main()
+//{
 
 	//int value = 1024;
   //value = htonl(value); // 转成大端
@@ -16,8 +25,8 @@ int main()
 	//if (condition) value += 1; 
 	//condition =(char)value;
 	//printf("%d %d\n", value, condition);
-	return 0;
-}
+//	return 0;
+//}
 
 //int main()
 //{
