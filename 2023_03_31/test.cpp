@@ -5,7 +5,39 @@
 #include <algorithm>
 #include <unordered_set>
 using namespace std;
-//class Solution {
+
+class Solution {
+public:
+    string convert(string s, int numRows) {
+      if(s.empty())
+        return s;
+      int len = s.size();
+      if(numRows ==  1 || numRows >= len)
+        return s;
+      std::string str;
+
+
+    }
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//clases Solution {
 //public:
 //	bool is_nondecreasing(vector<int>& nums) {
 //
@@ -54,7 +86,7 @@ using namespace std;
 //		}
 //		return true;
 //	}
-};
+//};
 
 
 //class Solution {
