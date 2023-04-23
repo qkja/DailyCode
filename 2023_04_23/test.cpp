@@ -6,7 +6,6 @@ using std::vector;
 // 循环判断
 // left 和 right 的更新
 
-
 class Solution {
 public:
     int search(vector<int>& nums, int target) {
@@ -31,5 +30,5 @@ public:
 int main()
 {
 
-	return 0;
+    return 0;
 }
