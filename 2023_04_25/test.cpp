@@ -49,3 +49,55 @@ using std::vector;
 //        return result;
 //    }
 //};
+
+//https://leetcode.cn/problems/remove-linked-list-elements/submissions/
+struct ListNode {
+    int val;
+    ListNode* next;
+    ListNode() : val(0), next(nullptr) {}
+    ListNode(int x) : val(x), next(nullptr) {}
+    ListNode(int x, ListNode* next) : val(x), next(next) {}
+};
+
+class Solution {
+public:
+    ListNode* removeElements(ListNode* head, int val) {
+        if (head == nullptr)
+            return nullptr;
+        ListNode* new_head = nullptr;
+        ListNode* tail = nullptr;
+        ListNode* cur = head;
+        while (cur != nullptr)
+        {
+            if (cur->val != val)
+            {
+                if (tail == nullptr)
+                {
+                    new_head = cur;
+                    tail = cur;
+                }
+                else
+                {
+                    tail->next = cur;
+                    tail = cur;
+                }
+                cur = cur->next;
+
+            }
+            else
+            {
+                // 注意，这里我们需要回收内存
+                ListNode* node = cur;
+                cur = cur->next;
+                delete node;
+            }
+
+        }
+
+        if (tail)
+        {
+            tail->next = nullptr;
+        }
+        return new_head;
+    }
+};
