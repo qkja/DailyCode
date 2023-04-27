@@ -12,6 +12,7 @@ using namespace std;
 //};
 //class Derived : public Base{
 //public:
+//
 //	int Bar(char x){
 //		return (int)(-x);
 //	}
