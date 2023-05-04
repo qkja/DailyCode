@@ -130,6 +130,13 @@ public:
 };
 
 
+<<<<<<< HEAD
+// int main()
+// {
+
+// 	return 0;
+// }
+=======
 int main()
 {
     std::vector<int> v = { -4,-1,0,3,10};
@@ -139,3 +146,4 @@ int main()
     std::cout << std::endl;
     return 0;
 }
+>>>>>>> 54557ef4ba3f76ebef46231044ebe0d5dd21e8c3
