@@ -32,7 +32,7 @@ struct cmp
 int enoughMoney(int n, std::vector<std::vector<int>>& games)
 {
 	cmp c;
-	std::priority_queue<Node> q(c);
+	std::priority_queue<Node, std::vector<Node>, cmp> q(c);
 	for(auto& e:games)
 	{
 		q.push(Node(e[0], e[1]));
