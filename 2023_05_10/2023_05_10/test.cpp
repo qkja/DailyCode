@@ -134,6 +134,7 @@ using namespace std;
 //	return 0;
 //}
 
+// https://leetcode.cn/problems/4sum/submissions/
 
 class Solution {
 public:
@@ -143,22 +144,25 @@ public:
 
 		for (int k = 0; k < nums.size(); k++)
 		{
-			if (nums[k] >target && nums[k] > 0)
-				continue;
+			if (nums[k] > target && nums[k] > 0 && target > 0)
+				return result;
 			if (k > 0 && nums[k] == nums[k - 1])
 				continue;
-			for (size_t i = k+1; i < nums.size(); i++)
+
+
+			for (size_t i = k + 1; i < nums.size(); i++)
 			{
-				if (nums[k] + nums[i] > target)
+				if (nums[k] + nums[i] > target && nums[k] + nums[i] > 0)
 					break;
 				if (i > k + 1 && nums[i] == nums[i - 1])
 					continue;
-			
+
 				int left = i + 1;
 				int right = nums.size() - 1;
 				while (left < right)
 				{
-					int sum = nums[k] + nums[i] + nums[left] + nums[right];
+					long long sum = (long long)nums[k] + (long long)nums[i] + (long long)nums[left] + (long long)nums[right];
+
 					if (sum > target)
 					{
 						right--;
@@ -181,7 +185,7 @@ public:
 						else
 						{
 							const auto& it = result.back();
-							if (it[1] == nums[left] && it[2] == nums[right])
+							if (it[1] == nums[i] && it[2] == nums[left] && it[3] == nums[right])
 							{
 								left++;
 								continue;

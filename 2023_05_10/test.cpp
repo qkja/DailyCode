@@ -148,3 +148,55 @@
 //        return head;
 //    }
 //};
+#include <string>
+#include <vector>
+#include <unordered_map>
+#include <unordered_set>
+using namespace std;
+
+// https://leetcode.cn/problems/valid-anagram/submissions/
+//class Solution {
+//public:
+//    bool isAnagram(string s, string t) {
+//        std::unordered_map<char, int> m;
+//        for (auto e : s)
+//        {
+//            m[e]++;
+//        }
+//        for (auto e : t)
+//        {
+//            int& ret = m[e];
+//            if (ret == 0)
+//                return false;
+//            ret--;
+//            if (ret == 0)
+//                m.erase(e);
+//        }
+//        return m.empty();
+//    }
+//};
+// https://leetcode.cn/problems/intersection-of-two-arrays/submissions/
+//class Solution {
+//public:
+//    vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
+//        std::vector<int> result;
+//        if (nums1.empty() || nums2.empty())
+//            return result;
+//
+//        std::unordered_set<int> s;
+//        for (auto e : nums1)
+//        {
+//            s.insert(e);
+//        }
+//        for (auto& e : nums2)
+//        {
+//            auto iter = s.find(e);
+//            if (iter == s.end())
+//                continue;
+//            result.push_back(e);
+//            s.erase(e);
+//        }
+//
+//        return result;
+//    }
+//};
