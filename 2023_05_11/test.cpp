@@ -61,48 +61,194 @@ using namespace std;
 
 
 // https://leetcode.cn/problems/reverse-words-in-a-string/
-class Solution {
-public:
-    void reverseString(std::string& str, int left, int right) {
-        while (left < right)
-            std::swap(str[left++], str[right--]);
-    }
-    string reverseWords(string s) {
-        if (s.empty())
-            return s;
-        // 这里先清晰空格
-        std::string str;
-        for (size_t i = 0; i < s.size(); i++)
-        {
-            if (s[i] == ' ')
-            {
-                if (str.empty() || str.back() == ' ')
-                    continue;
-                else
-                    str += s[i];
-            }
-            else
-            {
-                str += s[i];
-            }
-        }
-        // 这里最后还是要清晰一下
-        if (str.back() == ' ')
-            str.erase(str.end() - 1);
-        std::size_t begin = 0;
-        std::size_t end = 0;
-        while (true)
-        {
-            end = str.find(' ', begin);
-            if (end == std::string::npos)
-                break;
-            
-            // 这里是找到了
-            reverseString(str, begin, end - 1);
-            begin = end + 1;
-        }
-        reverseString(str, begin, str.size()-1);
-        reverseString(str,0, str.size() - 1);
-        return std::move(str);
-    }
-};
+//class Solution {
+//public:
+//    void reverseString(std::string& str, int left, int right) {
+//        while (left < right)
+//            std::swap(str[left++], str[right--]);
+//    }
+//    string reverseWords(string s) {
+//        if (s.empty())
+//            return s;
+//        // 这里先清晰空格
+//        std::string str;
+//        for (size_t i = 0; i < s.size(); i++)
+//        {
+//            if (s[i] == ' ')
+//            {
+//                if (str.empty() || str.back() == ' ')
+//                    continue;
+//                else
+//                    str += s[i];
+//            }
+//            else
+//            {
+//                str += s[i];
+//            }
+//        }
+//        // 这里最后还是要清晰一下
+//        if (str.back() == ' ')
+//            str.erase(str.end() - 1);
+//        std::size_t begin = 0;
+//        std::size_t end = 0;
+//        while (true)
+//        {
+//            end = str.find(' ', begin);
+//            if (end == std::string::npos)
+//                break;
+//            
+//            // 这里是找到了
+//            reverseString(str, begin, end - 1);
+//            begin = end + 1;
+//        }
+//        reverseString(str, begin, str.size()-1);
+//        reverseString(str,0, str.size() - 1);
+//        return std::move(str);
+//    }
+//};
+
+// KMP 算法
+// 父串不变,改变字串
+// 这里重点是next数组
+
+// https://leetcode.cn/problems/repeated-substring-pattern/
+//class Solution {
+//public:
+//    bool repeatedSubstringPattern(string s) {
+//        if (s.empty())
+//            return false;
+//        std::string str = s;
+//        str += s;
+//        str.erase(str.begin());
+//        str.erase(str.end()-1);
+//
+//
+//        return str.find(s) != std::string::npos;
+//    }
+//};
+// https://leetcode.cn/problems/repeated-substring-pattern/
+//class Solution {
+//public:
+//    void getNext(const std::string& sub, std::vector<int>& next)
+//    {
+//        if (next.size() == 1)
+//            return;
+//        next[0] = -1;
+//        next[1] = 0;
+//        int k = 0;
+//        int i = 2;
+//        while (i < sub.size())
+//        {
+//            if (k == -1 || sub[i - 1] == sub[k])
+//            {
+//                next[i] = k + 1;
+//                i++;
+//                k++;
+//            }
+//            else
+//            {
+//                k = next[k];
+//            }
+//        }
+//    }
+//    int kmp(const std::string& str, const std::string& sub, int pos = 0)
+//    {
+//        if (str.empty() || sub.empty())
+//            return -1;
+//        int lenStr = str.size();
+//        int lenSub = sub.size();
+//        if (pos < 0 || pos >= lenStr)
+//            return -1;
+//        std::vector<int> next(lenStr, -1);
+//        getNext(sub, next);
+//        int i = pos;
+//        int j = 0;
+//        while (i < lenStr && j < lenSub)
+//        {
+//            if (j == -1 || str[i] == sub[j])
+//            {
+//                i++;
+//                j++;
+//            }
+//            else
+//            {
+//                j = next[j];
+//            }
+//        }
+//        if (j >= lenSub)
+//            return i - j;
+//        else
+//            return -1;
+//    }
+//    bool repeatedSubstringPattern(string s) {
+//        if (s.empty())
+//            return false;
+//        std::string str = s;
+//        str += s;
+//        str.erase(str.begin());
+//        str.erase(str.end() - 1);
+//
+//
+//        return kmp(str, s) != -1;
+//    }
+//};
+//https://leetcode.cn/problems/find-the-index-of-the-first-occurrence-in-a-string/
+//class Solution {
+//public:
+//    void getNext(const std::string& sub, std::vector<int>& next)
+//    {
+//        if (next.size() == 1)
+//            return;
+//        next[0] = -1;
+//        next[1] = 0;
+//        int k = 0;
+//        int i = 2;
+//        while (i < sub.size())
+//        {
+//            if (k == -1 || sub[i - 1] == sub[k])
+//            {
+//                next[i] = k + 1;
+//                i++;
+//                k++;
+//            }
+//            else
+//            {
+//                k = next[k];
+//            }
+//        }
+//    }
+//    int kmp(const std::string& str, const std::string& sub, int pos = 0)
+//    {
+//        if (str.empty() || sub.empty())
+//            return -1;
+//        int lenStr = str.size();
+//        int lenSub = sub.size();
+//        if (pos < 0 || pos >= lenStr)
+//            return -1;
+//        std::vector<int> next(lenStr, -1);
+//        getNext(sub, next);
+//        int i = pos;
+//        int j = 0;
+//        while (i < lenStr && j < lenSub)
+//        {
+//            if (j == -1 || str[i] == sub[j])
+//            {
+//                i++;
+//                j++;
+//            }
+//            else
+//            {
+//                j = next[j];
+//            }
+//        }
+//        if (j >= lenSub)
+//            return i - j;
+//        else
+//            return -1;
+//    }
+//    int strStr(string haystack, string needle) {
+//        if (haystack.size() < needle.size())
+//            return -1;
+//        return kmp(haystack, needle);
+//    }
+//};
