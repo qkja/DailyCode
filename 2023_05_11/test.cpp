@@ -252,3 +252,46 @@ using namespace std;
 //        return kmp(haystack, needle);
 //    }
 //};
+
+class Solution {
+public:
+    int BF(string& haystack, string& needle)
+    {
+        
+        for (size_t i = 0; i < haystack.size(); i++)
+        {
+            if (haystack[i] != needle[0])
+                continue;
+
+            // 此时我们找到第一个相等的
+            int begin = i + 1; 
+            int j = 1;
+            for (; j < needle.size(); j++)
+            {
+                if (begin < haystack.size() && haystack[begin] != needle[j])
+                    break;
+                else if (begin < haystack.size() && haystack[begin] == needle[j])
+                    begin++;
+                else
+                    return -1;
+
+            }
+            if (j == needle.size())
+                return i;
+        }
+        return -1;
+    }
+
+    int strStr(string haystack, string needle) {
+        if (haystack.empty() || needle.empty())
+            return -1;
+        return BF(haystack, needle);
+    }
+};
+
+#include <iostream>
+int main()
+{
+    std::cout << Solution().strStr("aaa", "aaaa") << std::endl;
+    return 0;
+}
