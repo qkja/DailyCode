@@ -3,34 +3,60 @@
 #include <algorithm>
 using namespace std;
 
-//https://leetcode.cn/problems/assign-cookies/
+// https://leetcode.cn/problems/fibonacci-number/submissions/
 class Solution {
 public:
-    int findContentChildren(vector<int>& g, vector<int>& s) {
-        if (g.empty() || s.empty())
-            return 0;
-        std::sort(g.begin(), g.end());
-        std::sort(s.begin(), s.end());
-        int i = s.size() - 1;
-        int j = g.size() - 1;
-        int count = 0;
-        while(i >= 0 && j>=0)
-        {
-            // 那我们的食物和胃口最大的孩子比较
-            if (s[i] >= g[j])
-            {
-                i--;
-                j--;
-                count++;
-            }
-            else
-            {
-                j--;
-            }
-        }
-        return count;
+    int process(int n)
+    {
+        if (n <= 1)
+            return n;
+        return process(n - 1) + process(n - 2);
+    }
+    // n--> [0, n]
+    int dp(int n)
+    {
+        vector<int> result(n + 1, 0);
+        result[0] = 0;
+        result[1] = 1;
+        for (int i = 2; i <= n; i++)
+            result[i] = result[i - 1] + result[i - 2];
+        return result[n];
+    }
+    int fib(int n) {
+        if (n <= 1)
+            return n;
+        return dp(n);
     }
 };
+
+//https://leetcode.cn/problems/assign-cookies/
+//class Solution {
+//public:
+//    int findContentChildren(vector<int>& g, vector<int>& s) {
+//        if (g.empty() || s.empty())
+//            return 0;
+//        std::sort(g.begin(), g.end());
+//        std::sort(s.begin(), s.end());
+//        int i = s.size() - 1;
+//        int j = g.size() - 1;
+//        int count = 0;
+//        while(i >= 0 && j>=0)
+//        {
+//            // 那我们的食物和胃口最大的孩子比较
+//            if (s[i] >= g[j])
+//            {
+//                i--;
+//                j--;
+//                count++;
+//            }
+//            else
+//            {
+//                j--;
+//            }
+//        }
+//        return count;
+//    }
+//};
 
 // https://leetcode.cn/problems/combinations/submissions/
 //class Solution {
