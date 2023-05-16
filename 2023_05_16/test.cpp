@@ -15,6 +15,9 @@ public:
         }
         for (size_t i = index; i <= n; i++)
         {
+            // 这里做一个剪枝操作
+            if (path.size() + 1 + n - index < k)
+                continue;
             path.push_back(i);
             backtracking(path, result, n, k, i + 1);
             path.pop_back();
