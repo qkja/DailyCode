@@ -1,33 +1,69 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <stack>
 using namespace std;
-
-// https://leetcode.cn/problems/fibonacci-number/submissions/
+// https://leetcode.cn/problems/daily-temperatures/submissions/
 class Solution {
 public:
-    int process(int n)
-    {
-        if (n <= 1)
-            return n;
-        return process(n - 1) + process(n - 2);
-    }
-    // n--> [0, n]
-    int dp(int n)
-    {
-        vector<int> result(n + 1, 0);
-        result[0] = 0;
-        result[1] = 1;
-        for (int i = 2; i <= n; i++)
-            result[i] = result[i - 1] + result[i - 2];
-        return result[n];
-    }
-    int fib(int n) {
-        if (n <= 1)
-            return n;
-        return dp(n);
+    vector<int> dailyTemperatures(vector<int>& temperatures) {
+        vector<int> result;
+        if (temperatures.empty())
+            return result;
+        result.resize(temperatures.size(), 0);
+        stack<int> s;
+        for (size_t i = 0; i < temperatures.size(); i++)
+        {
+            if (s.empty())
+            {
+                s.push(i);
+            }
+            else
+            {
+                int val = temperatures[s.top()];
+                if (temperatures[i] <= val)
+                {
+                    s.push(i);
+                }
+                else
+                {
+                    while (!s.empty() && temperatures[i]> temperatures[s.top()])
+                    {
+                        result[s.top()] = i - s.top();
+                        s.pop();
+                    }
+                    s.push(i);
+                }
+            }
+        }
+        return result;
     }
 };
+// https://leetcode.cn/problems/fibonacci-number/submissions/
+//class Solution {
+//public:
+//    int process(int n)
+//    {
+//        if (n <= 1)
+//            return n;
+//        return process(n - 1) + process(n - 2);
+//    }
+//    // n--> [0, n]
+//    int dp(int n)
+//    {
+//        vector<int> result(n + 1, 0);
+//        result[0] = 0;
+//        result[1] = 1;
+//        for (int i = 2; i <= n; i++)
+//            result[i] = result[i - 1] + result[i - 2];
+//        return result[n];
+//    }
+//    int fib(int n) {
+//        if (n <= 1)
+//            return n;
+//        return dp(n);
+//    }
+//};
 
 //https://leetcode.cn/problems/assign-cookies/
 //class Solution {
