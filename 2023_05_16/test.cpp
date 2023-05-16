@@ -1,41 +1,68 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
 using namespace std;
-// https://leetcode.cn/problems/combinations/submissions/
+
+//https://leetcode.cn/problems/assign-cookies/
 class Solution {
 public:
-    void backtracking(vector<int>& path, vector<vector<int>>& result,
-        int n, int k, int index)
-    {
-        // 什么时候终止
-        if (path.size() == k)
+    int findContentChildren(vector<int>& g, vector<int>& s) {
+        if (g.empty() || s.empty())
+            return 0;
+        std::sort(g.begin(), g.end());
+        std::sort(s.begin(), s.end());
+        int i = s.size() - 1;
+        int j = g.size() - 1;
+        int count = 0;
+        while(i >= 0 && j>=0)
         {
-            result.push_back(path);
-            return;
+            // 那我们的食物和胃口最大的孩子比较
+            if (s[i] >= g[j])
+            {
+                i--;
+                j--;
+                count++;
+            }
+            else
+            {
+                j--;
+            }
         }
-        for (size_t i = index; i <= n; i++)
-        {
-            // 这里做一个剪枝操作
-            if (path.size() + 1 + n - index < k)
-                continue;
-            path.push_back(i);
-            backtracking(path, result, n, k, i + 1);
-            path.pop_back();
-        }
-    }
-    vector<vector<int>> combine(int n, int k) {
-        vector<vector<int>> result;
-        if (n <= 0 || k <= 0 || k > n)
-            return result;
-        vector<int> path;
-        backtracking(path, result, n, k, 0);
-        return result;
+        return count;
     }
 };
 
-
-
-
+// https://leetcode.cn/problems/combinations/submissions/
+//class Solution {
+//public:
+//    void backtracking(vector<int>& path, vector<vector<int>>& result,
+//        int n, int k, int index)
+//    {
+//        // 什么时候终止
+//        if (path.size() == k)
+//        {
+//            result.push_back(path);
+//            return;
+//        }
+//        for (size_t i = index; i <= n; i++)
+//        {
+//            // 这里做一个剪枝操作
+//            if (path.size() + 1 + n - index < k)
+//                continue;
+//            path.push_back(i);
+//            backtracking(path, result, n, k, i + 1);
+//            path.pop_back();
+//        }
+//    }
+//    vector<vector<int>> combine(int n, int k) {
+//        vector<vector<int>> result;
+//        if (n <= 0 || k <= 0 || k > n)
+//            return result;
+//        vector<int> path;
+//        backtracking(path, result, n, k, 0);
+//        return result;
+//    }
+//};
 
 //struct TreeNode {
 //    int val;
