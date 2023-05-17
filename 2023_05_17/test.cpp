@@ -107,3 +107,40 @@ using namespace std;
 //        return result;
 //    }
 //};
+// https://leetcode.cn/problems/next-greater-element-i/submissions/
+class Solution {
+public:
+    vector<int> nextGreaterElement(vector<int>& nums1, vector<int>& nums2) {
+        vector<int> v;
+        if (nums1.empty() || nums2.empty())
+            return v;
+
+        v.resize(nums1.size(), -1);
+        unordered_map<int, int> map;
+        for (size_t i = 0; i < nums1.size(); i++)
+        {
+            map[nums1[i]] = i;
+        }
+        stack<int> s;
+
+        for (size_t i = 0; i < nums2.size(); i++)
+        {
+            if (s.empty())
+            {
+                s.push(i);
+            }
+            else
+            {
+                while (!s.empty() && nums2[i] > nums2[s.top()])
+                {
+                    int val = nums2[s.top()];
+                    if (map.find(val) != map.end())
+                        v[map.find(val)->second] = nums2[i];
+                    s.pop();
+                }
+                s.push(i);
+            }
+        }
+        return v;
+    }
+};
