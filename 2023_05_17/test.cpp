@@ -108,39 +108,74 @@ using namespace std;
 //    }
 //};
 // https://leetcode.cn/problems/next-greater-element-i/submissions/
+//class Solution {
+//public:
+//    vector<int> nextGreaterElement(vector<int>& nums1, vector<int>& nums2) {
+//        vector<int> v;
+//        if (nums1.empty() || nums2.empty())
+//            return v;
+//
+//        v.resize(nums1.size(), -1);
+//        unordered_map<int, int> map;
+//        for (size_t i = 0; i < nums1.size(); i++)
+//        {
+//            map[nums1[i]] = i;
+//        }
+//        stack<int> s;
+//
+//        for (size_t i = 0; i < nums2.size(); i++)
+//        {
+//            if (s.empty())
+//            {
+//                s.push(i);
+//            }
+//            else
+//            {
+//                while (!s.empty() && nums2[i] > nums2[s.top()])
+//                {
+//                    int val = nums2[s.top()];
+//                    if (map.find(val) != map.end())
+//                        v[map.find(val)->second] = nums2[i];
+//                    s.pop();
+//                }
+//                s.push(i);
+//            }
+//        }
+//        return v;
+//    }
+//};
+// https://leetcode.cn/problems/climbing-stairs/
 class Solution {
 public:
-    vector<int> nextGreaterElement(vector<int>& nums1, vector<int>& nums2) {
-        vector<int> v;
-        if (nums1.empty() || nums2.empty())
-            return v;
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="index">当前位置</param>
+    /// <param name="n"> 我们要趴的位置</param>
+    /// <returns>我们的方法数</returns>
+    int process(int index, int n)
+    {
+        if (index > n)
+            return 0;
+        if (index = n)
+            return 1;
+        return process(index + 1, n) + process(index + 2, n);
+    }
 
-        v.resize(nums1.size(), -1);
-        unordered_map<int, int> map;
-        for (size_t i = 0; i < nums1.size(); i++)
+    // index[0,n]
+    int dp(int n)
+    {
+        vector<int> result(n + 2, 0);
+        result[n] = 1;
+        for (int i = n - 1; i >= 0; i--)
         {
-            map[nums1[i]] = i;
+            result[i] = result[i + 1] + result[i + 2];
         }
-        stack<int> s;
-
-        for (size_t i = 0; i < nums2.size(); i++)
-        {
-            if (s.empty())
-            {
-                s.push(i);
-            }
-            else
-            {
-                while (!s.empty() && nums2[i] > nums2[s.top()])
-                {
-                    int val = nums2[s.top()];
-                    if (map.find(val) != map.end())
-                        v[map.find(val)->second] = nums2[i];
-                    s.pop();
-                }
-                s.push(i);
-            }
-        }
-        return v;
+        return result[0];
+    }
+    int climbStairs(int n) {
+        if (n <= 0)
+            return 0;
+        return dp(n);
     }
 };
