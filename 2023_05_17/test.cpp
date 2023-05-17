@@ -1,3 +1,7 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
 //struct TreeNode {
 //    int val;
 //    TreeNode* left;
@@ -30,3 +34,49 @@
 //        return _isSymmetric(root->left, root->right);
 //    }
 //};
+// https://leetcode.cn/problems/combination-sum-iii/submissions/
+class Solution {
+public:
+	struct Node
+	{
+		std::vector<int> v;
+		int sum = 0;
+	};
+	void backtarning(vector<vector<int>>& result,
+		Node& node, int index, int k, int n)
+	{
+		if (node.v.size() == k && node.sum == n)
+		{
+			result.push_back(node.v);
+			return;
+		}
+
+		for (int i = index; i < 10; i++)
+		{
+			// 这里我们就是裁了一部分,也可以看  我们v的数量和剩余的放在一起也有可能达不到k
+			/*if (node.sum > n
+				|| node.v.size() >= k
+				|| (node.v.size() + 10 - index) < k)
+			{
+				continue;
+			}*/
+			if (node.sum > n || node.v.size() >= k)
+				continue;
+			node.v.push_back(i);
+			node.sum += i;
+			backtarning(result, node, i + 1, k, n);
+			node.v.pop_back();
+			node.sum -= i;
+		}
+	}
+
+    vector<vector<int>> combinationSum3(int k, int n) {
+		vector<vector<int>> result;
+		if (k <= 0 || n <= 0)
+			return result;
+		Node node;
+		int index = 1;
+		backtarning(result, node, index, k, n);
+		return result;
+    }
+};
