@@ -82,7 +82,7 @@ using namespace std;
 //		return result;
 //    }
 //};
-
+//
 // https://leetcode.cn/problems/wiggle-subsequence/submissions/
 //class Solution {
 //public:
@@ -145,37 +145,37 @@ using namespace std;
 //    }
 //};
 // https://leetcode.cn/problems/climbing-stairs/
-class Solution {
-public:
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="index">当前位置</param>
-    /// <param name="n"> 我们要趴的位置</param>
-    /// <returns>我们的方法数</returns>
-    int process(int index, int n)
-    {
-        if (index > n)
-            return 0;
-        if (index = n)
-            return 1;
-        return process(index + 1, n) + process(index + 2, n);
-    }
-
-    // index[0,n]
-    int dp(int n)
-    {
-        vector<int> result(n + 2, 0);
-        result[n] = 1;
-        for (int i = n - 1; i >= 0; i--)
-        {
-            result[i] = result[i + 1] + result[i + 2];
-        }
-        return result[0];
-    }
-    int climbStairs(int n) {
-        if (n <= 0)
-            return 0;
-        return dp(n);
-    }
-};
+//class Solution {
+//public:
+//    /// <summary>
+//    /// 
+//    /// </summary>
+//    /// <param name="index">当前位置</param>
+//    /// <param name="n"> 我们要趴的位置</param>
+//    /// <returns>我们的方法数</returns>
+//    int process(int index, int n)
+//    {
+//        if (index > n)
+//            return 0;
+//        if (index = n)
+//            return 1;
+//        return process(index + 1, n) + process(index + 2, n);
+//    }
+//
+//    // index[0,n]
+//    int dp(int n)
+//    {
+//        vector<int> result(n + 2, 0);
+//        result[n] = 1;
+//        for (int i = n - 1; i >= 0; i--)
+//        {
+//            result[i] = result[i + 1] + result[i + 2];
+//        }
+//        return result[0];
+//    }
+//    int climbStairs(int n) {
+//        if (n <= 0)
+//            return 0;
+//        return dp(n);
+//    }
+//};
