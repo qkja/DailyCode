@@ -1,34 +1,56 @@
 #define  _CRT_SECURE_NO_WARNINGS
+//#include <iostream>
+//using namespace std;
+//
+//// int main()
+//// {
+////   int a = 10;
+////   const int &b = a;
+////   a = 20;
+////   cout << a << endl;
+////   cout << b << endl;
+////   return 0;
+//// }
+//struct A
+//{
+//
+//};
+//int main()
+//{
+//	A a;
+//	cout << typeid(a).name() << endl;
+//
+//	return 0;
+//}
 
+//#include <stdio.h>
+//#include <string.h>
+//#include <stdlib.h>
 
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-
-#define LINE "\r\n"
-#define SPACE " "
-#define MAXLINE 1204
-#define MINLINE 100
-
-void serve_static(int fd, char* filename, int fileszie)
-{
-	char buf[MAXLINE] = { 0 };
-	sprintf(buf, "HTTP/1.0 200 OK\n");
-	sprintf(buf, "%sServer: Tiny Web Server\n", buf);
-	sprintf(buf, "%sContent-length: %d\n", buf, fileszie);
-	// sprintf(buf, "%sContent-type: TXT\r\n", buf);
-	sprintf(buf, "%s", LINE);
-
-	printf("%s\n", buf);
-
-}
-int main()
-{
-	char* filename = "/home/bit/read/readbook/深入理解计算机系统/11网络编程/tiny-web-ser/wwwroot/index.html";
-	int fd = 1;
-	serve_static(fd, filename, 10000);
-	return 0;
-}
+//#define LINE "\r\n"
+//#define SPACE " "
+//#define MAXLINE 1204
+//#define MINLINE 100
+//
+//void serve_static(int fd, char* filename, int fileszie)
+//{
+//	char buf[MAXLINE] = { 0 };
+//	sprintf(buf, "HTTP/1.0 200 OK\n");
+//	sprintf(buf, "%sServer: Tiny Web Server\n", buf);
+//	sprintf(buf, "%sContent-length: %d\n", buf, fileszie);
+//	// sprintf(buf, "%sContent-type: TXT\r\n", buf);
+//	sprintf(buf, "%s", LINE);
+//
+//	printf("%s\n", buf);
+//
+//}
+//int main()
+//{
+//	char* filename = "/home/bit/read/readbook/深入理解计算机系统/11网络编程/tiny-web-ser/wwwroot/index.html";
+//	int fd = 1;
+//	serve_static(fd, filename, 10000);
+//	return 0;
+//}
 
 
 
