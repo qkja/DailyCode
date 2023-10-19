@@ -1,31 +1,20 @@
 #include <iostream>
-#include "FileRenamerTurbo.hpp"
-int main()
-{
-	string str = "C:\\Users\\qkj12\\OneDrive\\书籍";
-	file_renamer_turbo(str);
-	/*if (0 == rename("E:\\DailyCode\\2023_10_19\\AllFiles.txt", "00 aaaa.txt"))
-	{
-
-	}
-	else
-	{
-		cout << "失败" << endl;
-	}*/
-	return 0;
-}
-
-
-
-
-
-
-
-
-
-
-
-
+//#include "FileRenamerTurbo.hpp"
+//int main()
+//{
+//	string str = "C:\\Users\\qkj12\\OneDrive\\书籍";
+//	file_renamer_turbo(str);
+//	/*if (0 == rename("E:\\DailyCode\\2023_10_19\\AllFiles.txt", "00 aaaa.txt"))
+//	{
+//
+//	}
+//	else
+//	{
+//		cout << "失败" << endl;
+//	}*/
+//	return 0;
+//}
+//
 
 
 //#include <iostream>
@@ -252,3 +241,333 @@ int main()
 //    // 重命名一个文件
 //	return 0;
 //}
+//#include <stdlib.h>
+//#include <iostream>
+//using namespace std;
+//
+//int main()
+//{
+//	int* p = (int*)malloc(0);
+//	*p = 1;
+//	cout << *p << endl;
+//	return 0;
+//}
+//#include <stdio.h>
+//typedef struct List_t
+//{
+//	struct List_t* next;
+//	struct List_t* prev;
+//	char data[0];
+//}list_t;
+//int main()
+//{
+//	printf("%d", sizeof(list_t));
+//	return 0;
+//}
+
+//#include<stdio.h>
+//void fut(int** s, int p[2][3])
+//{
+//	**s = p[1][1];
+//}
+//int main()
+//{
+//	int a[2][3] = { 1,3,5,7,9,11 }, * p;
+//	p = (int*)malloc(sizeof(int));
+//	fut(&p, a);
+//	printf("%d", *p);
+//	return 0;
+//}
+
+
+//class Solution {
+//public:
+//    int multiply(int A, int B) {
+//        if (B == 1)
+//            return A;
+//        return A + multiply(A, B - 1);
+//    }
+//};
+
+//#include <iostream>
+//#include <string>
+//using namespace std;
+//
+//int main()
+//{
+//    int n = 0;
+//    cin >> n;
+//    int result = 0;
+//    for (int i = 1; i <= n; ++i)
+//    {
+//        if (i % 7 == 0 || to_string(i).find('7') != string::npos)
+//        {
+//            ++result;
+//        }
+//    }
+//    cout << result << endl;
+//    return 0;
+//}
+//// 64 位输出请用 printf("%lld")
+
+//#include <stdio.h>
+//#include <stdlib.h>
+//#include <iostream>
+//using namespace std;
+//#define _CRT_SECURE_NO_WARNINGS
+//
+//void fun(const char* fname, const char* st)
+//{
+//	
+//	std::FILE* myf = nullptr;
+//	int i;
+//	myf = std::fopen(fname, "w");
+//	for (i = 0; i < strlen(st); i++) fputc(st[i], myf);
+//	fclose(myf);
+//}
+//int main()
+//{
+//	fun("test.txt", "new world");
+//	fun("test.txt", "hello,");
+//	return 0;
+//}
+
+//class Solution {
+//public:
+//    int trailingZeroes(int n) {
+//        int count = 0;
+//        for (int i = 1; i <= n; ++i)
+//        {
+//            int j = i;
+//            while (j)
+//            {
+//                if (j % 5 == 0)
+//                {
+//                    // count++;cout <<i <<"  -> "<< j << endl;
+//                    j = j / 5;
+//                    count++;
+//                }
+//                else
+//                {
+//                    break;
+//                }
+//            }
+//        }
+//        return count;
+//    }
+//};
+
+//class Solution {
+//public:
+//    int trailingZeroes(int n) {
+//        int count = 0;
+//        while (n != 0) {
+//            n = n / 5;
+//            count = count + n;
+//        }
+//        return count;
+//    }
+//};
+
+//#include <stdio.h>
+//
+//#define AP 0.0000000001
+//
+//int main()
+//{
+//    float n = 0.0f;
+//    scanf("%f", &n);
+//    int ret = (int)n;
+//    if (n - ret >= 0.5)
+//    {
+//        printf("%d\n", ret + 1);
+//    }
+//    else
+//    {
+//        printf("%d\n", ret);
+//    }
+//    return 0;
+//}
+
+//#include<stdio.h>
+//#define Mul(x,y) ++x*++y
+//int main()
+//{
+//	int a = 1;
+//	int b = 2;
+//	int c = 3;
+//	printf("%d" , Mul(a + b, b + c));
+//	return 0;
+//}
+
+//#include <stdio.h>
+//#define a 10
+//void foo();
+//int main()
+//{
+//	printf("%d..", a);
+//	foo();
+//	printf("%d", a);
+//	return 0;
+//}
+//void foo() {
+//#undef a
+//#define a 50
+//}
+
+//#include <iostream>
+//#include <unordered_map>
+//using namespace std;
+//
+//int main()
+//{
+//	int n = 0;
+//	cin >> n;
+//	unordered_map<int, int> m;
+//	m[1] = 1;
+//	m[2] = 2;
+//	while (n--)
+//	{
+//		int k = 0;
+//		cin >> k;
+//		auto iter = m.find(k);
+//		if (iter == m.end())
+//		{
+//			for (int i = 3; i <= k; i++)
+//			{
+//				if (m.find(i) == m.end())
+//				{
+//					// 这里没有 i
+//					m[i] = (2 * m[i - 1] + m[i - 2]) % 32767;
+//				}
+//			}
+//		}
+//		cout << m[k] << endl;
+//	}
+//	return 0;
+//}
+// 64 位输出请用 printf("%lld")
+
+//
+//#include <iostream>
+//#include <string>
+//
+//using namespace std;
+//
+//int main()
+//{
+//    string str;
+//    getline(cin, str);
+//    int english_count = 0;
+//    int array_count = 0;
+//    int space_count = 0;
+//    int other_count = 0;
+//    for (int i = 0; i < str.size(); ++i)
+//    {
+//        if (str[i] >= 'a' && str[i] <= 'z' \
+//            || str[i] >= 'A' && str[i] <= 'B')
+//        {
+//            english_count++;
+//        }
+//        else if (str[i] >= '0' && str[i] <= '9')
+//        {
+//            array_count++;
+//        }
+//        else if (str[i] == ' ')
+//        {
+//            space_count++;
+//        }
+//        else
+//        {
+//            other_count++;
+//        }
+//    }
+//    cout << english_count << endl;
+//    cout << space_count << endl;
+//
+//    cout << array_count << endl;
+//    cout << other_count << endl;
+//
+//    return 0;
+//}
+//// 64 位输出请用 printf("%lld")
+
+#include <vector>
+using namespace std;
+
+//class Solution {
+//public:
+//    vector<int> runningSum(vector<int>& nums) {
+//        vector<int> result(nums.size());
+//        for (int i = 0; i < nums.size(); i++)
+//        {
+//            if (i != 0)
+//            {
+//                result[i] = result[i - 1] + nums[i];
+//            }
+//            else
+//            {
+//                result[0] =  nums[i];
+//            }
+//        }
+//        return result;
+//    }
+//};
+
+//class Solution {
+//public:
+//    int searchInsert(vector<int>& nums, int target)
+//    {
+//        
+//        int left = 0;
+//        int right = nums.size() - 1;
+//        while (left <= right)
+//        {
+//            int mid = (left + right) / 2;
+//            if (nums[mid] == target)
+//            {
+//                return mid;
+//            }
+//            else if (nums[mid] < target)
+//            {
+//                left = mid + 1;
+//            }
+//            else
+//            {
+//                right = mid - 1;
+//            }
+//        }
+//
+//        return left;
+//    }
+//};
+
+//int main()
+//{
+//    return 0;
+//}
+
+//#include <string>
+//using namespace std;
+//
+//struct ListNode {
+//    int val;
+//    ListNode* next;
+//    ListNode() : val(0), next(nullptr) {}
+//    ListNode(int x) : val(x), next(nullptr) {}
+//    ListNode(int x, ListNode* next) : val(x), next(next) {}
+//};
+//class Solution {
+//public:
+//    int getDecimalValue(ListNode* head) {
+//        string result;
+//        while (head)
+//        {
+//            result += to_string(head->val);
+//            head = head->next;
+//        }
+//        char* ret;
+//        int x = (int)strtol(result.c_str(), &ret, 2);
+//        return x;
+//    }
+//};
