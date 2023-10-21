@@ -7,13 +7,13 @@
 //class Solution {
 //public:
 //	/**
-//	* ´úÂëÖÐµÄÀàÃû¡¢·½·¨Ãû¡¢²ÎÊýÃûÒÑ¾­Ö¸¶¨£¬ÇëÎðÐÞ¸Ä£¬Ö±½Ó·µ»Ø·½·¨¹æ¶¨µÄÖµ¼´¿É
+//	* ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Þ¸Ä£ï¿½Ö±ï¿½Ó·ï¿½ï¿½Ø·ï¿½ï¿½ï¿½ï¿½æ¶¨ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½
 //	*
 //	*
-//	* @param head ListNodeÀà
-//	* @param m intÕûÐÍ
-//	* @param n intÕûÐÍ
-//	* @return ListNodeÀà
+//	* @param head ListNodeï¿½ï¿½
+//	* @param m intï¿½ï¿½ï¿½ï¿½
+//	* @param n intï¿½ï¿½ï¿½ï¿½
+//	* @return ListNodeï¿½ï¿½
 //	*/
 //	ListNode* reverseBetween(ListNode* head, int m, int n) {
 //		// write code here
@@ -22,7 +22,7 @@
 //			return nullptr;
 //		}
 //
-//		int len = n - m + 1; // ÄæÖÃlen¸ö½Úµã
+//		int len = n - m + 1; // ï¿½ï¿½ï¿½ï¿½lenï¿½ï¿½ï¿½Úµï¿½
 //		ListNode* prev = nullptr;
 //		ListNode* cur = head;
 //		--m;
@@ -50,7 +50,7 @@
 //			return prev;
 //		}
 //
-//		// ÕâÀï´æÔÚÎÊÌâ
+//		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 //		old_prev->next = prev;
 //		if (old_tail)
 //			old_tail->next = cur;
