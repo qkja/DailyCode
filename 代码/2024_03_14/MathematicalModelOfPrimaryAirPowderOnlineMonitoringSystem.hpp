@@ -131,6 +131,9 @@ public:
 			* pulverized_coal_concentration;
 	}
 
+	
+
+
 	/*
 	* 计算风量
 	* wind_speed:一次、二次、三次风速
