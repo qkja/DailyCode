@@ -1,5 +1,5 @@
 /****************************************************************************
-** Meta object code from reading C++ file 'consumerthread.h'
+** Meta object code from reading C++ file 'barchartwidget.h'
 **
 ** Created by: The Qt Meta Object Compiler version 67 (Qt 5.14.2)
 **
@@ -7,11 +7,11 @@
 *****************************************************************************/
 
 #include <memory>
-#include "../../../consumerthread.h"
+#include "../../../barchartwidget.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
-#error "The header file 'consumerthread.h' doesn't include <QObject>."
+#error "The header file 'barchartwidget.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
 #error "This file was generated using the moc from 5.14.2. It"
 #error "cannot be used with the include files from this version of Qt."
@@ -21,25 +21,25 @@
 QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
-struct qt_meta_stringdata_ConsumerThread_t {
+struct qt_meta_stringdata_BarChartWidget_t {
     QByteArrayData data[1];
     char stringdata0[15];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_ConsumerThread_t, stringdata0) + ofs \
+    qptrdiff(offsetof(qt_meta_stringdata_BarChartWidget_t, stringdata0) + ofs \
         - idx * sizeof(QByteArrayData)) \
     )
-static const qt_meta_stringdata_ConsumerThread_t qt_meta_stringdata_ConsumerThread = {
+static const qt_meta_stringdata_BarChartWidget_t qt_meta_stringdata_BarChartWidget = {
     {
-QT_MOC_LITERAL(0, 0, 14) // "ConsumerThread"
+QT_MOC_LITERAL(0, 0, 14) // "BarChartWidget"
 
     },
-    "ConsumerThread"
+    "BarChartWidget"
 };
 #undef QT_MOC_LITERAL
 
-static const uint qt_meta_data_ConsumerThread[] = {
+static const uint qt_meta_data_BarChartWidget[] = {
 
  // content:
        8,       // revision
@@ -55,7 +55,7 @@ static const uint qt_meta_data_ConsumerThread[] = {
        0        // eod
 };
 
-void ConsumerThread::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void BarChartWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     Q_UNUSED(_o);
     Q_UNUSED(_id);
@@ -63,32 +63,32 @@ void ConsumerThread::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
     Q_UNUSED(_a);
 }
 
-QT_INIT_METAOBJECT const QMetaObject ConsumerThread::staticMetaObject = { {
-    QMetaObject::SuperData::link<QThread::staticMetaObject>(),
-    qt_meta_stringdata_ConsumerThread.data,
-    qt_meta_data_ConsumerThread,
+QT_INIT_METAOBJECT const QMetaObject BarChartWidget::staticMetaObject = { {
+    QMetaObject::SuperData::link<QWidget::staticMetaObject>(),
+    qt_meta_stringdata_BarChartWidget.data,
+    qt_meta_data_BarChartWidget,
     qt_static_metacall,
     nullptr,
     nullptr
 } };
 
 
-const QMetaObject *ConsumerThread::metaObject() const
+const QMetaObject *BarChartWidget::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *ConsumerThread::qt_metacast(const char *_clname)
+void *BarChartWidget::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_ConsumerThread.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_BarChartWidget.stringdata0))
         return static_cast<void*>(this);
-    return QThread::qt_metacast(_clname);
+    return QWidget::qt_metacast(_clname);
 }
 
-int ConsumerThread::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int BarChartWidget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
-    _id = QThread::qt_metacall(_c, _id, _a);
+    _id = QWidget::qt_metacall(_c, _id, _a);
     return _id;
 }
 QT_WARNING_POP

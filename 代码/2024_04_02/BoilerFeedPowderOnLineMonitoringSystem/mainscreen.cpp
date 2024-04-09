@@ -6,6 +6,7 @@ MainScreen::MainScreen(QWidget *parent)
 	, _verify_password(new VerifyPassword(nullptr))
 	, _system_setting(new SystemSetting(this))
     , _status_view(new StatusView(this))
+    ,_data_processing(new DataProcessing(this))
 {
 	ui->setupUi(this);
 	qDebug() << "MainScreen()";
@@ -153,6 +154,32 @@ void MainScreen::StatusViewConnect()
 
 void MainScreen::DataProcessingConnect()
 {
+    // ±¨¾¯Êý¾Ý
+    connect(ui->alarm_database_action, &QAction::triggered, [=]()
+        {
+            this->hide();
+            this->_data_processing->_alarm_database->show(); 
+        });
+
+    connect(this->_data_processing->_alarm_database, &AlarmDatabase::fromAlarmDatabaseToMainScreenSignals, [=]() 
+        {
+            this->show();
+            this->_data_processing->_alarm_database->hide();
+        });
+
+
+    connect(ui->channel_database_action, &QAction::triggered, [=]()
+        {
+            this->hide();
+            this->_data_processing->_channel_database->show(); 
+        });
+
+    connect(this->_data_processing->_channel_database, &ChannelDatabase::fromChannelDatabaseToMainScreenSignals, [=]()
+        {
+            this->show();
+            this->_data_processing->_channel_database->hide();
+        });
+
 }
 
 void MainScreen::AssistConnect()

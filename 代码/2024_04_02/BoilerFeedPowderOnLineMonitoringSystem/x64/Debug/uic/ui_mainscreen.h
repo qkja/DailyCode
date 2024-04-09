@@ -34,6 +34,8 @@ public:
     QAction *tangential_circle_diagram_of_primary_wind_action;
     QAction *trend_chart_action;
     QAction *historical_trend_chart_action;
+    QAction *alarm_database_action;
+    QAction *channel_database_action;
     QWidget *centralWidget;
     QMenuBar *menuBar;
     QMenu *menu;
@@ -68,6 +70,10 @@ public:
         trend_chart_action->setObjectName(QString::fromUtf8("trend_chart_action"));
         historical_trend_chart_action = new QAction(MainScreenClass);
         historical_trend_chart_action->setObjectName(QString::fromUtf8("historical_trend_chart_action"));
+        alarm_database_action = new QAction(MainScreenClass);
+        alarm_database_action->setObjectName(QString::fromUtf8("alarm_database_action"));
+        channel_database_action = new QAction(MainScreenClass);
+        channel_database_action->setObjectName(QString::fromUtf8("channel_database_action"));
         centralWidget = new QWidget(MainScreenClass);
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
         MainScreenClass->setCentralWidget(centralWidget);
@@ -104,6 +110,8 @@ public:
         menu_2->addAction(tangential_circle_diagram_of_primary_wind_action);
         menu_2->addAction(trend_chart_action);
         menu_2->addAction(historical_trend_chart_action);
+        menu_3->addAction(alarm_database_action);
+        menu_3->addAction(channel_database_action);
 
         retranslateUi(MainScreenClass);
 
@@ -123,6 +131,8 @@ public:
         tangential_circle_diagram_of_primary_wind_action->setText(QCoreApplication::translate("MainScreenClass", "\344\270\200\346\254\241\351\243\216\345\210\207\345\234\206\345\233\276", nullptr));
         trend_chart_action->setText(QCoreApplication::translate("MainScreenClass", "\350\266\213\345\212\277\345\233\276", nullptr));
         historical_trend_chart_action->setText(QCoreApplication::translate("MainScreenClass", "\345\216\206\345\217\262\350\266\213\345\212\277\345\233\276", nullptr));
+        alarm_database_action->setText(QCoreApplication::translate("MainScreenClass", "\346\212\245\350\255\246\346\225\260\346\215\256", nullptr));
+        channel_database_action->setText(QCoreApplication::translate("MainScreenClass", "\351\200\232\351\201\223\346\225\260\346\215\256", nullptr));
         menu->setTitle(QCoreApplication::translate("MainScreenClass", "\347\263\273\347\273\237\350\256\276\347\275\256", nullptr));
         menu_2->setTitle(QCoreApplication::translate("MainScreenClass", "\347\212\266\346\200\201\346\237\245\347\234\213", nullptr));
         menu_3->setTitle(QCoreApplication::translate("MainScreenClass", "\346\225\260\346\215\256\345\244\204\347\220\206", nullptr));
