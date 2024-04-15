@@ -16,31 +16,37 @@
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QToolBar>
 #include <QtWidgets/QWidget>
+#include "trendlinechart.h"
 
 QT_BEGIN_NAMESPACE
 
 class Ui_TrendChartClass
 {
 public:
+    QWidget *centralWidget;
+    TrendLineChart *widget;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
-    QWidget *centralWidget;
     QStatusBar *statusBar;
 
     void setupUi(QMainWindow *TrendChartClass)
     {
         if (TrendChartClass->objectName().isEmpty())
             TrendChartClass->setObjectName(QString::fromUtf8("TrendChartClass"));
-        TrendChartClass->resize(600, 400);
+        TrendChartClass->resize(889, 662);
+        centralWidget = new QWidget(TrendChartClass);
+        centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
+        widget = new TrendLineChart(centralWidget);
+        widget->setObjectName(QString::fromUtf8("widget"));
+        widget->setGeometry(QRect(20, 10, 861, 601));
+        TrendChartClass->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(TrendChartClass);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
+        menuBar->setGeometry(QRect(0, 0, 889, 26));
         TrendChartClass->setMenuBar(menuBar);
         mainToolBar = new QToolBar(TrendChartClass);
         mainToolBar->setObjectName(QString::fromUtf8("mainToolBar"));
-        TrendChartClass->addToolBar(mainToolBar);
-        centralWidget = new QWidget(TrendChartClass);
-        centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
-        TrendChartClass->setCentralWidget(centralWidget);
+        TrendChartClass->addToolBar(Qt::TopToolBarArea, mainToolBar);
         statusBar = new QStatusBar(TrendChartClass);
         statusBar->setObjectName(QString::fromUtf8("statusBar"));
         TrendChartClass->setStatusBar(statusBar);

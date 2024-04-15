@@ -12,18 +12,23 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QWidget>
+#include "historicallinechart.h"
 
 QT_BEGIN_NAMESPACE
 
 class Ui_HistoricalTrendChartClass
 {
 public:
+    HistoricalLineChart *widget;
 
     void setupUi(QWidget *HistoricalTrendChartClass)
     {
         if (HistoricalTrendChartClass->objectName().isEmpty())
             HistoricalTrendChartClass->setObjectName(QString::fromUtf8("HistoricalTrendChartClass"));
-        HistoricalTrendChartClass->resize(600, 400);
+        HistoricalTrendChartClass->resize(926, 622);
+        widget = new HistoricalLineChart(HistoricalTrendChartClass);
+        widget->setObjectName(QString::fromUtf8("widget"));
+        widget->setGeometry(QRect(130, 70, 691, 491));
 
         retranslateUi(HistoricalTrendChartClass);
 

@@ -5,9 +5,9 @@ HistoricalTrendChart::HistoricalTrendChart(QWidget *parent)
     , ui(new Ui::HistoricalTrendChartClass())
 {
     ui->setupUi(this);
+
 }
 
 HistoricalTrendChart::~HistoricalTrendChart()
 {
-    delete ui;
 }

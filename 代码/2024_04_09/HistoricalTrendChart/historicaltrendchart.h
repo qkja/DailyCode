@@ -14,7 +14,7 @@ class HistoricalTrendChart : public QWidget
 public:
     HistoricalTrendChart(QWidget *parent = nullptr);
     ~HistoricalTrendChart();
-
 private:
     Ui::HistoricalTrendChartClass *ui;
+   
 };

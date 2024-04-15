@@ -1,8 +1,7 @@
 #include "welcomescreen.h"
 #include "qdebug.h"
 #include <qpushbutton.h>
-const QString& SERVER_IP = "127.0.0.1";
-const quint16 SERVER_PORT = 9090;
+#include "configurethread.h"
 
 WelcomeScreen::WelcomeScreen(QWidget *parent)
     : QWidget(parent)
@@ -25,10 +24,12 @@ WelcomeScreen::WelcomeScreen(QWidget *parent)
 
 
     qRegisterMetaType<Task>("Task");
-    connect(&thread, &ProducerThread::produceSignals, this, &WelcomeScreen::processData);
+    connect(&_producerthread, &ProducerThread::produceSignals, this, &WelcomeScreen::processData);
+    _producerthread.start();
 
-    
-    thread.start();
+    qRegisterMetaType<std::unordered_map<std::string, std::string>>("std::unordered_map<std::string, std::string>");
+    connect(&_configurethread, &ConfigureThread::configureIsReady, this, &WelcomeScreen::processConfigure);
+    _configurethread.start();
 }
 
 WelcomeScreen::~WelcomeScreen()
@@ -62,6 +63,21 @@ void WelcomeScreen::fromWelToMianScreen()
 
     this->hide();
     this->_main_screen->show();
+}
+
+void WelcomeScreen::closeEvent(QCloseEvent* event)
+{
+    emit stopProcessing();
+}
+
+void WelcomeScreen::processConfigure(std::unordered_map<std::string, std::string> info_map)
+{
+    auto iter = info_map.begin();
+    while (iter != info_map.end())
+    {
+        std::cout << iter->first << " : " << iter->second << std::endl;
+        iter++;
+    }
 }
 
 void WelcomeScreen::processData(Task task)

@@ -21,3 +21,8 @@ VerifyPassword::~VerifyPassword()
 	qDebug() << "~VerifyPassword()";
 	delete ui;
 }
+
+void VerifyPassword::closeEvent(QCloseEvent*)
+{
+	emit ExitWin();
+}

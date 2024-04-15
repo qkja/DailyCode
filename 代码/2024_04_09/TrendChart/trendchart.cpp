@@ -11,3 +11,4 @@ TrendChart::~TrendChart()
 {
     delete ui;
 }
+

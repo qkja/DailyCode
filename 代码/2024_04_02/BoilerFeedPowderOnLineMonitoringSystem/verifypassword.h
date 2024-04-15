@@ -16,9 +16,11 @@ class VerifyPassword : public QWidget
 public:
 	VerifyPassword(QWidget *parent = nullptr);
 	~VerifyPassword();
+	void closeEvent(QCloseEvent*);
 signals:
 	void fromVerifyPasswordSignalsIsTrue();
 	void fromVerifyPasswordSignalsIsFalse();
+	void ExitWin(); // 新建一个信号槽
 private:
 	Ui::VerifyPasswordClass *ui;
 };

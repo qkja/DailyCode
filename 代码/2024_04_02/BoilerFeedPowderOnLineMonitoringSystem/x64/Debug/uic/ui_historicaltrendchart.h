@@ -16,31 +16,37 @@
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QToolBar>
 #include <QtWidgets/QWidget>
+#include "historicallinechart.h"
 
 QT_BEGIN_NAMESPACE
 
 class Ui_HistoricalTrendChartClass
 {
 public:
+    QWidget *centralWidget;
+    HistoricalLineChart *widget;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
-    QWidget *centralWidget;
     QStatusBar *statusBar;
 
     void setupUi(QMainWindow *HistoricalTrendChartClass)
     {
         if (HistoricalTrendChartClass->objectName().isEmpty())
             HistoricalTrendChartClass->setObjectName(QString::fromUtf8("HistoricalTrendChartClass"));
-        HistoricalTrendChartClass->resize(600, 400);
+        HistoricalTrendChartClass->resize(923, 557);
+        centralWidget = new QWidget(HistoricalTrendChartClass);
+        centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
+        widget = new HistoricalLineChart(centralWidget);
+        widget->setObjectName(QString::fromUtf8("widget"));
+        widget->setGeometry(QRect(100, 0, 691, 491));
+        HistoricalTrendChartClass->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(HistoricalTrendChartClass);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
+        menuBar->setGeometry(QRect(0, 0, 923, 26));
         HistoricalTrendChartClass->setMenuBar(menuBar);
         mainToolBar = new QToolBar(HistoricalTrendChartClass);
         mainToolBar->setObjectName(QString::fromUtf8("mainToolBar"));
-        HistoricalTrendChartClass->addToolBar(mainToolBar);
-        centralWidget = new QWidget(HistoricalTrendChartClass);
-        centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
-        HistoricalTrendChartClass->setCentralWidget(centralWidget);
+        HistoricalTrendChartClass->addToolBar(Qt::TopToolBarArea, mainToolBar);
         statusBar = new QStatusBar(HistoricalTrendChartClass);
         statusBar->setObjectName(QString::fromUtf8("statusBar"));
         HistoricalTrendChartClass->setStatusBar(statusBar);

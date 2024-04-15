@@ -8,6 +8,7 @@ MainScreen::MainScreen(QWidget *parent)
     , _status_view(new StatusView(this))
     ,_data_processing(new DataProcessing(this))
 {
+    
 	ui->setupUi(this);
 	qDebug() << "MainScreen()";
 	this->setWindowTitle("锅炉送粉在线监测系统");
@@ -144,7 +145,6 @@ void MainScreen::StatusViewConnect()
         });
 
     // 历史趋势图
-
     connect(ui->historical_trend_chart_action, &QAction::triggered, [=]()
         {
             this->hide();
