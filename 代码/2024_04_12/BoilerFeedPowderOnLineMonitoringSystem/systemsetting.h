@@ -7,20 +7,21 @@
 #include "wordofcommand.h"
 #include "mytime.h"
 #include <iostream>
-
+#include "configure.h"
 class SystemSetting : public QWidget
 {
 	Q_OBJECT
 	friend class BoilerFeedPowderOnLineMonitoringSystem;
 
 public:
-	SystemSetting(QWidget *parent = nullptr);
+	SystemSetting(QWidget *parent = nullptr, Configure* configure = nullptr);
 	~SystemSetting();
 
 private:
-	GiveAnAlarm *_give_an_alarm;	 //   �趨������
-	MyTime *_mytime;				 //   �޶�ʱ��
-	Spout *_spout;					 //   �趨������
-	BackrestCanal *_backrest_canal;	 //   ������ϵ������
+	Configure* _configure;             // 这是为了使用信号与槽
+	GiveAnAlarm *_give_an_alarm;	 //   设定报警限
+	MyTime *_mytime;				 //   设定时间
+	Spout *_spout;					 //   
+	BackrestCanal *_backrest_canal;	 //   ������ϵ�����
 	WordOfCommand *_word_of_command; //   �޸Ŀ���
 };

@@ -32,19 +32,19 @@ public:
     QHBoxLayout *horizontalLayout_3;
     QHBoxLayout *horizontalLayout;
     QVBoxLayout *verticalLayout;
-    QLabel *label;
+    QLabel *label_1;
     QLabel *label_2;
     QVBoxLayout *verticalLayout_2;
     QLabel *label_25;
     QFrame *line;
-    QSlider *verticalSlider_13;
+    QSlider *upper_wind_speed;
     QFrame *line_2;
     QLabel *label_26;
     QHBoxLayout *horizontalLayout_2;
     QVBoxLayout *verticalLayout_4;
     QLabel *label_27;
     QFrame *line_3;
-    QSlider *verticalSlider_14;
+    QSlider *limit_wind_speed;
     QFrame *line_4;
     QLabel *label_28;
     QVBoxLayout *verticalLayout_3;
@@ -60,14 +60,14 @@ public:
     QVBoxLayout *verticalLayout_8;
     QLabel *label_31;
     QFrame *line_5;
-    QSlider *verticalSlider_16;
+    QSlider *upper_limit_of_pulverized_coal_concentration;
     QFrame *line_6;
     QLabel *label_32;
     QHBoxLayout *horizontalLayout_6;
     QVBoxLayout *verticalLayout_9;
     QLabel *label_33;
     QFrame *line_7;
-    QSlider *verticalSlider_17;
+    QSlider *limit_limit_of_pulverized_coal_concentration;
     QFrame *line_8;
     QLabel *label_34;
     QVBoxLayout *verticalLayout_14;
@@ -83,14 +83,14 @@ public:
     QVBoxLayout *verticalLayout_18;
     QLabel *label_35;
     QFrame *line_9;
-    QSlider *verticalSlider_18;
+    QSlider *upper_temperature;
     QFrame *line_10;
     QLabel *label_36;
     QHBoxLayout *horizontalLayout_12;
     QVBoxLayout *verticalLayout_19;
     QLabel *label_37;
     QFrame *line_11;
-    QSlider *verticalSlider_19;
+    QSlider *limit_temperature;
     QFrame *line_12;
     QLabel *label_38;
     QVBoxLayout *verticalLayout_20;
@@ -129,10 +129,10 @@ public:
         verticalLayout = new QVBoxLayout();
         verticalLayout->setSpacing(6);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        label = new QLabel(groupBox);
-        label->setObjectName(QString::fromUtf8("label"));
+        label_1 = new QLabel(groupBox);
+        label_1->setObjectName(QString::fromUtf8("label_1"));
 
-        verticalLayout->addWidget(label, 0, Qt::AlignRight);
+        verticalLayout->addWidget(label_1, 0, Qt::AlignRight);
 
         label_2 = new QLabel(groupBox);
         label_2->setObjectName(QString::fromUtf8("label_2"));
@@ -157,11 +157,11 @@ public:
 
         verticalLayout_2->addWidget(line);
 
-        verticalSlider_13 = new QSlider(groupBox);
-        verticalSlider_13->setObjectName(QString::fromUtf8("verticalSlider_13"));
-        verticalSlider_13->setOrientation(Qt::Vertical);
+        upper_wind_speed = new QSlider(groupBox);
+        upper_wind_speed->setObjectName(QString::fromUtf8("upper_wind_speed"));
+        upper_wind_speed->setOrientation(Qt::Vertical);
 
-        verticalLayout_2->addWidget(verticalSlider_13, 0, Qt::AlignHCenter);
+        verticalLayout_2->addWidget(upper_wind_speed, 0, Qt::AlignHCenter);
 
         line_2 = new QFrame(groupBox);
         line_2->setObjectName(QString::fromUtf8("line_2"));
@@ -199,11 +199,11 @@ public:
 
         verticalLayout_4->addWidget(line_3);
 
-        verticalSlider_14 = new QSlider(groupBox);
-        verticalSlider_14->setObjectName(QString::fromUtf8("verticalSlider_14"));
-        verticalSlider_14->setOrientation(Qt::Vertical);
+        limit_wind_speed = new QSlider(groupBox);
+        limit_wind_speed->setObjectName(QString::fromUtf8("limit_wind_speed"));
+        limit_wind_speed->setOrientation(Qt::Vertical);
 
-        verticalLayout_4->addWidget(verticalSlider_14, 0, Qt::AlignHCenter);
+        verticalLayout_4->addWidget(limit_wind_speed, 0, Qt::AlignHCenter);
 
         line_4 = new QFrame(groupBox);
         line_4->setObjectName(QString::fromUtf8("line_4"));
@@ -288,11 +288,11 @@ public:
 
         verticalLayout_8->addWidget(line_5);
 
-        verticalSlider_16 = new QSlider(groupBox_2);
-        verticalSlider_16->setObjectName(QString::fromUtf8("verticalSlider_16"));
-        verticalSlider_16->setOrientation(Qt::Vertical);
+        upper_limit_of_pulverized_coal_concentration = new QSlider(groupBox_2);
+        upper_limit_of_pulverized_coal_concentration->setObjectName(QString::fromUtf8("upper_limit_of_pulverized_coal_concentration"));
+        upper_limit_of_pulverized_coal_concentration->setOrientation(Qt::Vertical);
 
-        verticalLayout_8->addWidget(verticalSlider_16, 0, Qt::AlignHCenter);
+        verticalLayout_8->addWidget(upper_limit_of_pulverized_coal_concentration, 0, Qt::AlignHCenter);
 
         line_6 = new QFrame(groupBox_2);
         line_6->setObjectName(QString::fromUtf8("line_6"));
@@ -330,11 +330,11 @@ public:
 
         verticalLayout_9->addWidget(line_7);
 
-        verticalSlider_17 = new QSlider(groupBox_2);
-        verticalSlider_17->setObjectName(QString::fromUtf8("verticalSlider_17"));
-        verticalSlider_17->setOrientation(Qt::Vertical);
+        limit_limit_of_pulverized_coal_concentration = new QSlider(groupBox_2);
+        limit_limit_of_pulverized_coal_concentration->setObjectName(QString::fromUtf8("limit_limit_of_pulverized_coal_concentration"));
+        limit_limit_of_pulverized_coal_concentration->setOrientation(Qt::Vertical);
 
-        verticalLayout_9->addWidget(verticalSlider_17, 0, Qt::AlignHCenter);
+        verticalLayout_9->addWidget(limit_limit_of_pulverized_coal_concentration, 0, Qt::AlignHCenter);
 
         line_8 = new QFrame(groupBox_2);
         line_8->setObjectName(QString::fromUtf8("line_8"));
@@ -419,11 +419,11 @@ public:
 
         verticalLayout_18->addWidget(line_9);
 
-        verticalSlider_18 = new QSlider(groupBox_3);
-        verticalSlider_18->setObjectName(QString::fromUtf8("verticalSlider_18"));
-        verticalSlider_18->setOrientation(Qt::Vertical);
+        upper_temperature = new QSlider(groupBox_3);
+        upper_temperature->setObjectName(QString::fromUtf8("upper_temperature"));
+        upper_temperature->setOrientation(Qt::Vertical);
 
-        verticalLayout_18->addWidget(verticalSlider_18, 0, Qt::AlignHCenter);
+        verticalLayout_18->addWidget(upper_temperature, 0, Qt::AlignHCenter);
 
         line_10 = new QFrame(groupBox_3);
         line_10->setObjectName(QString::fromUtf8("line_10"));
@@ -461,11 +461,11 @@ public:
 
         verticalLayout_19->addWidget(line_11);
 
-        verticalSlider_19 = new QSlider(groupBox_3);
-        verticalSlider_19->setObjectName(QString::fromUtf8("verticalSlider_19"));
-        verticalSlider_19->setOrientation(Qt::Vertical);
+        limit_temperature = new QSlider(groupBox_3);
+        limit_temperature->setObjectName(QString::fromUtf8("limit_temperature"));
+        limit_temperature->setOrientation(Qt::Vertical);
 
-        verticalLayout_19->addWidget(verticalSlider_19, 0, Qt::AlignHCenter);
+        verticalLayout_19->addWidget(limit_temperature, 0, Qt::AlignHCenter);
 
         line_12 = new QFrame(groupBox_3);
         line_12->setObjectName(QString::fromUtf8("line_12"));
@@ -535,7 +535,7 @@ public:
     {
         GiveAnAlarmClass->setWindowTitle(QCoreApplication::translate("GiveAnAlarmClass", "GiveAnAlarm", nullptr));
         groupBox->setTitle(QCoreApplication::translate("GiveAnAlarmClass", "\351\243\216\351\200\237", nullptr));
-        label->setText(QCoreApplication::translate("GiveAnAlarmClass", "40", nullptr));
+        label_1->setText(QCoreApplication::translate("GiveAnAlarmClass", "40", nullptr));
         label_2->setText(QCoreApplication::translate("GiveAnAlarmClass", "0", nullptr));
         label_25->setText(QCoreApplication::translate("GiveAnAlarmClass", "\344\270\212\351\231\220", nullptr));
         label_26->setText(QCoreApplication::translate("GiveAnAlarmClass", "\345\275\223\345\211\215\345\200\274", nullptr));

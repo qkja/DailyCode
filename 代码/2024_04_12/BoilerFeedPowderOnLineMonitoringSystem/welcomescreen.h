@@ -5,7 +5,7 @@
 #include <qtimer.h>
 #include <iostream>
 #include <qpushbutton.h>
-#include <iostream>
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui

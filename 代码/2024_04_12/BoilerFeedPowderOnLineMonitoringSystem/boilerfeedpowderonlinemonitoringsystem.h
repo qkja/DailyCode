@@ -11,6 +11,7 @@
 #include "dataprocessing.h"
 #include "statusview.h"
 #include <iostream>
+#include "configure.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui
@@ -26,16 +27,15 @@ class BoilerFeedPowderOnLineMonitoringSystem : public QMainWindow
 public:
     BoilerFeedPowderOnLineMonitoringSystem(QWidget *parent = nullptr);
     ~BoilerFeedPowderOnLineMonitoringSystem();
-    void init();
-    void startThread();
-    void closeEvent(QCloseEvent *);
 
 private:
+    void init();
+    void myConnect();
     void SystemSettingConnect();
     void StatusViewConnect();
     void DataProcessingConnect();
     void AssistConnect();
-
+    void closeEvent(QCloseEvent*);
 signals:
     void quitSignals();
     void stopThread();
@@ -43,15 +43,14 @@ protected slots:
     void quit();                                                         // �˳�����
     void fromWelToMianScreen();                                          // �ӻ�ӭ�������
     void processData(Task);                                              // ��������
-    void processConfigure(std::unordered_map<std::string, std::string>); // ����������Ϣ
 private:
     Ui::BoilerFeedPowderOnLineMonitoringSystemClass *ui;
-    WelcomeScreen *_welcomeScreen;
-
-    SystemSetting *_system_setting;   // ϵͳ����
-    StatusView *_status_view;         // ״̬�鿴
-    DataProcessing *_data_processing; // ���ݴ���
-    Assist *_assist;                  // ����
-    VerifyPassword *_verify_password; // ������֤
-    MyThread _myThread;
+    Configure* _configure;            // 配置信息
+    WelcomeScreen *_welcomeScreen;    // 欢饮界面
+    SystemSetting *_system_setting;   // 系统设置
+    StatusView *_status_view;         // 状态查看
+    DataProcessing *_data_processing; // 数据处理
+    Assist *_assist;                  // 帮助
+    VerifyPassword *_verify_password; // 密码
+    MyThread _myThread;               // 线程
 };

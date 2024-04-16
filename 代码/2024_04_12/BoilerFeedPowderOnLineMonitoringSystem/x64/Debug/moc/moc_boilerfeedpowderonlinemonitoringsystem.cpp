@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_BoilerFeedPowderOnLineMonitoringSystem_t {
-    QByteArrayData data[10];
-    char stringdata0[166];
+    QByteArrayData data[8];
+    char stringdata0[105];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -39,16 +39,12 @@ QT_MOC_LITERAL(3, 52, 10), // "stopThread"
 QT_MOC_LITERAL(4, 63, 4), // "quit"
 QT_MOC_LITERAL(5, 68, 19), // "fromWelToMianScreen"
 QT_MOC_LITERAL(6, 88, 11), // "processData"
-QT_MOC_LITERAL(7, 100, 4), // "Task"
-QT_MOC_LITERAL(8, 105, 16), // "processConfigure"
-QT_MOC_LITERAL(9, 122, 43) // "std::unordered_map<std::strin..."
+QT_MOC_LITERAL(7, 100, 4) // "Task"
 
     },
     "BoilerFeedPowderOnLineMonitoringSystem\0"
     "quitSignals\0\0stopThread\0quit\0"
-    "fromWelToMianScreen\0processData\0Task\0"
-    "processConfigure\0"
-    "std::unordered_map<std::string,std::string>"
+    "fromWelToMianScreen\0processData\0Task"
 };
 #undef QT_MOC_LITERAL
 
@@ -58,7 +54,7 @@ static const uint qt_meta_data_BoilerFeedPowderOnLineMonitoringSystem[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-       6,   14, // methods
+       5,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -66,14 +62,13 @@ static const uint qt_meta_data_BoilerFeedPowderOnLineMonitoringSystem[] = {
        2,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    0,   44,    2, 0x06 /* Public */,
-       3,    0,   45,    2, 0x06 /* Public */,
+       1,    0,   39,    2, 0x06 /* Public */,
+       3,    0,   40,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       4,    0,   46,    2, 0x09 /* Protected */,
-       5,    0,   47,    2, 0x09 /* Protected */,
-       6,    1,   48,    2, 0x09 /* Protected */,
-       8,    1,   51,    2, 0x09 /* Protected */,
+       4,    0,   41,    2, 0x09 /* Protected */,
+       5,    0,   42,    2, 0x09 /* Protected */,
+       6,    1,   43,    2, 0x09 /* Protected */,
 
  // signals: parameters
     QMetaType::Void,
@@ -83,7 +78,6 @@ static const uint qt_meta_data_BoilerFeedPowderOnLineMonitoringSystem[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void, 0x80000000 | 7,    2,
-    QMetaType::Void, 0x80000000 | 9,    2,
 
        0        // eod
 };
@@ -99,7 +93,6 @@ void BoilerFeedPowderOnLineMonitoringSystem::qt_static_metacall(QObject *_o, QMe
         case 2: _t->quit(); break;
         case 3: _t->fromWelToMianScreen(); break;
         case 4: _t->processData((*reinterpret_cast< Task(*)>(_a[1]))); break;
-        case 5: _t->processConfigure((*reinterpret_cast< std::unordered_map<std::string,std::string>(*)>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -150,13 +143,13 @@ int BoilerFeedPowderOnLineMonitoringSystem::qt_metacall(QMetaObject::Call _c, in
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 6)
+        if (_id < 5)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 6;
+        _id -= 5;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 6)
+        if (_id < 5)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 6;
+        _id -= 5;
     }
     return _id;
 }

@@ -1,60 +1,55 @@
 #include "boilerfeedpowderonlinemonitoringsystem.h"
 
 BoilerFeedPowderOnLineMonitoringSystem::BoilerFeedPowderOnLineMonitoringSystem(QWidget *parent)
-    : QMainWindow(parent), ui(new Ui::BoilerFeedPowderOnLineMonitoringSystemClass()), _welcomeScreen(new WelcomeScreen(nullptr)), _verify_password(new VerifyPassword(nullptr)), _system_setting(new SystemSetting(nullptr)), _status_view(new StatusView(nullptr)), _data_processing(new DataProcessing(nullptr))
+    : QMainWindow(parent)
+    , ui(new Ui::BoilerFeedPowderOnLineMonitoringSystemClass())
+    , _configure(new Configure(nullptr))
+    , _welcomeScreen(new WelcomeScreen(nullptr))
+    , _verify_password(new VerifyPassword(nullptr))
+    , _system_setting(new SystemSetting(nullptr, _configure))
+    , _status_view(new StatusView(nullptr))
+    , _data_processing(new DataProcessing(nullptr))
 {
     std::cout << "BoilerFeedPowderOnLineMonitoringSystem()" << std::endl;
     ui->setupUi(this);
-    _welcomeScreen->show();
-    this->setWindowTitle("你好");
-    init();
-    startThread();
+    this->init();       // 处理写杂事,例如图像的标题等
+    this->myConnect();  // 链接信号与槽
+    _myThread.start();  // 启动线程
+
 }
 void BoilerFeedPowderOnLineMonitoringSystem::init()
+{
+    _welcomeScreen->show();
+    this->setWindowTitle(QString("sss"));
+}
+
+void BoilerFeedPowderOnLineMonitoringSystem::myConnect()
 {
     SystemSettingConnect();
     StatusViewConnect();
     DataProcessingConnect();
     AssistConnect();
-}
-void BoilerFeedPowderOnLineMonitoringSystem::startThread()
-{
+    // 主线程发出信号,生产线程处理后结束子线程
     connect(this, &BoilerFeedPowderOnLineMonitoringSystem::stopThread, &_myThread, &MyThread::stopProcessing);
+    // 主线程退出, 先发一个信号,重写我们的退出函数
     connect(this, &BoilerFeedPowderOnLineMonitoringSystem::quitSignals, this, &BoilerFeedPowderOnLineMonitoringSystem::quit);
+    // 欢迎界面到 主界面
     connect(_welcomeScreen, &WelcomeScreen::fromWelToMianScreenSignals, this, &BoilerFeedPowderOnLineMonitoringSystem::fromWelToMianScreen);
-
     qRegisterMetaType<Task>("Task");
     connect(&_myThread, &MyThread::produceSignals, this, &BoilerFeedPowderOnLineMonitoringSystem::processData);
-    qRegisterMetaType<std::unordered_map<std::string, std::string>>("std::unordered_map<std::string, std::string>");
-    connect(_myThread._configure, &Configure::_configureIsReady, this, &BoilerFeedPowderOnLineMonitoringSystem::processConfigure);
-    _myThread.start();
 }
-void BoilerFeedPowderOnLineMonitoringSystem::closeEvent(QCloseEvent *event)
-{
-    emit stopThread();
-    this->closeEvent(event);
-}
-BoilerFeedPowderOnLineMonitoringSystem::~BoilerFeedPowderOnLineMonitoringSystem()
-{
-    std::cout << "~BoilerFeedPowderOnLineMonitoringSystem()" << std::endl;
-    delete _welcomeScreen;
-    delete _status_view;
-    delete ui;
-}
-
 void BoilerFeedPowderOnLineMonitoringSystem::quit()
 {
     this->hide();
     this->close();
 }
-void BoilerFeedPowderOnLineMonitoringSystem::processConfigure(std::unordered_map<std::string, std::string> info_map)
+
+void BoilerFeedPowderOnLineMonitoringSystem::closeEvent(QCloseEvent* event)
 {
-    auto iter = info_map.begin();
-    while (iter != info_map.end())
-    {
-        std::cout << iter->first << " : " << iter->second << std::endl;
-        iter++;
-    }
+
+    emit stopThread();
+    _myThread.wait();
+    this->closeEvent(event);
 }
 
 void BoilerFeedPowderOnLineMonitoringSystem::processData(Task task)
@@ -70,21 +65,41 @@ void BoilerFeedPowderOnLineMonitoringSystem::fromWelToMianScreen()
 
 void BoilerFeedPowderOnLineMonitoringSystem::SystemSettingConnect()
 {
-    // �˳�
+    // 退出
     connect(ui->quit_action, &QAction::triggered, [=]()
             { emit quitSignals(); });
 
-    // �趨������
+    // 设定报警限
     connect(ui->give_an_alarm_action, &QAction::triggered, [=]()
             {
             this->hide();
+            _configure->myEmit(1);
+            _configure->myEmit(2);
             this->_system_setting->_give_an_alarm->show(); });
+    // 只是查看报警界限
     connect(this->_system_setting->_give_an_alarm, &GiveAnAlarm::fromGiveAnAlarmToMainScreenSignals, [=]()
             {
-            // ������һ������ؼ����ر�,�����Ƿ���Ҫ��һЩ����
-            qDebug() << "���������Ѿ�ȡ��";
+           
+            qDebug() << "";
             this->_system_setting->_give_an_alarm->hide();
             this->show(); });
+
+    // 修改报警界限
+    connect(this->_system_setting->_give_an_alarm, &GiveAnAlarm::fromGiveAnAlarmToMainScreenToSaveSignals, [=](std::string s1, std::string s2, std::string s3, std::string s4, std::string s5, std::string s6)
+        {
+
+            _configure->_info_map["lower_wind_speed_limit"] = s1;
+            _configure->_info_map["upper_wind_speed_limit"] = s2;
+            _configure->_info_map["lower_limit_of_pulverized_coal_concentration"] = s3;
+            _configure->_info_map["upper_limit_of_pulverized_coal_concentration"] = s4;
+            _configure->_info_map["lower_temperature_limit"] = s5;
+            _configure->_info_map["upper_temperature_limit"] = s6;
+            this->_system_setting->_give_an_alarm->hide();
+            this->show(); 
+        });
+    
+
+
 
     // ������ϵ������
     connect(ui->backrest_canal_action, &QAction::triggered, [=]()
@@ -202,4 +217,18 @@ void BoilerFeedPowderOnLineMonitoringSystem::DataProcessingConnect()
 
 void BoilerFeedPowderOnLineMonitoringSystem::AssistConnect()
 {
+}
+
+
+BoilerFeedPowderOnLineMonitoringSystem::~BoilerFeedPowderOnLineMonitoringSystem()
+{
+    std::cout << "~BoilerFeedPowderOnLineMonitoringSystem()" << std::endl;
+    delete _configure;
+    delete _welcomeScreen;
+    delete _verify_password;
+    delete _system_setting;
+    delete _status_view;
+    delete _data_processing;
+
+    delete ui;
 }
