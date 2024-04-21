@@ -4,6 +4,7 @@ Test03::Test03(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::Test03Class())
 {
+    this->setWindowTitle("ä½ å¥½");
     ui->setupUi(this);
 }
 
@@ -23,28 +24,28 @@ void Test03::paintEvent(QPaintEvent* event)
     penBias.setWidth(5);
     //penBias.setColor(QColor(0, 255, 0));
     painterBias.setPen(penBias);
-    painterBias.drawLine(1, 1, 20, 20); // ×óÉÏ
-    painterBias.drawLine(width, 0, (2 * width) / 3, (1 * height) / 3); // ÓÒÉÏ
-    painterBias.drawLine(0, height, (1 * width) / 3, (2 * height) / 3); // ×óÏÂ
-    painterBias.drawLine((2 * width) / 3, (2 * height) / 3, width, width); // ÓÒÏÂ
-    //QPainter painter(this); // ÕâÀïµÄthis²»ÊÇ¸¸¶ÔÏóÁË,ÕâÊÇÖ¸¶¨µÄ»­°å
+    painterBias.drawLine(1, 1, 20, 20); // å·¦ä¸Š
+    painterBias.drawLine(width, 0, (2 * width) / 3, (1 * height) / 3); // å³ä¸Š
+    painterBias.drawLine(0, height, (1 * width) / 3, (2 * height) / 3); // å·¦ä¸‹
+    painterBias.drawLine((2 * width) / 3, (2 * height) / 3, width, width); // å³ä¸‹
+    //QPainter painter(this); // è¿™é‡Œçš„thisä¸æ˜¯çˆ¶å¯¹è±¡äº†,è¿™æ˜¯æŒ‡å®šçš„ç”»æ¿
 
-    //// »­Ò»¸öÏß¶Î]
+    //// ç”»ä¸€ä¸ªçº¿æ®µ]
     //painter.drawLine(20, 20, 200, 20);
     //painter.drawLine(QPoint(20, 100), QPoint(200, 100));
 
 
-    //// »­Ò»¸ö¾ØĞÎ
+    //// ç”»ä¸€ä¸ªçŸ©å½¢
     //painter.drawRect(100,100, 300, 200);
 
-    //// »­Ô²ĞÎ
+    //// ç”»åœ†å½¢
 
     //painter.drawEllipse(100, 100, 20, 20);
 
-    //// »æÖÆÎÄ×Ö
+    //// ç»˜åˆ¶æ–‡å­—
     //painter.drawText(0, 100, "hello");
 
 
-    // ĞŞ¸Ä»æÖÆĞÎ×´µÄÑÕÉ«ĞÅÏ¢, °üº¬´ÖÏ¸, ÑÕÉ«, ÑùÊ½(ÊµÏß,ĞéÏß,µãÏß)
+    // ä¿®æ”¹ç»˜åˆ¶å½¢çŠ¶çš„é¢œè‰²ä¿¡æ¯, åŒ…å«ç²—ç»†, é¢œè‰², æ ·å¼(å®çº¿,è™šçº¿,ç‚¹çº¿)
 
 }

@@ -5,7 +5,7 @@ BackrestCanal::BackrestCanal(QWidget *parent)
 {
 	qDebug() << "BackrestCanal()";
 	ui->setupUi(this);
-	this->setWindowTitle("����һ�η翿����ϵ��");
+	this->setWindowTitle("你好");
 	connect(ui->modify_pushButton, &QPushButton::clicked, [=]()
 			{ emit fromBackrestCanalToMainScreenSignals(); });
 

@@ -1,23 +1,20 @@
 #include "mythread.h"
 
 MyThread::MyThread(QObject *parent)
-	: QThread(parent), _configure(new Configure(nullptr)), _flag(false)
+	: QThread(parent)
+	, _flag(false)
 {
 }
 void MyThread::stopProcessing()
 {
 	_flag = true;
-	/*this->quit();
-	this->wait();*/
 }
 MyThread::~MyThread()
 {
-	delete _configure;
 }
 
 void MyThread::run()
 {
-	_configure->configureIsReady();
 
 	while (!_flag)
 	{
@@ -33,9 +30,11 @@ void MyThread::run()
 			task.run();
 			emit produceSignals(task);
 			std::cout << "�� [ " << std::this_thread::get_id() << " ] ������һ������ " << std::endl;
-			sleep(2);
+			sleep(1);
 		}
 		ifs.close();
+		// 子进程退出
+		QThread::quit();
 	}
 }
 
