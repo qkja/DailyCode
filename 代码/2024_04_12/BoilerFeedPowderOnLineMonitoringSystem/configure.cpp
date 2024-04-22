@@ -28,6 +28,24 @@ void Configure::myEmit(int choice)
             _info_map["lower_limit_of_pulverized_coal_concentration"], _info_map["upper_limit_of_pulverized_coal_concentration"],
             _info_map["lower_temperature_limit"], _info_map["upper_temperature_limit"]);
     }
+    else if(choice == 3)
+    {
+        emit setPasswordSignals(_info_map["password"]);
+    }
+    else if(choice == 4)
+    {
+        emit setBackrestCanalSignals(_info_map["A1"], _info_map["A2"], _info_map["A3"], _info_map["A4"]
+        , _info_map["B1"], _info_map["B2"], _info_map["B3"], _info_map["B4"]
+        , _info_map["C1"], _info_map["C2"], _info_map["C3"], _info_map["C4"]
+        , _info_map["D1"], _info_map["D2"], _info_map["D3"], _info_map["D4"]
+        , _info_map["E1"], _info_map["E2"], _info_map["E3"], _info_map["E4"]
+        , _info_map["F1"], _info_map["F2"], _info_map["F3"], _info_map["F4"]);
+    }
+    else if (choice == 5)
+    {
+        emit setSpoutSignals(_info_map["area_of_spout_in_layer_A"], _info_map["area_of_spout_in_layer_B"], _info_map["area_of_spout_in_layer_C"], _info_map["area_of_spout_in_layer_D"], _info_map["area_of_spout_in_layer_E"], _info_map["area_of_spout_in_layer_F"], _info_map["pipe_nozzle_area"]);
+    }
+
    
 }
 

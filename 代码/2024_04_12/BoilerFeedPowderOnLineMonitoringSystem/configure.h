@@ -15,8 +15,17 @@ public:
 	void myEmit(int);              // 触发信号
 	void myConnect();              // 链接信号和槽
 signals:
-	void setAlarmLimitValueSignals(std::string, std::string, std::string, std::string, std::string, std::string);
-	void setAlarmLimitRangeSignals(std::string, std::string, std::string, std::string, std::string, std::string);
+	
+	void setAlarmLimitValueSignals(std::string, std::string, std::string, std::string, std::string, std::string);  // 设置报警限的范围
+	void setAlarmLimitRangeSignals(std::string, std::string, std::string, std::string, std::string, std::string);  // 设定报警限的确定值
+	void setPasswordSignals(std::string);  // 设置密码
+	void setBackrestCanalSignals(std::string, std::string, std::string, std::string
+		, std::string ,std::string, std::string, std::string
+		, std::string, std::string, std::string, std::string
+		, std::string, std::string, std::string, std::string
+		, std::string, std::string, std::string, std::string
+		, std::string, std::string, std::string, std::string);  // 设置靠背管系数
+	void setSpoutSignals(std::string, std::string, std::string, std::string, std::string, std::string, std::string); //设定喷口面积
 private:
 	void saveConfigurationFile();  // 保存文件
 	void init();                   // 初始化

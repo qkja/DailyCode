@@ -15,12 +15,22 @@ public:
 	~MyThread();
 	void run() override;
 signals:
+
+	void saveCoefficientSignals(std::string, std::string, std::string, std::string
+		, std::string, std::string, std::string, std::string
+		, std::string, std::string, std::string, std::string
+		, std::string, std::string, std::string, std::string
+		, std::string, std::string, std::string, std::string
+		, std::string, std::string, std::string, std::string
+	    , std::string, std::string, std::string, std::string, std::string, std::string, std::string);   // 得到系数
 	void produceSignals(Task);
 protected slots:
 	void stopProcessing();
 private:
 	void parse(Task *, const std::string &);
-
+	void slicedString(std::vector<std::string>*, const std::string&);// 切分字符串
 private:
     volatile bool _flag;
+	std::vector<double> _area;
+	std::vector<double> _coefficient_of_backrest_tube;
 };

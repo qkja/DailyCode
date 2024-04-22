@@ -27,10 +27,10 @@ public:
     QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout;
     QLabel *label;
-    QLineEdit *lineEdit;
+    QLineEdit *old_password;
     QHBoxLayout *horizontalLayout_2;
     QLabel *label_2;
-    QLineEdit *lineEdit_2;
+    QLineEdit *new_password;
     QWidget *layoutWidget_2;
     QHBoxLayout *horizontalLayout_3;
     QPushButton *identify_pushButton;
@@ -57,10 +57,10 @@ public:
 
         horizontalLayout->addWidget(label);
 
-        lineEdit = new QLineEdit(layoutWidget);
-        lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
+        old_password = new QLineEdit(layoutWidget);
+        old_password->setObjectName(QString::fromUtf8("old_password"));
 
-        horizontalLayout->addWidget(lineEdit);
+        horizontalLayout->addWidget(old_password);
 
 
         verticalLayout->addLayout(horizontalLayout);
@@ -73,10 +73,10 @@ public:
 
         horizontalLayout_2->addWidget(label_2);
 
-        lineEdit_2 = new QLineEdit(layoutWidget);
-        lineEdit_2->setObjectName(QString::fromUtf8("lineEdit_2"));
+        new_password = new QLineEdit(layoutWidget);
+        new_password->setObjectName(QString::fromUtf8("new_password"));
 
-        horizontalLayout_2->addWidget(lineEdit_2);
+        horizontalLayout_2->addWidget(new_password);
 
 
         verticalLayout->addLayout(horizontalLayout_2);

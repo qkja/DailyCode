@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_WordOfCommand_t {
-    QByteArrayData data[3];
-    char stringdata0[52];
+    QByteArrayData data[5];
+    char stringdata0[107];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -34,11 +34,14 @@ static const qt_meta_stringdata_WordOfCommand_t qt_meta_stringdata_WordOfCommand
     {
 QT_MOC_LITERAL(0, 0, 13), // "WordOfCommand"
 QT_MOC_LITERAL(1, 14, 36), // "fromWordOfCommandToMainScreen..."
-QT_MOC_LITERAL(2, 51, 0) // ""
+QT_MOC_LITERAL(2, 51, 0), // ""
+QT_MOC_LITERAL(3, 52, 42), // "fromWordOfCommandToMainScreen..."
+QT_MOC_LITERAL(4, 95, 11) // "std::string"
 
     },
     "WordOfCommand\0fromWordOfCommandToMainScreenSignals\0"
-    ""
+    "\0fromWordOfCommandToMainScreenToSaveSignals\0"
+    "std::string"
 };
 #undef QT_MOC_LITERAL
 
@@ -48,18 +51,20 @@ static const uint qt_meta_data_WordOfCommand[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-       1,   14, // methods
+       2,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       1,       // signalCount
+       2,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    0,   19,    2, 0x06 /* Public */,
+       1,    0,   24,    2, 0x06 /* Public */,
+       3,    1,   25,    2, 0x06 /* Public */,
 
  // signals: parameters
     QMetaType::Void,
+    QMetaType::Void, 0x80000000 | 4,    2,
 
        0        // eod
 };
@@ -71,6 +76,7 @@ void WordOfCommand::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->fromWordOfCommandToMainScreenSignals(); break;
+        case 1: _t->fromWordOfCommandToMainScreenToSaveSignals((*reinterpret_cast< std::string(*)>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -82,8 +88,14 @@ void WordOfCommand::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
                 return;
             }
         }
+        {
+            using _t = void (WordOfCommand::*)(std::string );
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&WordOfCommand::fromWordOfCommandToMainScreenToSaveSignals)) {
+                *result = 1;
+                return;
+            }
+        }
     }
-    Q_UNUSED(_a);
 }
 
 QT_INIT_METAOBJECT const QMetaObject WordOfCommand::staticMetaObject = { {
@@ -115,13 +127,13 @@ int WordOfCommand::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 1)
+        if (_id < 2)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 1;
+        _id -= 2;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 1)
+        if (_id < 2)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 1;
+        _id -= 2;
     }
     return _id;
 }
@@ -130,6 +142,13 @@ int WordOfCommand::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 void WordOfCommand::fromWordOfCommandToMainScreenSignals()
 {
     QMetaObject::activate(this, &staticMetaObject, 0, nullptr);
+}
+
+// SIGNAL 1
+void WordOfCommand::fromWordOfCommandToMainScreenToSaveSignals(std::string _t1)
+{
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
+    QMetaObject::activate(this, &staticMetaObject, 1, _a);
 }
 QT_WARNING_POP
 QT_END_MOC_NAMESPACE

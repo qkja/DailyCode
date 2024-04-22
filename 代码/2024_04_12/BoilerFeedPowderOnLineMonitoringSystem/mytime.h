@@ -3,6 +3,7 @@
 #include <QWidget>
 #include "ui_mytime.h"
 #include <iostream>
+#include <qtimer.h>
 
 #if _MSC_VER >= 1600
 #pragma execution_character_set("utf-8")
@@ -26,4 +27,5 @@ signals:
 
 private:
 	Ui::MyTimeClass *ui;
+	QTimer* _timer;
 };

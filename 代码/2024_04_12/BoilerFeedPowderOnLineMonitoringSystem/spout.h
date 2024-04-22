@@ -3,9 +3,7 @@
 
 #include <QWidget>
 #include "ui_spout.h"
-#if _MSC_VER >= 1600
-#pragma execution_character_set("utf-8")
-#endif
+#include "configure.h"
 QT_BEGIN_NAMESPACE
 namespace Ui
 {
@@ -18,11 +16,14 @@ class Spout : public QWidget
 	Q_OBJECT
 
 public:
-	Spout(QWidget *parent = nullptr);
+	Spout(QWidget *parent = nullptr, Configure* configure = nullptr);
 	~Spout();
+private:
+	void setReadOnly(bool); // lable 控件是否可以被修改
 signals:
 	void fromSpoutToMianScreenSignals();
 
 private:
 	Ui::SpoutClass *ui;
+	Configure* _configure;
 };

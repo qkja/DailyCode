@@ -24,263 +24,471 @@ class Ui_BackrestCanalClass
 {
 public:
     QPushButton *modify_pushButton;
-    QWidget *layoutWidget;
-    QVBoxLayout *verticalLayout;
-    QHBoxLayout *horizontalLayout_5;
+    QLabel *label;
+    QPushButton *quit_pushButton;
+    QPushButton *save_pushButton;
     QWidget *widget;
-    QHBoxLayout *horizontalLayout;
-    QLabel *label_2;
-    QLineEdit *lineEdit;
-    QWidget *widget_2;
-    QHBoxLayout *horizontalLayout_2;
-    QLabel *label_3;
-    QLineEdit *lineEdit_2;
-    QWidget *widget_3;
-    QHBoxLayout *horizontalLayout_3;
-    QLabel *label_4;
-    QLineEdit *lineEdit_3;
-    QWidget *widget_4;
-    QHBoxLayout *horizontalLayout_4;
-    QLabel *label_5;
-    QLineEdit *lineEdit_4;
-    QHBoxLayout *horizontalLayout_6;
-    QWidget *widget_5;
-    QHBoxLayout *horizontalLayout_7;
-    QLabel *label_6;
-    QLineEdit *lineEdit_5;
-    QWidget *widget_6;
-    QHBoxLayout *horizontalLayout_8;
-    QLabel *label_7;
-    QLineEdit *lineEdit_6;
-    QWidget *widget_7;
-    QHBoxLayout *horizontalLayout_9;
-    QLabel *label_8;
-    QLineEdit *lineEdit_7;
-    QWidget *widget_8;
-    QHBoxLayout *horizontalLayout_10;
-    QLabel *label_9;
-    QLineEdit *lineEdit_8;
+    QVBoxLayout *verticalLayout;
+    QHBoxLayout *horizontalLayout_41;
+    QWidget *widget_33;
+    QHBoxLayout *horizontalLayout_42;
+    QLabel *label_34;
+    QLineEdit *_a1;
+    QWidget *widget_34;
+    QHBoxLayout *horizontalLayout_43;
+    QLabel *label_35;
+    QLineEdit *_a2;
+    QWidget *widget_35;
+    QHBoxLayout *horizontalLayout_44;
+    QLabel *label_36;
+    QLineEdit *_a3;
+    QWidget *widget_36;
+    QHBoxLayout *horizontalLayout_45;
+    QLabel *label_37;
+    QLineEdit *_a4;
+    QHBoxLayout *horizontalLayout_11;
+    QWidget *widget_9;
+    QHBoxLayout *horizontalLayout_12;
+    QLabel *label_10;
+    QLineEdit *_b1;
+    QWidget *widget_10;
+    QHBoxLayout *horizontalLayout_13;
+    QLabel *label_11;
+    QLineEdit *_b2;
+    QWidget *widget_11;
+    QHBoxLayout *horizontalLayout_14;
+    QLabel *label_12;
+    QLineEdit *_b3;
+    QWidget *widget_12;
+    QHBoxLayout *horizontalLayout_15;
+    QLabel *label_13;
+    QLineEdit *_b4;
+    QHBoxLayout *horizontalLayout_16;
+    QWidget *widget_13;
+    QHBoxLayout *horizontalLayout_17;
+    QLabel *label_14;
+    QLineEdit *_c1;
+    QWidget *widget_14;
+    QHBoxLayout *horizontalLayout_18;
+    QLabel *label_15;
+    QLineEdit *_c2;
+    QWidget *widget_15;
+    QHBoxLayout *horizontalLayout_19;
+    QLabel *label_16;
+    QLineEdit *_c3;
+    QWidget *wig;
+    QHBoxLayout *horizontalLayout_20;
+    QLabel *_c4_2;
+    QLineEdit *_c4;
+    QHBoxLayout *horizontalLayout_21;
+    QWidget *widget_17;
+    QHBoxLayout *horizontalLayout_22;
+    QLabel *label_18;
+    QLineEdit *_d1;
+    QWidget *widget_18;
+    QHBoxLayout *horizontalLayout_23;
+    QLabel *label_19;
+    QLineEdit *_d2;
+    QWidget *wid;
+    QHBoxLayout *horizontalLayout_24;
+    QLabel *label_20;
+    QLineEdit *_d3;
+    QWidget *widget_20;
+    QHBoxLayout *horizontalLayout_25;
+    QLabel *label_21;
+    QLineEdit *_d4;
     QHBoxLayout *horizontalLayout_31;
     QWidget *widget_25;
     QHBoxLayout *horizontalLayout_32;
     QLabel *label_26;
-    QLineEdit *lineEdit_25;
+    QLineEdit *_e1;
     QWidget *widget_26;
     QHBoxLayout *horizontalLayout_33;
     QLabel *label_27;
-    QLineEdit *lineEdit_26;
+    QLineEdit *_e2;
     QWidget *widget_27;
     QHBoxLayout *horizontalLayout_34;
     QLabel *label_28;
-    QLineEdit *lineEdit_27;
+    QLineEdit *_e3;
     QWidget *widget_28;
     QHBoxLayout *horizontalLayout_35;
     QLabel *label_29;
-    QLineEdit *lineEdit_28;
-    QHBoxLayout *horizontalLayout_26;
-    QWidget *widget_21;
-    QHBoxLayout *horizontalLayout_27;
-    QLabel *label_22;
-    QLineEdit *lineEdit_21;
-    QWidget *widget_22;
-    QHBoxLayout *horizontalLayout_28;
-    QLabel *label_23;
-    QLineEdit *lineEdit_22;
-    QWidget *widget_23;
-    QHBoxLayout *horizontalLayout_29;
-    QLabel *label_24;
-    QLineEdit *lineEdit_23;
-    QWidget *widget_24;
-    QHBoxLayout *horizontalLayout_30;
-    QLabel *label_25;
-    QLineEdit *lineEdit_24;
-    QLabel *label;
-    QPushButton *quit_pushButton;
+    QLineEdit *_e4;
+    QHBoxLayout *horizontalLayout_36;
+    QWidget *widget_29;
+    QHBoxLayout *horizontalLayout_37;
+    QLabel *label_30;
+    QLineEdit *_f1;
+    QWidget *widget_30;
+    QHBoxLayout *horizontalLayout_38;
+    QLabel *label_31;
+    QLineEdit *_f2;
+    QWidget *widget_31;
+    QHBoxLayout *horizontalLayout_39;
+    QLabel *label_32;
+    QLineEdit *_f3;
+    QWidget *widget_32;
+    QHBoxLayout *horizontalLayout_40;
+    QLabel *label_33;
+    QLineEdit *_f4;
 
     void setupUi(QWidget *BackrestCanalClass)
     {
         if (BackrestCanalClass->objectName().isEmpty())
             BackrestCanalClass->setObjectName(QString::fromUtf8("BackrestCanalClass"));
-        BackrestCanalClass->resize(1277, 646);
+        BackrestCanalClass->resize(1357, 781);
         modify_pushButton = new QPushButton(BackrestCanalClass);
         modify_pushButton->setObjectName(QString::fromUtf8("modify_pushButton"));
-        modify_pushButton->setGeometry(QRect(400, 530, 161, 71));
-        layoutWidget = new QWidget(BackrestCanalClass);
-        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(160, 120, 1011, 361));
-        verticalLayout = new QVBoxLayout(layoutWidget);
+        modify_pushButton->setGeometry(QRect(200, 610, 161, 71));
+        label = new QLabel(BackrestCanalClass);
+        label->setObjectName(QString::fromUtf8("label"));
+        label->setGeometry(QRect(460, 0, 371, 101));
+        quit_pushButton = new QPushButton(BackrestCanalClass);
+        quit_pushButton->setObjectName(QString::fromUtf8("quit_pushButton"));
+        quit_pushButton->setGeometry(QRect(760, 600, 161, 71));
+        save_pushButton = new QPushButton(BackrestCanalClass);
+        save_pushButton->setObjectName(QString::fromUtf8("save_pushButton"));
+        save_pushButton->setGeometry(QRect(500, 610, 161, 71));
+        widget = new QWidget(BackrestCanalClass);
+        widget->setObjectName(QString::fromUtf8("widget"));
+        widget->setGeometry(QRect(91, 151, 1081, 401));
+        verticalLayout = new QVBoxLayout(widget);
         verticalLayout->setSpacing(6);
         verticalLayout->setContentsMargins(11, 11, 11, 11);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
-        horizontalLayout_5 = new QHBoxLayout();
-        horizontalLayout_5->setSpacing(6);
-        horizontalLayout_5->setObjectName(QString::fromUtf8("horizontalLayout_5"));
-        widget = new QWidget(layoutWidget);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        horizontalLayout = new QHBoxLayout(widget);
-        horizontalLayout->setSpacing(6);
-        horizontalLayout->setContentsMargins(11, 11, 11, 11);
-        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-        label_2 = new QLabel(widget);
-        label_2->setObjectName(QString::fromUtf8("label_2"));
+        horizontalLayout_41 = new QHBoxLayout();
+        horizontalLayout_41->setSpacing(6);
+        horizontalLayout_41->setObjectName(QString::fromUtf8("horizontalLayout_41"));
+        widget_33 = new QWidget(widget);
+        widget_33->setObjectName(QString::fromUtf8("widget_33"));
+        horizontalLayout_42 = new QHBoxLayout(widget_33);
+        horizontalLayout_42->setSpacing(6);
+        horizontalLayout_42->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_42->setObjectName(QString::fromUtf8("horizontalLayout_42"));
+        label_34 = new QLabel(widget_33);
+        label_34->setObjectName(QString::fromUtf8("label_34"));
 
-        horizontalLayout->addWidget(label_2);
+        horizontalLayout_42->addWidget(label_34);
 
-        lineEdit = new QLineEdit(widget);
-        lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
+        _a1 = new QLineEdit(widget_33);
+        _a1->setObjectName(QString::fromUtf8("_a1"));
 
-        horizontalLayout->addWidget(lineEdit);
-
-
-        horizontalLayout_5->addWidget(widget);
-
-        widget_2 = new QWidget(layoutWidget);
-        widget_2->setObjectName(QString::fromUtf8("widget_2"));
-        horizontalLayout_2 = new QHBoxLayout(widget_2);
-        horizontalLayout_2->setSpacing(6);
-        horizontalLayout_2->setContentsMargins(11, 11, 11, 11);
-        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
-        label_3 = new QLabel(widget_2);
-        label_3->setObjectName(QString::fromUtf8("label_3"));
-
-        horizontalLayout_2->addWidget(label_3);
-
-        lineEdit_2 = new QLineEdit(widget_2);
-        lineEdit_2->setObjectName(QString::fromUtf8("lineEdit_2"));
-
-        horizontalLayout_2->addWidget(lineEdit_2);
+        horizontalLayout_42->addWidget(_a1);
 
 
-        horizontalLayout_5->addWidget(widget_2);
+        horizontalLayout_41->addWidget(widget_33);
 
-        widget_3 = new QWidget(layoutWidget);
-        widget_3->setObjectName(QString::fromUtf8("widget_3"));
-        horizontalLayout_3 = new QHBoxLayout(widget_3);
-        horizontalLayout_3->setSpacing(6);
-        horizontalLayout_3->setContentsMargins(11, 11, 11, 11);
-        horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
-        label_4 = new QLabel(widget_3);
-        label_4->setObjectName(QString::fromUtf8("label_4"));
+        widget_34 = new QWidget(widget);
+        widget_34->setObjectName(QString::fromUtf8("widget_34"));
+        horizontalLayout_43 = new QHBoxLayout(widget_34);
+        horizontalLayout_43->setSpacing(6);
+        horizontalLayout_43->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_43->setObjectName(QString::fromUtf8("horizontalLayout_43"));
+        label_35 = new QLabel(widget_34);
+        label_35->setObjectName(QString::fromUtf8("label_35"));
 
-        horizontalLayout_3->addWidget(label_4);
+        horizontalLayout_43->addWidget(label_35);
 
-        lineEdit_3 = new QLineEdit(widget_3);
-        lineEdit_3->setObjectName(QString::fromUtf8("lineEdit_3"));
+        _a2 = new QLineEdit(widget_34);
+        _a2->setObjectName(QString::fromUtf8("_a2"));
 
-        horizontalLayout_3->addWidget(lineEdit_3);
-
-
-        horizontalLayout_5->addWidget(widget_3);
-
-        widget_4 = new QWidget(layoutWidget);
-        widget_4->setObjectName(QString::fromUtf8("widget_4"));
-        horizontalLayout_4 = new QHBoxLayout(widget_4);
-        horizontalLayout_4->setSpacing(6);
-        horizontalLayout_4->setContentsMargins(11, 11, 11, 11);
-        horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
-        label_5 = new QLabel(widget_4);
-        label_5->setObjectName(QString::fromUtf8("label_5"));
-
-        horizontalLayout_4->addWidget(label_5);
-
-        lineEdit_4 = new QLineEdit(widget_4);
-        lineEdit_4->setObjectName(QString::fromUtf8("lineEdit_4"));
-
-        horizontalLayout_4->addWidget(lineEdit_4);
+        horizontalLayout_43->addWidget(_a2);
 
 
-        horizontalLayout_5->addWidget(widget_4);
+        horizontalLayout_41->addWidget(widget_34);
+
+        widget_35 = new QWidget(widget);
+        widget_35->setObjectName(QString::fromUtf8("widget_35"));
+        horizontalLayout_44 = new QHBoxLayout(widget_35);
+        horizontalLayout_44->setSpacing(6);
+        horizontalLayout_44->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_44->setObjectName(QString::fromUtf8("horizontalLayout_44"));
+        label_36 = new QLabel(widget_35);
+        label_36->setObjectName(QString::fromUtf8("label_36"));
+
+        horizontalLayout_44->addWidget(label_36);
+
+        _a3 = new QLineEdit(widget_35);
+        _a3->setObjectName(QString::fromUtf8("_a3"));
+
+        horizontalLayout_44->addWidget(_a3);
 
 
-        verticalLayout->addLayout(horizontalLayout_5);
+        horizontalLayout_41->addWidget(widget_35);
 
-        horizontalLayout_6 = new QHBoxLayout();
-        horizontalLayout_6->setSpacing(6);
-        horizontalLayout_6->setObjectName(QString::fromUtf8("horizontalLayout_6"));
-        widget_5 = new QWidget(layoutWidget);
-        widget_5->setObjectName(QString::fromUtf8("widget_5"));
-        horizontalLayout_7 = new QHBoxLayout(widget_5);
-        horizontalLayout_7->setSpacing(6);
-        horizontalLayout_7->setContentsMargins(11, 11, 11, 11);
-        horizontalLayout_7->setObjectName(QString::fromUtf8("horizontalLayout_7"));
-        label_6 = new QLabel(widget_5);
-        label_6->setObjectName(QString::fromUtf8("label_6"));
+        widget_36 = new QWidget(widget);
+        widget_36->setObjectName(QString::fromUtf8("widget_36"));
+        horizontalLayout_45 = new QHBoxLayout(widget_36);
+        horizontalLayout_45->setSpacing(6);
+        horizontalLayout_45->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_45->setObjectName(QString::fromUtf8("horizontalLayout_45"));
+        label_37 = new QLabel(widget_36);
+        label_37->setObjectName(QString::fromUtf8("label_37"));
 
-        horizontalLayout_7->addWidget(label_6);
+        horizontalLayout_45->addWidget(label_37);
 
-        lineEdit_5 = new QLineEdit(widget_5);
-        lineEdit_5->setObjectName(QString::fromUtf8("lineEdit_5"));
+        _a4 = new QLineEdit(widget_36);
+        _a4->setObjectName(QString::fromUtf8("_a4"));
 
-        horizontalLayout_7->addWidget(lineEdit_5);
+        horizontalLayout_45->addWidget(_a4);
 
 
-        horizontalLayout_6->addWidget(widget_5);
-
-        widget_6 = new QWidget(layoutWidget);
-        widget_6->setObjectName(QString::fromUtf8("widget_6"));
-        horizontalLayout_8 = new QHBoxLayout(widget_6);
-        horizontalLayout_8->setSpacing(6);
-        horizontalLayout_8->setContentsMargins(11, 11, 11, 11);
-        horizontalLayout_8->setObjectName(QString::fromUtf8("horizontalLayout_8"));
-        label_7 = new QLabel(widget_6);
-        label_7->setObjectName(QString::fromUtf8("label_7"));
-
-        horizontalLayout_8->addWidget(label_7);
-
-        lineEdit_6 = new QLineEdit(widget_6);
-        lineEdit_6->setObjectName(QString::fromUtf8("lineEdit_6"));
-
-        horizontalLayout_8->addWidget(lineEdit_6);
+        horizontalLayout_41->addWidget(widget_36);
 
 
-        horizontalLayout_6->addWidget(widget_6);
+        verticalLayout->addLayout(horizontalLayout_41);
 
-        widget_7 = new QWidget(layoutWidget);
-        widget_7->setObjectName(QString::fromUtf8("widget_7"));
-        horizontalLayout_9 = new QHBoxLayout(widget_7);
-        horizontalLayout_9->setSpacing(6);
-        horizontalLayout_9->setContentsMargins(11, 11, 11, 11);
-        horizontalLayout_9->setObjectName(QString::fromUtf8("horizontalLayout_9"));
-        label_8 = new QLabel(widget_7);
-        label_8->setObjectName(QString::fromUtf8("label_8"));
+        horizontalLayout_11 = new QHBoxLayout();
+        horizontalLayout_11->setSpacing(6);
+        horizontalLayout_11->setObjectName(QString::fromUtf8("horizontalLayout_11"));
+        widget_9 = new QWidget(widget);
+        widget_9->setObjectName(QString::fromUtf8("widget_9"));
+        horizontalLayout_12 = new QHBoxLayout(widget_9);
+        horizontalLayout_12->setSpacing(6);
+        horizontalLayout_12->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_12->setObjectName(QString::fromUtf8("horizontalLayout_12"));
+        label_10 = new QLabel(widget_9);
+        label_10->setObjectName(QString::fromUtf8("label_10"));
 
-        horizontalLayout_9->addWidget(label_8);
+        horizontalLayout_12->addWidget(label_10);
 
-        lineEdit_7 = new QLineEdit(widget_7);
-        lineEdit_7->setObjectName(QString::fromUtf8("lineEdit_7"));
+        _b1 = new QLineEdit(widget_9);
+        _b1->setObjectName(QString::fromUtf8("_b1"));
 
-        horizontalLayout_9->addWidget(lineEdit_7);
-
-
-        horizontalLayout_6->addWidget(widget_7);
-
-        widget_8 = new QWidget(layoutWidget);
-        widget_8->setObjectName(QString::fromUtf8("widget_8"));
-        horizontalLayout_10 = new QHBoxLayout(widget_8);
-        horizontalLayout_10->setSpacing(6);
-        horizontalLayout_10->setContentsMargins(11, 11, 11, 11);
-        horizontalLayout_10->setObjectName(QString::fromUtf8("horizontalLayout_10"));
-        label_9 = new QLabel(widget_8);
-        label_9->setObjectName(QString::fromUtf8("label_9"));
-
-        horizontalLayout_10->addWidget(label_9);
-
-        lineEdit_8 = new QLineEdit(widget_8);
-        lineEdit_8->setObjectName(QString::fromUtf8("lineEdit_8"));
-
-        horizontalLayout_10->addWidget(lineEdit_8);
+        horizontalLayout_12->addWidget(_b1);
 
 
-        horizontalLayout_6->addWidget(widget_8);
+        horizontalLayout_11->addWidget(widget_9);
+
+        widget_10 = new QWidget(widget);
+        widget_10->setObjectName(QString::fromUtf8("widget_10"));
+        horizontalLayout_13 = new QHBoxLayout(widget_10);
+        horizontalLayout_13->setSpacing(6);
+        horizontalLayout_13->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_13->setObjectName(QString::fromUtf8("horizontalLayout_13"));
+        label_11 = new QLabel(widget_10);
+        label_11->setObjectName(QString::fromUtf8("label_11"));
+
+        horizontalLayout_13->addWidget(label_11);
+
+        _b2 = new QLineEdit(widget_10);
+        _b2->setObjectName(QString::fromUtf8("_b2"));
+
+        horizontalLayout_13->addWidget(_b2);
 
 
-        verticalLayout->addLayout(horizontalLayout_6);
+        horizontalLayout_11->addWidget(widget_10);
+
+        widget_11 = new QWidget(widget);
+        widget_11->setObjectName(QString::fromUtf8("widget_11"));
+        horizontalLayout_14 = new QHBoxLayout(widget_11);
+        horizontalLayout_14->setSpacing(6);
+        horizontalLayout_14->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_14->setObjectName(QString::fromUtf8("horizontalLayout_14"));
+        label_12 = new QLabel(widget_11);
+        label_12->setObjectName(QString::fromUtf8("label_12"));
+
+        horizontalLayout_14->addWidget(label_12);
+
+        _b3 = new QLineEdit(widget_11);
+        _b3->setObjectName(QString::fromUtf8("_b3"));
+
+        horizontalLayout_14->addWidget(_b3);
+
+
+        horizontalLayout_11->addWidget(widget_11);
+
+        widget_12 = new QWidget(widget);
+        widget_12->setObjectName(QString::fromUtf8("widget_12"));
+        horizontalLayout_15 = new QHBoxLayout(widget_12);
+        horizontalLayout_15->setSpacing(6);
+        horizontalLayout_15->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_15->setObjectName(QString::fromUtf8("horizontalLayout_15"));
+        label_13 = new QLabel(widget_12);
+        label_13->setObjectName(QString::fromUtf8("label_13"));
+
+        horizontalLayout_15->addWidget(label_13);
+
+        _b4 = new QLineEdit(widget_12);
+        _b4->setObjectName(QString::fromUtf8("_b4"));
+
+        horizontalLayout_15->addWidget(_b4);
+
+
+        horizontalLayout_11->addWidget(widget_12);
+
+
+        verticalLayout->addLayout(horizontalLayout_11);
+
+        horizontalLayout_16 = new QHBoxLayout();
+        horizontalLayout_16->setSpacing(6);
+        horizontalLayout_16->setObjectName(QString::fromUtf8("horizontalLayout_16"));
+        widget_13 = new QWidget(widget);
+        widget_13->setObjectName(QString::fromUtf8("widget_13"));
+        horizontalLayout_17 = new QHBoxLayout(widget_13);
+        horizontalLayout_17->setSpacing(6);
+        horizontalLayout_17->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_17->setObjectName(QString::fromUtf8("horizontalLayout_17"));
+        label_14 = new QLabel(widget_13);
+        label_14->setObjectName(QString::fromUtf8("label_14"));
+
+        horizontalLayout_17->addWidget(label_14);
+
+        _c1 = new QLineEdit(widget_13);
+        _c1->setObjectName(QString::fromUtf8("_c1"));
+
+        horizontalLayout_17->addWidget(_c1);
+
+
+        horizontalLayout_16->addWidget(widget_13);
+
+        widget_14 = new QWidget(widget);
+        widget_14->setObjectName(QString::fromUtf8("widget_14"));
+        horizontalLayout_18 = new QHBoxLayout(widget_14);
+        horizontalLayout_18->setSpacing(6);
+        horizontalLayout_18->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_18->setObjectName(QString::fromUtf8("horizontalLayout_18"));
+        label_15 = new QLabel(widget_14);
+        label_15->setObjectName(QString::fromUtf8("label_15"));
+
+        horizontalLayout_18->addWidget(label_15);
+
+        _c2 = new QLineEdit(widget_14);
+        _c2->setObjectName(QString::fromUtf8("_c2"));
+
+        horizontalLayout_18->addWidget(_c2);
+
+
+        horizontalLayout_16->addWidget(widget_14);
+
+        widget_15 = new QWidget(widget);
+        widget_15->setObjectName(QString::fromUtf8("widget_15"));
+        horizontalLayout_19 = new QHBoxLayout(widget_15);
+        horizontalLayout_19->setSpacing(6);
+        horizontalLayout_19->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_19->setObjectName(QString::fromUtf8("horizontalLayout_19"));
+        label_16 = new QLabel(widget_15);
+        label_16->setObjectName(QString::fromUtf8("label_16"));
+
+        horizontalLayout_19->addWidget(label_16);
+
+        _c3 = new QLineEdit(widget_15);
+        _c3->setObjectName(QString::fromUtf8("_c3"));
+
+        horizontalLayout_19->addWidget(_c3);
+
+
+        horizontalLayout_16->addWidget(widget_15);
+
+        wig = new QWidget(widget);
+        wig->setObjectName(QString::fromUtf8("wig"));
+        horizontalLayout_20 = new QHBoxLayout(wig);
+        horizontalLayout_20->setSpacing(6);
+        horizontalLayout_20->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_20->setObjectName(QString::fromUtf8("horizontalLayout_20"));
+        _c4_2 = new QLabel(wig);
+        _c4_2->setObjectName(QString::fromUtf8("_c4_2"));
+
+        horizontalLayout_20->addWidget(_c4_2);
+
+        _c4 = new QLineEdit(wig);
+        _c4->setObjectName(QString::fromUtf8("_c4"));
+
+        horizontalLayout_20->addWidget(_c4);
+
+
+        horizontalLayout_16->addWidget(wig);
+
+
+        verticalLayout->addLayout(horizontalLayout_16);
+
+        horizontalLayout_21 = new QHBoxLayout();
+        horizontalLayout_21->setSpacing(6);
+        horizontalLayout_21->setObjectName(QString::fromUtf8("horizontalLayout_21"));
+        widget_17 = new QWidget(widget);
+        widget_17->setObjectName(QString::fromUtf8("widget_17"));
+        horizontalLayout_22 = new QHBoxLayout(widget_17);
+        horizontalLayout_22->setSpacing(6);
+        horizontalLayout_22->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_22->setObjectName(QString::fromUtf8("horizontalLayout_22"));
+        label_18 = new QLabel(widget_17);
+        label_18->setObjectName(QString::fromUtf8("label_18"));
+
+        horizontalLayout_22->addWidget(label_18);
+
+        _d1 = new QLineEdit(widget_17);
+        _d1->setObjectName(QString::fromUtf8("_d1"));
+
+        horizontalLayout_22->addWidget(_d1);
+
+
+        horizontalLayout_21->addWidget(widget_17);
+
+        widget_18 = new QWidget(widget);
+        widget_18->setObjectName(QString::fromUtf8("widget_18"));
+        horizontalLayout_23 = new QHBoxLayout(widget_18);
+        horizontalLayout_23->setSpacing(6);
+        horizontalLayout_23->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_23->setObjectName(QString::fromUtf8("horizontalLayout_23"));
+        label_19 = new QLabel(widget_18);
+        label_19->setObjectName(QString::fromUtf8("label_19"));
+
+        horizontalLayout_23->addWidget(label_19);
+
+        _d2 = new QLineEdit(widget_18);
+        _d2->setObjectName(QString::fromUtf8("_d2"));
+
+        horizontalLayout_23->addWidget(_d2);
+
+
+        horizontalLayout_21->addWidget(widget_18);
+
+        wid = new QWidget(widget);
+        wid->setObjectName(QString::fromUtf8("wid"));
+        horizontalLayout_24 = new QHBoxLayout(wid);
+        horizontalLayout_24->setSpacing(6);
+        horizontalLayout_24->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_24->setObjectName(QString::fromUtf8("horizontalLayout_24"));
+        label_20 = new QLabel(wid);
+        label_20->setObjectName(QString::fromUtf8("label_20"));
+
+        horizontalLayout_24->addWidget(label_20);
+
+        _d3 = new QLineEdit(wid);
+        _d3->setObjectName(QString::fromUtf8("_d3"));
+
+        horizontalLayout_24->addWidget(_d3);
+
+
+        horizontalLayout_21->addWidget(wid);
+
+        widget_20 = new QWidget(widget);
+        widget_20->setObjectName(QString::fromUtf8("widget_20"));
+        horizontalLayout_25 = new QHBoxLayout(widget_20);
+        horizontalLayout_25->setSpacing(6);
+        horizontalLayout_25->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_25->setObjectName(QString::fromUtf8("horizontalLayout_25"));
+        label_21 = new QLabel(widget_20);
+        label_21->setObjectName(QString::fromUtf8("label_21"));
+
+        horizontalLayout_25->addWidget(label_21);
+
+        _d4 = new QLineEdit(widget_20);
+        _d4->setObjectName(QString::fromUtf8("_d4"));
+
+        horizontalLayout_25->addWidget(_d4);
+
+
+        horizontalLayout_21->addWidget(widget_20);
+
+
+        verticalLayout->addLayout(horizontalLayout_21);
 
         horizontalLayout_31 = new QHBoxLayout();
         horizontalLayout_31->setSpacing(6);
         horizontalLayout_31->setObjectName(QString::fromUtf8("horizontalLayout_31"));
-        widget_25 = new QWidget(layoutWidget);
+        widget_25 = new QWidget(widget);
         widget_25->setObjectName(QString::fromUtf8("widget_25"));
         horizontalLayout_32 = new QHBoxLayout(widget_25);
         horizontalLayout_32->setSpacing(6);
@@ -291,15 +499,15 @@ public:
 
         horizontalLayout_32->addWidget(label_26);
 
-        lineEdit_25 = new QLineEdit(widget_25);
-        lineEdit_25->setObjectName(QString::fromUtf8("lineEdit_25"));
+        _e1 = new QLineEdit(widget_25);
+        _e1->setObjectName(QString::fromUtf8("_e1"));
 
-        horizontalLayout_32->addWidget(lineEdit_25);
+        horizontalLayout_32->addWidget(_e1);
 
 
         horizontalLayout_31->addWidget(widget_25);
 
-        widget_26 = new QWidget(layoutWidget);
+        widget_26 = new QWidget(widget);
         widget_26->setObjectName(QString::fromUtf8("widget_26"));
         horizontalLayout_33 = new QHBoxLayout(widget_26);
         horizontalLayout_33->setSpacing(6);
@@ -310,15 +518,15 @@ public:
 
         horizontalLayout_33->addWidget(label_27);
 
-        lineEdit_26 = new QLineEdit(widget_26);
-        lineEdit_26->setObjectName(QString::fromUtf8("lineEdit_26"));
+        _e2 = new QLineEdit(widget_26);
+        _e2->setObjectName(QString::fromUtf8("_e2"));
 
-        horizontalLayout_33->addWidget(lineEdit_26);
+        horizontalLayout_33->addWidget(_e2);
 
 
         horizontalLayout_31->addWidget(widget_26);
 
-        widget_27 = new QWidget(layoutWidget);
+        widget_27 = new QWidget(widget);
         widget_27->setObjectName(QString::fromUtf8("widget_27"));
         horizontalLayout_34 = new QHBoxLayout(widget_27);
         horizontalLayout_34->setSpacing(6);
@@ -329,15 +537,15 @@ public:
 
         horizontalLayout_34->addWidget(label_28);
 
-        lineEdit_27 = new QLineEdit(widget_27);
-        lineEdit_27->setObjectName(QString::fromUtf8("lineEdit_27"));
+        _e3 = new QLineEdit(widget_27);
+        _e3->setObjectName(QString::fromUtf8("_e3"));
 
-        horizontalLayout_34->addWidget(lineEdit_27);
+        horizontalLayout_34->addWidget(_e3);
 
 
         horizontalLayout_31->addWidget(widget_27);
 
-        widget_28 = new QWidget(layoutWidget);
+        widget_28 = new QWidget(widget);
         widget_28->setObjectName(QString::fromUtf8("widget_28"));
         horizontalLayout_35 = new QHBoxLayout(widget_28);
         horizontalLayout_35->setSpacing(6);
@@ -348,10 +556,10 @@ public:
 
         horizontalLayout_35->addWidget(label_29);
 
-        lineEdit_28 = new QLineEdit(widget_28);
-        lineEdit_28->setObjectName(QString::fromUtf8("lineEdit_28"));
+        _e4 = new QLineEdit(widget_28);
+        _e4->setObjectName(QString::fromUtf8("_e4"));
 
-        horizontalLayout_35->addWidget(lineEdit_28);
+        horizontalLayout_35->addWidget(_e4);
 
 
         horizontalLayout_31->addWidget(widget_28);
@@ -359,94 +567,88 @@ public:
 
         verticalLayout->addLayout(horizontalLayout_31);
 
-        horizontalLayout_26 = new QHBoxLayout();
-        horizontalLayout_26->setSpacing(6);
-        horizontalLayout_26->setObjectName(QString::fromUtf8("horizontalLayout_26"));
-        widget_21 = new QWidget(layoutWidget);
-        widget_21->setObjectName(QString::fromUtf8("widget_21"));
-        horizontalLayout_27 = new QHBoxLayout(widget_21);
-        horizontalLayout_27->setSpacing(6);
-        horizontalLayout_27->setContentsMargins(11, 11, 11, 11);
-        horizontalLayout_27->setObjectName(QString::fromUtf8("horizontalLayout_27"));
-        label_22 = new QLabel(widget_21);
-        label_22->setObjectName(QString::fromUtf8("label_22"));
+        horizontalLayout_36 = new QHBoxLayout();
+        horizontalLayout_36->setSpacing(6);
+        horizontalLayout_36->setObjectName(QString::fromUtf8("horizontalLayout_36"));
+        widget_29 = new QWidget(widget);
+        widget_29->setObjectName(QString::fromUtf8("widget_29"));
+        horizontalLayout_37 = new QHBoxLayout(widget_29);
+        horizontalLayout_37->setSpacing(6);
+        horizontalLayout_37->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_37->setObjectName(QString::fromUtf8("horizontalLayout_37"));
+        label_30 = new QLabel(widget_29);
+        label_30->setObjectName(QString::fromUtf8("label_30"));
 
-        horizontalLayout_27->addWidget(label_22);
+        horizontalLayout_37->addWidget(label_30);
 
-        lineEdit_21 = new QLineEdit(widget_21);
-        lineEdit_21->setObjectName(QString::fromUtf8("lineEdit_21"));
+        _f1 = new QLineEdit(widget_29);
+        _f1->setObjectName(QString::fromUtf8("_f1"));
 
-        horizontalLayout_27->addWidget(lineEdit_21);
-
-
-        horizontalLayout_26->addWidget(widget_21);
-
-        widget_22 = new QWidget(layoutWidget);
-        widget_22->setObjectName(QString::fromUtf8("widget_22"));
-        horizontalLayout_28 = new QHBoxLayout(widget_22);
-        horizontalLayout_28->setSpacing(6);
-        horizontalLayout_28->setContentsMargins(11, 11, 11, 11);
-        horizontalLayout_28->setObjectName(QString::fromUtf8("horizontalLayout_28"));
-        label_23 = new QLabel(widget_22);
-        label_23->setObjectName(QString::fromUtf8("label_23"));
-
-        horizontalLayout_28->addWidget(label_23);
-
-        lineEdit_22 = new QLineEdit(widget_22);
-        lineEdit_22->setObjectName(QString::fromUtf8("lineEdit_22"));
-
-        horizontalLayout_28->addWidget(lineEdit_22);
+        horizontalLayout_37->addWidget(_f1);
 
 
-        horizontalLayout_26->addWidget(widget_22);
+        horizontalLayout_36->addWidget(widget_29);
 
-        widget_23 = new QWidget(layoutWidget);
-        widget_23->setObjectName(QString::fromUtf8("widget_23"));
-        horizontalLayout_29 = new QHBoxLayout(widget_23);
-        horizontalLayout_29->setSpacing(6);
-        horizontalLayout_29->setContentsMargins(11, 11, 11, 11);
-        horizontalLayout_29->setObjectName(QString::fromUtf8("horizontalLayout_29"));
-        label_24 = new QLabel(widget_23);
-        label_24->setObjectName(QString::fromUtf8("label_24"));
+        widget_30 = new QWidget(widget);
+        widget_30->setObjectName(QString::fromUtf8("widget_30"));
+        horizontalLayout_38 = new QHBoxLayout(widget_30);
+        horizontalLayout_38->setSpacing(6);
+        horizontalLayout_38->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_38->setObjectName(QString::fromUtf8("horizontalLayout_38"));
+        label_31 = new QLabel(widget_30);
+        label_31->setObjectName(QString::fromUtf8("label_31"));
 
-        horizontalLayout_29->addWidget(label_24);
+        horizontalLayout_38->addWidget(label_31);
 
-        lineEdit_23 = new QLineEdit(widget_23);
-        lineEdit_23->setObjectName(QString::fromUtf8("lineEdit_23"));
+        _f2 = new QLineEdit(widget_30);
+        _f2->setObjectName(QString::fromUtf8("_f2"));
 
-        horizontalLayout_29->addWidget(lineEdit_23);
-
-
-        horizontalLayout_26->addWidget(widget_23);
-
-        widget_24 = new QWidget(layoutWidget);
-        widget_24->setObjectName(QString::fromUtf8("widget_24"));
-        horizontalLayout_30 = new QHBoxLayout(widget_24);
-        horizontalLayout_30->setSpacing(6);
-        horizontalLayout_30->setContentsMargins(11, 11, 11, 11);
-        horizontalLayout_30->setObjectName(QString::fromUtf8("horizontalLayout_30"));
-        label_25 = new QLabel(widget_24);
-        label_25->setObjectName(QString::fromUtf8("label_25"));
-
-        horizontalLayout_30->addWidget(label_25);
-
-        lineEdit_24 = new QLineEdit(widget_24);
-        lineEdit_24->setObjectName(QString::fromUtf8("lineEdit_24"));
-
-        horizontalLayout_30->addWidget(lineEdit_24);
+        horizontalLayout_38->addWidget(_f2);
 
 
-        horizontalLayout_26->addWidget(widget_24);
+        horizontalLayout_36->addWidget(widget_30);
+
+        widget_31 = new QWidget(widget);
+        widget_31->setObjectName(QString::fromUtf8("widget_31"));
+        horizontalLayout_39 = new QHBoxLayout(widget_31);
+        horizontalLayout_39->setSpacing(6);
+        horizontalLayout_39->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_39->setObjectName(QString::fromUtf8("horizontalLayout_39"));
+        label_32 = new QLabel(widget_31);
+        label_32->setObjectName(QString::fromUtf8("label_32"));
+
+        horizontalLayout_39->addWidget(label_32);
+
+        _f3 = new QLineEdit(widget_31);
+        _f3->setObjectName(QString::fromUtf8("_f3"));
+
+        horizontalLayout_39->addWidget(_f3);
 
 
-        verticalLayout->addLayout(horizontalLayout_26);
+        horizontalLayout_36->addWidget(widget_31);
 
-        label = new QLabel(BackrestCanalClass);
-        label->setObjectName(QString::fromUtf8("label"));
-        label->setGeometry(QRect(460, 0, 371, 101));
-        quit_pushButton = new QPushButton(BackrestCanalClass);
-        quit_pushButton->setObjectName(QString::fromUtf8("quit_pushButton"));
-        quit_pushButton->setGeometry(QRect(760, 530, 161, 71));
+        widget_32 = new QWidget(widget);
+        widget_32->setObjectName(QString::fromUtf8("widget_32"));
+        horizontalLayout_40 = new QHBoxLayout(widget_32);
+        horizontalLayout_40->setSpacing(6);
+        horizontalLayout_40->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_40->setObjectName(QString::fromUtf8("horizontalLayout_40"));
+        label_33 = new QLabel(widget_32);
+        label_33->setObjectName(QString::fromUtf8("label_33"));
+
+        horizontalLayout_40->addWidget(label_33);
+
+        _f4 = new QLineEdit(widget_32);
+        _f4->setObjectName(QString::fromUtf8("_f4"));
+
+        horizontalLayout_40->addWidget(_f4);
+
+
+        horizontalLayout_36->addWidget(widget_32);
+
+
+        verticalLayout->addLayout(horizontalLayout_36);
+
 
         retranslateUi(BackrestCanalClass);
 
@@ -457,24 +659,33 @@ public:
     {
         BackrestCanalClass->setWindowTitle(QCoreApplication::translate("BackrestCanalClass", "BackrestCanal", nullptr));
         modify_pushButton->setText(QCoreApplication::translate("BackrestCanalClass", "\344\277\256\346\224\271", nullptr));
-        label_2->setText(QCoreApplication::translate("BackrestCanalClass", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">A1</span></p></body></html>", nullptr));
-        label_3->setText(QCoreApplication::translate("BackrestCanalClass", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">A2</span></p></body></html>", nullptr));
-        label_4->setText(QCoreApplication::translate("BackrestCanalClass", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">A3</span></p></body></html>", nullptr));
-        label_5->setText(QCoreApplication::translate("BackrestCanalClass", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">A4</span></p></body></html>", nullptr));
-        label_6->setText(QCoreApplication::translate("BackrestCanalClass", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">B1</span></p></body></html>", nullptr));
-        label_7->setText(QCoreApplication::translate("BackrestCanalClass", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">B2</span></p></body></html>", nullptr));
-        label_8->setText(QCoreApplication::translate("BackrestCanalClass", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">B3</span></p></body></html>", nullptr));
-        label_9->setText(QCoreApplication::translate("BackrestCanalClass", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">B4</span></p></body></html>", nullptr));
-        label_26->setText(QCoreApplication::translate("BackrestCanalClass", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">C1</span></p></body></html>", nullptr));
-        label_27->setText(QCoreApplication::translate("BackrestCanalClass", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">C2</span></p></body></html>", nullptr));
-        label_28->setText(QCoreApplication::translate("BackrestCanalClass", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">C3</span></p></body></html>", nullptr));
-        label_29->setText(QCoreApplication::translate("BackrestCanalClass", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">C4</span></p></body></html>", nullptr));
-        label_22->setText(QCoreApplication::translate("BackrestCanalClass", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">D1</span></p></body></html>", nullptr));
-        label_23->setText(QCoreApplication::translate("BackrestCanalClass", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">D2</span></p></body></html>", nullptr));
-        label_24->setText(QCoreApplication::translate("BackrestCanalClass", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">D3</span></p></body></html>", nullptr));
-        label_25->setText(QCoreApplication::translate("BackrestCanalClass", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">D4</span></p></body></html>", nullptr));
         label->setText(QCoreApplication::translate("BackrestCanalClass", "<html><head/><body><p align=\"center\"><span style=\" font-size:16pt;\">\344\277\256\346\224\271\351\235\240\350\203\214\347\256\241\347\263\273\346\225\260</span></p></body></html>", nullptr));
         quit_pushButton->setText(QCoreApplication::translate("BackrestCanalClass", "\351\200\200\345\207\272", nullptr));
+        save_pushButton->setText(QCoreApplication::translate("BackrestCanalClass", "\344\277\235\345\255\230", nullptr));
+        label_34->setText(QCoreApplication::translate("BackrestCanalClass", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">A1</span></p></body></html>", nullptr));
+        label_35->setText(QCoreApplication::translate("BackrestCanalClass", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">A2</span></p></body></html>", nullptr));
+        label_36->setText(QCoreApplication::translate("BackrestCanalClass", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">A3</span></p></body></html>", nullptr));
+        label_37->setText(QCoreApplication::translate("BackrestCanalClass", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">A4</span></p></body></html>", nullptr));
+        label_10->setText(QCoreApplication::translate("BackrestCanalClass", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">B1</span></p></body></html>", nullptr));
+        label_11->setText(QCoreApplication::translate("BackrestCanalClass", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">B2</span></p></body></html>", nullptr));
+        label_12->setText(QCoreApplication::translate("BackrestCanalClass", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">B3</span></p></body></html>", nullptr));
+        label_13->setText(QCoreApplication::translate("BackrestCanalClass", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">B4</span></p></body></html>", nullptr));
+        label_14->setText(QCoreApplication::translate("BackrestCanalClass", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">C1</span></p></body></html>", nullptr));
+        label_15->setText(QCoreApplication::translate("BackrestCanalClass", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">C2</span></p></body></html>", nullptr));
+        label_16->setText(QCoreApplication::translate("BackrestCanalClass", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">C3</span></p></body></html>", nullptr));
+        _c4_2->setText(QCoreApplication::translate("BackrestCanalClass", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">C4</span></p></body></html>", nullptr));
+        label_18->setText(QCoreApplication::translate("BackrestCanalClass", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">D1</span></p></body></html>", nullptr));
+        label_19->setText(QCoreApplication::translate("BackrestCanalClass", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">D2</span></p></body></html>", nullptr));
+        label_20->setText(QCoreApplication::translate("BackrestCanalClass", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">D3</span></p></body></html>", nullptr));
+        label_21->setText(QCoreApplication::translate("BackrestCanalClass", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">D4</span></p></body></html>", nullptr));
+        label_26->setText(QCoreApplication::translate("BackrestCanalClass", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">E1</span></p></body></html>", nullptr));
+        label_27->setText(QCoreApplication::translate("BackrestCanalClass", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">E2</span></p></body></html>", nullptr));
+        label_28->setText(QCoreApplication::translate("BackrestCanalClass", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">E3</span></p></body></html>", nullptr));
+        label_29->setText(QCoreApplication::translate("BackrestCanalClass", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">E4</span></p></body></html>", nullptr));
+        label_30->setText(QCoreApplication::translate("BackrestCanalClass", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">F1</span></p></body></html>", nullptr));
+        label_31->setText(QCoreApplication::translate("BackrestCanalClass", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">F2</span></p></body></html>", nullptr));
+        label_32->setText(QCoreApplication::translate("BackrestCanalClass", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">F3</span></p></body></html>", nullptr));
+        label_33->setText(QCoreApplication::translate("BackrestCanalClass", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">F4</span></p></body></html>", nullptr));
     } // retranslateUi
 
 };

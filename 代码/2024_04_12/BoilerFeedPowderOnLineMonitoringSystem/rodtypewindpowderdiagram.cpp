@@ -1,17 +1,23 @@
 #include "rodtypewindpowderdiagram.h"
 
-RodTypeWindPowderDiagram::RodTypeWindPowderDiagram(QWidget *parent)
-	: QMainWindow(parent), ui(new Ui::RodTypeWindPowderDiagramClass())
+RodTypeWindPowderDiagram::RodTypeWindPowderDiagram(QWidget *parent, MyThread* mythread)
+	: QMainWindow(parent)
+	, ui(new Ui::RodTypeWindPowderDiagramClass())
+	, _mythread(mythread)
 {
 	std::cout << "RodTypeWindPowderDiagram()" << std::endl;
 
 	ui->setupUi(this);
 
 
-	// ¶ÔÓÚÃ¿Ò»¸ö ÀàÐÍ,ÐèÒª¼ÓÒ»¸ö×ø±êÖá YÖá, Ë³±ãÉèÖÃÎÒÃÇµÄÉÏÏÞºÍÏÂÏÞ
+	// å¯¹äºŽæ¯ä¸€ä¸ª ç±»åž‹,éœ€è¦åŠ ä¸€ä¸ªåæ ‡è½´ Yè½´, é¡ºä¾¿è®¾ç½®æˆ‘ä»¬çš„ä¸Šé™å’Œä¸‹é™
 	ui->wind_velocity_a->addYAxis(0, 10, 2, 5);
 	ui->pulverized_coal_concentration_a->addYAxis(0, 10, 2, 5);
 	ui->temperature_a->addYAxis(0, 10, 2, 5);
+
+
+
+
 }
 
 RodTypeWindPowderDiagram::~RodTypeWindPowderDiagram()

@@ -34,7 +34,7 @@ private:
 public:
 	/*
 	 * 计算风速
-	 * 测速管风洞标定系数:    calibration_coefficient_for_tachometer_wind_tunnel
+	 * 测速管风洞标定系数:   calibration_coefficient_for_tachometer_wind_tunnel
 	 * 温度:               temperature
 	 * 测量的差压:          differential_pressure
 	 */

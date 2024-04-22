@@ -5,7 +5,7 @@ BoilerFeedPowderOnLineMonitoringSystem::BoilerFeedPowderOnLineMonitoringSystem(Q
     , ui(new Ui::BoilerFeedPowderOnLineMonitoringSystemClass())
     , _configure(new Configure(nullptr))
     , _welcomeScreen(new WelcomeScreen(nullptr))
-    , _verify_password(new VerifyPassword(nullptr))
+    , _verify_password(new VerifyPassword(nullptr, _configure))
     , _system_setting(new SystemSetting(nullptr, _configure))
     , _status_view(new StatusView(nullptr))
     , _data_processing(new DataProcessing(nullptr))
@@ -54,7 +54,7 @@ void BoilerFeedPowderOnLineMonitoringSystem::closeEvent(QCloseEvent* event)
 
 void BoilerFeedPowderOnLineMonitoringSystem::processData(Task task)
 {
-    // task.show();
+    task.show();
 }
 
 void BoilerFeedPowderOnLineMonitoringSystem::fromWelToMianScreen()
@@ -83,7 +83,6 @@ void BoilerFeedPowderOnLineMonitoringSystem::SystemSettingConnect()
             qDebug() << "";
             this->_system_setting->_give_an_alarm->hide();
             this->show(); });
-
     // 修改报警界限
     connect(this->_system_setting->_give_an_alarm, &GiveAnAlarm::fromGiveAnAlarmToMainScreenToSaveSignals, [=](std::string s1, std::string s2, std::string s3, std::string s4, std::string s5, std::string s6)
         {
@@ -98,39 +97,98 @@ void BoilerFeedPowderOnLineMonitoringSystem::SystemSettingConnect()
             this->show(); 
         });
     
+    // 修改口令
+    connect(ui->word_of_command_action, &QAction::triggered, [=]()
+        {
+            _configure->myEmit(3);
+
+            this->hide();
+            this->_system_setting->_word_of_command->show(); });
+
+    connect(this->_system_setting->_word_of_command, &WordOfCommand::fromWordOfCommandToMainScreenSignals, [=]()
+        {
+            this->_system_setting->_word_of_command->hide();
+            this->show(); });
+    connect(this->_system_setting->_word_of_command, &WordOfCommand::fromWordOfCommandToMainScreenToSaveSignals, [=](std::string password)
+        {
+            _configure->_info_map["password"] = password;
+            this->_system_setting->_word_of_command->hide();
+            this->show();
+        });
 
 
-
-    // ������ϵ������
+    // 修改靠背管系数
     connect(ui->backrest_canal_action, &QAction::triggered, [=]()
             {
+            _configure->myEmit(3);
             this->_verify_password->show();
 
             connect(this->_verify_password, &VerifyPassword::fromVerifyPasswordSignalsIsTrue, [=]() {
-                qDebug() << "��֤�����Ѿ�������";
+                qDebug() << "password is true";
+                _configure->myEmit(4);
                 this->hide();
                 this->_verify_password->hide();
                 this->_system_setting->_backrest_canal->show();
                 });
             connect(this->_verify_password, &VerifyPassword::fromVerifyPasswordSignalsIsFalse, [=]() {
-                qDebug() << "��֤�����Ѿ�ȡ����";
+                qDebug() << "password is false";
                 this->_verify_password->hide();
                 }); });
 
     connect(this->_system_setting->_backrest_canal, &BackrestCanal::fromBackrestCanalToMainScreenSignals, [=]()
             {
-            qDebug() << "�趨ϵ�������Ľ����Ѿ�ȡ��";
+            qDebug() << "_backrest_canal cancel";
             this->_system_setting->_backrest_canal->hide();
             this->show(); });
 
-    //  �趨������
+
+    connect(this->_system_setting->_backrest_canal, &BackrestCanal::fromBackrestCanalToMainScreenToSaveSignals, [=](std::string a1, std::string a2, std::string a3, std::string a4
+        , std::string b1, std::string b2, std::string b3, std::string b4
+        , std::string c1, std::string c2, std::string c3, std::string c4
+        , std::string d1, std::string d2, std::string d3, std::string d4
+        , std::string e1, std::string e2, std::string e3, std::string e4
+        , std::string f1, std::string f2, std::string f3, std::string f4)
+        {
+
+            _configure->_info_map["A1"] = a1;
+            _configure->_info_map["A2"] = a2;
+            _configure->_info_map["A3"] = a3;
+            _configure->_info_map["A4"] = a4;
+            _configure->_info_map["B1"] = b1;
+            _configure->_info_map["B2"] = b2;
+            _configure->_info_map["B3"] = b3;
+            _configure->_info_map["B4"] = b4;
+            _configure->_info_map["C1"] = c1;
+            _configure->_info_map["C2"] = c2;
+            _configure->_info_map["C3"] = c3;
+            _configure->_info_map["C4"] = c4;
+            _configure->_info_map["D1"] = d1;
+            _configure->_info_map["D2"] = d2;
+            _configure->_info_map["D3"] = d3;
+            _configure->_info_map["D4"] = d4;
+            _configure->_info_map["E1"] = e1;
+            _configure->_info_map["E2"] = e2;
+            _configure->_info_map["E3"] = e3;
+            _configure->_info_map["E4"] = e4;
+            _configure->_info_map["F1"] = f1;
+            _configure->_info_map["F2"] = f2;
+            _configure->_info_map["F3"] = f3;
+            _configure->_info_map["F4"] = f4;
+
+            this->_system_setting->_backrest_canal->hide();
+            this->show(); 
+        
+        });
+    // 修改喷口面积
     connect(ui->spout_action, &QAction::triggered, [=]()
             {
+            _configure->myEmit(3);
             this->_verify_password->show();
             connect(this->_verify_password, &VerifyPassword::fromVerifyPasswordSignalsIsTrue, [=]() {
                 qDebug() << "��֤�����Ѿ�������";
                 this->hide();
                 this->_verify_password->hide();
+                _configure->myEmit(5);
                 this->_system_setting->_spout->show();
                 });
             connect(this->_verify_password, &VerifyPassword::fromVerifyPasswordSignalsIsFalse, [=]() {
@@ -143,18 +201,9 @@ void BoilerFeedPowderOnLineMonitoringSystem::SystemSettingConnect()
             this->_system_setting->_spout->hide();
             this->show(); });
 
-    // �޸Ŀ���
-    connect(ui->word_of_command_action, &QAction::triggered, [=]()
-            {
-            this->hide();
-            this->_system_setting->_word_of_command->show(); });
+   
 
-    connect(this->_system_setting->_word_of_command, &WordOfCommand::fromWordOfCommandToMainScreenSignals, [=]()
-            {
-            this->_system_setting->_word_of_command->hide();
-            this->show(); });
-
-    // �޸�ʱ��
+    // 修订时间
     connect(ui->mytime_action, &QAction::triggered, [=]()
             {
             this->hide();
@@ -168,11 +217,30 @@ void BoilerFeedPowderOnLineMonitoringSystem::SystemSettingConnect()
 
 void BoilerFeedPowderOnLineMonitoringSystem::StatusViewConnect()
 {
-    // ���ͷ��ͼ
+    // 棒型风粉图
     connect(ui->rod_type_wind_powder_diagram_action, &QAction::triggered, [=]()
-            {
+       {
+            emit _myThread.saveCoefficientSignals(
+                  _configure->_info_map["A1"], _configure->_info_map["A2"], _configure->_info_map["A3"], _configure->_info_map["A4"]
+                , _configure->_info_map["B1"], _configure->_info_map["B2"], _configure->_info_map["B3"], _configure->_info_map["B4"]
+                , _configure->_info_map["C1"], _configure->_info_map["C2"], _configure->_info_map["C3"], _configure->_info_map["C4"]
+                , _configure->_info_map["D1"], _configure->_info_map["D2"], _configure->_info_map["D3"], _configure->_info_map["D4"]
+                , _configure->_info_map["E1"], _configure->_info_map["E2"], _configure->_info_map["E3"], _configure->_info_map["E4"]
+                , _configure->_info_map["F1"], _configure->_info_map["F2"], _configure->_info_map["F3"], _configure->_info_map["F4"]
+                , _configure->_info_map["area_of_spout_in_layer_A"]
+                , _configure->_info_map["area_of_spout_in_layer_B"]
+                , _configure->_info_map["area_of_spout_in_layer_C"]
+                , _configure->_info_map["area_of_spout_in_layer_D"]
+                , _configure->_info_map["area_of_spout_in_layer_E"]
+                , _configure->_info_map["area_of_spout_in_layer_F"]
+                , _configure->_info_map["pipe_nozzle_area"]);  // 防止系数已经更新了
             this->hide();
-            this->_status_view->_rod_type_wind_powder_diagram->show(); });
+            this->_status_view->_rod_type_wind_powder_diagram->show(); 
+        });
+    
+    
+    
+    
     // һ�η���Բͼ��ʾ
     connect(ui->tangential_circle_diagram_of_primary_wind_action, &QAction::triggered, [=]()
             {

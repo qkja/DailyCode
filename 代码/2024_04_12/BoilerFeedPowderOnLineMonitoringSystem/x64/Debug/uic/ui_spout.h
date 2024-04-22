@@ -28,25 +28,25 @@ public:
     QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout;
     QLabel *label;
-    QLineEdit *lineEdit;
+    QLineEdit *area_of_spout_in_layer_A;
     QHBoxLayout *horizontalLayout_7;
     QLabel *label_7;
-    QLineEdit *lineEdit_7;
+    QLineEdit *area_of_spout_in_layer_B;
     QHBoxLayout *horizontalLayout_6;
     QLabel *label_6;
-    QLineEdit *lineEdit_6;
+    QLineEdit *area_of_spout_in_layer_C;
     QHBoxLayout *horizontalLayout_2;
     QLabel *label_2;
-    QLineEdit *lineEdit_2;
+    QLineEdit *area_of_spout_in_layer_D;
     QHBoxLayout *horizontalLayout_3;
     QLabel *label_3;
-    QLineEdit *lineEdit_3;
+    QLineEdit *area_of_spout_in_layer_E;
     QHBoxLayout *horizontalLayout_5;
     QLabel *label_5;
-    QLineEdit *lineEdit_5;
+    QLineEdit *area_of_spout_in_layer_F;
     QHBoxLayout *horizontalLayout_4;
     QLabel *label_4;
-    QLineEdit *lineEdit_4;
+    QLineEdit *pipe_nozzle_area;
     QHBoxLayout *horizontalLayout_8;
     QPushButton *save_pushButton;
     QPushButton *modify_pushButton;
@@ -76,10 +76,10 @@ public:
 
         horizontalLayout->addWidget(label);
 
-        lineEdit = new QLineEdit(layoutWidget);
-        lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
+        area_of_spout_in_layer_A = new QLineEdit(layoutWidget);
+        area_of_spout_in_layer_A->setObjectName(QString::fromUtf8("area_of_spout_in_layer_A"));
 
-        horizontalLayout->addWidget(lineEdit);
+        horizontalLayout->addWidget(area_of_spout_in_layer_A);
 
 
         verticalLayout->addLayout(horizontalLayout);
@@ -92,10 +92,10 @@ public:
 
         horizontalLayout_7->addWidget(label_7);
 
-        lineEdit_7 = new QLineEdit(layoutWidget);
-        lineEdit_7->setObjectName(QString::fromUtf8("lineEdit_7"));
+        area_of_spout_in_layer_B = new QLineEdit(layoutWidget);
+        area_of_spout_in_layer_B->setObjectName(QString::fromUtf8("area_of_spout_in_layer_B"));
 
-        horizontalLayout_7->addWidget(lineEdit_7);
+        horizontalLayout_7->addWidget(area_of_spout_in_layer_B);
 
 
         verticalLayout->addLayout(horizontalLayout_7);
@@ -108,10 +108,10 @@ public:
 
         horizontalLayout_6->addWidget(label_6);
 
-        lineEdit_6 = new QLineEdit(layoutWidget);
-        lineEdit_6->setObjectName(QString::fromUtf8("lineEdit_6"));
+        area_of_spout_in_layer_C = new QLineEdit(layoutWidget);
+        area_of_spout_in_layer_C->setObjectName(QString::fromUtf8("area_of_spout_in_layer_C"));
 
-        horizontalLayout_6->addWidget(lineEdit_6);
+        horizontalLayout_6->addWidget(area_of_spout_in_layer_C);
 
 
         verticalLayout->addLayout(horizontalLayout_6);
@@ -124,10 +124,10 @@ public:
 
         horizontalLayout_2->addWidget(label_2);
 
-        lineEdit_2 = new QLineEdit(layoutWidget);
-        lineEdit_2->setObjectName(QString::fromUtf8("lineEdit_2"));
+        area_of_spout_in_layer_D = new QLineEdit(layoutWidget);
+        area_of_spout_in_layer_D->setObjectName(QString::fromUtf8("area_of_spout_in_layer_D"));
 
-        horizontalLayout_2->addWidget(lineEdit_2);
+        horizontalLayout_2->addWidget(area_of_spout_in_layer_D);
 
 
         verticalLayout->addLayout(horizontalLayout_2);
@@ -140,10 +140,10 @@ public:
 
         horizontalLayout_3->addWidget(label_3);
 
-        lineEdit_3 = new QLineEdit(layoutWidget);
-        lineEdit_3->setObjectName(QString::fromUtf8("lineEdit_3"));
+        area_of_spout_in_layer_E = new QLineEdit(layoutWidget);
+        area_of_spout_in_layer_E->setObjectName(QString::fromUtf8("area_of_spout_in_layer_E"));
 
-        horizontalLayout_3->addWidget(lineEdit_3);
+        horizontalLayout_3->addWidget(area_of_spout_in_layer_E);
 
 
         verticalLayout->addLayout(horizontalLayout_3);
@@ -156,10 +156,10 @@ public:
 
         horizontalLayout_5->addWidget(label_5);
 
-        lineEdit_5 = new QLineEdit(layoutWidget);
-        lineEdit_5->setObjectName(QString::fromUtf8("lineEdit_5"));
+        area_of_spout_in_layer_F = new QLineEdit(layoutWidget);
+        area_of_spout_in_layer_F->setObjectName(QString::fromUtf8("area_of_spout_in_layer_F"));
 
-        horizontalLayout_5->addWidget(lineEdit_5);
+        horizontalLayout_5->addWidget(area_of_spout_in_layer_F);
 
 
         verticalLayout->addLayout(horizontalLayout_5);
@@ -172,10 +172,10 @@ public:
 
         horizontalLayout_4->addWidget(label_4);
 
-        lineEdit_4 = new QLineEdit(layoutWidget);
-        lineEdit_4->setObjectName(QString::fromUtf8("lineEdit_4"));
+        pipe_nozzle_area = new QLineEdit(layoutWidget);
+        pipe_nozzle_area->setObjectName(QString::fromUtf8("pipe_nozzle_area"));
 
-        horizontalLayout_4->addWidget(lineEdit_4);
+        horizontalLayout_4->addWidget(pipe_nozzle_area);
 
 
         verticalLayout->addLayout(horizontalLayout_4);
