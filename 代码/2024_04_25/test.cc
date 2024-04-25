@@ -29,8 +29,21 @@ class Solution {
 public:
     string optimalDivision(vector<int>& nums) {
       string result;
-      if(nums.size())
+      if(nums.empty())
         return result;
+      if(1 == nums.size())
+        return std::to_string(nums[0]);
+      if(2 == nums.size())
+        return std::to_string(nums[0]) + '/' + std::to_string(nums[1]);
+      result = std::to_string(nums[0]) + "/(";
+      for(int i = 1; i < nums.size(); ++i)
+      {
+        result += std::to_string(nums[i]);
+        result += '/'; 
+      }
 
+      result.pop_back();
+      result += ')'; 
+      return result;
     }
 };
