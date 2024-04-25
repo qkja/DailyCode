@@ -9,7 +9,6 @@ SystemSetting::SystemSetting(QWidget *parent, Configure* configure)
 	, _backrest_canal(new BackrestCanal(nullptr, _configure))
 	, _word_of_command(new WordOfCommand(nullptr, _configure))
 {
-
 	qDebug() << "SystemSetting()";
 }
 

@@ -12,7 +12,7 @@
 #include "statusview.h"
 #include <iostream>
 #include "configure.h"
-
+#include "resultdata.h"
 QT_BEGIN_NAMESPACE
 namespace Ui
 {
@@ -42,15 +42,15 @@ signals:
 protected slots:
     void quit();                                                         // �˳�����
     void fromWelToMianScreen();                                          // �ӻ�ӭ�������
-    void processData(Task);                                              // ��������
 private:
     Ui::BoilerFeedPowderOnLineMonitoringSystemClass *ui;
+    MyThread _myThread;               // 线程
+    ResultData _result_data;          // 解析的数据
     Configure* _configure;            // 配置信息
     WelcomeScreen *_welcomeScreen;    // 欢饮界面
     SystemSetting *_system_setting;   // 系统设置
-    StatusView *_status_view;         // 状态查看
-    DataProcessing *_data_processing; // 数据处理
+    StatusView* _status_view;         // 状态查看
+    DataProcessing* _data_processing; // 数据处理
     Assist *_assist;                  // 帮助
     VerifyPassword *_verify_password; // 密码
-    MyThread _myThread;               // 线程
 };

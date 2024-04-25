@@ -10,7 +10,6 @@
 #include <QtCharts/qvalueaxis.h>
 #include <iostream>
 
-#include "DataResult.hpp"
 
 QT_CHARTS_USE_NAMESPACE
 QT_CHARTS_USE_NAMESPACE
@@ -21,14 +20,13 @@ class BarChartWidget : public QWidget
 public:
 	BarChartWidget(QWidget *parent);
 	~BarChartWidget();
-
-	void writeData(const DataResult<int>);
+	void writeData(int index, double value);
 	void addYAxis(int min_imum, int max_imum, int upper_limit,int lower_limit);
 private:
 	void addXAxis();
 	void init();
 private:
-	QChart *_chart;
+	QChart *_chart;   
 	QBarSeries *_series;
 	QChartView *_chartView;
 	QBarSet * _qBarSet;

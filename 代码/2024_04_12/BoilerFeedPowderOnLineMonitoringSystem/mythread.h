@@ -23,7 +23,7 @@ signals:
 		, std::string, std::string, std::string, std::string
 		, std::string, std::string, std::string, std::string
 	    , std::string, std::string, std::string, std::string, std::string, std::string, std::string);   // 得到系数
-	void produceSignals(Task);
+	void produceDataSignals(Task);
 protected slots:
 	void stopProcessing();
 private:
@@ -31,6 +31,6 @@ private:
 	void slicedString(std::vector<std::string>*, const std::string&);// 切分字符串
 private:
     volatile bool _flag;
-	std::vector<double> _area;
-	std::vector<double> _coefficient_of_backrest_tube;
+	std::vector<double> _area;   // 保存面积
+	std::vector<double> _coefficient_of_backrest_tube;  // 保存靠背管系数
 };

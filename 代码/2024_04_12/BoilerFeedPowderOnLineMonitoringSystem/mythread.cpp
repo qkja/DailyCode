@@ -66,6 +66,10 @@ void MyThread::run()
 {
 
 	bool headerData = true;
+	std::string path = "./test.csv";
+	std::ifstream ifs;
+	ifs.open(path.c_str(), std::ifstream::in);
+	std::string line;  // 将每一行的数据存到line中
 	while (!_flag)
 	{
 		if (_area.empty() || _coefficient_of_backrest_tube.empty())
@@ -74,12 +78,7 @@ void MyThread::run()
 			sleep(1);
 			continue;
 		}
-
-		std::string path = "./test.csv";
-		std::ifstream ifs;
-		ifs.open(path.c_str(), std::ifstream::in);
-	
-		std::string line;  // 将每一行的数据存到line中
+		int j = 0;
 		while (std::getline(ifs, line))
 		{
 			if (headerData)
@@ -88,33 +87,33 @@ void MyThread::run()
 				headerData = false;
 				continue;
 			}
-
 			Task task;
 			parse(&task, line);         // 解析字符串,得到数据
 			task.run();                 // 数据处理
-			emit produceSignals(task);  // 发送处理结果
-
-			
-
-			sleep(1);
+			emit produceDataSignals(task);  // 发送处理结果
+			std::cout << "send " << ++j << std::endl;
+			sleep(10000);
 		}
-		ifs.close();
-		// 子进程退出
-		QThread::quit();
+
 	}
+
+	ifs.close();
+	// 子进程退出
+	QThread::quit();
 }
 
 void MyThread::parse(Task *task, const std::string &line)
 {
 	std::vector<std::string> v;
 	slicedString(&v, line); // 将数据放到我们的数组中
-	std::cout << v.size() << std::endl;
 
-	std::vector<Data> data(26);
 	for (int i = 0; i < 24; i++)
 	{
 		int j = 4 * i + 2;
-		data[i].set(v[1], std::stod(v[j]), std::stod(v[j+1]), std::stod(v[j+2]), std::stod(v[i+3]), _area[i / 4], _coefficient_of_backrest_tube[i]);
+		Data data;
+		// 这里将 系数和面积都放进去
+		data.set(v[1], std::stod(v[j]), std::stod(v[j+1]), std::stod(v[j+2]), std::stod(v[j+3]), _area[i / 4], _coefficient_of_backrest_tube[i]);
+		task->push_back(data);
 	}
 }
 

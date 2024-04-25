@@ -21,13 +21,19 @@ class TrendLineChart : public QWidget
 public:
 	TrendLineChart(QWidget *parent);
 	~TrendLineChart();
-
+	void writeData(const std::string&, const std::vector<double>&);
+	void writeData(const std::string&, const double&);
 private:
 	QChart *_chart;
-	QValueAxis *_x;
-	QValueAxis *_y;
+	QValueAxis *_x;   
+	QValueAxis* _y_wind;              // 风速Y轴
+	QValueAxis* _y_concentration;     // 浓度Y轴
+	QValueAxis* _y_temperature_1;     // 温度1 Y轴
+	QValueAxis *_y_temperature_2;     // 温度2 Y轴
+	QLineSeries* _line_wind;          // 风速折现
+	QLineSeries* _line_concentration; // 浓度折现
+	QLineSeries* _line_temperature_1; // 温度1折现
+	QLineSeries *_line_temperature_2; // 温度2折现
+	QChartView *_chartView;           // 视图
 
-	QLineSeries *_line; // ����
-
-	QChartView *_chartView;
 };

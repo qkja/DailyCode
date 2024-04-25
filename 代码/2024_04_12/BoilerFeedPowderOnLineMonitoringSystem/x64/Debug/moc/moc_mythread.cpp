@@ -23,7 +23,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MyThread_t {
     QByteArrayData data[7];
-    char stringdata0[80];
+    char stringdata0[84];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -36,13 +36,13 @@ QT_MOC_LITERAL(0, 0, 8), // "MyThread"
 QT_MOC_LITERAL(1, 9, 22), // "saveCoefficientSignals"
 QT_MOC_LITERAL(2, 32, 0), // ""
 QT_MOC_LITERAL(3, 33, 11), // "std::string"
-QT_MOC_LITERAL(4, 45, 14), // "produceSignals"
-QT_MOC_LITERAL(5, 60, 4), // "Task"
-QT_MOC_LITERAL(6, 65, 14) // "stopProcessing"
+QT_MOC_LITERAL(4, 45, 18), // "produceDataSignals"
+QT_MOC_LITERAL(5, 64, 4), // "Task"
+QT_MOC_LITERAL(6, 69, 14) // "stopProcessing"
 
     },
     "MyThread\0saveCoefficientSignals\0\0"
-    "std::string\0produceSignals\0Task\0"
+    "std::string\0produceDataSignals\0Task\0"
     "stopProcessing"
 };
 #undef QT_MOC_LITERAL
@@ -84,7 +84,7 @@ void MyThread::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, vo
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->saveCoefficientSignals((*reinterpret_cast< std::string(*)>(_a[1])),(*reinterpret_cast< std::string(*)>(_a[2])),(*reinterpret_cast< std::string(*)>(_a[3])),(*reinterpret_cast< std::string(*)>(_a[4])),(*reinterpret_cast< std::string(*)>(_a[5])),(*reinterpret_cast< std::string(*)>(_a[6])),(*reinterpret_cast< std::string(*)>(_a[7])),(*reinterpret_cast< std::string(*)>(_a[8])),(*reinterpret_cast< std::string(*)>(_a[9])),(*reinterpret_cast< std::string(*)>(_a[10])),(*reinterpret_cast< std::string(*)>(_a[11])),(*reinterpret_cast< std::string(*)>(_a[12])),(*reinterpret_cast< std::string(*)>(_a[13])),(*reinterpret_cast< std::string(*)>(_a[14])),(*reinterpret_cast< std::string(*)>(_a[15])),(*reinterpret_cast< std::string(*)>(_a[16])),(*reinterpret_cast< std::string(*)>(_a[17])),(*reinterpret_cast< std::string(*)>(_a[18])),(*reinterpret_cast< std::string(*)>(_a[19])),(*reinterpret_cast< std::string(*)>(_a[20])),(*reinterpret_cast< std::string(*)>(_a[21])),(*reinterpret_cast< std::string(*)>(_a[22])),(*reinterpret_cast< std::string(*)>(_a[23])),(*reinterpret_cast< std::string(*)>(_a[24])),(*reinterpret_cast< std::string(*)>(_a[25])),(*reinterpret_cast< std::string(*)>(_a[26])),(*reinterpret_cast< std::string(*)>(_a[27])),(*reinterpret_cast< std::string(*)>(_a[28])),(*reinterpret_cast< std::string(*)>(_a[29])),(*reinterpret_cast< std::string(*)>(_a[30])),(*reinterpret_cast< std::string(*)>(_a[31]))); break;
-        case 1: _t->produceSignals((*reinterpret_cast< Task(*)>(_a[1]))); break;
+        case 1: _t->produceDataSignals((*reinterpret_cast< Task(*)>(_a[1]))); break;
         case 2: _t->stopProcessing(); break;
         default: ;
         }
@@ -99,7 +99,7 @@ void MyThread::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, vo
         }
         {
             using _t = void (MyThread::*)(Task );
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&MyThread::produceSignals)) {
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&MyThread::produceDataSignals)) {
                 *result = 1;
                 return;
             }
@@ -155,7 +155,7 @@ void MyThread::saveCoefficientSignals(std::string _t1, std::string _t2, std::str
 }
 
 // SIGNAL 1
-void MyThread::produceSignals(Task _t1)
+void MyThread::produceDataSignals(Task _t1)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
     QMetaObject::activate(this, &staticMetaObject, 1, _a);

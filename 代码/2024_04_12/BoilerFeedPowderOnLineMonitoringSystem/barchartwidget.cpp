@@ -13,8 +13,6 @@ BarChartWidget::BarChartWidget(QWidget *parent)
     std::cout << "BarChartWidget()" << std::endl;
 
     init();
-    DataResult<int> a;
-    writeData(a);
     addXAxis();
 }
 
@@ -37,28 +35,18 @@ BarChartWidget::~BarChartWidget()
      _axisY = nullptr;
      std::cout << "~BarChartWidget()" << std::endl;
 }
-
-void BarChartWidget::writeData(const DataResult<int> data)
+void BarChartWidget::writeData(int index, double value)
 {
 
-    if (_qBarSet->count() == 0)
-    {
-        //*_qBarSet << data._first << data._second << data._third << data._fourth;
-        *_qBarSet << 1 << 3 << 6 << 7;  //Õâ¸öÊÇ
+    _qBarSet->replace(index, value);
 
-    }
-    else
-    {
-        _qBarSet->replace(0, data._first);
-        _qBarSet->replace(1, data._second);
-        _qBarSet->replace(2, data._third);
-        _qBarSet->replace(3, data._fourth);
-    }
-  
     _chart->removeSeries(_series);
     _chart->addSeries(_series);
 
+    _chart->update();
+
 }
+
 
 void BarChartWidget::addYAxis(int min_imum, int max_imum,  int lower_limit, int upper_limit)
 {
@@ -87,6 +75,10 @@ void BarChartWidget::init()
 {
     if(nullptr == _qBarSet)
         _qBarSet = new QBarSet("data");
+    _qBarSet->append(1);
+    _qBarSet->append(2);
+    _qBarSet->append(3);
+    _qBarSet->append(4);
     if (nullptr == _series)
         _series = new QBarSeries();
 

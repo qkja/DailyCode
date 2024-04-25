@@ -7,7 +7,7 @@ BoilerFeedPowderOnLineMonitoringSystem::BoilerFeedPowderOnLineMonitoringSystem(Q
     , _welcomeScreen(new WelcomeScreen(nullptr))
     , _verify_password(new VerifyPassword(nullptr, _configure))
     , _system_setting(new SystemSetting(nullptr, _configure))
-    , _status_view(new StatusView(nullptr))
+    , _status_view(new StatusView(nullptr, &_result_data))
     , _data_processing(new DataProcessing(nullptr))
 {
     std::cout << "BoilerFeedPowderOnLineMonitoringSystem()" << std::endl;
@@ -35,8 +35,9 @@ void BoilerFeedPowderOnLineMonitoringSystem::myConnect()
     connect(this, &BoilerFeedPowderOnLineMonitoringSystem::quitSignals, this, &BoilerFeedPowderOnLineMonitoringSystem::quit);
     // 欢迎界面到 主界面
     connect(_welcomeScreen, &WelcomeScreen::fromWelToMianScreenSignals, this, &BoilerFeedPowderOnLineMonitoringSystem::fromWelToMianScreen);
+    // 信息转发
     qRegisterMetaType<Task>("Task");
-    connect(&_myThread, &MyThread::produceSignals, this, &BoilerFeedPowderOnLineMonitoringSystem::processData);
+    connect(&_myThread, &MyThread::produceDataSignals, &_result_data, &ResultData::distributeData);
 }
 void BoilerFeedPowderOnLineMonitoringSystem::quit()
 {
@@ -52,10 +53,7 @@ void BoilerFeedPowderOnLineMonitoringSystem::closeEvent(QCloseEvent* event)
     this->closeEvent(event);
 }
 
-void BoilerFeedPowderOnLineMonitoringSystem::processData(Task task)
-{
-    task.show();
-}
+
 
 void BoilerFeedPowderOnLineMonitoringSystem::fromWelToMianScreen()
 {
@@ -241,20 +239,62 @@ void BoilerFeedPowderOnLineMonitoringSystem::StatusViewConnect()
     
     
     
-    // һ�η���Բͼ��ʾ
+    // 圆图
     connect(ui->tangential_circle_diagram_of_primary_wind_action, &QAction::triggered, [=]()
             {
+            emit _myThread.saveCoefficientSignals(
+                _configure->_info_map["A1"], _configure->_info_map["A2"], _configure->_info_map["A3"], _configure->_info_map["A4"]
+                , _configure->_info_map["B1"], _configure->_info_map["B2"], _configure->_info_map["B3"], _configure->_info_map["B4"]
+                , _configure->_info_map["C1"], _configure->_info_map["C2"], _configure->_info_map["C3"], _configure->_info_map["C4"]
+                , _configure->_info_map["D1"], _configure->_info_map["D2"], _configure->_info_map["D3"], _configure->_info_map["D4"]
+                , _configure->_info_map["E1"], _configure->_info_map["E2"], _configure->_info_map["E3"], _configure->_info_map["E4"]
+                , _configure->_info_map["F1"], _configure->_info_map["F2"], _configure->_info_map["F3"], _configure->_info_map["F4"]
+                , _configure->_info_map["area_of_spout_in_layer_A"]
+                , _configure->_info_map["area_of_spout_in_layer_B"]
+                , _configure->_info_map["area_of_spout_in_layer_C"]
+                , _configure->_info_map["area_of_spout_in_layer_D"]
+                , _configure->_info_map["area_of_spout_in_layer_E"]
+                , _configure->_info_map["area_of_spout_in_layer_F"]
+                , _configure->_info_map["pipe_nozzle_area"]);  // 防止系数已经更新了
             this->hide();
             this->_status_view->_tangential_circle_diagram_of_primary_wind->show(); });
-    // ����ͼ
+    // 趋势图
     connect(ui->trend_chart_action, &QAction::triggered, [=]()
             {
+            emit _myThread.saveCoefficientSignals(
+                _configure->_info_map["A1"], _configure->_info_map["A2"], _configure->_info_map["A3"], _configure->_info_map["A4"]
+                , _configure->_info_map["B1"], _configure->_info_map["B2"], _configure->_info_map["B3"], _configure->_info_map["B4"]
+                , _configure->_info_map["C1"], _configure->_info_map["C2"], _configure->_info_map["C3"], _configure->_info_map["C4"]
+                , _configure->_info_map["D1"], _configure->_info_map["D2"], _configure->_info_map["D3"], _configure->_info_map["D4"]
+                , _configure->_info_map["E1"], _configure->_info_map["E2"], _configure->_info_map["E3"], _configure->_info_map["E4"]
+                , _configure->_info_map["F1"], _configure->_info_map["F2"], _configure->_info_map["F3"], _configure->_info_map["F4"]
+                , _configure->_info_map["area_of_spout_in_layer_A"]
+                , _configure->_info_map["area_of_spout_in_layer_B"]
+                , _configure->_info_map["area_of_spout_in_layer_C"]
+                , _configure->_info_map["area_of_spout_in_layer_D"]
+                , _configure->_info_map["area_of_spout_in_layer_E"]
+                , _configure->_info_map["area_of_spout_in_layer_F"]
+                , _configure->_info_map["pipe_nozzle_area"]);  // 防止系数已经更新了
             this->hide();
             this->_status_view->_trend_chart->show(); });
 
-    // ��ʷ����ͼ
+    // 历史趋势图
     connect(ui->historical_trend_chart_action, &QAction::triggered, [=]()
             {
+            emit _myThread.saveCoefficientSignals(
+                _configure->_info_map["A1"], _configure->_info_map["A2"], _configure->_info_map["A3"], _configure->_info_map["A4"]
+                , _configure->_info_map["B1"], _configure->_info_map["B2"], _configure->_info_map["B3"], _configure->_info_map["B4"]
+                , _configure->_info_map["C1"], _configure->_info_map["C2"], _configure->_info_map["C3"], _configure->_info_map["C4"]
+                , _configure->_info_map["D1"], _configure->_info_map["D2"], _configure->_info_map["D3"], _configure->_info_map["D4"]
+                , _configure->_info_map["E1"], _configure->_info_map["E2"], _configure->_info_map["E3"], _configure->_info_map["E4"]
+                , _configure->_info_map["F1"], _configure->_info_map["F2"], _configure->_info_map["F3"], _configure->_info_map["F4"]
+                , _configure->_info_map["area_of_spout_in_layer_A"]
+                , _configure->_info_map["area_of_spout_in_layer_B"]
+                , _configure->_info_map["area_of_spout_in_layer_C"]
+                , _configure->_info_map["area_of_spout_in_layer_D"]
+                , _configure->_info_map["area_of_spout_in_layer_E"]
+                , _configure->_info_map["area_of_spout_in_layer_F"]
+                , _configure->_info_map["pipe_nozzle_area"]);  // 防止系数已经更新了
             this->hide();
             this->_status_view->_historical_trend_chart->show(); });
 }
