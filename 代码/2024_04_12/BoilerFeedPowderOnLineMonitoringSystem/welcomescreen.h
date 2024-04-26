@@ -6,7 +6,6 @@
 #include <iostream>
 #include <qpushbutton.h>
 
-
 QT_BEGIN_NAMESPACE
 namespace Ui
 {
@@ -19,7 +18,7 @@ class WelcomeScreen : public QWidget
 	Q_OBJECT
 
 public:
-	WelcomeScreen(QWidget *parent = nullptr);
+	WelcomeScreen(QWidget* parent = nullptr);
 	~WelcomeScreen();
 protected slots:
 	void onButtonDoubleClicked();
@@ -28,7 +27,7 @@ signals:
 	void fromWelToMianScreenSignals();
 
 private:
-	Ui::WelcomeScreenClass *ui;
-	QTimer *_doubleClickTimer;
+	Ui::WelcomeScreenClass* ui;
+	QTimer* _doubleClickTimer;
 	int _clickCount;
 };

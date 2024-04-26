@@ -1,7 +1,7 @@
 #include "rodtypewindpowderdiagram.h"
 #include <windows.h>
 #include <qtimer.h>
-RodTypeWindPowderDiagram::RodTypeWindPowderDiagram(QWidget *parent, ResultData* result_data)
+RodTypeWindPowderDiagram::RodTypeWindPowderDiagram(QWidget* parent, ResultData* result_data)
 	: QMainWindow(parent)
 	, ui(new Ui::RodTypeWindPowderDiagramClass())
 	, _result_data(result_data)
@@ -10,18 +10,8 @@ RodTypeWindPowderDiagram::RodTypeWindPowderDiagram(QWidget *parent, ResultData* 
 
 	ui->setupUi(this);
 	init();
-	// 这是一个测试
-	//QTimer* timer = new QTimer(nullptr);
-	//QObject::connect(timer, &QTimer::timeout, [&]() {
-	//	// 模拟获取新的数据
-	//	int index = qrand() % 4;
-	//	qreal newValue = qrand() % 100;
-	//	ui->wind_velocity_a->writeData(index, newValue);
-	//	});
-	//timer->start(1000); // 1000毫秒（1秒）更新一次
 
 	connect(_result_data, &ResultData::barPatternOfWindPowderSignals, [=](std::vector<struct BarPatternOfWindPowder> bar) {
-         
 		for (int i = 0; i < bar.size(); i++)
 		{
 			_v[i / 4 * 3]->writeData(i, bar[i]._wind_speed);
@@ -39,7 +29,6 @@ RodTypeWindPowderDiagram::~RodTypeWindPowderDiagram()
 
 void RodTypeWindPowderDiagram::init()
 {
-
 	// 对于每一个 类型,需要加一个坐标轴 Y轴, 顺便设置我们的上限和下限
 	ui->wind_velocity_a->addYAxis(0, 10, 2, 5);
 	ui->pulverized_coal_concentration_a->addYAxis(0, 10, 2, 5);

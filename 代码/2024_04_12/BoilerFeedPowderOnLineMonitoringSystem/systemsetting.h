@@ -1,13 +1,13 @@
 #pragma once
 
-#include <QWidget>
 #include "backrestcanal.h"
-#include "spout.h"
-#include "giveanalarm.h"
-#include "wordofcommand.h"
-#include "mytime.h"
-#include <iostream>
 #include "configure.h"
+#include "giveanalarm.h"
+#include "mytime.h"
+#include "spout.h"
+#include "wordofcommand.h"
+#include <iostream>
+#include <QWidget>
 class SystemSetting : public QWidget
 {
 	Q_OBJECT

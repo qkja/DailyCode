@@ -18,13 +18,13 @@ class WordOfCommand : public QWidget
 	Q_OBJECT
 
 public:
-	WordOfCommand(QWidget *parent = nullptr, Configure* configure = nullptr);
+	WordOfCommand(QWidget* parent = nullptr, Configure* configure = nullptr);
 	~WordOfCommand();
 signals:
 	void fromWordOfCommandToMainScreenSignals();
 	void fromWordOfCommandToMainScreenToSaveSignals(std::string);
 private:
-	Ui::WordOfCommandClass *ui;
+	Ui::WordOfCommandClass* ui;
 	Configure* _configure;
 	std::string _password;
 };

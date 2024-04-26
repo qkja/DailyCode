@@ -16,9 +16,9 @@ class TangentialCircleDiagramOfPrimaryWind : public QMainWindow
 	Q_OBJECT
 
 public:
-	TangentialCircleDiagramOfPrimaryWind(QWidget *parent = nullptr);
+	TangentialCircleDiagramOfPrimaryWind(QWidget* parent = nullptr);
 	~TangentialCircleDiagramOfPrimaryWind();
 
 private:
-	Ui::TangentialCircleDiagramOfPrimaryWindClass *ui;
+	Ui::TangentialCircleDiagramOfPrimaryWindClass* ui;
 };

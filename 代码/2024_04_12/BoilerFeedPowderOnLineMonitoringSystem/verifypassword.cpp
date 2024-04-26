@@ -1,6 +1,6 @@
 #include "verifypassword.h"
 #include "qdebug.h"
-VerifyPassword::VerifyPassword(QWidget *parent, Configure* configure)
+VerifyPassword::VerifyPassword(QWidget* parent, Configure* configure)
 	: QWidget(parent)
 	, ui(new Ui::VerifyPasswordClass())
 	, _configure(configure)
@@ -12,7 +12,7 @@ VerifyPassword::VerifyPassword(QWidget *parent, Configure* configure)
 		_password = password;
 		});
 	connect(ui->identify_pushButton, &QPushButton::clicked, [=]()
-			{ 
+		{
 			std::string passward = ui->lineEdit->text().toStdString();
 			if (_password == passward)
 			{
@@ -25,7 +25,7 @@ VerifyPassword::VerifyPassword(QWidget *parent, Configure* configure)
 			}
 		});
 	connect(ui->cancel_pushButton, &QPushButton::clicked, [=]()
-			{ emit fromVerifyPasswordSignalsIsFalse(); });
+		{ emit fromVerifyPasswordSignalsIsFalse(); });
 }
 
 VerifyPassword::~VerifyPassword()
@@ -34,7 +34,7 @@ VerifyPassword::~VerifyPassword()
 	delete ui;
 }
 
-void VerifyPassword::closeEvent(QCloseEvent *)
+void VerifyPassword::closeEvent(QCloseEvent*)
 {
 	emit ExitWin();
 }

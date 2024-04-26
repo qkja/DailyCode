@@ -16,11 +16,11 @@ class AlarmDatabase : public QWidget
 	Q_OBJECT
 
 public:
-	AlarmDatabase(QWidget *parent = nullptr);
+	AlarmDatabase(QWidget* parent = nullptr);
 	~AlarmDatabase();
 signals:
 	void fromAlarmDatabaseToMainScreenSignals();
 
 private:
-	Ui::AlarmDatabaseClass *ui;
+	Ui::AlarmDatabaseClass* ui;
 };

@@ -9,14 +9,12 @@ MyTime::MyTime(QWidget* parent)
 	ui->setupUi(this);
 	this->setWindowTitle("time");
 
-
 	connect(ui->identify_pushButton, &QPushButton::clicked, [=]()
 		{ emit fromMyTimeToMianScreenSignals(); });
 	connect(ui->cancel_pushButton, &QPushButton::clicked, [=]()
 		{ emit fromMyTimeToMianScreenSignals(); });
 
 	connect(_timer, &QTimer::timeout, [=]() {
-
 		// 获取当前日期和时间
 		QDateTime currentDateTime = QDateTime::currentDateTime();
 		// 获取当前日期

@@ -16,11 +16,11 @@ class ChannelDatabase : public QWidget
 	Q_OBJECT
 
 public:
-	ChannelDatabase(QWidget *parent = nullptr);
+	ChannelDatabase(QWidget* parent = nullptr);
 	~ChannelDatabase();
 signals:
 	void fromChannelDatabaseToMainScreenSignals();
 
 private:
-	Ui::ChannelDatabaseClass *ui;
+	Ui::ChannelDatabaseClass* ui;
 };

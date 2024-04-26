@@ -18,11 +18,11 @@ class GiveAnAlarm : public QWidget
 	Q_OBJECT
 
 public:
-	GiveAnAlarm(QWidget *parent = nullptr, Configure* configure = nullptr);
+	GiveAnAlarm(QWidget* parent = nullptr, Configure* configure = nullptr);
 	~GiveAnAlarm();
 signals:
-	void fromGiveAnAlarmToMainScreenToSaveSignals(std::string, std::string, 
-		std::string, std::string, 
+	void fromGiveAnAlarmToMainScreenToSaveSignals(std::string, std::string,
+		std::string, std::string,
 		std::string, std::string);
 	void fromGiveAnAlarmToMainScreenSignals();
 private:
@@ -31,5 +31,5 @@ private:
 	std::string intToStr(int);             // ÕûÊý×ª×Ö·û´®
 private:
 	Configure* _configure;
-	Ui::GiveAnAlarmClass *ui;
+	Ui::GiveAnAlarmClass* ui;
 };

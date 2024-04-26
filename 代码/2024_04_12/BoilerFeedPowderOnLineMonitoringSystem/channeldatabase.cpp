@@ -1,11 +1,11 @@
 #include "channeldatabase.h"
 
-ChannelDatabase::ChannelDatabase(QWidget *parent)
+ChannelDatabase::ChannelDatabase(QWidget* parent)
 	: QWidget(parent), ui(new Ui::ChannelDatabaseClass())
 {
 	ui->setupUi(this);
 	connect(ui->quit_pushButton, &QPushButton::clicked, [=]()
-			{ emit fromChannelDatabaseToMainScreenSignals(); });
+		{ emit fromChannelDatabaseToMainScreenSignals(); });
 }
 
 ChannelDatabase::~ChannelDatabase()

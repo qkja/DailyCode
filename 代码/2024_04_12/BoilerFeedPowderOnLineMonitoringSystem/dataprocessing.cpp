@@ -1,6 +1,6 @@
 #include "dataprocessing.h"
 
-DataProcessing::DataProcessing(QWidget *parent)
+DataProcessing::DataProcessing(QWidget* parent)
 	: QWidget(parent), _alarm_database(new AlarmDatabase(nullptr)), _channel_database(new ChannelDatabase(nullptr))
 {
 }

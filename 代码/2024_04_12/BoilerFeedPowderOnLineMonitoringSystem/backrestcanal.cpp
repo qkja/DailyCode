@@ -15,29 +15,6 @@ BackrestCanal::BackrestCanal(QWidget* parent, Configure* configure)
 		, std::string d1, std::string d2, std::string d3, std::string d4
 		, std::string e1, std::string e2, std::string e3, std::string e4
 		, std::string f1, std::string f2, std::string f3, std::string f4) {
-
-			/*_a1 = a1;
-			_a2 = a2;
-			_a3 = a3;
-			_a4 = a4;
-			_b1 = b1;
-			_b2 = b2;
-			_b3 = b3;
-			_b4 = b4;
-			_c1 = c1;
-			_c2 = c2;
-			_c3 = c3;
-			_c4 = c4;
-			_d1 = d1;
-			_d2 = d2;
-			_d3 = d3;
-			_d4 = d4;
-			_e1 = e1;
-			_e2 = e2;
-			_e3 = e3;
-			_e4 = e4;*/
-
-
 			ui->_a1->setText(a1.c_str());
 			ui->_a2->setText(a2.c_str());
 			ui->_a3->setText(a3.c_str());
@@ -63,7 +40,6 @@ BackrestCanal::BackrestCanal(QWidget* parent, Configure* configure)
 			ui->_f3->setText(f3.c_str());
 			ui->_f4->setText(f4.c_str());
 			setReadOnly(true);
-
 		});
 
 	connect(ui->save_pushButton, &QPushButton::clicked, [=]() {
@@ -79,7 +55,6 @@ BackrestCanal::BackrestCanal(QWidget* parent, Configure* configure)
 	connect(ui->modify_pushButton, &QPushButton::clicked, [=]()
 		{
 			setReadOnly(false);
-
 		});
 
 	connect(ui->quit_pushButton, &QPushButton::clicked, [=]()
@@ -114,5 +89,4 @@ void BackrestCanal::setReadOnly(bool flag)
 	ui->_e2->setReadOnly(flag);
 	ui->_e3->setReadOnly(flag);
 	ui->_e4->setReadOnly(flag);
-
 }

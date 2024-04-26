@@ -8,16 +8,13 @@
 #define DIAMETER 50                // 圆的直径
 #define STRAIGHT_LINE_WIDTH 5     // 斜线的宽度
 
-
-
-class PrimaryWindCutCircleDiagramView  : public QWidget
+class PrimaryWindCutCircleDiagramView : public QWidget
 {
 	Q_OBJECT
 
 public:
-	PrimaryWindCutCircleDiagramView(QWidget *parent);
+	PrimaryWindCutCircleDiagramView(QWidget* parent);
 	~PrimaryWindCutCircleDiagramView();
 protected:
 	void paintEvent(QPaintEvent*) override;
-
 };

@@ -1,6 +1,6 @@
 #include "giveanalarm.h"
 #include <qdebug.h>
-GiveAnAlarm::GiveAnAlarm(QWidget *parent, Configure* configure)
+GiveAnAlarm::GiveAnAlarm(QWidget* parent, Configure* configure)
 	: QWidget(parent)
 	, _configure(configure)
 	, ui(new Ui::GiveAnAlarmClass())
@@ -9,7 +9,6 @@ GiveAnAlarm::GiveAnAlarm(QWidget *parent, Configure* configure)
 	qDebug() << "GiveAnAlarm()";
 	this->setWindowTitle("sss");
 	myConnect();
-
 }
 
 GiveAnAlarm::~GiveAnAlarm()
@@ -20,7 +19,6 @@ GiveAnAlarm::~GiveAnAlarm()
 
 void GiveAnAlarm::myConnect()
 {
-
 	// 当垂直滑块滑动时，它会发出valueChanged(int)信号
 	connect(ui->upper_wind_speed, &QSlider::valueChanged, [=](int val) {
 		ui->label_26->setText(std::to_string(val).c_str());
@@ -41,7 +39,6 @@ void GiveAnAlarm::myConnect()
 	connect(ui->limit_temperature, &QSlider::valueChanged, [=](int val) {
 		ui->label_38->setText(std::to_string(val).c_str());
 		});
-	
 
 	// 设置当前值
 	connect(_configure, &Configure::setAlarmLimitValueSignals, [=](std::string s1, std::string s2, std::string s3, std::string s4, std::string s5, std::string s6) {
@@ -53,37 +50,34 @@ void GiveAnAlarm::myConnect()
 		ui->limit_temperature->setValue(std::stoi(s5));
 		});
 	// 设置范围
-	connect(_configure, &Configure::setAlarmLimitRangeSignals, [=](std::string s1, std::string s2, std::string s3, std::string s4, std::string s5 , std::string s6) {
-		    // 设置范围
-		    ui->upper_wind_speed->setRange(std::stoi(s1), std::stoi(s2));
-			ui->limit_wind_speed->setRange(std::stoi(s1), std::stoi(s2));
-			ui->upper_limit_of_pulverized_coal_concentration->setRange(strfromDoubleToInt(s3), strfromDoubleToInt(s4));
-			ui->limit_limit_of_pulverized_coal_concentration->setRange(strfromDoubleToInt(s3), strfromDoubleToInt(s4));
-			ui->upper_temperature->setRange(std::stoi(s5), std::stoi(s6));
-			ui->limit_temperature->setRange(std::stoi(s5), std::stoi(s6));
+	connect(_configure, &Configure::setAlarmLimitRangeSignals, [=](std::string s1, std::string s2, std::string s3, std::string s4, std::string s5, std::string s6) {
+		// 设置范围
+		ui->upper_wind_speed->setRange(std::stoi(s1), std::stoi(s2));
+		ui->limit_wind_speed->setRange(std::stoi(s1), std::stoi(s2));
+		ui->upper_limit_of_pulverized_coal_concentration->setRange(strfromDoubleToInt(s3), strfromDoubleToInt(s4));
+		ui->limit_limit_of_pulverized_coal_concentration->setRange(strfromDoubleToInt(s3), strfromDoubleToInt(s4));
+		ui->upper_temperature->setRange(std::stoi(s5), std::stoi(s6));
+		ui->limit_temperature->setRange(std::stoi(s5), std::stoi(s6));
 
-			// 数据提示
-			ui->label_2->setText(s1.c_str());
-			ui->label_4->setText(s1.c_str());
-			ui->label_1->setText(s2.c_str());
-			ui->label_3->setText(s2.c_str());
+		// 数据提示
+		ui->label_2->setText(s1.c_str());
+		ui->label_4->setText(s1.c_str());
+		ui->label_1->setText(s2.c_str());
+		ui->label_3->setText(s2.c_str());
 
-			ui->label_6->setText(s3.c_str());
-			ui->label_8->setText(s3.c_str());
-			ui->label_5->setText(s4.c_str());
-			ui->label_7->setText(s4.c_str());
+		ui->label_6->setText(s3.c_str());
+		ui->label_8->setText(s3.c_str());
+		ui->label_5->setText(s4.c_str());
+		ui->label_7->setText(s4.c_str());
 
-			ui->label_10->setText(s5.c_str());
-			ui->label_12->setText(s5.c_str());
-			ui->label_9->setText(s6.c_str());
-			ui->label_11->setText(s6.c_str());
+		ui->label_10->setText(s5.c_str());
+		ui->label_12->setText(s5.c_str());
+		ui->label_9->setText(s6.c_str());
+		ui->label_11->setText(s6.c_str());
 		});
 
-
-	
-
 	connect(ui->identify_pushButton, &QPushButton::clicked, [=]()
-		{ 
+		{
 			std::string upper_wind_speed_val = ui->label_26->text().toStdString();
 			std::string limit_wind_speed_val = ui->label_28->text().toStdString();
 			std::string upper_limit_of_pulverized_coal_concentration_val = ui->label_32->text().toStdString();
@@ -97,13 +91,11 @@ void GiveAnAlarm::myConnect()
 		});
 	connect(ui->cancel_pushButton, &QPushButton::clicked, [=]()
 		{ emit fromGiveAnAlarmToMainScreenSignals(); });
-
 }
-
 
 int GiveAnAlarm::strfromDoubleToInt(std::string& str)
 {
-	return 10*std::stod(str);
+	return 10 * std::stod(str);
 }
 
 std::string GiveAnAlarm::intToStr(int val)

@@ -1,6 +1,6 @@
 #include "assist.h"
 
-Assist::Assist(QWidget *parent)
+Assist::Assist(QWidget* parent)
 	: QWidget(parent)
 {
 }

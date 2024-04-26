@@ -1,6 +1,6 @@
 #include "systemsetting.h"
 #include <qdebug.h>
-SystemSetting::SystemSetting(QWidget *parent, Configure* configure)
+SystemSetting::SystemSetting(QWidget* parent, Configure* configure)
 	: QWidget(parent)
 	, _configure(configure)
 	, _mytime(new MyTime(nullptr))

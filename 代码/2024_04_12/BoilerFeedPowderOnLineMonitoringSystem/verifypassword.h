@@ -20,15 +20,15 @@ class VerifyPassword : public QWidget
 	Q_OBJECT
 
 public:
-	VerifyPassword(QWidget *parent = nullptr, Configure* configure = nullptr);
+	VerifyPassword(QWidget* parent = nullptr, Configure* configure = nullptr);
 	~VerifyPassword();
-	void closeEvent(QCloseEvent *);
+	void closeEvent(QCloseEvent*);
 signals:
 	void fromVerifyPasswordSignalsIsTrue();
 	void fromVerifyPasswordSignalsIsFalse();
-	void ExitWin(); // 
+	void ExitWin(); //
 private:
-	Ui::VerifyPasswordClass *ui;
+	Ui::VerifyPasswordClass* ui;
 	std::string _password;
 	Configure* _configure;
 };

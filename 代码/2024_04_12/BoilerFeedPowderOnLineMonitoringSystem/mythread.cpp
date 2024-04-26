@@ -1,5 +1,5 @@
 #include "mythread.h"
-MyThread::MyThread(QObject *parent)
+MyThread::MyThread(QObject* parent)
 	: QThread(parent)
 	, _flag(false)
 {
@@ -10,10 +10,10 @@ MyThread::MyThread(QObject *parent)
 		, std::string d1, std::string d2, std::string d3, std::string d4
 		, std::string e1, std::string e2, std::string e3, std::string e4
 		, std::string f1, std::string f2, std::string f3, std::string f4
-		, std::string a,  std::string b,  std::string c,  std::string d, std::string e, std::string f, std::string all
-		) 
+		, std::string a, std::string b, std::string c, std::string d, std::string e, std::string f, std::string all
+		)
 		{
-		    // 添加系数
+			// 添加系数
 			_coefficient_of_backrest_tube.clear();
 			_coefficient_of_backrest_tube.push_back(std::stod(a1));
 			_coefficient_of_backrest_tube.push_back(std::stod(a2));
@@ -39,7 +39,6 @@ MyThread::MyThread(QObject *parent)
 			_coefficient_of_backrest_tube.push_back(std::stod(f2));
 			_coefficient_of_backrest_tube.push_back(std::stod(f3));
 			_coefficient_of_backrest_tube.push_back(std::stod(f4));
-			
 
 			// 添加面积
 			_area.clear();
@@ -50,7 +49,6 @@ MyThread::MyThread(QObject *parent)
 			_area.push_back(std::stod(e));
 			_area.push_back(std::stod(f));
 			_area.push_back(std::stod(all));
-
 		});
 }
 void MyThread::stopProcessing()
@@ -59,12 +57,10 @@ void MyThread::stopProcessing()
 }
 MyThread::~MyThread()
 {
-
 }
 
 void MyThread::run()
 {
-
 	bool headerData = true;
 	std::string path = "./test.csv";
 	std::ifstream ifs;
@@ -78,23 +74,46 @@ void MyThread::run()
 			sleep(1);
 			continue;
 		}
+		// 下面是模拟我们数据处理的结果,然后发送过去的
 		int j = 0;
-		while (std::getline(ifs, line))
+
+		while (!_flag)
 		{
-			if (headerData)
-			{
-				// 如果是表头数据,我们就不读
-				headerData = false;
-				continue;
-			}
 			Task task;
-			parse(&task, line);         // 解析字符串,得到数据
-			task.run();                 // 数据处理
+			for (int i = 0; i < 24; i++)
+			{
+				std::string time = "1714029266";                             // 时间戳
+				double differentialPressure = qrand() % 100;                           // 一次风动压测点
+				double primaryAirTemperatureMeasuringPoint = qrand() % 100;            // 一次风温测点
+				double pulverizedCoalTemperatureMeasuringPoint = qrand() % 100;        // 煤粉温度测点
+				double mixedTemperatureMeasuringPoint = qrand() % 100;                 // 混合温度测点
+				double area = 1.4;                                           // 面积
+				double coefficient = 1.9;                                    // 测速管风洞标定系数
+				Data data;
+				data.set(time, differentialPressure, primaryAirTemperatureMeasuringPoint, pulverizedCoalTemperatureMeasuringPoint, mixedTemperatureMeasuringPoint, area, coefficient);
+				task.push_back(data);
+			}
+			task.run();                     // 数据处理
 			emit produceDataSignals(task);  // 发送处理结果
 			std::cout << "send " << ++j << std::endl;
-			sleep(10000);
+			sleep(2);                       // 休息5s
 		}
-
+		//int j = 0;
+		//while (std::getline(ifs, line))
+		//{
+		//	if (headerData)
+		//	{
+		//		// 如果是表头数据,我们就不读
+		//		headerData = false;
+		//		continue;
+		//	}
+		//	Task task;
+		//	parse(&task, line);         // 解析字符串,得到数据
+		//	task.run();                   // 数据处理
+		//	emit produceDataSignals(task);  // 发送处理结果
+		//	std::cout << "send " << ++j << std::endl;
+		//	sleep(10000);
+		//}
 	}
 
 	ifs.close();
@@ -102,7 +121,7 @@ void MyThread::run()
 	QThread::quit();
 }
 
-void MyThread::parse(Task *task, const std::string &line)
+void MyThread::parse(Task* task, const std::string& line)
 {
 	std::vector<std::string> v;
 	slicedString(&v, line); // 将数据放到我们的数组中
@@ -112,7 +131,7 @@ void MyThread::parse(Task *task, const std::string &line)
 		int j = 4 * i + 2;
 		Data data;
 		// 这里将 系数和面积都放进去
-		data.set(v[1], std::stod(v[j]), std::stod(v[j+1]), std::stod(v[j+2]), std::stod(v[j+3]), _area[i / 4], _coefficient_of_backrest_tube[i]);
+		data.set(v[1], std::stod(v[j]), std::stod(v[j + 1]), std::stod(v[j + 2]), std::stod(v[j + 3]), _area[i / 4], _coefficient_of_backrest_tube[i]);
 		task->push_back(data);
 	}
 }

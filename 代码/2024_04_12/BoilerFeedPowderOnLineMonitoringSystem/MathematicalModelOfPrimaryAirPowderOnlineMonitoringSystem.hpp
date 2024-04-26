@@ -19,10 +19,10 @@ private:
 	 * specific_heat_of_pulverized_coal:煤粉比热
 	 * temperature:温度
 	 */
-	static void specificHeat(double *specific_heat_of_air,
-							 double *specific_heat_of_pulverized_coal,
-							 double temperature,
-							 bool unit_temperature = UNITOPTION::TEMPERATUREINCELSIUS)
+	static void specificHeat(double* specific_heat_of_air,
+		double* specific_heat_of_pulverized_coal,
+		double temperature,
+		bool unit_temperature = UNITOPTION::TEMPERATUREINCELSIUS)
 	{
 		if (unit_temperature == UNITOPTION::TEMPERATUREINCELSIUS)
 			temperature = temperature + 273.15;
@@ -38,12 +38,12 @@ public:
 	 * 温度:               temperature
 	 * 测量的差压:          differential_pressure
 	 */
-	static void WindSpeed(double *wind_speed,
-						  double temperature,
-						  const double &differential_pressure,
-						  const double &calibration_coefficient_for_tachometer_wind_tunnel,
-						  bool unit_temperature = UNITOPTION::TEMPERATUREINCELSIUS,
-						  bool unit_option = UNITOPTION::FORCEOFPRESSURE)
+	static void WindSpeed(double* wind_speed,
+		double temperature,
+		const double& differential_pressure,
+		const double& calibration_coefficient_for_tachometer_wind_tunnel,
+		bool unit_temperature = UNITOPTION::TEMPERATUREINCELSIUS,
+		bool unit_option = UNITOPTION::FORCEOFPRESSURE)
 	{
 		if (unit_temperature == UNITOPTION::TEMPERATUREINKELVIN)
 			temperature = temperature + 273.15;
@@ -65,10 +65,10 @@ public:
 	 * temperature: 各点的温度
 	 * pulverized_coal_concentration:煤粉浓度
 	 */
-	static void pulverizedCoalConcentration(double *pulverized_coal_concentration,
-											double temperature_1,
-											double temperature_2,
-											double temperature_3)
+	static void pulverizedCoalConcentration(double* pulverized_coal_concentration,
+		double temperature_1,
+		double temperature_2,
+		double temperature_3)
 	{
 		temperature_1 = (temperature_1 + 273.15) / 1000;
 		temperature_2 = temperature_2 / 273.15;
@@ -96,13 +96,13 @@ public:
 	 * pulverized_coal_concentration:煤粉浓度
 	 * pulverized_coal_mass_flow_rate:煤粉质量流量
 	 */
-	static void pulverizedCoalMassFlowRate(double *pulverized_coal_mass_flow_rate,
-										   double wind_speed,
-										   double cross_sectional_area_of_primary_duct,
-										   double primary_air_temperature,
-										   double pulverized_coal_concentration,
-										   double the_density_of_air_under_standard_conditions = 1.29,
-										   bool unit_temperature = UNITOPTION::TEMPERATUREINCELSIUS)
+	static void pulverizedCoalMassFlowRate(double* pulverized_coal_mass_flow_rate,
+		double wind_speed,
+		double cross_sectional_area_of_primary_duct,
+		double primary_air_temperature,
+		double pulverized_coal_concentration,
+		double the_density_of_air_under_standard_conditions = 1.29,
+		bool unit_temperature = UNITOPTION::TEMPERATUREINCELSIUS)
 
 	{
 		if (unit_temperature == UNITOPTION::TEMPERATUREINCELSIUS)
@@ -118,9 +118,9 @@ public:
 	 * wind_speed:一次、二次、三次风速
 	 * cross_sectional_area_of_primary_duct:一次、二次、三次风管截面积
 	 */
-	static void airVolume(double *air_volume,
-						  const double &wind_speed,
-						  const double &cross_sectional_area_of_primary_duct)
+	static void airVolume(double* air_volume,
+		const double& wind_speed,
+		const double& cross_sectional_area_of_primary_duct)
 	{
 		// Q = 3600ωs
 		*air_volume = 3600 * wind_speed * cross_sectional_area_of_primary_duct;

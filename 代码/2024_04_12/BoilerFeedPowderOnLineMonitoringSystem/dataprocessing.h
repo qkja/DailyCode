@@ -8,13 +8,13 @@
 class DataProcessing : public QWidget
 {
 	Q_OBJECT
-	friend class BoilerFeedPowderOnLineMonitoringSystem;
+		friend class BoilerFeedPowderOnLineMonitoringSystem;
 
 public:
-	DataProcessing(QWidget *parent);
+	DataProcessing(QWidget* parent);
 	~DataProcessing();
 
 private:
-	AlarmDatabase *_alarm_database;		// �������ݿ�:
-	ChannelDatabase *_channel_database; // ͨ�����ݿ�:
+	AlarmDatabase* _alarm_database;
+	ChannelDatabase* _channel_database;
 };

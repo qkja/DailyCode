@@ -1,6 +1,6 @@
 #include "wordofcommand.h"
 #include <qdebug.h>
-WordOfCommand::WordOfCommand(QWidget *parent, Configure* configure)
+WordOfCommand::WordOfCommand(QWidget* parent, Configure* configure)
 	: QWidget(parent)
 	, ui(new Ui::WordOfCommandClass())
 	, _configure(configure)
@@ -14,11 +14,8 @@ WordOfCommand::WordOfCommand(QWidget *parent, Configure* configure)
 		_password = password;
 		});
 
-
-
 	connect(ui->identify_pushButton, &QPushButton::clicked, [=]()
-			{ 
-
+		{
 			std::string oldPassword = ui->old_password->text().toStdString();
 			std::string newPassword = ui->new_password->text().toStdString();
 			if (oldPassword == _password)
@@ -29,13 +26,13 @@ WordOfCommand::WordOfCommand(QWidget *parent, Configure* configure)
 			else
 			{
 				std::cerr << oldPassword << " error" << std::endl;
-				std::cerr << _password  << std::endl;
+				std::cerr << _password << std::endl;
 				ui->old_password->clear();
 				ui->new_password->clear();
 			}
 		});
 	connect(ui->cancel_pushButton, &QPushButton::clicked, [=]()
-			{ emit fromWordOfCommandToMainScreenSignals(); });
+		{ emit fromWordOfCommandToMainScreenSignals(); });
 }
 
 WordOfCommand::~WordOfCommand()

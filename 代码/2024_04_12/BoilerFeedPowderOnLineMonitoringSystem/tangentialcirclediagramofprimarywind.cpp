@@ -1,12 +1,11 @@
 #include "tangentialcirclediagramofprimarywind.h"
 
-TangentialCircleDiagramOfPrimaryWind::TangentialCircleDiagramOfPrimaryWind(QWidget *parent)
+TangentialCircleDiagramOfPrimaryWind::TangentialCircleDiagramOfPrimaryWind(QWidget* parent)
 	: QMainWindow(parent), ui(new Ui::TangentialCircleDiagramOfPrimaryWindClass())
 {
 	ui->setupUi(this);
 
 	std::cout << "TangentialCircleDiagramOfPrimaryWind()" << std::endl;
-
 }
 
 TangentialCircleDiagramOfPrimaryWind::~TangentialCircleDiagramOfPrimaryWind()

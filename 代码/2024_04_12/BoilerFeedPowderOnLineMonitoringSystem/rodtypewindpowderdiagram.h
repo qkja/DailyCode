@@ -16,12 +16,12 @@ class RodTypeWindPowderDiagram : public QMainWindow
 	Q_OBJECT
 
 public:
-	RodTypeWindPowderDiagram(QWidget *parent = nullptr, ResultData* result_data = nullptr);
+	RodTypeWindPowderDiagram(QWidget* parent = nullptr, ResultData* result_data = nullptr);
 	~RodTypeWindPowderDiagram();
 private:
 	void init();
 private:
-	Ui::RodTypeWindPowderDiagramClass *ui;
+	Ui::RodTypeWindPowderDiagramClass* ui;
 	ResultData* _result_data;  // 派发数据
 	std::vector<BarChartWidget*> _v;// 收藏ui所有的的自定义控件
 };

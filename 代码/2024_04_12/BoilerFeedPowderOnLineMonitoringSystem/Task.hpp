@@ -5,7 +5,6 @@
 #include <vector>
 #include "MathematicalModelOfPrimaryAirPowderOnlineMonitoringSystem.hpp"
 
-
 // 仅仅计算一次的
 struct Data
 {
@@ -22,7 +21,6 @@ struct Data
 		_area = n._area;
 		_coefficient = n._coefficient;;
 	}
-
 
 	void set(std::string time,
 		double differentialPressure,
@@ -52,16 +50,14 @@ struct Data
 struct Result
 {
 	Result() {}
-	Result(const Result& result) 
+	Result(const Result& result)
 	{
-	
 		_time = result._time;
 		_wind_speed = result._wind_speed;
 		_pulverized_coal_concentration = result._pulverized_coal_concentration;
 		_pulverized_coal_mass_flow_rate = result._pulverized_coal_mass_flow_rate;
 		_air_volume = result._air_volume;
 		_temperature = result._temperature;
-	
 	}
 	std::string _time;                      // 时间
 	double _wind_speed;					    // 风速
@@ -137,7 +133,6 @@ public:
 			result._temperature = _primary_value[i]._primaryAirTemperatureMeasuringPoint;
 			_primary_result.push_back(result);
 		}
-
 	}
 	std::vector<struct Data> _primary_value;   // 输入的数据
 	std::vector<struct Result> _primary_result;// 输出的数据

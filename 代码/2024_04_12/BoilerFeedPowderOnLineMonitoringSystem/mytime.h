@@ -20,12 +20,12 @@ class MyTime : public QWidget
 	Q_OBJECT
 
 public:
-	MyTime(QWidget *parent = nullptr);
+	MyTime(QWidget* parent = nullptr);
 	~MyTime();
 signals:
 	void fromMyTimeToMianScreenSignals();
 
 private:
-	Ui::MyTimeClass *ui;
+	Ui::MyTimeClass* ui;
 	QTimer* _timer;
 };

@@ -1,9 +1,9 @@
 #include "spout.h"
 #include <qdebug.h>
-Spout::Spout(QWidget *parent, Configure* configure)
+Spout::Spout(QWidget* parent, Configure* configure)
 	: QWidget(parent)
 	, ui(new Ui::SpoutClass())
-	,_configure(configure)
+	, _configure(configure)
 {
 	ui->setupUi(this);
 	qDebug() << "Spout()";
@@ -22,11 +22,11 @@ Spout::Spout(QWidget *parent, Configure* configure)
 		});
 
 	connect(ui->save_pushButton, &QPushButton::clicked, [=]()
-			{ emit fromSpoutToMianScreenSignals(); });
+		{ emit fromSpoutToMianScreenSignals(); });
 	connect(ui->modify_pushButton, &QPushButton::clicked, [=]()
-			{ emit fromSpoutToMianScreenSignals(); });
+		{ emit fromSpoutToMianScreenSignals(); });
 	connect(ui->quit_pushButton, &QPushButton::clicked, [=]()
-			{ emit fromSpoutToMianScreenSignals(); });
+		{ emit fromSpoutToMianScreenSignals(); });
 }
 
 Spout::~Spout()
