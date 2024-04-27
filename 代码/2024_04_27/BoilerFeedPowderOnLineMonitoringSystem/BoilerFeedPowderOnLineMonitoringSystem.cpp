@@ -17,7 +17,6 @@ BoilerFeedPowderOnLineMonitoringSystem::BoilerFeedPowderOnLineMonitoringSystem(Q
 	, _channel_database(nullptr)
 	, _alarm_database(nullptr)
 {
-
 	ui->setupUi(this);
 	std::cout << "BoilerFeedPowderOnLineMonitoringSystem()" << std::endl;
 	init();
@@ -106,10 +105,9 @@ void BoilerFeedPowderOnLineMonitoringSystem::startThread()
 void BoilerFeedPowderOnLineMonitoringSystem::initAlarmDatabase()
 {
 	connect(ui->action_alarm_database, &QAction::triggered, [=]() {
-		if(_alarm_database == nullptr)
+		if (_alarm_database == nullptr)
 			_alarm_database = new AlarmDatabase;
 		this->hide();
-
 
 		connect(_alarm_database, &AlarmDatabase::fromAlarmDatabaseToMainScreenSignals, [=]()
 			{
@@ -127,7 +125,7 @@ void BoilerFeedPowderOnLineMonitoringSystem::initAlarmDatabase()
 void BoilerFeedPowderOnLineMonitoringSystem::initChannelDatabase()
 {
 	connect(ui->action_channel_database, &QAction::triggered, [=]() {
-		if(_channel_database == nullptr)
+		if (_channel_database == nullptr)
 			_channel_database = new ChannelDatabase;
 		this->hide();
 		_channel_database->show();
@@ -147,9 +145,9 @@ void BoilerFeedPowderOnLineMonitoringSystem::initRodTypeWindPowderDiagram()
 	connect(ui->action_rod_type_wind_powder_diagram, &QAction::triggered, [=]() {
 		if (nullptr == _rod_type_wind_powder_diagram)
 			_rod_type_wind_powder_diagram = new RodTypeWindPowderDiagram(nullptr, &_result_data);
-		
+
 		emit _my_thread.saveCoefficientSignals(_configure->getAllCoefficient());  // 防止系数已经更新了
-		
+
 		this->hide();
 		_rod_type_wind_powder_diagram->show();
 
@@ -164,9 +162,9 @@ void BoilerFeedPowderOnLineMonitoringSystem::initRodTypeWindPowderDiagram()
 void BoilerFeedPowderOnLineMonitoringSystem::initTangentialCircleDiagramOfPrimaryWind()
 {
 	connect(ui->action_tangential_circle_diagram_of_primary_wind, &QAction::triggered, [=]() {
-		if(nullptr == _tangential_circle_diagram_of_primary_wind)
+		if (nullptr == _tangential_circle_diagram_of_primary_wind)
 			_tangential_circle_diagram_of_primary_wind = new TangentialCircleDiagramOfPrimaryWind;
-		
+
 		this->hide();
 		_tangential_circle_diagram_of_primary_wind->show();
 		connect(_tangential_circle_diagram_of_primary_wind, &TangentialCircleDiagramOfPrimaryWind::tangentialCircleDiagramOfPrimaryWindCloseSignals, [=]() {
@@ -179,7 +177,7 @@ void BoilerFeedPowderOnLineMonitoringSystem::initTangentialCircleDiagramOfPrimar
 void BoilerFeedPowderOnLineMonitoringSystem::initTrendChart()
 {
 	connect(ui->action_trend_chart, &QAction::triggered, [=]() {
-		if(nullptr == _trend_chart)
+		if (nullptr == _trend_chart)
 			_trend_chart = new TrendChart(nullptr, &_result_data);
 		emit _my_thread.saveCoefficientSignals(_configure->getAllCoefficient());  // 防止系数已经更新了
 
@@ -195,7 +193,7 @@ void BoilerFeedPowderOnLineMonitoringSystem::initTrendChart()
 void BoilerFeedPowderOnLineMonitoringSystem::initHistoricalTrendChart()
 {
 	connect(ui->action_historical_trend_chart, &QAction::triggered, [=]() {
-		if(_historical_trend_chart == nullptr)
+		if (_historical_trend_chart == nullptr)
 			_historical_trend_chart = new HistoricalTrendChart(nullptr, &_result_data);
 		emit _my_thread.saveCoefficientSignals(_configure->getAllCoefficient());  // 防止系数已经更新了
 

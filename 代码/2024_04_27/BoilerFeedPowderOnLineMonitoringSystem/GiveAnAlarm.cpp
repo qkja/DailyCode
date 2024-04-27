@@ -43,19 +43,15 @@ void GiveAnAlarm::init()
 
 	// 设置当前值
 	connect(_configure, &Configure::setAlarmLimitValueSignals, [=](const std::vector<std::string>& v) {
-		
-
 		ui->upper_wind_speed->setValue(std::stoi(v[1]));
 		ui->limit_wind_speed->setValue(std::stoi(v[0]));
 		ui->upper_limit_of_pulverized_coal_concentration->setValue(strfromDoubleToInt(v[3]));
 		ui->limit_limit_of_pulverized_coal_concentration->setValue(strfromDoubleToInt(v[2]));
 		ui->upper_temperature->setValue(std::stoi(v[5]));
 		ui->limit_temperature->setValue(std::stoi(v[4]));
-		
 		});
 	// 设置范围
 	connect(_configure, &Configure::setAlarmLimitRangeSignals, [=](const std::vector<std::string>& v) {
-		
 		// 设置范围
 		ui->upper_wind_speed->setRange(std::stoi(v[0]), std::stoi(v[1]));
 		ui->limit_wind_speed->setRange(std::stoi(v[0]), std::stoi(v[1]));
@@ -89,7 +85,7 @@ void GiveAnAlarm::init()
 			std::string limit_limit_of_pulverized_coal_concentration_val = ui->label_34->text().toStdString();
 			std::string upper_temperature_val = ui->label_36->text().toStdString();
 			std::string limit_temperature_val = ui->label_38->text().toStdString();
-			
+
 			// 只需要在这里修改就可以了
 			std::vector<std::string> v;
 			v.push_back(limit_wind_speed_val);
@@ -101,7 +97,7 @@ void GiveAnAlarm::init()
 			_configure->alterAlarmLimitValue(v);
 			emit fromGiveAnAlarmToMainScreenSignals();
 		});
-	connect(ui->cancel_pushButton, &QPushButton::clicked, [=]() { 
+	connect(ui->cancel_pushButton, &QPushButton::clicked, [=]() {
 		emit fromGiveAnAlarmToMainScreenSignals(); });
 }
 

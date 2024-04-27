@@ -27,7 +27,6 @@ void MyThread::init()
 		{
 			_area.push_back(std::stod(data[i]));
 		}
-		
 		});
 }
 

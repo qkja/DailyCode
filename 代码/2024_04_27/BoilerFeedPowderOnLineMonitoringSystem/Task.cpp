@@ -1,7 +1,6 @@
 #include "Task.h"
 Task::Task()
 {
-
 }
 
 Task::~Task()
@@ -48,7 +47,6 @@ void Task::run()
 void Task::push_back(const Data& v)
 {
 	_primary_value.push_back(v);
-
 }
 
 void Task::show()

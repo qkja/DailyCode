@@ -38,7 +38,6 @@ void HistoricalTrendChart::closeEvent(QCloseEvent*)
 	emit historicalTrendChartSignals();
 }
 
-
 void HistoricalTrendChart::initMap()
 {
 	for (int i = 1; i <= 24; i++) // ´´½¨¹þÏ£±í
