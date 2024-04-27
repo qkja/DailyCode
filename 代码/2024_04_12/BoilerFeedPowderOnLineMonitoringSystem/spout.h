@@ -22,7 +22,6 @@ private:
 	void setReadOnly(bool); // lable 控件是否可以被修改
 signals:
 	void fromSpoutToMianScreenSignals();
-
 private:
 	Ui::SpoutClass* ui;
 	Configure* _configure;

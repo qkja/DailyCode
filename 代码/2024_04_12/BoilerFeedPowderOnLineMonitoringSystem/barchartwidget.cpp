@@ -1,95 +1,67 @@
 #include "barchartwidget.h"
-#include <QVBoxLayout>
-#include <qlineseries.h>
+#include <iostream>
 BarChartWidget::BarChartWidget(QWidget* parent)
 	: QWidget(parent)
-	, _chart(nullptr)
-	, _series(nullptr)
-	, _chartView(nullptr)
-	, _qBarSet(nullptr)
-	, _axisX(nullptr)
-	, _axisY(nullptr)
 {
 	std::cout << "BarChartWidget()" << std::endl;
-
-	init();
-	addXAxis();
 }
 
 BarChartWidget::~BarChartWidget()
 {
-	delete _chart;
-	delete _series;
-	delete  _chartView;
-	delete _qBarSet;
-	delete _axisX;
-
-	if (_axisY)
-		delete _axisY;
-
-	_chart = nullptr;
-	_series = nullptr;
-	_chartView = nullptr;
-	_qBarSet = nullptr;
-	_axisX = nullptr;
-	_axisY = nullptr;
+	delete _chartView;
 	std::cout << "~BarChartWidget()" << std::endl;
 }
-void BarChartWidget::writeData(int index, double value)
+
+void BarChartWidget::setRange(int begin, int end)
 {
-	_qBarSet->replace(index, value);
-
-	_chart->removeSeries(_series);
-	_chart->addSeries(_series);
-
-	_chart->update();
+	_axisY->setRange(begin, end);
 }
 
-void BarChartWidget::addYAxis(int min_imum, int max_imum, int lower_limit, int upper_limit)
+void BarChartWidget::writeData(const std::vector<double>& data)
 {
-	_axisY = new QValueAxis();
-	_axisY->setRange(min_imum, max_imum);
+	if (_set->count() != 0)
+	{
+		for (int i = 0; i < data.size(); ++i)
+		{
+			_set->replace(i, data[i]);
+		}
+	}
+	else
+	{
+		for (int i = 0; i < data.size(); ++i)
+		{
+			_set->append(data[i]);
+		}
+	}
+	addXAxis(); // 更新X数据
+	_chart->update(); // 更新图形
+}
 
+void BarChartWidget::createChart(int width, int height, int x, int y, const std::string& name)
+{
+	_chartView = new QChartView(this->parentWidget());
+	_chart = new QChart();
+	_chartView->resize(width, height);
+	_chartView->move(x, y);
+	_chartView->setChart(_chart);
+	_series = new QBarSeries();
+	_set = new QBarSet(name.c_str());
+	_series->append(_set);
+	_chart->addSeries(_series);
+
+	_axisX = new QBarCategoryAxis();
+	_chart->addAxis(_axisX, Qt::AlignBottom);
+	_series->attachAxis(_axisX);
+	_axisY = new QValueAxis();
 	_chart->addAxis(_axisY, Qt::AlignLeft);
 	_series->attachAxis(_axisY);
 }
 
 void BarChartWidget::addXAxis()
 {
-	_axisX = new QBarCategoryAxis();
-	_chart->addAxis(_axisX, Qt::AlignBottom);
-	_series->attachAxis(_axisX);
-
 	QStringList categories;
-	for (int i = 0; i < _qBarSet->count(); ++i) {
-		categories << QString::number(_qBarSet->at(i));
+	for (int i = 0; i < _set->count(); ++i) {
+		categories << QString::number(_set->at(i));
 	}
 	_axisX->setCategories(categories);
-}
-void BarChartWidget::init()
-{
-	if (nullptr == _qBarSet)
-		_qBarSet = new QBarSet("data");
-	_qBarSet->append(1);
-	_qBarSet->append(2);
-	_qBarSet->append(3);
-	_qBarSet->append(4);
-	if (nullptr == _series)
-		_series = new QBarSeries();
-
-	_series->append(_qBarSet);
-
-	if (nullptr == _chart)
-		_chart = new QChart();
-	_chart->addSeries(_series);
-	_chart->setTitle("Simple Bar Chart");
-	_chart->setAnimationOptions(QChart::SeriesAnimations);
-	addXAxis();
-	if (nullptr == _chartView)
-		_chartView = new QChartView(_chart);
-	_chartView->setRenderHint(QPainter::Antialiasing);
-
-	QVBoxLayout* layout = new QVBoxLayout(this);
-	layout->addWidget(_chartView);
-	setLayout(layout);
 }

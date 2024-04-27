@@ -16,7 +16,6 @@ class SystemSetting : public QWidget
 public:
 	SystemSetting(QWidget* parent = nullptr, Configure* configure = nullptr);
 	~SystemSetting();
-
 private:
 	Configure* _configure;           //   这是为了使用信号与槽
 	GiveAnAlarm* _give_an_alarm;	 //   设定报警限

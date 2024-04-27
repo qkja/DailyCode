@@ -1,18 +1,18 @@
 #pragma once
 
-#include <QtWidgets/QMainWindow>
-#include "ui_boilerfeedpowderonlinemonitoringsystem.h"
-#include "welcomescreen.h"
-#include "Task.hpp"
-#include "mythread.h"
-#include "systemsetting.h"
-#include "verifypassword.h"
 #include "assist.h"
-#include "dataprocessing.h"
-#include "statusview.h"
-#include <iostream>
 #include "configure.h"
+#include "dataprocessing.h"
+#include "mythread.h"
 #include "resultdata.h"
+#include "statusview.h"
+#include "systemsetting.h"
+#include "Task.hpp"
+#include "ui_boilerfeedpowderonlinemonitoringsystem.h"
+#include "verifypassword.h"
+#include "welcomescreen.h"
+#include <iostream>
+#include <QtWidgets/QMainWindow>
 QT_BEGIN_NAMESPACE
 namespace Ui
 {
@@ -27,27 +27,28 @@ class BoilerFeedPowderOnLineMonitoringSystem : public QMainWindow
 public:
 	BoilerFeedPowderOnLineMonitoringSystem(QWidget* parent = nullptr);
 	~BoilerFeedPowderOnLineMonitoringSystem();
-
-private:
 	void init();
-	void myConnect();
-	void SystemSettingConnect();
-	void StatusViewConnect();
-	void DataProcessingConnect();
-	void AssistConnect();
-	void closeEvent(QCloseEvent*);
+private:
+	void SystemSettingConnect();   // 系统设置的信号与槽
+	void StatusViewConnect();      // 状态查看的信号与槽
+	void DataProcessingConnect();  // 数据处理的信号与槽
+	void AssistConnect();          // 帮助的信号与槽
+	void quitThreadConnect();      // 退出计算线程的信号与槽
+	void toMainScreenConnect();    // 返回主主页面的信号与槽
+	void receiveDataConnect();     // 接受数据的信号与槽
+	void closeEventConnect();      // 重写退出的信号与槽
+protected:
+	void closeEvent(QCloseEvent*) override;
+
 signals:
 	void quitSignals();
 	void stopThread();
-protected slots:
-	void quit();                                                         // 退出程序
-	void fromWelToMianScreen();                                          // 返回主页面
 private:
 	Ui::BoilerFeedPowderOnLineMonitoringSystemClass* ui;
-	MyThread _myThread;               // 线程
+	MyThread _my_thread;              // 线程
 	ResultData _result_data;          // 解析的数据
 	Configure* _configure;            // 配置信息
-	WelcomeScreen* _welcomeScreen;    // 欢迎界面
+	WelcomeScreen* _welcome_screen;   // 欢迎界面
 	SystemSetting* _system_setting;   // 系统设置
 	StatusView* _status_view;         // 状态查看
 	DataProcessing* _data_processing; // 数据处理

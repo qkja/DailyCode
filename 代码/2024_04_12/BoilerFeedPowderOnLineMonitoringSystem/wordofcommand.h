@@ -10,9 +10,7 @@ namespace Ui
 	class WordOfCommandClass;
 };
 QT_END_NAMESPACE
-#if _MSC_VER >= 1600
-#pragma execution_character_set("utf-8")
-#endif
+
 class WordOfCommand : public QWidget
 {
 	Q_OBJECT

@@ -26,7 +26,7 @@ public:
 signals:
 	void fromVerifyPasswordSignalsIsTrue();
 	void fromVerifyPasswordSignalsIsFalse();
-	void ExitWin(); //
+	void ExitWin(); 
 private:
 	Ui::VerifyPasswordClass* ui;
 	std::string _password;

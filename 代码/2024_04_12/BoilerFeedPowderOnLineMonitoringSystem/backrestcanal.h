@@ -3,7 +3,9 @@
 #include "configure.h"
 #include "ui_backrestcanal.h"
 #include <iostream>
+#include <qdebug.h>
 #include <QWidget>
+
 QT_BEGIN_NAMESPACE
 namespace Ui
 {
@@ -18,6 +20,8 @@ class BackrestCanal : public QWidget
 public:
 	BackrestCanal(QWidget* parent = nullptr, Configure* configure = nullptr);
 	~BackrestCanal();
+	void init();
+	void updateData();
 private:
 	void setReadOnly(bool); // lable 控件是否可以被修改
 signals:

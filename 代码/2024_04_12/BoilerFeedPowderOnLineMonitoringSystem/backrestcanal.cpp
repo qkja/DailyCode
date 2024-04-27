@@ -1,5 +1,4 @@
 #include "backrestcanal.h"
-#include <qdebug.h>
 BackrestCanal::BackrestCanal(QWidget* parent, Configure* configure)
 	: QWidget(parent)
 	, ui(new Ui::BackrestCanalClass())
@@ -7,7 +6,23 @@ BackrestCanal::BackrestCanal(QWidget* parent, Configure* configure)
 {
 	qDebug() << "BackrestCanal()";
 	ui->setupUi(this);
-	this->setWindowTitle("你好");
+	init();
+	
+}
+
+BackrestCanal::~BackrestCanal()
+{
+	qDebug() << "~BackrestCanal()";
+	delete ui;
+}
+
+void BackrestCanal::init()
+{
+	updateData();
+}
+
+void BackrestCanal::updateData()
+{
 	connect(_configure, &Configure::setBackrestCanalSignals, [=](
 		std::string a1, std::string a2, std::string a3, std::string a4
 		, std::string b1, std::string b2, std::string b3, std::string b4
@@ -59,12 +74,6 @@ BackrestCanal::BackrestCanal(QWidget* parent, Configure* configure)
 
 	connect(ui->quit_pushButton, &QPushButton::clicked, [=]()
 		{ emit fromBackrestCanalToMainScreenSignals(); });
-}
-
-BackrestCanal::~BackrestCanal()
-{
-	qDebug() << "~BackrestCanal()";
-	delete ui;
 }
 
 void BackrestCanal::setReadOnly(bool flag)

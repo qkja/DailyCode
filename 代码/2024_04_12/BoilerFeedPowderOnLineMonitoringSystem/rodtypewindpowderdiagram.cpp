@@ -5,20 +5,13 @@ RodTypeWindPowderDiagram::RodTypeWindPowderDiagram(QWidget* parent, ResultData* 
 	: QMainWindow(parent)
 	, ui(new Ui::RodTypeWindPowderDiagramClass())
 	, _result_data(result_data)
+	, _wind_speed_view(nullptr)
+	, _pulverized_coal_concentration_view(nullptr)
+	, _temperature_view(nullptr)
 {
 	std::cout << "RodTypeWindPowderDiagram()" << std::endl;
-
 	ui->setupUi(this);
 	init();
-
-	connect(_result_data, &ResultData::barPatternOfWindPowderSignals, [=](std::vector<struct BarPatternOfWindPowder> bar) {
-		for (int i = 0; i < bar.size(); i++)
-		{
-			_v[i / 4 * 3]->writeData(i, bar[i]._wind_speed);
-			_v[i / 4 * 3 + 1]->writeData(i, bar[i]._concentration);
-			_v[i / 4 * 3 + 2]->writeData(i, bar[i]._temperature);
-		}
-		});
 }
 
 RodTypeWindPowderDiagram::~RodTypeWindPowderDiagram()
@@ -29,32 +22,50 @@ RodTypeWindPowderDiagram::~RodTypeWindPowderDiagram()
 
 void RodTypeWindPowderDiagram::init()
 {
-	// å¯¹äºŽæ¯ä¸€ä¸ª ç±»åž‹,éœ€è¦åŠ ä¸€ä¸ªåæ ‡è½´ Yè½´, é¡ºä¾¿è®¾ç½®æˆ‘ä»¬çš„ä¸Šé™å’Œä¸‹é™
-	ui->wind_velocity_a->addYAxis(0, 10, 2, 5);
-	ui->pulverized_coal_concentration_a->addYAxis(0, 10, 2, 5);
-	ui->temperature_a->addYAxis(0, 10, 2, 5);
+	createChart();
+	updateData();
+}
 
-	_v.push_back(ui->wind_velocity_a);
-	_v.push_back(ui->pulverized_coal_concentration_a);
-	_v.push_back(ui->temperature_a);
+void RodTypeWindPowderDiagram::updateData()
+{
+	connect(_result_data, &ResultData::barPatternOfWindPowderSignals, [=](const std::vector<struct BarPatternOfWindPowder>& data) {
+		std::vector<double> v1; // ±£´æ24¸ö·çËÙ
+		std::vector<double> v2; // ±£´æ24¸öÅ¨¶È
+		std::vector<double> v3; // ±£´æ24¸öÎÂ¶È
 
-	_v.push_back(ui->wind_velocity_b);
-	_v.push_back(ui->pulverized_coal_concentration_b);
-	_v.push_back(ui->temperature_b);
+		for (int i = 0; i < data.size(); i++)
+		{
+			v1.push_back(data[i]._wind_speed);
+			v2.push_back(data[i]._concentration);
+			v3.push_back(data[i]._temperature);
+		}
+		_wind_speed_view->writeData(v1);
+		_pulverized_coal_concentration_view->writeData(v2);
+		_temperature_view->writeData(v3);
+		});
+}
 
-	_v.push_back(ui->wind_velocity_c);
-	_v.push_back(ui->pulverized_coal_concentration_c);
-	_v.push_back(ui->temperature_c);
+void RodTypeWindPowderDiagram::createChart()
+{
+	_wind_speed_view = new BarChartWidget(this);
+	_pulverized_coal_concentration_view = new BarChartWidget(this);
+	_temperature_view = new BarChartWidget(this);
 
-	_v.push_back(ui->wind_velocity_d);
-	_v.push_back(ui->pulverized_coal_concentration_d);
-	_v.push_back(ui->temperature_d);
+	int totalViewHeight = this->height();
+	int totalViewwidth = this->width();
 
-	_v.push_back(ui->wind_velocity_e);
-	_v.push_back(ui->pulverized_coal_concentration_e);
-	_v.push_back(ui->temperature_e);
+	int oneViewHeight = 351;
+	int oneViewWidth = 1381;
 
-	_v.push_back(ui->wind_velocity_f);
-	_v.push_back(ui->pulverized_coal_concentration_f);
-	_v.push_back(ui->temperature_f);
+	// Õâ¸ö¿ÉÒÔ ¿´Í¼Åª³öÀ´,×Ô¼ºÉèÖÃ°Ñ
+	// ´´½¨Í¼ÐÎ
+	_wind_speed_view->createChart(oneViewWidth, oneViewHeight, 70, 20, "windSpeed");
+	_pulverized_coal_concentration_view->createChart(oneViewWidth, oneViewHeight, 70, 410, "pulverizedCoalConcentration");
+	_temperature_view->createChart(oneViewWidth, oneViewHeight, 70, 780, "temperature");
+
+	// ÉèÖÃ·¶Î§
+
+	_wind_speed_view->setRange(0, 100);
+	_pulverized_coal_concentration_view->setRange(0, 100);
+	_temperature_view->setRange(0, 100);
 }

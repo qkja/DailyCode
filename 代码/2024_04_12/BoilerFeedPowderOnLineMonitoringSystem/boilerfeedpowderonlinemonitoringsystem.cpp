@@ -4,7 +4,7 @@ BoilerFeedPowderOnLineMonitoringSystem::BoilerFeedPowderOnLineMonitoringSystem(Q
 	: QMainWindow(parent)
 	, ui(new Ui::BoilerFeedPowderOnLineMonitoringSystemClass())
 	, _configure(new Configure(nullptr))
-	, _welcomeScreen(new WelcomeScreen(nullptr))
+	, _welcome_screen(new WelcomeScreen(nullptr))
 	, _verify_password(new VerifyPassword(nullptr, _configure))
 	, _system_setting(new SystemSetting(nullptr, _configure))
 	, _status_view(new StatusView(nullptr, &_result_data))
@@ -12,51 +12,68 @@ BoilerFeedPowderOnLineMonitoringSystem::BoilerFeedPowderOnLineMonitoringSystem(Q
 {
 	std::cout << "BoilerFeedPowderOnLineMonitoringSystem()" << std::endl;
 	ui->setupUi(this);
-	this->init();       // 处理写杂事,例如图像的标题等
-	this->myConnect();  // 链接信号与槽
-	_myThread.start();  // 启动线程
+	init();              // 处理写杂事,例如图像的标题等
+	_my_thread.start();  // 启动线程
 }
 void BoilerFeedPowderOnLineMonitoringSystem::init()
 {
-	_welcomeScreen->show();
 
-	this->setWindowTitle("sssss");
-}
-
-void BoilerFeedPowderOnLineMonitoringSystem::myConnect()
-{
+	
 	SystemSettingConnect();
 	StatusViewConnect();
 	DataProcessingConnect();
 	AssistConnect();
-	// 主线程发出信号,生产线程处理后结束子线程
-	connect(this, &BoilerFeedPowderOnLineMonitoringSystem::stopThread, &_myThread, &MyThread::stopProcessing);
-	// 主线程退出, 先发一个信号,重写我们的退出函数
-	connect(this, &BoilerFeedPowderOnLineMonitoringSystem::quitSignals, this, &BoilerFeedPowderOnLineMonitoringSystem::quit);
-	// 欢迎界面到 主界面
-	connect(_welcomeScreen, &WelcomeScreen::fromWelToMianScreenSignals, this, &BoilerFeedPowderOnLineMonitoringSystem::fromWelToMianScreen);
-	// 信息转发
-	qRegisterMetaType<Task>("Task");
-	connect(&_myThread, &MyThread::produceDataSignals, &_result_data, &ResultData::distributeData);
+	quitThreadConnect();
+	toMainScreenConnect();
+	closeEventConnect();
+	receiveDataConnect();
+
+	_welcome_screen->show();
 }
-void BoilerFeedPowderOnLineMonitoringSystem::quit()
-{
-	this->hide();
-	this->close();
-}
+
+
+
 
 void BoilerFeedPowderOnLineMonitoringSystem::closeEvent(QCloseEvent* event)
 {
-	emit stopThread();
-	_myThread.wait();
+	emit this->stopThread();
+	_my_thread.quit();
+	_my_thread.wait();
 	this->closeEvent(event);
 }
 
-void BoilerFeedPowderOnLineMonitoringSystem::fromWelToMianScreen()
+void BoilerFeedPowderOnLineMonitoringSystem::quitThreadConnect()
 {
-	this->show();
-	_welcomeScreen->hide();
+	// 主线程发出信号,生产线程处理后结束子线程
+	connect(this, &BoilerFeedPowderOnLineMonitoringSystem::stopThread, &_my_thread, &MyThread::stopProcessing);
 }
+
+void BoilerFeedPowderOnLineMonitoringSystem::toMainScreenConnect()
+{
+	// 欢迎界面到 主界面
+	connect(_welcome_screen, &WelcomeScreen::fromWelToMianScreenSignals, [=]() {
+		this->show();
+		_welcome_screen->hide();
+		});
+}
+
+void BoilerFeedPowderOnLineMonitoringSystem::receiveDataConnect()
+{
+	// 信息转发
+	qRegisterMetaType<Task>("Task");
+	connect(&_my_thread, &MyThread::produceDataSignals, &_result_data, &ResultData::distributeData);
+}
+
+void BoilerFeedPowderOnLineMonitoringSystem::closeEventConnect()
+{
+	// 主线程退出, 先发一个信号,重写我们的退出函数
+	connect(this, &BoilerFeedPowderOnLineMonitoringSystem::quitSignals, [=]() {
+		
+		this->hide();
+		this->close(); 
+		});
+}
+
 
 void BoilerFeedPowderOnLineMonitoringSystem::SystemSettingConnect()
 {
@@ -70,7 +87,9 @@ void BoilerFeedPowderOnLineMonitoringSystem::SystemSettingConnect()
 			this->hide();
 			_configure->myEmit(1);
 			_configure->myEmit(2);
-			this->_system_setting->_give_an_alarm->show(); });
+			this->_system_setting->_give_an_alarm->show(); 
+		});
+
 	// 只是查看报警界限
 	connect(this->_system_setting->_give_an_alarm, &GiveAnAlarm::fromGiveAnAlarmToMainScreenSignals, [=]()
 		{
@@ -174,19 +193,17 @@ void BoilerFeedPowderOnLineMonitoringSystem::SystemSettingConnect()
 			_configure->myEmit(3);
 			this->_verify_password->show();
 			connect(this->_verify_password, &VerifyPassword::fromVerifyPasswordSignalsIsTrue, [=]() {
-				qDebug() << "��֤�����Ѿ�������";
 				this->hide();
 				this->_verify_password->hide();
 				_configure->myEmit(5);
 				this->_system_setting->_spout->show();
 				});
 			connect(this->_verify_password, &VerifyPassword::fromVerifyPasswordSignalsIsFalse, [=]() {
-				qDebug() << "��֤�����Ѿ�ȡ����";
 				this->_verify_password->hide();
 				}); });
+
 	connect(this->_system_setting->_spout, &Spout::fromSpoutToMianScreenSignals, [=]()
 		{
-			qDebug() << "�趨�����������Ѿ�ȡ��";
 			this->_system_setting->_spout->hide();
 			this->show(); });
 
@@ -207,7 +224,7 @@ void BoilerFeedPowderOnLineMonitoringSystem::StatusViewConnect()
 	// 棒型风粉图
 	connect(ui->rod_type_wind_powder_diagram_action, &QAction::triggered, [=]()
 		{
-			emit _myThread.saveCoefficientSignals(
+			emit _my_thread.saveCoefficientSignals(
 				_configure->_info_map["A1"], _configure->_info_map["A2"], _configure->_info_map["A3"], _configure->_info_map["A4"]
 				, _configure->_info_map["B1"], _configure->_info_map["B2"], _configure->_info_map["B3"], _configure->_info_map["B4"]
 				, _configure->_info_map["C1"], _configure->_info_map["C2"], _configure->_info_map["C3"], _configure->_info_map["C4"]
@@ -228,7 +245,7 @@ void BoilerFeedPowderOnLineMonitoringSystem::StatusViewConnect()
 	// 圆图
 	connect(ui->tangential_circle_diagram_of_primary_wind_action, &QAction::triggered, [=]()
 		{
-			emit _myThread.saveCoefficientSignals(
+			emit _my_thread.saveCoefficientSignals(
 				_configure->_info_map["A1"], _configure->_info_map["A2"], _configure->_info_map["A3"], _configure->_info_map["A4"]
 				, _configure->_info_map["B1"], _configure->_info_map["B2"], _configure->_info_map["B3"], _configure->_info_map["B4"]
 				, _configure->_info_map["C1"], _configure->_info_map["C2"], _configure->_info_map["C3"], _configure->_info_map["C4"]
@@ -247,7 +264,7 @@ void BoilerFeedPowderOnLineMonitoringSystem::StatusViewConnect()
 	// 趋势图
 	connect(ui->trend_chart_action, &QAction::triggered, [=]()
 		{
-			emit _myThread.saveCoefficientSignals(
+			emit _my_thread.saveCoefficientSignals(
 				_configure->_info_map["A1"], _configure->_info_map["A2"], _configure->_info_map["A3"], _configure->_info_map["A4"]
 				, _configure->_info_map["B1"], _configure->_info_map["B2"], _configure->_info_map["B3"], _configure->_info_map["B4"]
 				, _configure->_info_map["C1"], _configure->_info_map["C2"], _configure->_info_map["C3"], _configure->_info_map["C4"]
@@ -267,7 +284,7 @@ void BoilerFeedPowderOnLineMonitoringSystem::StatusViewConnect()
 	// 历史趋势图
 	connect(ui->historical_trend_chart_action, &QAction::triggered, [=]()
 		{
-			emit _myThread.saveCoefficientSignals(
+			emit _my_thread.saveCoefficientSignals(
 				_configure->_info_map["A1"], _configure->_info_map["A2"], _configure->_info_map["A3"], _configure->_info_map["A4"]
 				, _configure->_info_map["B1"], _configure->_info_map["B2"], _configure->_info_map["B3"], _configure->_info_map["B4"]
 				, _configure->_info_map["C1"], _configure->_info_map["C2"], _configure->_info_map["C3"], _configure->_info_map["C4"]
@@ -316,11 +333,10 @@ BoilerFeedPowderOnLineMonitoringSystem::~BoilerFeedPowderOnLineMonitoringSystem(
 {
 	std::cout << "~BoilerFeedPowderOnLineMonitoringSystem()" << std::endl;
 	delete _configure;
-	delete _welcomeScreen;
+	delete _welcome_screen;
 	delete _verify_password;
 	delete _system_setting;
 	delete _status_view;
 	delete _data_processing;
-
 	delete ui;
 }

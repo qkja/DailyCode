@@ -1,16 +1,7 @@
 #pragma once
 
 #include <QWidget>
-#include <QtCharts/QChart>
-#include <QtCharts/QChartView>
-#include <QtCharts/QBarSeries>
-#include <QtCharts/QBarSet>
-#include <QtCharts/QLegend>
-#include <QtCharts/QBarCategoryAxis>
-#include <QtCharts/qvalueaxis.h>
-#include <iostream>
-
-QT_CHARTS_USE_NAMESPACE
+#include <QtCharts>
 QT_CHARTS_USE_NAMESPACE
 class BarChartWidget : public QWidget
 {
@@ -19,16 +10,15 @@ class BarChartWidget : public QWidget
 public:
 	BarChartWidget(QWidget* parent);
 	~BarChartWidget();
-	void writeData(int index, double value);
-	void addYAxis(int min_imum, int max_imum, int upper_limit, int lower_limit);
-private:
+	void setRange(int, int);
+	void writeData(const std::vector<double>&);
+	void createChart(int, int, int, int, const std::string&);
 	void addXAxis();
-	void init();
 private:
-	QChart* _chart;
+	QBarSet* _set;
 	QBarSeries* _series;
-	QChartView* _chartView;
-	QBarSet* _qBarSet;
-	QBarCategoryAxis* _axisX;
-	QValueAxis* _axisY;
+	QChart* _chart;            // Œƒµµ¿‡
+	QChartView* _chartView;    //  ”Õº
+	QBarCategoryAxis* _axisX;  // X÷·
+	QValueAxis* _axisY;        // Y÷·
 };

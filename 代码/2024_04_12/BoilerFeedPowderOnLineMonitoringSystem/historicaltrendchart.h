@@ -7,7 +7,6 @@
 #include <QtCharts>
 #include "resultdata.h"
 #include <unordered_map>
-#include <qmutex.h>
 #define REFRESH_TIME_HIS  5                                              // 数据5s来一次
 #define TOTAL_TIME_HIS 120                                               // 保存120min的数据
 #define NUMBER_OF_DATA_HIS   ((TOTAL_TIME_HIS*60)/REFRESH_TIME_HIS)      // 计算我们数据的个数

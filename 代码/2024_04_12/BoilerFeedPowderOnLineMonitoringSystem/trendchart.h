@@ -30,17 +30,15 @@ class TrendChart : public QMainWindow
 public:
 	TrendChart(QWidget* parent = nullptr, ResultData* resultData = nullptr);
 	~TrendChart();
-private:
 	void init();
 	void initMap();
 	void updateData();
-	void _updateData(int, const std::string&, bool);
 	void createChart();
 private:
+	void _updateData(int, const std::string&, bool);
+private:
 	Ui::TrendChartClass* ui;
-
 	ResultData* _resultData; // 收到的数据
-
 	std::unordered_map<std::string, std::vector<double>> _wind_speed_map;     // 保存24个风速
 	std::unordered_map<std::string, std::vector<double>> _concentration_map;  // 保存24个煤粉浓度
 	std::unordered_map<std::string, std::vector<double>> _temperature_1;      // 保存24个温度1

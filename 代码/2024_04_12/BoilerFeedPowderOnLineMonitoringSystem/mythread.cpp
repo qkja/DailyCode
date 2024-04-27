@@ -68,52 +68,56 @@ void MyThread::run()
 	std::string line;  // 将每一行的数据存到line中
 	while (!_flag)
 	{
-		if (_area.empty() || _coefficient_of_backrest_tube.empty())
+		if (!_flag)
 		{
-			std::cout << "area and coefficient_of_backrest_tube is empty" << std::endl;
-			sleep(1);
-			continue;
-		}
-		// 下面是模拟我们数据处理的结果,然后发送过去的
-		int j = 0;
-
-		while (!_flag)
-		{
-			Task task;
-			for (int i = 0; i < 24; i++)
+			if (_area.empty() || _coefficient_of_backrest_tube.empty())
 			{
-				std::string time = "1714029266";                             // 时间戳
-				double differentialPressure = qrand() % 100;                           // 一次风动压测点
-				double primaryAirTemperatureMeasuringPoint = qrand() % 100;            // 一次风温测点
-				double pulverizedCoalTemperatureMeasuringPoint = qrand() % 100;        // 煤粉温度测点
-				double mixedTemperatureMeasuringPoint = qrand() % 100;                 // 混合温度测点
-				double area = 1.4;                                           // 面积
-				double coefficient = 1.9;                                    // 测速管风洞标定系数
-				Data data;
-				data.set(time, differentialPressure, primaryAirTemperatureMeasuringPoint, pulverizedCoalTemperatureMeasuringPoint, mixedTemperatureMeasuringPoint, area, coefficient);
-				task.push_back(data);
+				std::cout << "area and coefficient_of_backrest_tube is empty" << std::endl;
+				sleep(1);
+				continue;
 			}
-			task.run();                     // 数据处理
-			emit produceDataSignals(task);  // 发送处理结果
-			std::cout << "send " << ++j << std::endl;
-			sleep(2);                       // 休息5s
+			// 下面是模拟我们数据处理的结果,然后发送过去的
+			int j = 0;
+
+			while (!_flag)
+			{
+				Task task;
+				for (int i = 0; i < 24; i++)
+				{
+					std::string time = "1714029266";                             // 时间戳
+					double differentialPressure = qrand() % 100;                           // 一次风动压测点
+					double primaryAirTemperatureMeasuringPoint = qrand() % 100;            // 一次风温测点
+					double pulverizedCoalTemperatureMeasuringPoint = qrand() % 100;        // 煤粉温度测点
+					double mixedTemperatureMeasuringPoint = qrand() % 100;                 // 混合温度测点
+					double area = 1.4;                                           // 面积
+					double coefficient = 1.9;                                    // 测速管风洞标定系数
+					Data data;
+					data.set(time, differentialPressure, primaryAirTemperatureMeasuringPoint, pulverizedCoalTemperatureMeasuringPoint, mixedTemperatureMeasuringPoint, area, coefficient);
+					task.push_back(data);
+				}
+				task.run();                     // 数据处理
+				emit produceDataSignals(task);  // 发送处理结果
+				std::cout << "send " << ++j << std::endl;
+				sleep(2);                       // 休息5s
+			}
+			//int j = 0;
+			//while (std::getline(ifs, line))
+			//{
+			//	if (headerData)
+			//	{
+			//		// 如果是表头数据,我们就不读
+			//		headerData = false;
+			//		continue;
+			//	}
+			//	Task task;
+			//	parse(&task, line);         // 解析字符串,得到数据
+			//	task.run();                   // 数据处理
+			//	emit produceDataSignals(task);  // 发送处理结果
+			//	std::cout << "send " << ++j << std::endl;
+			//	sleep(10000);
+			//}
 		}
-		//int j = 0;
-		//while (std::getline(ifs, line))
-		//{
-		//	if (headerData)
-		//	{
-		//		// 如果是表头数据,我们就不读
-		//		headerData = false;
-		//		continue;
-		//	}
-		//	Task task;
-		//	parse(&task, line);         // 解析字符串,得到数据
-		//	task.run();                   // 数据处理
-		//	emit produceDataSignals(task);  // 发送处理结果
-		//	std::cout << "send " << ++j << std::endl;
-		//	sleep(10000);
-		//}
+		
 	}
 
 	ifs.close();
