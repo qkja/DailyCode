@@ -16,7 +16,6 @@ public:
 	PrimaryWindCutCircleDiagramView(QWidget* parent);
 	~PrimaryWindCutCircleDiagramView();
 	void writeData(double, double, double, double, double, double, double, double);
-
 protected:
 	void paintEvent(QPaintEvent*) override;
 private:
@@ -24,11 +23,12 @@ private:
 	std::pair<int, int> _outlet_velocity_one_end;    // 浓度1的终点
 	std::pair<int, int>	_wind_speed_one_begin;  //   流速的起点
 	std::pair<int, int>	_wind_speed_one_end;     //  流速的终点
-
+	
 	std::pair<int, int> _outlet_velocity_two_begin;  // 浓度1的起点
 	std::pair<int, int> _outlet_velocity_two_end;    // 浓度1的终点
 	std::pair<int, int>	_wind_speed_two_begin;  //   流速的起点
 	std::pair<int, int>	_wind_speed_two_end;     //  流速的终点
+
 
 	std::pair<int, int> _outlet_velocity_three_begin;  // 浓度1的起点
 	std::pair<int, int> _outlet_velocity_three_end;    // 浓度1的终点
@@ -39,4 +39,5 @@ private:
 	std::pair<int, int> _outlet_velocity_four_end;    // 浓度1的终点
 	std::pair<int, int>	_wind_speed_four_begin;  //   流速的起点
 	std::pair<int, int>	_wind_speed_four_end;     //  流速的终点
+
 };

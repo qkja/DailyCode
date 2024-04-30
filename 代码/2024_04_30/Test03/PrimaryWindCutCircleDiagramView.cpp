@@ -1,22 +1,39 @@
 #include "PrimaryWindCutCircleDiagramView.h"
-
+#include <qtimer.h>
 PrimaryWindCutCircleDiagramView::PrimaryWindCutCircleDiagramView(QWidget* parent)
 	: QWidget(parent)
 {
 	std::cout << "PrimaryWindCutCircleDiagramView()" << std::endl;
+	QTimer* t = new QTimer(this);
+	connect(t, &QTimer::timeout, [=]() {
+		/*init();
+		std::cout << "1" << std::endl;*/
+
+		qreal ret1 = qrand();
+		qreal ret2 = qrand();
+		qreal ret3 = qrand();
+		qreal ret4 = qrand();
+		qreal ret5 = qrand();
+		qreal ret6 = qrand();
+		qreal ret7 = qrand();
+		qreal ret8 = qrand();
+		writeData(ret1, ret2, ret3, ret4, ret5, ret6, ret7, ret8);
+		});
+	t->start(1000);
 }
 
 PrimaryWindCutCircleDiagramView::~PrimaryWindCutCircleDiagramView()
 {
 	std::cout << "~PrimaryWindCutCircleDiagramView()" << std::endl;
 }
+
 void PrimaryWindCutCircleDiagramView::writeData(double velocityOne, double speedOne
 	, double velocityTwo, double speedTwo
 	, double velocityThree, double speedThree
 	, double velocityFour, double speedFour)
 {
-	int width = this->width();
-	int height = this->height();
+	int width = this->width();   
+	int height = this->height(); 
 
 	double ratioOne = velocityOne / (velocityOne + speedOne);
 	double ratioTwo = velocityTwo / (velocityTwo + speedTwo);
@@ -35,7 +52,7 @@ void PrimaryWindCutCircleDiagramView::writeData(double velocityOne, double speed
 	_wind_speed_two_begin = _outlet_velocity_two_end;
 	_wind_speed_two_end = { width / 3, 2 * height / 3 };
 
-	_outlet_velocity_three_begin = { 0,0 };
+	_outlet_velocity_three_begin = {0,0};
 	_outlet_velocity_three_end.first = (int)(ratioThree * 1.0 * width / 3);
 	_outlet_velocity_three_end.second = (int)(ratioThree * 1.0 * height / 3);
 	_wind_speed_three_begin = _outlet_velocity_three_end;
@@ -48,6 +65,9 @@ void PrimaryWindCutCircleDiagramView::writeData(double velocityOne, double speed
 	_wind_speed_four_end = { 2 * width / 3, height / 3 };
 	update();
 }
+
+
+
 void PrimaryWindCutCircleDiagramView::paintEvent(QPaintEvent* event)
 {
 	(void)event;

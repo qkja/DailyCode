@@ -19,6 +19,27 @@ TangentialCircleDiagramOfPrimaryWind::~TangentialCircleDiagramOfPrimaryWind()
 void TangentialCircleDiagramOfPrimaryWind::init()
 {
 	this->setWindowTitle("“ª¥Œ∑Á«–‘≤Õº");
+
+	QTimer* t = new QTimer(this);
+	connect(t, &QTimer::timeout, [=]() {
+		std::cout << "1" << std::endl;
+
+		qreal ret1 = qrand();
+		qreal ret2 = qrand();
+		qreal ret3 = qrand();
+		qreal ret4 = qrand();
+		qreal ret5 = qrand();
+		qreal ret6 = qrand();
+		qreal ret7 = qrand();
+		qreal ret8 = qrand();
+		ui->widget_a->writeData(ret1, ret2, ret3, ret4, ret5, ret6, ret7, ret8);
+		ui->widget_b->writeData(ret1, ret2, ret3, ret4, ret5, ret6, ret7, ret8);
+		ui->widget_c->writeData(ret1, ret2, ret3, ret4, ret5, ret6, ret7, ret8);
+		ui->widget_d->writeData(ret1, ret2, ret3, ret4, ret5, ret6, ret7, ret8);
+		ui->widget_e->writeData(ret1, ret2, ret3, ret4, ret5, ret6, ret7, ret8);
+		ui->widget_f->writeData(ret1, ret2, ret3, ret4, ret5, ret6, ret7, ret8);
+		});
+	t->start(1000);
 }
 
 void TangentialCircleDiagramOfPrimaryWind::closeEvent(QCloseEvent*)
