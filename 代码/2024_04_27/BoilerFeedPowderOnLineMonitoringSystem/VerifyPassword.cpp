@@ -22,6 +22,7 @@ void VerifyPassword::init()
 
 	connect(_configure, &Configure::setPasswordSignals, [=](std::string password) {
 		_password = password;
+		ui->lineEdit->clear();
 		});
 
 	connect(ui->identify_pushButton, &QPushButton::clicked, [=]() {
@@ -44,6 +45,7 @@ void VerifyPassword::init()
 		else
 		{
 			std::cerr << passward << " error!!!" << std::endl;
+			std::cout << "right passward: " << _password << std::endl;
 			ui->lineEdit->clear();
 		}
 		});
