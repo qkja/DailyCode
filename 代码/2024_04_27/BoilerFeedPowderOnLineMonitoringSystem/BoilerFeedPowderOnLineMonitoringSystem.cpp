@@ -31,6 +31,26 @@ BoilerFeedPowderOnLineMonitoringSystem::~BoilerFeedPowderOnLineMonitoringSystem(
 void BoilerFeedPowderOnLineMonitoringSystem::init()
 {
 	this->setWindowTitle("锅炉送粉在线监测系统");
+	// 实例化我们的各个功能
+	// 系统设置
+	_give_an_alarm = new GiveAnAlarm(nullptr, _configure);
+	_word_of_command = new WordOfCommand(nullptr, _configure);
+	_my_time = new MyTime();
+	_verify_password = new VerifyPassword(nullptr, _configure);
+	_spout = new Spout(nullptr, _configure);
+	// 四个图像
+	_backrest_canal = new BackrestCanal(nullptr, _configure);
+	_rod_type_wind_powder_diagram = new RodTypeWindPowderDiagram(nullptr, &_result_data);
+	_tangential_circle_diagram_of_primary_wind = new TangentialCircleDiagramOfPrimaryWind;
+	_trend_chart = new TrendChart(nullptr, &_result_data);
+	_historical_trend_chart = new HistoricalTrendChart(nullptr, &_result_data);
+	// 报警数据和通道数据
+	_alarm_database = new AlarmDatabase;
+	_channel_database = new ChannelDatabase;
+
+	// 将系数发给我们工作的线程
+	emit _my_thread.saveCoefficientSignals(_configure->getAllCoefficient());  // 防止系数已经更新了
+
 	initWelcomeScreen();   // 欢迎窗口
 	initSystemSetting();   // 系统设置
 	initStatusView();      // 状态查看
@@ -80,7 +100,8 @@ void BoilerFeedPowderOnLineMonitoringSystem::closeEvent(QCloseEvent* event)
 	_my_thread.wait();
 
 	// 让欢迎窗口退出
-	_welcome_screen->close();
+	if (_welcome_screen)
+		_welcome_screen->close();
 	// 退出窗口
 	delete _give_an_alarm;
 	delete _my_time;
@@ -164,7 +185,7 @@ void BoilerFeedPowderOnLineMonitoringSystem::initTangentialCircleDiagramOfPrimar
 	connect(ui->action_tangential_circle_diagram_of_primary_wind, &QAction::triggered, [=]() {
 		if (nullptr == _tangential_circle_diagram_of_primary_wind)
 			_tangential_circle_diagram_of_primary_wind = new TangentialCircleDiagramOfPrimaryWind;
-
+		emit _my_thread.saveCoefficientSignals(_configure->getAllCoefficient());  // 防止系数已经更新了
 		this->hide();
 		_tangential_circle_diagram_of_primary_wind->show();
 		connect(_tangential_circle_diagram_of_primary_wind, &TangentialCircleDiagramOfPrimaryWind::tangentialCircleDiagramOfPrimaryWindCloseSignals, [=]() {
@@ -257,9 +278,7 @@ void BoilerFeedPowderOnLineMonitoringSystem::initSpout()
 {
 	connect(ui->action_spout, &QAction::triggered, [=]() {
 		if (nullptr == _verify_password)
-		{
 			_verify_password = new VerifyPassword(nullptr, _configure);
-		}
 		_configure->setPassword();
 		_verify_password->setOption(1);
 		_verify_password->show();
@@ -298,9 +317,8 @@ void BoilerFeedPowderOnLineMonitoringSystem::initBackrestCanal()
 {
 	connect(ui->action_backrest_canal, &QAction::triggered, [=]() {
 		if (nullptr == _verify_password)
-		{
 			_verify_password = new VerifyPassword(nullptr, _configure);
-		}
+
 		_configure->setPassword();
 		_verify_password->setOption(2);
 
@@ -355,6 +373,7 @@ void BoilerFeedPowderOnLineMonitoringSystem::initWordOfCommand()
 			});
 		});
 }
+
 // 欢迎界面
 void BoilerFeedPowderOnLineMonitoringSystem::initWelcomeScreen()
 {
@@ -362,9 +381,12 @@ void BoilerFeedPowderOnLineMonitoringSystem::initWelcomeScreen()
 		_welcome_screen = new WelcomeScreen(nullptr);
 
 	connect(_welcome_screen, &WelcomeScreen::welcomeScreenCloseSignals, [=]() {
+		// 一般而言,我们欢迎界面只出现一次,
+		// 一旦我们选择叉掉这个界面,可以认为是整个程序都要退出
 		_my_thread.quitThread();
 		_my_thread.wait();
 		_welcome_screen = nullptr;
+		this->close();
 		});
 	//设置子窗体属性：关闭即销毁
 	_welcome_screen->setAttribute(Qt::WA_DeleteOnClose);

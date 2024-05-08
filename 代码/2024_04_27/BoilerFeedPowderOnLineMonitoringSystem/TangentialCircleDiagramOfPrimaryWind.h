@@ -4,7 +4,7 @@
 #include <iostream>
 #include "ui_TangentialCircleDiagramOfPrimaryWind.h"
 #include <qtimer.h>
-
+#include <QDateTime>
 #if _MSC_VER >= 1600
 #pragma execution_character_set("utf-8")// 该指令仅支持VS环境
 #endif
@@ -26,4 +26,5 @@ private:
 	void closeEvent(QCloseEvent*);
 private:
 	Ui::TangentialCircleDiagramOfPrimaryWindClass* ui;
+	QTimer* _time;
 };

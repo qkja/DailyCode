@@ -3,6 +3,7 @@
 TangentialCircleDiagramOfPrimaryWind::TangentialCircleDiagramOfPrimaryWind(QWidget* parent)
 	: QWidget(parent)
 	, ui(new Ui::TangentialCircleDiagramOfPrimaryWindClass())
+	, _time(new QTimer(this))
 {
 	ui->setupUi(this);
 	init();
@@ -19,6 +20,12 @@ TangentialCircleDiagramOfPrimaryWind::~TangentialCircleDiagramOfPrimaryWind()
 void TangentialCircleDiagramOfPrimaryWind::init()
 {
 	this->setWindowTitle("Ò»´Î·çÇÐÔ²Í¼");
+	connect(_time, &QTimer::timeout, [=]() {
+		QDateTime currentDateTime = QDateTime::currentDateTime();
+		QString dateTimeString = currentDateTime.toString("hh:mm:ss    yyyy-MM-dd");
+		ui->label_date->setText(dateTimeString);
+		});
+	_time->start(1000);
 
 	QTimer* t = new QTimer(this);
 	connect(t, &QTimer::timeout, [=]() {
