@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <vector>
 #include <unordered_map>
 
 using namespace std;
@@ -32,29 +33,55 @@ using namespace std;
 //    }
 //};
 
+//class Solution {
+//public:
+//    int integerReplacement(int n) {
+//      int result = 0;
+//      while(1 != n)
+//      {
+//        if(0 == n % 2)
+//        {
+//          n /= 2;
+//        }
+//        else 
+//        {
+//          // 查看第二位
+//          if(3 == n || n % 4 == 1)
+//            n -= 1;
+//          else 
+//          {
+//
+//            n  = n /2 +1;
+//            ++result;
+//          }
+//        }
+//        ++result;
+//      }
+//      return result;
+//    }
+//};
+//https://leetcode.cn/problems/russian-doll-envelopes/
 class Solution {
 public:
-    int integerReplacement(int n) {
-      int result = 0;
-      while(1 != n)
+    int maxEnvelopes(vector<vector<int>>& envelopes) {
+      if(envelopes.empty())
+        return 0;
+      int result = 1;
+      int n = envelopes.size();
+      vector<int> dp(n, 1);
+      sort(envelopes.begin(), envelopes.end());
+      dp[0] = 1;
+      for(int i = 1;  i < n; ++i)
       {
-        if(0 == n % 2)
+        for(int j = 0; j < i; ++j)
         {
-          n /= 2;
-        }
-        else 
-        {
-          // 查看第二位
-          if(3 == n || n % 4 == 1)
-            n -= 1;
-          else 
+          // 可以套
+          if(envelopes[i][0] > envelopes[j][0] && envelopes[i][1] > envelopes[j][1])
           {
-
-            n  = n /2 +1;
-            ++result;
+            dp[i] = max(dp[i], dp[j]+1);
           }
         }
-        ++result;
+        result = max(result, dp[i]);
       }
       return result;
     }
