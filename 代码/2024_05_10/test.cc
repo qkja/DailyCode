@@ -61,28 +61,61 @@ using namespace std;
 //    }
 //};
 //https://leetcode.cn/problems/russian-doll-envelopes/
+//class Solution {
+//public:
+//    int maxEnvelopes(vector<vector<int>>& envelopes) {
+//      if(envelopes.empty())
+//        return 0;
+//      int result = 1;
+//      int n = envelopes.size();
+//      vector<int> dp(n, 1);
+//      sort(envelopes.begin(), envelopes.end());
+//      dp[0] = 1;
+//      for(int i = 1;  i < n; ++i)
+//      {
+//        for(int j = 0; j < i; ++j)
+//        {
+//          // 可以套
+//          if(envelopes[i][0] > envelopes[j][0] && envelopes[i][1] > envelopes[j][1])
+//          {
+//            dp[i] = max(dp[i], dp[j]+1);
+//          }
+//        }
+//        result = max(result, dp[i]);
+//      }
+//      return result;
+//    }
+//};
+
 class Solution {
 public:
     int maxEnvelopes(vector<vector<int>>& envelopes) {
-      if(envelopes.empty())
-        return 0;
-      int result = 1;
-      int n = envelopes.size();
-      vector<int> dp(n, 1);
-      sort(envelopes.begin(), envelopes.end());
-      dp[0] = 1;
-      for(int i = 1;  i < n; ++i)
+      sort(envelopes.begin(), envelopes.end(), [](vector<int>& v1, vector<int>& v2){
+          return v1[0] != v2[0] ? v1[0] < v2[0] : v1[1] > v2[1];
+          });
+      vector<int> ret;
+      ret.push_back(envelopes[0][1]);
+      for(int i = 1; i < envelopes.size(); ++i)
       {
-        for(int j = 0; j < i; ++j)
+        int b = envelopes[i][1];
+        if(b > ret.back())
         {
-          // 可以套
-          if(envelopes[i][0] > envelopes[j][0] && envelopes[i][1] > envelopes[j][1])
-          {
-            dp[i] = max(dp[i], dp[j]+1);
-          }
+          ret.push_back(b);
         }
-        result = max(result, dp[i]);
+        else 
+        {
+          int left = 0;
+          int right = ret.size()-1;
+          while(left < right)
+          {
+            int mid = (left + right) / 2;
+            if(ret[mid] >= b) right = mid;
+            else 
+              left = mid+1;
+          }
+          ret[left] = b;
+        }
       }
-      return result;
+        return ret.size();
     }
 };
