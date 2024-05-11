@@ -1,4 +1,5 @@
 #include <vector>
+#include <string>
 #include <unordered_map>
 #include <algorithm>
 #include <limits.h>
@@ -50,44 +51,82 @@ using namespace std;
 //    }
 //};
 //https://leetcode.cn/problems/distant-barcodes/description/
+//class Solution {
+//public:
+//    vector<int> rearrangeBarcodes(vector<int>& barcodes) {
+//
+//      unordered_map<int, int> hash;
+//      int maxVal = 0;
+//      int maxCount = 0;
+//      for(int i = 0; i < barcodes.size(); ++i)
+//      {
+//        hash[barcodes[i]]++;
+//        if(hash[barcodes[i]] > maxCount)
+//        {
+//          maxCount = hash[barcodes[i]];
+//          maxVal = barcodes[i];
+//        }
+//      }
+//      // 先拿我们最大的
+//      int i = 0;
+//      while(maxCount--)
+//      {
+//        barcodes[i] = maxVal;
+//        i+=2;
+//      }
+//      hash.erase(hash.find(maxVal));
+//      auto iter = hash.begin();
+//      while(iter != hash.end())
+//      {
+//        for(int j = 0; j < iter->second; ++j)
+//        {
+//          if(i >= barcodes.size())
+//          {
+//            i = 1;
+//          }
+//          barcodes[i] = iter->first;
+//          i += 2;
+//        }
+//        ++iter;
+//      }
+//      return barcodes;
+//    }
+//};
+
+//https://leetcode.cn/problems/reorganize-string/description/
 class Solution {
 public:
-    vector<int> rearrangeBarcodes(vector<int>& barcodes) {
-
-      unordered_map<int, int> hash;
-      int maxVal = 0;
+    string reorganizeString(string s) {
+      unordered_map<char, int> hash;
       int maxCount = 0;
-      for(int i = 0; i < barcodes.size(); ++i)
+      char maxVal = ' ';
+      for(auto e : s)
       {
-        hash[barcodes[i]]++;
-        if(hash[barcodes[i]] > maxCount)
+        if(maxCount < ++hash[e])
         {
-          maxCount = hash[barcodes[i]];
-          maxVal = barcodes[i];
+          maxCount = hash[e];
+          maxVal = e;
         }
       }
-      // 先拿我们最大的
-      int i = 0;
-      while(maxCount--)
+      if(maxCount > (s.size()+1)/2)
+        return "";
+      int index = 0;
+      for(int i = 0; i < maxCount; ++i)
       {
-        barcodes[i] = maxVal;
-        i+=2;
+        s[index] = maxVal;
+        index += 2;
       }
       hash.erase(hash.find(maxVal));
-      auto iter = hash.begin();
-      while(iter != hash.end())
+      for(auto iter = hash.begin(); iter != hash.end(); ++iter)
       {
-        for(int j = 0; j < iter->second; ++j)
+        for(int i = 0; i < iter->second; ++i)
         {
-          if(i >= barcodes.size())
-          {
-            i = 1;
-          }
-          barcodes[i] = iter->first;
-          i += 2;
+          if(index >= s.size()) index = 1;
+          s[index] = iter->first;
+          index += 2;
         }
-        ++iter;
       }
-      return barcodes;
+      return s;
     }
 };
+
