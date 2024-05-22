@@ -2,6 +2,8 @@
 
 #include "Task.h"
 #include <QWidget>
+#include "ChannelData.h"
+#include "AlertData.h"
 // 棒型风粉图数据
 struct BarPatternOfWindPowder
 {
@@ -31,6 +33,11 @@ signals:
 	void barPatternOfWindPowderSignals(const std::vector<struct BarPatternOfWindPowder>&);
 	// 趋势图
 	void tendencyChartDataSignals(const std::vector<struct TendencyChartData>&);
+	void alarmDataSignals(const struct AlertData&);
+	void channeDataSignals(const struct ChannelData&);
 public slots:
-	void distributeData(Task);
+	// 将解析后的数据拿出来,进行派发
+	void distributeAllData(std::vector<struct Result>);
+	void distributeAlarmData(std::vector<struct AlertData>);
+	void distributeChannelData(std::vector<struct ChannelData>);
 };

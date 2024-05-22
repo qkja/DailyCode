@@ -1,5 +1,5 @@
 #include "BoilerFeedPowderOnLineMonitoringSystem.h"
-
+//实例化类中的各个成员的时候, 每个成员的父类这里设置为nullptr
 BoilerFeedPowderOnLineMonitoringSystem::BoilerFeedPowderOnLineMonitoringSystem(QWidget* parent)
 	: QMainWindow(parent)
 	, ui(new Ui::BoilerFeedPowderOnLineMonitoringSystemClass())
@@ -38,15 +38,16 @@ void BoilerFeedPowderOnLineMonitoringSystem::init()
 	_my_time = new MyTime();
 	_verify_password = new VerifyPassword(nullptr, _configure);
 	_spout = new Spout(nullptr, _configure);
-	// 四个图像
 	_backrest_canal = new BackrestCanal(nullptr, _configure);
+
+	// 四个图像
 	_rod_type_wind_powder_diagram = new RodTypeWindPowderDiagram(nullptr, &_result_data);
 	_tangential_circle_diagram_of_primary_wind = new TangentialCircleDiagramOfPrimaryWind;
 	_trend_chart = new TrendChart(nullptr, &_result_data);
 	_historical_trend_chart = new HistoricalTrendChart(nullptr, &_result_data);
 	// 报警数据和通道数据
-	_alarm_database = new AlarmDatabase;
-	_channel_database = new ChannelDatabase;
+	_alarm_database = new AlarmDatabase(nullptr, &_result_data);
+	_channel_database = new ChannelDatabase(nullptr, &_result_data);
 
 	// 将系数发给我们工作的线程
 	emit _my_thread.saveCoefficientSignals(_configure->getAllCoefficient());  // 防止系数已经更新了
@@ -62,8 +63,16 @@ void BoilerFeedPowderOnLineMonitoringSystem::init()
 
 void BoilerFeedPowderOnLineMonitoringSystem::initThread()
 {
-	qRegisterMetaType<Task>("Task");
-	connect(&_my_thread, &MyThread::produceDataSignals, &_result_data, &ResultData::distributeData);
+	qRegisterMetaType<std::vector<struct Result>>("std::vector<struct Result>");
+	// 这里将解析后的数据发送到_result_data中
+	connect(&_my_thread, &MyThread::produceAllDataSignals, &_result_data, &ResultData::distributeAllData);
+	// 报警数据
+	qRegisterMetaType<std::vector<struct AlertData>>("std::vector<struct AlertData>");
+	connect(&_my_thread, &MyThread::produceAlarmDataSignals, &_result_data, &ResultData::distributeAlarmData);
+
+	// 通道数据
+	qRegisterMetaType<std::vector<struct ChannelData>>("std::vector<struct ChannelData>");
+	connect(&_my_thread, &MyThread::produceChannelDataSignals, &_result_data, &ResultData::distributeChannelData);
 }
 
 void BoilerFeedPowderOnLineMonitoringSystem::initSystemSetting()
@@ -377,19 +386,24 @@ void BoilerFeedPowderOnLineMonitoringSystem::initWordOfCommand()
 // 欢迎界面
 void BoilerFeedPowderOnLineMonitoringSystem::initWelcomeScreen()
 {
-	if (_welcome_screen == nullptr)
+	if (nullptr == _welcome_screen)
 		_welcome_screen = new WelcomeScreen(nullptr);
 
+	// welcomeScreenCloseSignals 是自定义的信号
 	connect(_welcome_screen, &WelcomeScreen::welcomeScreenCloseSignals, [=]() {
-		// 一般而言,我们欢迎界面只出现一次,
-		// 一旦我们选择叉掉这个界面,可以认为是整个程序都要退出
+		// 关闭另外一个线程
 		_my_thread.quitThread();
 		_my_thread.wait();
 		_welcome_screen = nullptr;
+
+		// 一般而言,我们欢迎界面只出现一次,一旦我们选择叉掉这个界面,可以认为是整个程序都要退出
 		this->close();
 		});
+
 	//设置子窗体属性：关闭即销毁
 	_welcome_screen->setAttribute(Qt::WA_DeleteOnClose);
+
+	// 显示欢迎界面
 	_welcome_screen->show();
 
 	// 欢迎界面到 主界面

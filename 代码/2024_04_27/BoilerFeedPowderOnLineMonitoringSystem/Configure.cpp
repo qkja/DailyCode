@@ -86,7 +86,7 @@ void Configure::setSpout()
 	v.push_back(_info_map["pipe_nozzle_area"]);
 	emit setSpoutSignals(v);
 }
-
+// 将哈希表中的参数重新写回到配置文件中
 void Configure::saveConfigurationFile()
 {
 	std::vector<std::string> v;
@@ -111,6 +111,7 @@ void Configure::saveConfigurationFile()
 	ofs.close();
 }
 
+// 把文件中的数据放在
 void Configure::init()
 {
 	_configuration_file_path = "./configure.old.txt";

@@ -1,29 +1,36 @@
 #include "AlarmDatabase.h"
 
-AlarmDatabase::AlarmDatabase(QWidget* parent)
+AlarmDatabase::AlarmDatabase(QWidget* parent, ResultData* result_data)
 	: QWidget(parent)
 	, ui(new Ui::AlarmDatabaseClass())
+	, _result_data(result_data)
 	, _current_page_count(1)
 	, _number_of_total_pages(1)
 {
 	ui->setupUi(this);
 	init();
 	std::cout << "AlarmDatabase()" << std::endl;
-	QTimer* t = new QTimer(this);
 
-	connect(t, &QTimer::timeout, [=]() {
-		AlertData data;
-		static int i = 1;
-		data._sensor_name = "测试" + std::to_string(i);
-		data._alarm_type = "测试";
-		data._initial_time_point = "测试";
-		data._data = "测试";
-		data._end_time_point = "测试";
+	connect(_result_data, &ResultData::alarmDataSignals, [=](const struct AlertData& data) {
 		writeData(data);
-		++i;
 		});
 
-	t->start(100);
+	// 这是一个测试
+	//QTimer* t = new QTimer(this);
+
+	//connect(t, &QTimer::timeout, [=]() {
+	//	struct AlertData data;
+	//	static int i = 1;
+	//	data._sensor_name = "测试" + std::to_string(i);
+	//	data._alarm_type = "测试";
+	//	data._initial_time_point = "测试";
+	//	data._data = "测试";
+	//	data._end_time_point = "测试";
+	//	writeData(data);
+	//	++i;
+	//	});
+
+	//t->start(100);
 }
 
 AlarmDatabase::~AlarmDatabase()
@@ -58,6 +65,9 @@ void AlarmDatabase::init()
 		ui->label_cur->setText(std::to_string(cur).c_str());
 		std::cout << "xia" << std::endl;
 		_current_page_count = cur;
+		});
+	connect(ui->pushButton, &QPushButton::clicked, [=]() {
+		showView(_current_page_count);
 		});
 }
 
@@ -97,7 +107,7 @@ void AlarmDatabase::setTableWidget()
 	ui->tableWidget->clearContents();//清除表格数据区的所有内容，但是不清除表头
 }
 
-void AlarmDatabase::writeData(const AlertData& data)
+void AlarmDatabase::writeData(const struct AlertData& data)
 {
 	if (_v.size() == ROW * NUMBER_OF_TOTAL_PAGES)
 	{
@@ -131,6 +141,7 @@ void AlarmDatabase::writeData(const AlertData& data)
 
 	ui->label_cur->setText(std::to_string(_current_page_count).c_str());
 	ui->label_total->setText(std::to_string(_number_of_total_pages).c_str());
+
 	showView(_current_page_count);
 }
 

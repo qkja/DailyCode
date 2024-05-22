@@ -1,5 +1,7 @@
 #pragma once
-
+/*
+* 这是一个解析配置文件的类,把一些参数记录在这个配置文件只
+*/
 #include <QWidget>
 #include <iostream>
 #include <string>
@@ -36,5 +38,5 @@ signals:
 	void setAlarmLimitValueSignals(const std::vector<std::string>&);
 private:
 	std::string _configuration_file_path; // 配置文件路径
-	std::unordered_map<std::string, std::string> _info_map;
+	std::unordered_map<std::string, std::string> _info_map; // 所有的参数保存在这个哈希表中,便于后期查找
 };

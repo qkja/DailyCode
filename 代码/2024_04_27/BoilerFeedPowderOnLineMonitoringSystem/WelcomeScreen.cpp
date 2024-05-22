@@ -7,18 +7,24 @@ WelcomeScreen::WelcomeScreen(QWidget* parent)
 	, _clickCount(0)
 {
 	ui->setupUi(this);
-	ui->setupUi(this);
 	std::cout << "WelcomeScreen()" << std::endl;
-	this->setWindowTitle(QString("欢迎界面"));
-	_doubleClickTimer->setInterval(QApplication::doubleClickInterval());
-	connect(_doubleClickTimer, &QTimer::timeout, this, &WelcomeScreen::resetClickCount);
-	connect(ui->welcome_pushButton, &QPushButton::clicked, this, &WelcomeScreen::onButtonDoubleClicked);
+	init();
 }
 
 WelcomeScreen::~WelcomeScreen()
 {
 	std::cout << "~WelcomeScreen()" << std::endl;
 	delete ui;
+}
+
+void WelcomeScreen::init()
+{
+	// 窗口设置标题
+	this->setWindowTitle("欢迎界面");
+	// 检测鼠标的双击事件
+	_doubleClickTimer->setInterval(QApplication::doubleClickInterval());
+	connect(_doubleClickTimer, &QTimer::timeout, this, &WelcomeScreen::resetClickCount);
+	connect(ui->welcome_pushButton, &QPushButton::clicked, this, &WelcomeScreen::onButtonDoubleClicked);
 }
 
 void WelcomeScreen::onButtonDoubleClicked()

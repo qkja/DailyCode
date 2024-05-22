@@ -1,8 +1,9 @@
 #include "ChannelDatabase.h"
 
-ChannelDatabase::ChannelDatabase(QWidget* parent)
+ChannelDatabase::ChannelDatabase(QWidget* parent, ResultData* result_data)
 	: QWidget(parent)
 	, ui(new Ui::ChannelDatabaseClass())
+	, _result_data(result_data)
 	, _current_page_count(1)
 	, _number_of_total_pages(1)
 {
@@ -11,7 +12,10 @@ ChannelDatabase::ChannelDatabase(QWidget* parent)
 	std::cout << "ChannelDatabase()" << std::endl;
 	QTimer* t = new QTimer(this);
 
-	connect(t, &QTimer::timeout, [=]() {
+	connect(_result_data, &ResultData::channeDataSignals, [=](const struct ChannelData& data) {
+		writeData(data);
+		});
+	/*connect(t, &QTimer::timeout, [=]() {
 		std::cout << "1" << std::endl;
 		ChannelData data;
 		static int i = 1;
@@ -27,7 +31,7 @@ ChannelDatabase::ChannelDatabase(QWidget* parent)
 		++i;
 		});
 
-	t->start(1000);
+	t->start(1000);*/
 }
 
 ChannelDatabase::~ChannelDatabase()
@@ -104,7 +108,7 @@ void ChannelDatabase::setTableWidget()
 	ui->tableWidget->clearContents();//清除表格数据区的所有内容，但是不清除表头
 }
 
-void ChannelDatabase::writeData(const ChannelData& data)
+void ChannelDatabase::writeData(const struct ChannelData& data)
 {
 	if (_v.size() == ROW_CHANNEL * NUMBER_OF_TOTAL_PAGES_CHANNEL)
 	{

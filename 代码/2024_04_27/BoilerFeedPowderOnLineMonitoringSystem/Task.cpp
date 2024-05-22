@@ -89,7 +89,7 @@ Data::Data(const Data& n)
 	_coefficient = n._coefficient;;
 }
 
-void Data::set(std::string time, double differentialPressure, double primaryAirTemperatureMeasuringPoint, double pulverizedCoalTemperatureMeasuringPoint, double mixedTemperatureMeasuringPoint, double area, double coefficient)
+void Data::set(const std::string& time, double differentialPressure, double primaryAirTemperatureMeasuringPoint, double pulverizedCoalTemperatureMeasuringPoint, double mixedTemperatureMeasuringPoint, double area, double coefficient)
 {
 	_time = time;
 	_differentialPressure = differentialPressure;

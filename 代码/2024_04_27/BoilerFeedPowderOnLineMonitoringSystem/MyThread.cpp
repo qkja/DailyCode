@@ -29,7 +29,7 @@ void MyThread::init()
 		}
 		});
 }
-
+// 线程一经启动,直接运行该函数
 void MyThread::run()
 {
 	bool headerData = true;
@@ -60,12 +60,14 @@ void MyThread::run()
 				double mixedTemperatureMeasuringPoint = qrand() % 100;                 // 混合温度测点
 				double area = 1.4;                                           // 面积
 				double coefficient = 1.9;                                    // 测速管风洞标定系数
-				Data data;
+				Data data;  //Data 是一个检测点的所有的数据,我们需要使用24个检测点
 				data.set(time, differentialPressure, primaryAirTemperatureMeasuringPoint, pulverizedCoalTemperatureMeasuringPoint, mixedTemperatureMeasuringPoint, area, coefficient);
 				task.push_back(data);
 			}
-			task.run();                     // 数据处理
-			emit produceDataSignals(task);  // 发送处理结果
+
+			task.run();                     // 这里一个task就是我们24个监测点所有的数据,run函数是数据处理
+			cleanseData();                  // 清洗报警数据
+			emit produceAllDataSignals(task._primary_result);  // 发送处理结果
 			std::cout << "send " << ++j << std::endl;
 			sleep(2);                       // 休息2s
 		}
@@ -79,6 +81,17 @@ void MyThread::run()
 void MyThread::quitThread()
 {
 	_quit_flag = true;
+}
+
+void MyThread::cleanseData()
+{
+	// 报警数据
+	std::vector<struct AlertData> alert;
+	emit produceAlarmDataSignals(alert);      // 传递报警数据
+
+	// 通道数据
+	std::vector<struct ChannelData> channel;
+	produceChannelDataSignals(channel);
 }
 
 void MyThread::parse(Task* task, const std::string& line)

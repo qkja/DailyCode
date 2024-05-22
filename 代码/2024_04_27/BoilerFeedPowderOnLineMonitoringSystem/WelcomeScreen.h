@@ -21,17 +21,18 @@ class WelcomeScreen : public QWidget
 public:
 	WelcomeScreen(QWidget* parent = nullptr);
 	~WelcomeScreen();
+	void init();
 protected slots:
-	void onButtonDoubleClicked();
-	void resetClickCount();
+	void onButtonDoubleClicked();       // 点击按钮触发的槽函数
+	void resetClickCount();             // 重置计数器
 signals:
-	void fromWelToMianScreenSignals();
-	void welcomeScreenCloseSignals();
+	void fromWelToMianScreenSignals();  // 双击之后,触发这个信号,转到主界面
+	void welcomeScreenCloseSignals();   // 窗口关闭时,触发这个函数
 protected:
-	void closeEvent(QCloseEvent*);
+	void closeEvent(QCloseEvent*);      // 重写窗口关闭的函数
 
 private:
 	Ui::WelcomeScreenClass* ui;
-	QTimer* _doubleClickTimer;
-	int _clickCount;
+	QTimer* _doubleClickTimer;          // 定时器对象
+	int _clickCount;                    // 点击的计数器
 };

@@ -13,7 +13,7 @@ struct Data
 
 	Data(const Data&);
 
-	void set(std::string, double, double, double, double, double, double);
+	void set(const std::string&, double, double, double, double, double, double);
 
 	std::string _time;                               // 时间戳
 	double _differentialPressure;                    // 一次风动压测点

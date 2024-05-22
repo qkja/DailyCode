@@ -7,6 +7,7 @@
 #include "AlertData.h"
 #include <QScrollBar>
 #include <qtimer.h>
+#include "ResultData.h"
 #include <iostream>
 #include <string>
 #include "ChannelData.h"
@@ -26,7 +27,7 @@ class ChannelDatabase : public QWidget
 	Q_OBJECT
 
 public:
-	ChannelDatabase(QWidget* parent = nullptr);
+	ChannelDatabase(QWidget* parent = nullptr, ResultData* result_data = nullptr);
 	~ChannelDatabase();
 	void init();
 signals:
@@ -35,11 +36,12 @@ signals:
 private:
 	void closeEvent(QCloseEvent*);
 	void setTableWidget(); // 设置表格
-	void writeData(const ChannelData&);
+	void writeData(const struct ChannelData&);
 	void showView(int);
 private:
+	ResultData* _result_data;  // 派发数据
 	Ui::ChannelDatabaseClass* ui;
 	int _current_page_count;
 	int _number_of_total_pages;
-	std::vector<ChannelData> _v;
+	std::vector<struct ChannelData> _v;
 };
