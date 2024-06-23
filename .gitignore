@@ -10,5 +10,7 @@
 !*.java
 !*.md
 
+# 这是不允许提交的文件夹
+Private Code
 
 
