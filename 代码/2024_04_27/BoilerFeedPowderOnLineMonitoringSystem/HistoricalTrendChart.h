@@ -4,9 +4,10 @@
 #include "ui_HistoricalTrendChart.h"
 #include <iostream>
 #include <QtCharts>
+#include <algorithm>
 #include "ResultData.h"
 #include <unordered_map>
-#define REFRESH_TIME_HIS  5                                              // 数据5s来一次
+#define REFRESH_TIME_HIS  1                                             // 数据5s来一次
 #define TOTAL_TIME_HIS 120                                               // 保存120min的数据
 #define NUMBER_OF_DATA_HIS   ((TOTAL_TIME_HIS*60)/REFRESH_TIME_HIS)      // 计算我们数据的个数
 

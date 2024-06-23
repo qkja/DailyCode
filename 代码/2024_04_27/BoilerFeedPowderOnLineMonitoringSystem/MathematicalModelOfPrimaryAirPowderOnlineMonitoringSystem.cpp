@@ -1,5 +1,8 @@
 #include "MathematicalModelOfPrimaryAirPowderOnlineMonitoringSystem.h"
 
+/*
+*这个类是我们将拿到的数据进行结果得到结果的过程，这些函数的原理来自我们的文档
+*/
 void MathematicalModelOfPrimaryAirPowderOnlineMonitoringSystem::specificHeat(double* specific_heat_of_air, double* specific_heat_of_pulverized_coal, double temperature, bool unit_temperature)
 {
 	if (unit_temperature == UNITOPTION::TEMPERATUREINCELSIUS)

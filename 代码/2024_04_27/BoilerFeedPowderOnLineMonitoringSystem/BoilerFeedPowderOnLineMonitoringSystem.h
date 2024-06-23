@@ -26,6 +26,11 @@
 #pragma execution_character_set("utf-8")// 该指令仅支持VS环境
 #endif
 
+/*
+* 这是系统的主界面,所有的功能都在这里
+* 可以通过点击菜单栏的选项进行相应的选择
+*/
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class BoilerFeedPowderOnLineMonitoringSystemClass; };
 QT_END_NAMESPACE

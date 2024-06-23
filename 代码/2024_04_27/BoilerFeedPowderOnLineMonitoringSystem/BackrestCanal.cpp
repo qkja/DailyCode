@@ -1,4 +1,7 @@
 #include "BackrestCanal.h"
+/*
+* 拷贝管系数修正
+*/
 
 BackrestCanal::BackrestCanal(QWidget* parent, Configure* configure)
 	: QWidget(parent)
@@ -9,6 +12,7 @@ BackrestCanal::BackrestCanal(QWidget* parent, Configure* configure)
 	ui->setupUi(this);
 	init();
 }
+
 BackrestCanal::~BackrestCanal()
 {
 	std::cout << "~BackrestCanal()" << std::endl;
@@ -18,6 +22,8 @@ BackrestCanal::~BackrestCanal()
 void BackrestCanal::init()
 {
 	this->setWindowTitle("背靠管系数修正");
+
+	// 对应的信号与槽函数，修改这个给界面的拷贝的系数
 	connect(_configure, &Configure::setBackrestCanalSignals, [=](const std::vector<std::string>& data) {
 		ui->_a1->setText(data[0].c_str());
 		ui->_a2->setText(data[1].c_str());
@@ -45,7 +51,7 @@ void BackrestCanal::init()
 		ui->_f4->setText(data[23].c_str());
 		setReadOnly(true);
 		});
-
+	// 信号与槽函数，将这个界面的系数传递给其他界面
 	connect(ui->save_pushButton, &QPushButton::clicked, [=]() {
 		std::string a1 = ui->_a1->text().toStdString();
 		std::string a2 = ui->_a2->text().toStdString();
@@ -100,6 +106,8 @@ void BackrestCanal::init()
 		_configure->alterBackrest(v);
 		emit fromBackrestCanalToMainScreenSignals();
 		});
+
+	// 页面上的两个按钮，对应的信号于槽函数
 	connect(ui->modify_pushButton, &QPushButton::clicked, [=]() {
 		setReadOnly(false);
 		});
@@ -108,11 +116,13 @@ void BackrestCanal::init()
 		{ emit fromBackrestCanalToMainScreenSignals(); });
 }
 
+// 关闭这个界面我们自动发送的信号
 void BackrestCanal::closeEvent(QCloseEvent*)
 {
 	emit backrestCanalCloseSignals();
 }
 
+// 设置我们里面的一些控件读写的权限
 void BackrestCanal::setReadOnly(bool flag)
 {
 	ui->_a1->setReadOnly(flag);

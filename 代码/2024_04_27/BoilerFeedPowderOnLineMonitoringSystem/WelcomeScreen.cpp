@@ -8,7 +8,7 @@ WelcomeScreen::WelcomeScreen(QWidget* parent)
 {
 	ui->setupUi(this);
 	std::cout << "WelcomeScreen()" << std::endl;
-	init();
+	init();  // 进行相关的初始化
 }
 
 WelcomeScreen::~WelcomeScreen()
@@ -39,7 +39,7 @@ void WelcomeScreen::onButtonDoubleClicked()
 	}
 	_doubleClickTimer->start();
 }
-
+// 清空计数器
 void WelcomeScreen::resetClickCount()
 {
 	_clickCount = 0;

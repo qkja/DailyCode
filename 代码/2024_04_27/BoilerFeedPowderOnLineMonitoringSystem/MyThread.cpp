@@ -1,5 +1,6 @@
 #include "MyThread.h"
-
+#include <ctime>
+#include <iostream>
 MyThread::MyThread(QObject* parent)
 	: QThread(parent)
 	, _quit_flag(false)
@@ -12,10 +13,12 @@ MyThread::~MyThread()
 {
 	std::cout << "~MyThread()" << std::endl;
 }
+// 初始化子线程
 
 void MyThread::init()
 {
 	connect(this, &MyThread::saveCoefficientSignals, [=](const std::vector<std::string> data) {
+		// 通过信号与槽传递我们设置的参数
 		_coefficient_of_backrest_tube.clear();
 		_area.clear();
 		int i = 0;
@@ -33,12 +36,15 @@ void MyThread::init()
 void MyThread::run()
 {
 	bool headerData = true;
-	std::string path = "./test.csv";
+	std::string path = "./test.csv"; // 数据读取的位置
 	std::ifstream ifs;
 	ifs.open(path.c_str(), std::ifstream::in);
 	std::string line;  // 将每一行的数据存到line中
+	std::getline(ifs, line); // 清除掉第一行
+
 	while (!_quit_flag)
 	{
+		// 确定我们的参数已经可以拿去了
 		if (_area.empty() || _coefficient_of_backrest_tube.empty())
 		{
 			std::cout << "area and coefficient_of_backrest_tube is empty" << std::endl;
@@ -47,10 +53,15 @@ void MyThread::run()
 		}
 		// 下面是模拟我们数据处理的结果,然后发送过去的
 		int j = 0;
+		int begin = time(NULL);
 
 		while (!_quit_flag)
 		{
+			/*std::getline(ifs, line);*/
 			Task task;
+
+			/*	parse(&task, line);*/
+			// 这是一个测试
 			for (int i = 0; i < 24; i++)
 			{
 				std::string time = "1714029266";                             // 时间戳
@@ -66,9 +77,17 @@ void MyThread::run()
 			}
 
 			task.run();                     // 这里一个task就是我们24个监测点所有的数据,run函数是数据处理
-			cleanseData();                  // 清洗报警数据
-			emit produceAllDataSignals(task._primary_result);  // 发送处理结果
+			cleanseData(task._primary_result);                  // 清洗报警数据
+			emit produceAllDataSignals(task._primary_result);   // 发送处理结果
 			std::cout << "send " << ++j << std::endl;
+			if (j % 1000 == 0)
+			{
+				int end = time(NULL);
+				std::cout << "=======================" << std::endl;
+				std::cout << end - begin << std::endl;
+				begin = time(NULL);
+				std::cout << "=======================" << std::endl;
+			}
 			sleep(2);                       // 休息2s
 		}
 	}
@@ -77,16 +96,25 @@ void MyThread::run()
 	// 子进程退出
 	QThread::quit();
 }
-
+// 退出线程,这个函数函数可以给主线程使用
 void MyThread::quitThread()
 {
 	_quit_flag = true;
 }
 
-void MyThread::cleanseData()
+/*
+* 如何清洗我们的,
+*/
+void MyThread::cleanseData(const std::vector<struct Result>& allData)
 {
+	// 数据 A1-A4 ...F1-F4 共24组数据
 	// 报警数据
 	std::vector<struct AlertData> alert;
+
+	/*for (int i = 0; i < allData.size(); i++)
+	{
+		if(i <)
+	}*/
 	emit produceAlarmDataSignals(alert);      // 传递报警数据
 
 	// 通道数据
@@ -108,7 +136,7 @@ void MyThread::parse(Task* task, const std::string& line)
 		task->push_back(data);
 	}
 }
-
+// 切分字符串
 void MyThread::slicedString(std::vector<std::string>* v, const std::string& str)
 {
 	int begin = 0;

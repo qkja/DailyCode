@@ -5,7 +5,7 @@ ResultData::ResultData(QWidget* parent)
 
 ResultData::~ResultData()
 {}
-
+// 派发图形的数据
 void ResultData::distributeAllData(std::vector<struct Result> task)
 {
 	std::vector<struct BarPatternOfWindPowder> bar; // 棒型风粉图 数据
@@ -65,7 +65,7 @@ void  ResultData::distributeAlarmData(std::vector<struct AlertData> data)
 	++i;
 	alarmDataSignals(v);
 }
-
+//通道数据
 void ResultData::distributeChannelData(std::vector<struct ChannelData> data)
 {
 	/*for (int i = 0; i < data.size(); i++)

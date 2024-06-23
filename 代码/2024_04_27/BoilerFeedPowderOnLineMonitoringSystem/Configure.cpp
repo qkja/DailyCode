@@ -1,5 +1,7 @@
 #include "Configure.h"
-
+/*
+* 这是一个处理配置文件的类，将配置文件的数据读取到哈希表中，然后进行一一分配
+*/
 Configure::Configure(QWidget* parent)
 	: QWidget(parent)
 {
@@ -180,6 +182,7 @@ void Configure::alterBackrest(const std::vector<std::string>& data)
 	_info_map["F4"] = data[23];
 }
 
+// 修改密码
 void Configure::alterPassword(const std::string& password)
 {
 	_info_map["password"] = password;

@@ -12,11 +12,12 @@ BarChartWidget::~BarChartWidget()
 	std::cout << "~BarChartWidget()" << std::endl;
 }
 
+// 设置Y轴的范围
 void BarChartWidget::setRange(int begin, int end)
 {
 	_axisY->setRange(begin, end);
 }
-
+// 写数据
 void BarChartWidget::writeData(const std::vector<double>& data)
 {
 	if (_set->count() != 0)
@@ -37,6 +38,7 @@ void BarChartWidget::writeData(const std::vector<double>& data)
 	_chart->update(); // 更新图形
 }
 
+// 创建折线图
 void BarChartWidget::createChart(int width, int height, int x, int y, const std::string& name)
 {
 	_chartView = new QChartView(this->parentWidget());
@@ -57,6 +59,7 @@ void BarChartWidget::createChart(int width, int height, int x, int y, const std:
 	_series->attachAxis(_axisY);
 }
 
+// 给折线图添加X轴
 void BarChartWidget::addXAxis()
 {
 	QStringList categories;

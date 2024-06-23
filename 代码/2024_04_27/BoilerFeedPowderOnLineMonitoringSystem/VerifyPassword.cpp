@@ -1,4 +1,7 @@
 #include "VerifyPassword.h"
+/*
+* 验证密码的功能
+*/
 
 VerifyPassword::VerifyPassword(QWidget* parent, Configure* configure)
 	: QWidget(parent)

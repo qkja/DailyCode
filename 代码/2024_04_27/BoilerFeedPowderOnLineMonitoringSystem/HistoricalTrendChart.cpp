@@ -38,6 +38,7 @@ void HistoricalTrendChart::closeEvent(QCloseEvent*)
 	emit historicalTrendChartSignals();
 }
 
+// 初始化哈希表
 void HistoricalTrendChart::initMap()
 {
 	for (int i = 1; i <= 24; i++) // 创建哈希表
@@ -47,6 +48,14 @@ void HistoricalTrendChart::initMap()
 		_concentration_map[str];
 		_temperature_1_map[str];
 		_temperature_2_map[str];
+
+		// 先开辟空间
+		_wind_speed_map[str].reserve(NUMBER_OF_DATA_HIS);
+		_concentration_map[str].reserve(NUMBER_OF_DATA_HIS);
+		_temperature_1_map[str].reserve(NUMBER_OF_DATA_HIS);
+		_temperature_2_map[str].reserve(NUMBER_OF_DATA_HIS);
+
+		int a = 10;
 	}
 }
 
@@ -193,7 +202,7 @@ void HistoricalTrendChart::updateData()
 			_updateData(TEMPERATURETWOCHOICE_HIS, temperatureTwoStr, _left_temperature_2, _right_temperature_2);
 		}
 		});
-
+	// 写数据
 	connect(_resultData, &ResultData::tendencyChartDataSignals, [=](const std::vector<struct TendencyChartData>& data) {
 		// 查看我们目前的元素
 		std::string windStr = ui->wind_speed->currentText().toStdString();
@@ -246,17 +255,24 @@ void HistoricalTrendChart::updateData()
 		_left_temperature_1 = std::max(0, _right_temperature_1 - STAGE_FREQUENCY);
 		_left_temperature_2 = std::max(0, _right_temperature_2 - STAGE_FREQUENCY);
 
-		// 更新图形
-		if (_line_wind->count())
-			_updateData(WINDCHOICE_HIS, windStr, _left_wind, _right_wind);
-		if (_line_temperature_2->count())
-			_updateData(CONCENTRATIONCHOICE_HIS, concentrationStr, _left_concentration, _right_concentration);
-		if (_line_concentration->count())
-			_updateData(TEMPERATUREONECHOICE_HIS, temperatureOneStr, _left_temperature_1, _right_temperature_1);
-		if (_line_temperature_1->count())
-			_updateData(TEMPERATURETWOCHOICE_HIS, temperatureTwoStr, _left_temperature_2, _right_temperature_2);
+		if (this->isVisible())
+		{
+			// 更新图形
+			if (_line_wind->count())
+				_updateData(WINDCHOICE_HIS, windStr, _left_wind, _right_wind);
+			if (_line_temperature_2->count())
+				_updateData(CONCENTRATIONCHOICE_HIS, concentrationStr, _left_concentration, _right_concentration);
+			if (_line_concentration->count())
+				_updateData(TEMPERATUREONECHOICE_HIS, temperatureOneStr, _left_temperature_1, _right_temperature_1);
+			if (_line_temperature_1->count())
+				_updateData(TEMPERATURETWOCHOICE_HIS, temperatureTwoStr, _left_temperature_2, _right_temperature_2);
 
-		std::cout << "update data" << std::endl;
+			std::cout << "update data" << std::endl;
+		}
+		else
+		{
+			std::cout << "no4" << std::endl;
+		}
 		});
 }
 

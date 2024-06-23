@@ -1,5 +1,7 @@
 #include "AlertData.h"
-
+/*
+* 这个一个数据的集合，封装起来了
+*/
 AlertData::AlertData()
 {
 }

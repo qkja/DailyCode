@@ -43,9 +43,16 @@ void RodTypeWindPowderDiagram::updateData()
 			v2.push_back(data[i]._concentration);
 			v3.push_back(data[i]._temperature);
 		}
-		_wind_speed_view->writeData(v1);
-		_pulverized_coal_concentration_view->writeData(v2);
-		_temperature_view->writeData(v3);
+		if (this->isVisible())
+		{
+			_wind_speed_view->writeData(v1);
+			_pulverized_coal_concentration_view->writeData(v2);
+			_temperature_view->writeData(v3);
+		}
+		else
+		{
+			std::cout << "no1" << std::endl;
+		}
 		});
 }
 

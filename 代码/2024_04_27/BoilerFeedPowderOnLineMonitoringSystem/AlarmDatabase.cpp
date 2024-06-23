@@ -15,7 +15,7 @@ AlarmDatabase::AlarmDatabase(QWidget* parent, ResultData* result_data)
 		writeData(data);
 		});
 
-	// 这是一个测试
+	// 这是一个测试,为了模拟
 	//QTimer* t = new QTimer(this);
 
 	//connect(t, &QTimer::timeout, [=]() {
@@ -42,6 +42,7 @@ AlarmDatabase::~AlarmDatabase()
 void AlarmDatabase::init()
 {
 	this->setWindowTitle("报警数据");
+
 	connect(ui->quit_pushButton, &QPushButton::clicked, [=]()
 		{ emit fromAlarmDatabaseToMainScreenSignals(); });
 	setTableWidget();
@@ -107,6 +108,9 @@ void AlarmDatabase::setTableWidget()
 	ui->tableWidget->clearContents();//清除表格数据区的所有内容，但是不清除表头
 }
 
+// 写数据， 如果数据超过我们的数据的范围，保存数据的数组先头删，在接着插入
+// 然后遍历每一个数组，将数组的元素添加到表格中
+// 这个性能上有很大的损失，这个版本主要是为了测试，后面可以修改下
 void AlarmDatabase::writeData(const struct AlertData& data)
 {
 	if (_v.size() == ROW * NUMBER_OF_TOTAL_PAGES)
@@ -133,8 +137,13 @@ void AlarmDatabase::writeData(const struct AlertData& data)
 		ui->tableWidget->setItem(_v.size() - 1, 3, new QTableWidgetItem(_v.back()._data.c_str()));
 		ui->tableWidget->setItem(_v.size() - 1, 4, new QTableWidgetItem(_v.back()._end_time_point.c_str()));
 	}
-	ui->tableWidget->update();
 
+	if (this->isVisible()) // 如果该界面显示了，则更新我们的表格
+	{
+		ui->tableWidget->update();
+	}
+
+	// 设置当前页和总页数
 	_number_of_total_pages = _v.size() / ROW;
 	if (_v.size() % ROW != 0)
 		_number_of_total_pages = _number_of_total_pages + 1;
@@ -142,9 +151,17 @@ void AlarmDatabase::writeData(const struct AlertData& data)
 	ui->label_cur->setText(std::to_string(_current_page_count).c_str());
 	ui->label_total->setText(std::to_string(_number_of_total_pages).c_str());
 
-	showView(_current_page_count);
+	if (this->isVisible())
+	{
+		showView(_current_page_count);
+	}
+	else
+	{
+		std::cout << "no5" << std::endl;
+	}
 }
 
+// 我们只是显示所有的数据一部分，只显示当前页的数据，其他的就暂时隐藏起来
 void AlarmDatabase::showView(int page)
 {
 	int start = ROW * (page - 1);

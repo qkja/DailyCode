@@ -7,7 +7,7 @@
 #include "ResultData.h"
 #include <unordered_map>
 
-#define REFRESH_TIME  5                                   // 数据5s来一次
+#define REFRESH_TIME  1                                   // 数据5s来一次
 #define TOTAL_TIME 30                                     // 保存30min的数据
 #define NUMBER_OF_DATA   ((TOTAL_TIME*60)/REFRESH_TIME)   // 计算我们数据的个数
 

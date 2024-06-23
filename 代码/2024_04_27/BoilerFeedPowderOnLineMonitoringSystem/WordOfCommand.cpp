@@ -1,5 +1,8 @@
 #include "WordOfCommand.h"
 
+/*
+* 修改口令的界面
+*/
 WordOfCommand::WordOfCommand(QWidget* parent, Configure* configure)
 	: QWidget(parent)
 	, ui(new Ui::WordOfCommandClass())

@@ -39,12 +39,21 @@ void TangentialCircleDiagramOfPrimaryWind::init()
 		qreal ret6 = qrand();
 		qreal ret7 = qrand();
 		qreal ret8 = qrand();
-		ui->widget_a->writeData(ret1, ret2, ret3, ret4, ret5, ret6, ret7, ret8);
-		ui->widget_b->writeData(ret1, ret2, ret3, ret4, ret5, ret6, ret7, ret8);
-		ui->widget_c->writeData(ret1, ret2, ret3, ret4, ret5, ret6, ret7, ret8);
-		ui->widget_d->writeData(ret1, ret2, ret3, ret4, ret5, ret6, ret7, ret8);
-		ui->widget_e->writeData(ret1, ret2, ret3, ret4, ret5, ret6, ret7, ret8);
-		ui->widget_f->writeData(ret1, ret2, ret3, ret4, ret5, ret6, ret7, ret8);
+
+		if (this->isVisible())
+		{
+			ui->widget_a->writeData(ret1, ret2, ret3, ret4, ret5, ret6, ret7, ret8);
+			ui->widget_b->writeData(ret1, ret2, ret3, ret4, ret5, ret6, ret7, ret8);
+			ui->widget_c->writeData(ret1, ret2, ret3, ret4, ret5, ret6, ret7, ret8);
+			ui->widget_d->writeData(ret1, ret2, ret3, ret4, ret5, ret6, ret7, ret8);
+			ui->widget_e->writeData(ret1, ret2, ret3, ret4, ret5, ret6, ret7, ret8);
+			ui->widget_f->writeData(ret1, ret2, ret3, ret4, ret5, ret6, ret7, ret8);
+			this->update();
+		}
+		else
+		{
+			std::cout << "no2" << std::endl;
+		}
 		});
 	t->start(1000);
 }

@@ -15,6 +15,8 @@ ChannelDatabase::ChannelDatabase(QWidget* parent, ResultData* result_data)
 	connect(_result_data, &ResultData::channeDataSignals, [=](const struct ChannelData& data) {
 		writeData(data);
 		});
+
+	// 这是一个测试
 	/*connect(t, &QTimer::timeout, [=]() {
 		std::cout << "1" << std::endl;
 		ChannelData data;
@@ -108,6 +110,7 @@ void ChannelDatabase::setTableWidget()
 	ui->tableWidget->clearContents();//清除表格数据区的所有内容，但是不清除表头
 }
 
+// 写数据，问题和报警功能的那个写数据的问题一样
 void ChannelDatabase::writeData(const struct ChannelData& data)
 {
 	if (_v.size() == ROW_CHANNEL * NUMBER_OF_TOTAL_PAGES_CHANNEL)
@@ -141,16 +144,27 @@ void ChannelDatabase::writeData(const struct ChannelData& data)
 		ui->tableWidget->setItem(_v.size() - 1, 7, new QTableWidgetItem(_v.back()._measured_value.c_str()));
 		ui->tableWidget->setItem(_v.size() - 1, 8, new QTableWidgetItem(_v.back()._engineering_value.c_str()));
 	}
-	ui->tableWidget->update();
+	if (this->isVisible())
+	{
+		ui->tableWidget->update();
+	}
 	_number_of_total_pages = _v.size() / ROW_CHANNEL;
 	if (_v.size() % ROW_CHANNEL != 0)
 		_number_of_total_pages = _number_of_total_pages + 1;
 
 	ui->label_cur->setText(std::to_string(_current_page_count).c_str());
 	ui->label_total->setText(std::to_string(_number_of_total_pages).c_str());
-	showView(_current_page_count);
-}
 
+	if (this->isVisible())// 如果该界面显示，我们就更新
+	{
+		showView(_current_page_count);
+	}
+	else
+	{
+		std::cout << "no6" << std::endl;
+	}
+}
+// 显示界面
 void ChannelDatabase::showView(int page)
 {
 	int start = ROW_CHANNEL * (page - 1);

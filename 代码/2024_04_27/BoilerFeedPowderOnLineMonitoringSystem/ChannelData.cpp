@@ -1,5 +1,7 @@
 #include "ChannelData.h"
-
+/*
+* 通道数据的集合
+*/
 ChannelData::ChannelData()
 {
 }

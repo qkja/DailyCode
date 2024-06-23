@@ -38,6 +38,11 @@ void TrendChart::initMap()
 		_concentration_map[str];
 		_temperature_1[str];
 		_temperature_2[str];
+		// 先开辟空间
+		_wind_speed_map[str].reserve(NUMBER_OF_DATA);
+		_concentration_map[str].reserve(NUMBER_OF_DATA);
+		_temperature_1[str].reserve(NUMBER_OF_DATA);
+		_temperature_2[str].reserve(NUMBER_OF_DATA);
 	}
 }
 
@@ -90,13 +95,110 @@ void TrendChart::updateData()
 			_temperature_1[str].push_back(data[i]._temperature_1);
 			_temperature_2[str].push_back(data[i]._temperature_2);
 		}
-		_updateData(WINDCHOICE, windStr, falg);                    // 更行风速, 其中更新风速的windStr号数据
-		_updateData(CONCENTRATIONCHOICE, concentrationStr, falg);
-		_updateData(TEMPERATUREONECHOICE, temperatureOneStr, falg);
-		_updateData(TEMPERATURETWOCHOICE, temperatureTwoStr, falg);
 
-		std::cout << "update data" << std::endl;
+		if (this->isVisible())
+		{
+			_updateData(WINDCHOICE, windStr, falg);                    // 更行风速, 其中更新风速的windStr号数据
+			_updateData(CONCENTRATIONCHOICE, concentrationStr, falg);
+			_updateData(TEMPERATUREONECHOICE, temperatureOneStr, falg);
+			_updateData(TEMPERATURETWOCHOICE, temperatureTwoStr, falg);
+
+			std::cout << "update data" << std::endl;
+		}
+		else
+		{
+			std::cout << "no3: " << num << std::endl;
+		}
 		});
+}
+
+// dataCategory: 是24个数据的哪一个数据
+// polygonalCategory: 是一组数据的风速,还是温度等
+// falg 是否全部更新,还是只在后面添加数据
+void TrendChart::_updateData(int polygonalCategory, const std::string& dataCategory, bool falg)
+{
+	if (polygonalCategory == WINDCHOICE)
+	{
+		if (falg)
+		{
+			_line_wind->clear();
+			for (int i = 0; i < _wind_speed_map[dataCategory].size(); i++)
+				_line_wind->append(i, _wind_speed_map[dataCategory][i]);
+		}
+		else
+		{
+			int index = _line_wind->count();
+			for (index; index < _wind_speed_map[dataCategory].size(); ++index)
+			{
+				_line_wind->append(index, _wind_speed_map[dataCategory][index]);
+			}
+		}
+	}
+	else if (polygonalCategory == CONCENTRATIONCHOICE)
+	{
+		if (falg)
+		{
+			_line_concentration->clear();
+			for (int i = 0; i < _concentration_map[dataCategory].size(); i++)
+				_line_concentration->append(i, _concentration_map[dataCategory][i]);
+		}
+		else
+		{
+			int index = _line_concentration->count();
+
+			for (index; index < _concentration_map[dataCategory].size(); ++index)
+			{
+				_line_concentration->append(index, _concentration_map[dataCategory][index]);
+			}
+		}
+	}
+	else if (polygonalCategory == TEMPERATUREONECHOICE)
+	{
+		if (falg)
+		{
+			_line_temperature_1->clear();
+			for (int i = 0; i < _temperature_1[dataCategory].size(); i++)
+				_line_temperature_1->append(i, _temperature_1[dataCategory][i]);
+		}
+		else
+		{
+			int index = _line_temperature_1->count();
+
+			for (index; index < _temperature_1[dataCategory].size(); ++index)
+			{
+				_line_temperature_1->append(index, _temperature_1[dataCategory][index]);
+			}
+		}
+	}
+	else if (polygonalCategory == TEMPERATURETWOCHOICE)
+	{
+		if (falg)
+		{
+			_line_temperature_2->clear();
+			for (int i = 0; i < _temperature_2[dataCategory].size(); i++)
+				_line_temperature_2->append(i, _temperature_2[dataCategory][i]);
+		}
+		else
+		{
+			int index = _line_temperature_2->count();
+
+			for (index; index < _temperature_2[dataCategory].size(); ++index)
+			{
+				_line_temperature_2->append(index, _temperature_2[dataCategory][index]);
+			}
+		}
+	}
+	else
+	{
+		std::cerr << "error" << std::endl;
+	}
+	_chart->update();
+	dataCategory;
+
+	ui->lineEdit->setText(std::to_string(_wind_speed_map[dataCategory].back()).c_str());
+	ui->lineEdit_3->setText(std::to_string(_concentration_map[dataCategory].back()).c_str());
+	ui->lineEdit_2->setText(std::to_string(_temperature_1[dataCategory].back()).c_str());
+	ui->lineEdit_4->setText(std::to_string(_temperature_2[dataCategory].back()).c_str());
 }
 
 void TrendChart::createChart()
@@ -170,78 +272,4 @@ void TrendChart::createChart()
 	_line_temperature_1->attachAxis(_y_temperature_1);
 	_line_temperature_2->attachAxis(_x);
 	_line_temperature_2->attachAxis(_y_temperature_2);
-}
-
-// dataCategory: 是24个数据的哪一个数据
-// polygonalCategory: 是一组数据的风速,还是温度等
-// falg 是否全部更新,还是只在后面添加数据
-void TrendChart::_updateData(int polygonalCategory, const std::string& dataCategory, bool falg)
-{
-	if (polygonalCategory == WINDCHOICE)
-	{
-		if (falg)
-		{
-			_line_wind->clear();
-			for (int i = 0; i < _wind_speed_map[dataCategory].size(); i++)
-				_line_wind->append(i, _wind_speed_map[dataCategory][i]);
-		}
-		else
-		{
-			int index = _line_wind->count();
-			_line_wind->append(index, _wind_speed_map[dataCategory].back());
-		}
-	}
-	else if (polygonalCategory == CONCENTRATIONCHOICE)
-	{
-		if (falg)
-		{
-			_line_concentration->clear();
-			for (int i = 0; i < _concentration_map[dataCategory].size(); i++)
-				_line_concentration->append(i, _concentration_map[dataCategory][i]);
-		}
-		else
-		{
-			int index = _line_concentration->count();
-			_line_concentration->append(index, _concentration_map[dataCategory].back());
-		}
-	}
-	else if (polygonalCategory == TEMPERATUREONECHOICE)
-	{
-		if (falg)
-		{
-			_line_temperature_1->clear();
-			for (int i = 0; i < _temperature_1[dataCategory].size(); i++)
-				_line_temperature_1->append(i, _temperature_1[dataCategory][i]);
-		}
-		else
-		{
-			int index = _line_temperature_1->count();
-			_line_temperature_1->append(index, _temperature_1[dataCategory].back());
-		}
-	}
-	else if (polygonalCategory == TEMPERATURETWOCHOICE)
-	{
-		if (falg)
-		{
-			_line_temperature_2->clear();
-			for (int i = 0; i < _temperature_2[dataCategory].size(); i++)
-				_line_temperature_2->append(i, _temperature_2[dataCategory][i]);
-		}
-		else
-		{
-			int index = _line_temperature_2->count();
-			_line_temperature_2->append(index, _temperature_2[dataCategory].back());
-		}
-	}
-	else
-	{
-		std::cerr << "error" << std::endl;
-	}
-	_chart->update();
-	dataCategory;
-
-	ui->lineEdit->setText(std::to_string(_wind_speed_map[dataCategory].back()).c_str());
-	ui->lineEdit_3->setText(std::to_string(_concentration_map[dataCategory].back()).c_str());
-	ui->lineEdit_2->setText(std::to_string(_temperature_1[dataCategory].back()).c_str());
-	ui->lineEdit_4->setText(std::to_string(_temperature_2[dataCategory].back()).c_str());
 }

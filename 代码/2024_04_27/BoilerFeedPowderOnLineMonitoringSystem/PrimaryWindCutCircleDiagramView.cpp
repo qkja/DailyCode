@@ -10,6 +10,9 @@ PrimaryWindCutCircleDiagramView::~PrimaryWindCutCircleDiagramView()
 {
 	std::cout << "~PrimaryWindCutCircleDiagramView()" << std::endl;
 }
+
+// 写数据，需要计算我们两个参数的相对值，然后根据比例进行更新我们的两个不同颜色的图形
+// 注意，这里少了一个功能，中间的圆形移动少了
 void PrimaryWindCutCircleDiagramView::writeData(double velocityOne, double speedOne
 	, double velocityTwo, double speedTwo
 	, double velocityThree, double speedThree
@@ -48,6 +51,7 @@ void PrimaryWindCutCircleDiagramView::writeData(double velocityOne, double speed
 	_wind_speed_four_end = { 2 * width / 3, height / 3 };
 	update();
 }
+// 这个界面显示的图形，我们对四个角分别设置的两个不同颜色的直线
 void PrimaryWindCutCircleDiagramView::paintEvent(QPaintEvent* event)
 {
 	(void)event;

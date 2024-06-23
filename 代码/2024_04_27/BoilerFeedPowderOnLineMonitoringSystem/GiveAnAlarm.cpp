@@ -110,7 +110,7 @@ int GiveAnAlarm::strfromDoubleToInt(const std::string& str)
 {
 	return 10 * std::stod(str);
 }
-
+// ÕûÊı×ª×Ö·û´®
 std::string GiveAnAlarm::intToStr(int val)
 {
 	std::string result;

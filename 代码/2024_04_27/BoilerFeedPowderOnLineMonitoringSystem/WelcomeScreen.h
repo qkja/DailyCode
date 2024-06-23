@@ -13,7 +13,10 @@
 QT_BEGIN_NAMESPACE
 namespace Ui { class WelcomeScreenClass; };
 QT_END_NAMESPACE
-
+/*
+* 这是一个带有ui界面的欢迎窗口,在程序启动后优先显示这个窗口
+* 双击"锅炉燃烧"按钮就可以进入主页面
+*/
 class WelcomeScreen : public QWidget
 {
 	Q_OBJECT
@@ -34,5 +37,5 @@ protected:
 private:
 	Ui::WelcomeScreenClass* ui;
 	QTimer* _doubleClickTimer;          // 定时器对象
-	int _clickCount;                    // 点击的计数器
+	volatile int _clickCount;           // 点击的计数器,volatile关键字,让去内存中取值
 };
