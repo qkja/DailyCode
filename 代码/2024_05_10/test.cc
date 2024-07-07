@@ -1,7 +1,7 @@
 #include <algorithm>
 #include <vector>
 #include <unordered_map>
-
+#include <iostream>
 using namespace std;
 
 //https://leetcode.cn/problems/integer-replacement/description/
@@ -90,7 +90,7 @@ using namespace std;
 class Solution {
 public:
     int maxEnvelopes(vector<vector<int>>& envelopes) {
-      sort(envelopes.begin(), envelopes.end(), [](vector<int>& v1, vector<int>& v2){
+      sort(envelopes.begin(), envelopes.end(), [&](vector<int> v1, vector<int> v2){
           return v1[0] != v2[0] ? v1[0] < v2[0] : v1[1] > v2[1];
           });
       vector<int> ret;
@@ -116,6 +116,16 @@ public:
           ret[left] = b;
         }
       }
-        return ret.size();
+      cout << ret[0] << endl; 
+      cout << ret[1] << endl; 
+      return ret.size();
     }
 };
+
+int main()
+{
+  vector<vector<int>> v = {{2,3},{5,4}, {6,1}};
+
+  Solution().maxEnvelopes(v);
+  return 0;
+}
