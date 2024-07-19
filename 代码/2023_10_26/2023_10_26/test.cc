@@ -1,0 +1,119 @@
+#include <iostream>
+#include <vector>
+#include <stdio.h>
+using namespace std;
+
+#include <iostream>
+using namespace std;
+class A
+{
+public:
+	A() :m_iVal(0){ test(); }
+	virtual void func() { std::cout << m_iVal << ' '; }
+	void test(){ func(); }
+public:
+	int m_iVal;
+};
+class B : public A
+{
+public:
+	B(){ test(); }
+	virtual void func()
+	{
+		++m_iVal;
+		std::cout << m_iVal << ' ';
+	}
+};
+int main(int argc, char* argv[])
+{
+	A*p = new B;
+	p->test();
+	return 0;
+}
+//class A {
+//public:
+//	~A() {
+//		cout << "~A()";
+//	}
+//};
+//class B{
+//public:
+//	virtual ~B() {
+//		cout << "~B()";
+//	}
+//};
+//class C : public A, public B {
+//public:
+//	~C() {
+//		cout << "~C()";
+//	}
+//};
+//int main() {
+//	C * c = new C;
+//	B * b1 = dynamic_cast<B *>(c);
+//	A * a2 = dynamic_cast<A *>(b1);
+//	delete a2;
+//}
+//class Base {
+//public:
+//	Base() {
+//		echo();
+//	}
+//	virtual void echo() {
+//		printf("Base");
+//	}
+//};
+//class Derived :public Base {
+//public:
+//	Derived() {
+//		echo();
+//	}
+//	virtual void echo() {
+//		printf("Derived");
+//	}
+//};
+//int main() {
+//	Base* base = new Derived();
+//	base->echo();
+//	return 0;
+//}
+//class A{
+//public:
+//	A(){ p(); }
+//	virtual void p(){ printf("A"); }
+//	//virtual ~A(){ p(); }
+//	 ~A(){ p(); }
+//};
+//class B :public A{
+//public:
+//	B(){ p(); }
+//	void p(){ printf("B"); }
+//	~B(){ p(); }
+//};
+//int main(){
+//	A* a = new B();
+//	delete a;
+//}
+//int main(void)
+//{
+//	vector<int>array;
+//	array.push_back(100);
+//	array.push_back(300);
+//	array.push_back(300);
+//	array.push_back(300);
+//	array.push_back(300);
+//	array.push_back(500);
+//	vector<int>::iterator itor;
+//	for (itor = array.begin(); itor != array.end(); itor++)
+//	{
+//		if (*itor == 300)
+//		{
+//			itor = array.erase(itor);
+//		}
+//	}
+//	for (itor = array.begin(); itor != array.end(); itor++)
+//	{
+//		cout << *itor << "";
+//	}
+//	return 0;
+//}
